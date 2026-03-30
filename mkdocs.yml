@@ -1,12 +1,12 @@
-site_name: Seyoung's Playground
+site_name: Engineer's Barn
 site_url: https://seyoungnam.github.io/docs/
 theme: 
   name: material
   font: 
-    text: Sans Serif
-    code: Monospace
+    text: Inter
+    code: Roboto Mono
   icon:
-    logo: fontawesome/solid/laptop
+    logo: octicons/agent-16
   features:
     - navigation.footer
   palette: 
@@ -15,7 +15,7 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Dark mode
-      primary: green
+      primary: black
       accent: deep purple
 
     # Light Mode
@@ -23,11 +23,16 @@ theme:
       toggle:
         icon: material/weather-night
         name: Light mode
-      primary: blue
-      accent: deep orange
-
+      primary: white
+      accent: indigo
+extra_css:
+  - stylesheets/extra.css
+plugins:
+  - glightbox
 markdown_extensions:
   - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg

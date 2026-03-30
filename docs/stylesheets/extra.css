@@ -1,0 +1,101 @@
+/* Even More Refined Header Styles for Maximum Readability */
+
+:root {
+  --header-font-weight: 500; /* Medium weight for subheaders */
+  --header-letter-spacing: -0.01em;
+  --header-line-height: 1.4;
+}
+
+/* Base styles for all headers */
+h1, h2, h3, h4 {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  font-weight: var(--header-font-weight) !important;
+  letter-spacing: var(--header-letter-spacing);
+  line-height: var(--header-line-height);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Smaller, more conservative sizes */
+h1 {
+  font-size: 1.5rem !important; /* ~24px */
+  font-weight: 600 !important; /* Semi-bold for top-level only */
+  margin-top: 1em;
+}
+
+h2 {
+  font-size: 1.25rem !important; /* ~20px */
+  border-bottom: none !important;
+}
+
+h3 {
+  font-size: 1.1rem !important; /* ~17.6px */
+}
+
+h4 {
+  font-size: 1rem !important; /* ~16px (standard text size) */
+}
+
+/* Specific adjustment for the main page title */
+.md-content__inner h1 {
+  font-weight: 600 !important;
+  font-size: 1.75rem !important; /* ~28px */
+}
+
+/* Material Design overrides to ensure consistency */
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+  font-weight: var(--header-font-weight);
+  letter-spacing: var(--header-letter-spacing);
+}
+
+/* Inline code style inspired by example.png */
+code {
+  font-family: var(--md-code-font-family, "Roboto Mono"), monospace;
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  margin: 0 0.1em;
+  border-radius: 6px;
+  word-break: break-word;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Light mode inline code */
+[data-md-color-scheme="default"] code {
+  background-color: #eef4ff !important;
+  color: #2563eb !important;
+}
+
+/* Dark mode inline code - slightly adjusted for contrast */
+[data-md-color-scheme="slate"] code {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+  color: #60a5fa !important;
+}
+
+/* Code block (```) style - Neutral gray background */
+.md-typeset .highlight, 
+.md-typeset pre > code {
+  background-color: #f5f5f5 !important;
+}
+
+/* Dark mode code block background */
+[data-md-color-scheme="slate"] .md-typeset .highlight, 
+[data-md-color-scheme="slate"] .md-typeset pre {
+  background-color: #2e2e2e !important;
+}
+
+/* Light mode specific - darker headers */
+[data-md-color-scheme="default"] h1, 
+[data-md-color-scheme="default"] h2, 
+[data-md-color-scheme="default"] h3, 
+[data-md-color-scheme="default"] h4 {
+  color: #1a1a1a;
+}
+
+/* Dark mode specific - high contrast headers */
+[data-md-color-scheme="slate"] h1, 
+[data-md-color-scheme="slate"] h2, 
+[data-md-color-scheme="slate"] h3, 
+[data-md-color-scheme="slate"] h4 {
+  color: #f8f9fa;
+}
