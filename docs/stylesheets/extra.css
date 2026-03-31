@@ -8,7 +8,8 @@
 
 /* Base styles for all headers */
 h1, h2, h3, h4 {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* font-mono: ui-monospace, "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace; */
   font-weight: var(--header-font-weight) !important;
   letter-spacing: var(--header-letter-spacing);
   line-height: var(--header-line-height);
@@ -43,9 +44,15 @@ h4 {
 }
 
 /* Material Design overrides to ensure consistency */
-.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-header__title {
   font-weight: var(--header-font-weight);
   letter-spacing: var(--header-letter-spacing);
+}
+
+/* Specific adjustment for the site name in the header */
+.md-header__title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 600 !important; /* Semi-bold like h1 */
 }
 
 /* Inline code style inspired by example.png */

@@ -51,7 +51,7 @@ If the above diagram looks confusing, try to understand it this way:
 Each pod has its own IP address and they are connected via the bridge interface, which makes possible the communication between pods in the same node. We have confirmed the principle of pod networking on the same node. But kubernetes networking requires more than that. We need to ensure pod networking **on different nodes without Network Address Translation(NAT)**.
 
 ### 2.3. Communication between nodes
-We need to understand the meaning of **without NAT** first. NAT is a technique to allow a host in a local network to talk to another host in the different network. Please refer to [05 Network Address Translation(NAT)](/network/05-nat/) page for more details. The way to avoid NAT is to assign each pod to non-overlapping IP address across nodes. If each pod has a unique IP address in the cluster, we can regard the entire cluster as a single local network, and thus NAT is not required.
+We need to understand the meaning of **without NAT** first. NAT is a technique to allow a host in a local network to talk to another host in the different network. Please refer to [05 Network Address Translation(NAT)](https://seyoungnam.github.io/network/05-nat/) page for more details. The way to avoid NAT is to assign each pod to non-overlapping IP address across nodes. If each pod has a unique IP address in the cluster, we can regard the entire cluster as a single local network, and thus NAT is not required.
 
 Then how can we ensure a unique IP address for each pod across nodes in the same cluster? There are three ways:
 
