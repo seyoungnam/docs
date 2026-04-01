@@ -9,6 +9,7 @@ theme:
     logo: octicons/agent-16
   features:
     - navigation.footer
+    - content.tabs.link
   palette: 
     # Dark Mode
     - scheme: slate
