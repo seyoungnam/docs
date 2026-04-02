@@ -634,7 +634,9 @@ The following step is to deploy ALB Ingress. In case you do not have your domain
           - job_name: apiserver-metrics
             kubernetes_sd_configs:
             - role: endpoints
-            scheme: http
+            scheme: https
+            tls_config:
+              insecure_skip_verify: true
             bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
             relabel_configs:
             - source_labels:
@@ -644,13 +646,16 @@ The following step is to deploy ALB Ingress. In case you do not have your domain
                   __meta_kubernetes_endpoint_port_name,
                 ]
               action: keep
-              regex: default;kubernetes;http
+              regex: default;kubernetes;https
           # Scheduler metrics
           - job_name: 'ksh-metrics'
             kubernetes_sd_configs:
             - role: endpoints
             metrics_path: /apis/metrics.eks.amazonaws.com/v1/ksh/container/metrics
-            scheme: http
+            scheme: https
+            tls_config:
+              ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              insecure_skip_verify: true
             bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
             relabel_configs:
             - source_labels:
@@ -660,13 +665,16 @@ The following step is to deploy ALB Ingress. In case you do not have your domain
                   __meta_kubernetes_endpoint_port_name,
                 ]
               action: keep
-              regex: default;kubernetes;http
+              regex: default;kubernetes;https
           # Controller Manager metrics
           - job_name: 'kcm-metrics'
             kubernetes_sd_configs:
             - role: endpoints
             metrics_path: /apis/metrics.eks.amazonaws.com/v1/kcm/container/metrics
-            scheme: http
+            scheme: https
+            tls_config:
+              ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              insecure_skip_verify: true
             bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
             relabel_configs:
             - source_labels:
@@ -676,7 +684,7 @@ The following step is to deploy ALB Ingress. In case you do not have your domain
                   __meta_kubernetes_endpoint_port_name,
                 ]
               action: keep
-              regex: default;kubernetes;http
+              regex: default;kubernetes;https
 
       # Enable vertical pod autoscaler support for prometheus-operator
       #verticalPodAutoscaler:
@@ -756,12 +764,12 @@ myeks-ingress-alb-1216686509.us-east-1.elb.amazonaws.com myeks-ingress-alb-12166
 GRAF_IP=$(dig +short $GRAF_HOST | head -n 1)
 PROM_IP=$(dig +short $PROM_HOST | head -n 1)
 echo $GRAF_IP $PROM_IP
-34.198.94.134 34.198.94.134
+100.49.118.140 100.49.118.140
 
 GrafDomain=${GRAF_IP}.sslip.io
 PromDomain=${PROM_IP}.sslip.io
 echo $GrafDomain $PromDomain
-34.198.94.134.sslip.io 34.198.94.134.sslip.io
+100.49.118.140.sslip.io 100.49.118.140.sslip.io
 ```
 
 ``` bash title="Update Ingress"
@@ -773,10 +781,10 @@ kubectl patch ingress -n monitoring kube-prometheus-stack-prometheus --type='jso
 
 # confirm the host
 kubectl get ingress kube-prometheus-stack-grafana -n monitoring -o jsonpath='{.spec.rules[0].host}'
-grafana.34.198.94.134.sslip.io
+grafana.100.49.118.140.sslip.io
 
 kubectl get ingress kube-prometheus-stack-prometheus -n monitoring -o jsonpath='{.spec.rules[0].host}'
-prometheus.34.198.94.134.sslip.io
+prometheus.100.49.118.140.sslip.io
 ```
 
 Check the access:
@@ -805,4 +813,8 @@ Check the access:
 
     ![prometheus](../assets/img/eks/06-scaling/prometheus.png)
     ![grafana](../assets/img/eks/06-scaling/grafana.png)
+
+In console, you can find in the Load Balancer's section that multiple rules are registered to a single listener(`HTTP:80`) in the application load balancer(`myeks-ingress-alb`).
+
+![alb-rules](../assets/img/eks/06-scaling/alb-rules.png)
 
