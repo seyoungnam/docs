@@ -495,6 +495,8 @@ The following step is to deploy ALB Ingress. In case you do not have your domain
 
 ## 7. Install Prometheus and Grafana
 
+### Deploy resources
+
 === "with your domain"
 
     ``` bash title="Add helm repo and create helm values file"
@@ -818,3 +820,114 @@ In console, you can find in the Load Balancer's section that multiple rules are 
 
 ![alb-rules](../assets/img/eks/06-scaling/alb-rules.png)
 
+### kcm and ksh metrics failed to scrape
+
+If you visits the `targets` path in prometheus, you will find **Kube Controller Manager** and **Kube Scheduler** metrics fail to scrape.
+
+!Error scraping target](../assets/img/eks/06-scaling/kcm-ksh-metrics.png)
+
+metrics endpoints for both services are accessible without any errors.
+
+``` bash title="Access to kcm and ksh metrics"
+kubectl get --raw "/apis/metrics.eks.amazonaws.com/v1/ksh/container/metrics"
+kubectl get --raw "/apis/metrics.eks.amazonaws.com/v1/kcm/container/metrics"
+```
+
+The main blocker is the authority to access the above endpoints is missing in the cluster role binding to the service account for both pods.
+
+``` bash title="Look up role binding to kube-prometheus-stack-prometheus service account"
+kubectl rbac-tool lookup kube-prometheus-stack-prometheus
+
+# install krew
+brew install krew
+
+# append to .zshrc
+echo 'export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"' >> ~/.zshrc
+
+# reload shell configuration
+source ~/.zshrc
+
+# install rbac-tool
+kubectl krew install rbac-tool
+
+# look up role binding to kube-prometheus-stack-prometheus sa
+kubectl rbac-tool lookup kube-prometheus-stack-prometheus
+  SUBJECT                          | SUBJECT TYPE   | SCOPE       | NAMESPACE | ROLE                             | BINDING                           
+-----------------------------------+----------------+-------------+-----------+----------------------------------+-----------------------------------
+  kube-prometheus-stack-prometheus | ServiceAccount | ClusterRole |           | kube-prometheus-stack-prometheus | kube-prometheus-stack-prometheus 
+
+# install rolesum
+kubectl krew install rolesum
+
+# look up policies
+kubectl rolesum kube-prometheus-stack-prometheus -n monitoring
+ServiceAccount: monitoring/kube-prometheus-stack-prometheus
+Secrets:
+
+Policies:
+
+• [CRB] */kube-prometheus-stack-prometheus ⟶  [CR] */kube-prometheus-stack-prometheus
+  Resource                         Name  Exclude  Verbs  G L W C U P D DC  
+  endpoints                        [*]     [-]     [-]   ✔ ✔ ✔ ✖ ✖ ✖ ✖ ✖   
+  endpointslices.discovery.k8s.io  [*]     [-]     [-]   ✔ ✔ ✔ ✖ ✖ ✖ ✖ ✖   
+  ingresses.networking.k8s.io      [*]     [-]     [-]   ✔ ✔ ✔ ✖ ✖ ✖ ✖ ✖   
+  nodes                            [*]     [-]     [-]   ✔ ✔ ✔ ✖ ✖ ✖ ✖ ✖   
+  nodes/metrics                    [*]     [-]     [-]   ✔ ✔ ✔ ✖ ✖ ✖ ✖ ✖   
+  pods                             [*]     [-]     [-]   ✔ ✔ ✔ ✖ ✖ ✖ ✖ ✖   
+  services                         [*]     [-]     [-]   ✔ ✔ ✔ ✖ ✖ ✖ ✖ ✖   
+```
+
+`kube-prometheus-stack-prometheus` cluster role does not contains `metrics.eks.amazonaws.com` in the resource target for `get` action. `metrics.eks.amazonaws.com` is the resource name for `ksh` and `kcm` metrics. Let's add the missing resource and action to the cluster role.
+
+``` bash title="Add resource/action to the cluster role and review"
+kubectl patch clusterrole kube-prometheus-stack-prometheus --type=json -p='[
+  {
+    "op": "add",
+    "path": "/rules/-",
+    "value": {
+      "verbs": ["get"],
+      "apiGroups": ["metrics.eks.amazonaws.com"],
+      "resources": ["kcm/metrics", "ksh/metrics"]
+    }
+  }
+]'
+
+kubectl rolesum kube-prometheus-stack-prometheus -n monitoring
+ServiceAccount: monitoring/kube-prometheus-stack-prometheus
+Secrets:
+
+Policies:
+
+• [CRB] */kube-prometheus-stack-prometheus ⟶  [CR] */kube-prometheus-stack-prometheus
+  Resource                               Name  Exclude  Verbs  G L W C U P D DC  
+  ... 
+  kcm.metrics.eks.amazonaws.com/metrics  [*]     [-]     [-]   ✔ ✖ ✖ ✖ ✖ ✖ ✖ ✖   
+  ksh.metrics.eks.amazonaws.com/metrics  [*]     [-]     [-]   ✔ ✖ ✖ ✖ ✖ ✖ ✖ ✖   
+  ... 
+```
+
+Now `kcm-metrics` and `ksh-metrics` is accessible by prometheus.
+
+![kcm-ksh-up](../assets/img/eks/06-scaling/kcm-ksh-up.png)
+
+### Add grafana dashboard
+
+``` bash title=""
+# download json dashboard file
+curl -O https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/refs/heads/master/dashboards/k8s-system-api-server.json
+
+# change variable to actual string(prometheus)
+sed -i '' -e 's/${DS_PROMETHEUS}/prometheus/g' k8s-system-api-server.json
+
+# create my-dashboard configmap
+kubectl create configmap my-dashboard --from-file=k8s-system-api-server.json -n monitoring
+# add label
+kubectl label configmap my-dashboard grafana_dashboard="1" -n monitoring
+# confirm k8s-system-api-server.json is added in /tmp/dashboards directory
+kubectl exec -it -n monitoring deploy/kube-prometheus-stack-grafana -- ls -l /tmp/dashboards
+total 436
+-rw-r--r--    1 grafana  472           5928 Apr  2 01:44 alertmanager-overview.json
+...
+-rw-r--r--    1 grafana  472          11773 Apr  2 01:44 namespace-by-pod.json
+...
+```
