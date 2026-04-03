@@ -3,7 +3,7 @@
 
 ## 1. Managed Node Group
 
-### On-demand node group
+### On-demand node
 ``` bash title="Check myeks-ng-1 (on-demand)"
 kubectl get nodes --label-columns eks.amazonaws.com/nodegroup,kubernetes.io/arch,eks.amazonaws.com/capacityType
 NAME                             STATUS   ROLES    AGE    VERSION               NODEGROUP    ARCH    CAPACITYTYPE
@@ -18,7 +18,7 @@ myeks   myeks-ng-1      ACTIVE  2026-03-31T00:58:14Z    1               4       
 aws eks describe-nodegroup --cluster-name myeks --nodegroup-name myeks-ng-1 | jq
 ```
 
-### Deploy arm-based node group
+### Arm-based node
 
 !!! note "AWS Graviton(ARM) Processor"
 
@@ -197,7 +197,7 @@ In the following, we will attempt to deploy `mario` app on the arm-based `myeks-
 ![mario-image](../../assets/img/eks/06-scaling/mario-image.png)
 
 
-``` bash hl_lines="20-24" title="Deploy mario app"
+``` bash hl_lines="20-24 27" title="Deploy mario app"
 cat << EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
@@ -218,13 +218,13 @@ spec:
       nodeSelector:
         kubernetes.io/arch: arm64
       tolerations:
-      - key: "cpuarch"  (1)
+      - key: "cpuarch" #
         operator: "Equal"
         value: "arm64"
         effect: "NoExecute"
       containers:
       - name: mario
-        image: pengbai/docker-supermario  (2)
+        image: pengbai/docker-supermario
         ports:
         - containerPort: 80
         resources:
@@ -233,8 +233,10 @@ EOF
 kubectl get events -w --sort-by '.lastTimestamp'
 ```
 
-1.  :man_raising_hand: This Kubernetes toleration allows a Pod to be scheduled on (or remain running on) [nodes tainted with `cpuarch=arm64:NoExecute`](https://github.com/gasida/aews/blob/main/3w/eks.tf#L195-L201).
-2.  :man_raising_hand: Like mentioned above, `pengbai/docker-supermario` image is baked to run on the `amd64` CPU architecture.
+!!! note
+
+    - This Kubernetes toleration allows a Pod to be scheduled on (or remain running on) [nodes tainted with `cpuarch=arm64:NoExecute`](https://github.com/gasida/aews/blob/main/3w/eks.tf#L195-L201).
+    - Like mentioned above, `pengbai/docker-supermario` image is baked to run on the `amd64` CPU architecture.
 
 ``` bash title="Confirm the app is not deployed"
 kubectl get events -w --sort-by '.lastTimestamp'
@@ -242,7 +244,7 @@ kubectl get events -w --sort-by '.lastTimestamp'
 kubectl get pod -l app=mario
 kubectl stern -l app=mario 
 ```
-== Due to the mismatch of the cpu architecture between the image and node, the pod is not scheduled on the `myeks-ng-2` node. ==
+{== Due to the mismatch of the cpu architecture between the image and node, the pod is not scheduled on the `myeks-ng-2` node. ==}
 
 !!! warning
 
@@ -254,5 +256,34 @@ kubectl stern -l app=mario
     ```
 
 
+### Spot instances
 
+To briefly introduce spot instances,
 
+- enable you to request unused EC2 instances at steep discounts
+- the spot price of each instance type is adjusted gradually based on the long-term supply of and demand for Spot Instances
+- a good fit for stateless, fault-tolerant, flexible applications, including batch and machine learning training workloads, big data ETLs such as Apache Spark, queue processing applications, and stateless API endpoints
+
+Let's add the spot instance node group. First, unblock [the terraform code for the third node group](https://github.com/gasida/aews/blob/main/3w/eks.tf#L220-L268). Then run the following commands:
+
+``` bash title="Add spot instance node group"
+terraform plan
+terraform apply -auto-approve
+
+# The aws eks wait nodegroup-active command can be used to wait until a specific EKS node group is active and ready for use.
+aws eks wait nodegroup-active --cluster-name myeks --nodegroup-name myeks-ng-3
+```
+
+``` bash title="Confirm the new node group"
+kubectl get nodes --label-columns eks.amazonaws.com/nodegroup,kubernetes.io/arch,eks.amazonaws.com/capacityType # (1)
+kubectl get nodes -L eks.amazonaws.com/capacityType # (2)
+```
+
+1.  NAME                             STATUS   ROLES    AGE    VERSION               NODEGROUP    ARCH    CAPACITYTYPE
+    ip-192-168-13-172.ec2.internal   Ready    <none>   3d4h   v1.35.2-eks-f69f56f   myeks-ng-1   amd64   ON_DEMAND
+    ip-192-168-13-202.ec2.internal   Ready    <none>   3m3s   v1.35.2-eks-f69f56f   myeks-ng-3   amd64   SPOT
+    ip-192-168-22-156.ec2.internal   Ready    <none>   3d4h   v1.35.2-eks-f69f56f   myeks-ng-1   amd64   ON_DEMAND
+2.  NAME                             STATUS   ROLES    AGE     VERSION               CAPACITYTYPE
+    ip-192-168-13-172.ec2.internal   Ready    <none>   3d4h    v1.35.2-eks-f69f56f   ON_DEMAND
+    ip-192-168-13-202.ec2.internal   Ready    <none>   3m12s   v1.35.2-eks-f69f56f   SPOT
+    ip-192-168-22-156.ec2.internal   Ready    <none>   3d4h    v1.35.2-eks-f69f56f   ON_DEMAND
