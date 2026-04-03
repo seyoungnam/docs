@@ -26,13 +26,13 @@ In computer networking, if a host wants to talk to others, an IP address should 
 
 It turns out the smallest unit for the IP address assignment is not a single device but **Network Namespace**. Each network namespace has at least one network interface, an IP address, a port, and a routing table. In other words, **network namespace is the smallest networking unit**. Obviously, OS in a single node allows multiple network namespaces. In the k8s context, each pod is running under its own network namespace, with a set of network interface, IP addresses, ports, and routing tables.
 
-![network-interface](../assets/img/eks/02-networking/network-interface.jpeg)
+![network-interface](../../assets/img/eks/02-networking/network-interface.jpeg)
 
 As described in the above image, a single IP address is assigned to each network namespace(or pod) in a node. With an IP address on each pod, how could we facilitate communications between them inside the node?
 
 ### 2.2. Communication within a node
 
-![communicate-in-node](../assets/img/eks/02-networking/communicate-in-node.jpeg)
+![communicate-in-node](../../assets/img/eks/02-networking/communicate-in-node.jpeg)
 
 Two technologies are used to facilitate communication inside the node:
 
@@ -46,7 +46,7 @@ If the above diagram looks confusing, try to understand it this way:
 - They are connected by the network switch(bridge interface).
 - Overall, the entire diagram looks like a home network.
 
-![communicate-in-node-2](../assets/img/eks/02-networking/communicate-in-node-2.jpeg)
+![communicate-in-node-2](../../assets/img/eks/02-networking/communicate-in-node-2.jpeg)
 
 Each pod has its own IP address and they are connected via the bridge interface, which makes possible the communication between pods in the same node. We have confirmed the principle of pod networking on the same node. But kubernetes networking requires more than that. We need to ensure pod networking **on different nodes without Network Address Translation(NAT)**.
 
@@ -56,15 +56,15 @@ We need to understand the meaning of **without NAT** first. NAT is a technique t
 Then how can we ensure a unique IP address for each pod across nodes in the same cluster? There are three ways:
 
 #### 2.3.1. Overlay (Flannel, VXLAN)
-![overlay](../assets/img/eks/02-networking/overlay.jpeg)
+![overlay](../../assets/img/eks/02-networking/overlay.jpeg)
 An overlay is used to bridge a routing gap between the Pod network and the physical network. Because the physical network doesn't know which node owns which pod IP, the traffic must be **encapsulated** to get across. When a Pod sends a packet, the node wraps it in a new packet (typically UDP/VXLAN) addressed to the destination node. The receiving node then unwraps it and delivers it to the destination Pod. This provides great flexibility but adds a small amount of CPU overhead and reduces the effective MTU.
 
 #### 2.3.2. BGP (Calico)
-![bgp](../assets/img/eks/02-networking/bgp.jpeg)
+![bgp](../../assets/img/eks/02-networking/bgp.jpeg)
 BGP-based networking **avoids encapsulation** by making the underlying network fabric aware of Pod IP addresses. Nodes use the Border Gateway Protocol (BGP) to **advertise the Pod IP ranges** they are currently hosting **to other nodes and routers**. This allows packets to be routed natively between nodes without being wrapped in extra headers. It offers high performance and easier debugging, but requires a network infrastructure that can handle a large number of dynamic routes and potentially support BGP.
 
 #### 2.3.3. Cloud Native (AWS VPC CNI)
-![aws-vpc-cni](../assets/img/eks/02-networking/aws-vpc-cni.jpeg)
+![aws-vpc-cni](../../assets/img/eks/02-networking/aws-vpc-cni.jpeg)
 In AWS EKS, the default is the VPC CNI, which treats Pods as "first-class citizens" of the VPC. **Each Pod is assigned a real secondary private IP address from the VPC's own subnets**. Because the AWS VPC fabric natively understands these IPs, no overlays or BGP are required. Traffic is routed directly through the AWS infrastructure at native speeds. This also allows Pods to use VPC features like Security Groups and Flow Logs directly.
 
 ##### 2.3.3.1. Secondary IP mode
@@ -85,11 +85,11 @@ Introduced to solve the density problem, this mode allows AWS to assign **/28 IP
 What we have learned so far is about pod-to-pod networking in a cluster, **with an important assumption - pods are persistent**. This assumption does not reflect the reality. Pods are in fact ephemeral, meaning it is often scraped and redeployed. Pods are changing, So is its IP address. From the source host point of view, it is a nightmare to keep following ever-changing destination IP address. That is where `Service` comes into play. 
 
 ### 3.1. What does `Service` do?
-![service](../assets/img/eks/02-networking/service.jpeg)
+![service](../../assets/img/eks/02-networking/service.jpeg)
 
 `Service` provides a **stable (long-lived) IP address** and **hostname** for a service. The source host now can make a request to the `Service` with the stable IP address and the `Service` forwards it to one of the backend pods. If a new pod is deployed behind the `Service`, `Service` learns its IP address and able to forward the receiving request to the backend pod.
 
-![lb](../assets/img/eks/02-networking/lb.jpeg)
+![lb](../../assets/img/eks/02-networking/lb.jpeg)
 Another feature of `Service` is **load balancing**. Requests to `Service` are distributed across pods running behind. To illustrate, if the client pod make the same request to the service three times, the first request hits pod 1, the second request hits pod 2, and the third request hits pod 3 under the round-robin load balancing policy.
 
 
@@ -103,7 +103,7 @@ It operats in three primary modes:
 
 It creates `iptables` rules at `Netfilter` module in the node's **kernel** to redirect traffic destined for a `Service`'s virtual IP to one of the backend Pods. It is the default mode for k8s cluster and uses a randomized choice for load balancing. Note that `kube-proxy` is a control plane that modifies `iptables` rules at `Netfilter`. Thus, packets never hit `kube-proxy` pods located in user space, but rather gets through `Netfilter` in kernel. 
 
-![iptables](../assets/img/eks/02-networking/iptables.jpeg)
+![iptables](../../assets/img/eks/02-networking/iptables.jpeg)
 
 `iptables` mode has the following advantages over legacy user space mode:
 
@@ -116,7 +116,7 @@ However the performance would be degraded as the number of `iptables` rules gets
 #### 3.2.2. IPVS (IP Virtual Server)
 IPVS is Layer 4 load balancer working at `Netfilter`. It offers better performance for clusters with thousands of services. It supports more sophisticated load-balancing algorithms (least connection, shortest expected delay, etc.).
 
-![ipvs](../assets/img/eks/02-networking/ipvs.jpeg)
+![ipvs](../../assets/img/eks/02-networking/ipvs.jpeg)
 
 Unlike `iptables` which uses a sequential list of rules ($O(N)$), IPVS uses a **Hash Table** ($O(1)$), ensuring consistent performance even as the number of services grows into the thousands.
 
@@ -129,7 +129,7 @@ While the previous modes rely on the fixed logic of the `Netfilter` subsystem, *
 - **eBPF-based Load Balancing:** Instead of using `iptables` or `IPVS` rules, specialized CNI plugins like **Cilium** use eBPF to implement service load balancing. It can bypass much of the standard Linux networking stack (like the `conntrack` table), significantly reducing latency and CPU overhead.
 - **XDP (eXpress Data Path):** XDP is a specific type of eBPF hook that runs at the **earliest possible point** in the network driver, before the packet is even allocated into a kernel buffer (`sk_buff`). By processing packets directly at the NIC driver level, XDP can perform load balancing, DDoS protection, or packet dropping at near-line speeds.
 
-![ebpf](../assets/img/eks/02-networking/ebpf.jpeg)
+![ebpf](../../assets/img/eks/02-networking/ebpf.jpeg)
 
 This combination represents the cutting edge of Kubernetes networking, providing the highest possible performance and observability, especially in massive-scale environments.
 

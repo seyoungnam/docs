@@ -146,14 +146,14 @@ sh-5.2$ bash
 ??? info "What enables to access the instance using sesson manager?"
 
     `AmazonSSMManagedInstanceCore` policy is added to EKS managed node group IAM role.
-    ![ssm-policy](../assets/img/eks/06-scaling/ssm-policy.png)
+    ![ssm-policy](../../assets/img/eks/06-scaling/ssm-policy.png)
 
 ??? info "How could my terminal access the instance with no public IP?"
 
-    ![no-public-ip](../assets/img/eks/06-scaling/no-public-ip.png)
+    ![no-public-ip](../../assets/img/eks/06-scaling/no-public-ip.png)
     Public IP is not attached to each instance. Then how can the external traffic reach to the instance? 
 
-    ![ssm](../assets/img/eks/06-scaling/ssm.jpeg)
+    ![ssm](../../assets/img/eks/06-scaling/ssm.jpeg)
     
     When the SSM Agent starts up on your EC2 instance (usually at boot), it immediately initiates an **outbound HTTPS (TLS) connection** to the Systems Manager service endpoints in the AWS Cloud. It uses a technology similar to WebSockets or Long Polling. When you start a session via the console or CLI, here's what happens:
 
@@ -162,7 +162,7 @@ sh-5.2$ bash
     3. It sends a **Start Session** signal down that existing outbound tunnel.
     4. SSM Agent receives the signal, spawns a local shell process (like `/bin/bash`), and begins streaming the input/output of that shell back through the same tunnel.
 
-    ![sessions-terminal](../assets/img/eks/06-scaling/sessions-terminal.png)
+    ![sessions-terminal](../../assets/img/eks/06-scaling/sessions-terminal.png)
 
     **Why does this matter?**
 
@@ -327,7 +327,7 @@ eks-node-viewer --extra-labels eks-node-viewer/node-memory-usage
 eks-node-viewer --extra-labels eks-node-viewer/node-pods-usage
 ```
 
-![eks-node-viewer](../assets/img/eks/06-scaling/eks-node-viewer.png)
+![eks-node-viewer](../../assets/img/eks/06-scaling/eks-node-viewer.png)
 
 !!! note "eks-node-viewer does not display actual resource usage"
 
@@ -490,7 +490,7 @@ The following step is to deploy ALB Ingress. In case you do not have your domain
     open "https://kubeopsview.$MyDomain/#scale=1.5"
     ```
 
-    ![access-to-kube-ops-view](../assets/img/eks/06-scaling/sslip-access.png)
+    ![access-to-kube-ops-view](../../assets/img/eks/06-scaling/sslip-access.png)
 
 
 ## 7. Install Prometheus and Grafana
@@ -813,18 +813,18 @@ Check the access:
     open "http://grafana.$GrafDomain" # macOS
     ```
 
-    ![prometheus](../assets/img/eks/06-scaling/prometheus.png)
-    ![grafana](../assets/img/eks/06-scaling/grafana.png)
+    ![prometheus](../../assets/img/eks/06-scaling/prometheus.png)
+    ![grafana](../../assets/img/eks/06-scaling/grafana.png)
 
 In console, you can find in the Load Balancer's section that multiple rules are registered to a single listener(`HTTP:80`) in the application load balancer(`myeks-ingress-alb`).
 
-![alb-rules](../assets/img/eks/06-scaling/alb-rules.png)
+![alb-rules](../../assets/img/eks/06-scaling/alb-rules.png)
 
 ### kcm and ksh metrics failed to scrape
 
 If you visits the `targets` path in prometheus, you will find **Kube Controller Manager** and **Kube Scheduler** metrics fail to scrape.
 
-!Error scraping target](../assets/img/eks/06-scaling/kcm-ksh-metrics.png)
+![Error scraping target](../../assets/img/eks/06-scaling/kcm-ksh-metrics.png)
 
 metrics endpoints for both services are accessible without any errors.
 
@@ -908,7 +908,7 @@ Policies:
 
 Now `kcm-metrics` and `ksh-metrics` is accessible by prometheus.
 
-![kcm-ksh-up](../assets/img/eks/06-scaling/kcm-ksh-up.png)
+![kcm-ksh-up](../../assets/img/eks/06-scaling/kcm-ksh-up.png)
 
 ### Add grafana dashboard
 

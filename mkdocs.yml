@@ -3,13 +3,17 @@ site_url: https://seyoungnam.github.io/docs/
 theme: 
   name: material
   font: 
-    text: Inter
+    text: Roboto Flex
     code: Roboto Mono
   icon:
     logo: octicons/agent-16
+    annotation: material/arrow-right-circle
   features:
     - navigation.footer
     - content.tabs.link
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
   palette: 
     # Dark Mode
     - scheme: slate
@@ -26,8 +30,8 @@ theme:
         name: Light mode
       primary: white
       accent: indigo
-extra_css:
-  - stylesheets/extra.css
+# extra_css:
+#   - stylesheets/extra.css
 plugins:
   - glightbox
 markdown_extensions:
@@ -76,12 +80,12 @@ nav:
     - 04. API: kubernetes/04-navigating-the-k8s-api.md
   - EKS:
     - EKS Provisioning:
-      - 01. Deploy: EKS/EKS Provisioning/01-deploy.md
+      - Provisioning Lab: EKS/EKS Provisioning/01-deploy.md
     - Networking:
-      - 02. Networking: EKS/Networking/02-networking.md
-      - 03. Networking Lab: EKS/Networking/03-networking-lab.md
-      - 04. Networking Lab 2: EKS/Networking/04-networking-lab-2.md
-      - 05. Networking Lab 3: EKS/Networking/05-networking-lab-3.md
+      - Networking Fundamentals: EKS/Networking/02-networking.md
+      - Networking Lab 1: EKS/Networking/03-networking-lab.md
+      - Networking Lab 2: EKS/Networking/04-networking-lab-2.md
+      - Networking Lab 3: EKS/Networking/05-networking-lab-3.md
     - Scaling:
-      - 06. Scaling: EKS/Scaling/06-scaling.md
-      - 07. Scaling 2: EKS/Scaling/07-scaling-2.md
+      - Scaling Lab 1: EKS/Scaling/06-scaling.md
+      - Scaling Lab 2: EKS/Scaling/07-scaling-2.md
