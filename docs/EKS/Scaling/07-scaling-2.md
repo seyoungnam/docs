@@ -1,4 +1,4 @@
-# EKS Scaling - Node Group & Autoscaler
+# Lab 2: ManagedNode Group & Autoscaler
 
 
 ## 1. Managed Node Group

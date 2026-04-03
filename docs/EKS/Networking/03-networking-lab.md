@@ -1,4 +1,4 @@
-# EKS Networking Lab: Routing and Interfaces
+# Lab 1: Routing and Interfaces
 
 ## 1. Cluster Provisioning
 

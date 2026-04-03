@@ -60,3 +60,28 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/seyoungnam
 copyright: Copyright &copy; 2026 Seyoung Nam
+
+nav:
+  - Home: index.md
+  - Network:
+    - OSI & TCP/IP: network/01-osi-tcpip.md
+    - TCP/IP: network/02-tcpip.md
+    - Routing: network/03-routing.md
+    - TCP/IP App: network/04-tcpip-app.md
+    - NAT: network/05-nat.md
+  - Kubernetes:
+    - 01. Intro: kubernetes/01-intro-k8s.md
+    - 02. Containers: kubernetes/02-understanding-containers.md
+    - 03. First App: kubernetes/03-deploying-first-app.md
+    - 04. API: kubernetes/04-navigating-the-k8s-api.md
+  - EKS:
+    - EKS Provisioning:
+      - 01. Deploy: EKS/EKS Provisioning/01-deploy.md
+    - Networking:
+      - 02. Networking: EKS/Networking/02-networking.md
+      - 03. Networking Lab: EKS/Networking/03-networking-lab.md
+      - 04. Networking Lab 2: EKS/Networking/04-networking-lab-2.md
+      - 05. Networking Lab 3: EKS/Networking/05-networking-lab-3.md
+    - Scaling:
+      - 06. Scaling: EKS/Scaling/06-scaling.md
+      - 07. Scaling 2: EKS/Scaling/07-scaling-2.md

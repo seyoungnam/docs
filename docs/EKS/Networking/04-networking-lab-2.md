@@ -1,4 +1,4 @@
-# EKS Networking Lab: Scaling Pod IPs with VPC CNI
+# Lab 2: Scaling Pod IPs with VPC CNI
 
 !!! warning
     

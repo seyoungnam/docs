@@ -1,4 +1,4 @@
-# EKS Scaling
+# Lab 1: SSM, ALB, Prometheus, Grafana
 
 ## 1. Cluster Provisioning
 

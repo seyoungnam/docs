@@ -1,4 +1,4 @@
-# EKS Networking Lab: AWS LBC, Ingress, and Gateway API
+# Lab 3: AWS LBC, Ingress, and Gateway API
 
 !!! warning
 
