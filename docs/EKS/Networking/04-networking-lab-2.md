@@ -51,7 +51,7 @@ terraform apply -auto-approve
 
 Confirm the changes in the console:
 EKS > addon > vpc-cni
-![vpc-cni](../assets/img/eks/04-networking-lab-2/vpc-cni.png)
+![vpc-cni](../../assets/img/eks/04-networking-lab-2/vpc-cni.png)
 
 Check `env` in `aws-node` DaemonSet:
 ```bash
@@ -65,7 +65,7 @@ Confirm ENI is added to the node where no pods are scheduled. You can see that e
 for i in $N1 $N2 $N3; do echo ">> node $i <<"; ssh ec2-user@$i sudo ip -c addr; echo; done
 ```
 That's because of the `MINIMUM_IP_TARGET = "10"`. Note that five secondary IP addresses are allocated per ENI in a warm pool.
-![secondary-ips](../assets/img/eks/04-networking-lab-2/secondary-ips.png)
+![secondary-ips](../../assets/img/eks/04-networking-lab-2/secondary-ips.png)
 
 Check cni logs:
 ```bash
@@ -96,7 +96,7 @@ open "http://$N1:30000/#scale=1.5"
 open "http://$N1:30000/#scale=1.3"
 ```
 
-![kube-ops-view](../assets/img/eks/04-networking-lab-2/kube-ops-view.png)
+![kube-ops-view](../../assets/img/eks/04-networking-lab-2/kube-ops-view.png)
 
 ### 2.1. Pod Count Constraints for `t3.medium` Instance Type
 The max pod count is determined by **max ENI count per instance type** and **max secondary IP count per ENI**. the max pod count can be calculated with the following:
@@ -109,7 +109,7 @@ The max pod count is determined by **max ENI count per instance type** and **max
     - The reason **two is added** is for taking `aws-node` and `kube-proxy` pods into the calculation. They are using the host IP address, not requiring a new IP address.
 
 
-![max-pod-count](../assets/img/eks/04-networking-lab-2/max-pod-count.jpeg)
+![max-pod-count](../../assets/img/eks/04-networking-lab-2/max-pod-count.jpeg)
 
 
 Taking `t3.medium` as an example:
@@ -183,7 +183,7 @@ while true; do ip -br -c addr show && echo "--------------" ; date "+%Y-%m-%d %H
 ssh ec2-user@$N3
 while true; do ip -br -c addr show && echo "--------------" ; date "+%Y-%m-%d %H:%M:%S" ; sleep 1; done
 ```
-![lab-terminals](../assets/img/eks/04-networking-lab-2/lab-terminals.png)
+![lab-terminals](../../assets/img/eks/04-networking-lab-2/lab-terminals.png)
 
 Open another terminal and watch pods:
 ```bash
@@ -219,7 +219,7 @@ EOF
 
 Confirm those pods are deployed:
 
-![nginx-deployed](../assets/img/eks/04-networking-lab-2/nginx-deployed.png)
+![nginx-deployed](../../assets/img/eks/04-networking-lab-2/nginx-deployed.png)
 
 ```bash
 Every 2.0s: kubectl get pods -o wide                                                                                                     MacBookPro: Sat Mar 28 12:40:12 2026
@@ -238,30 +238,30 @@ Now let's add more pods:
 kubectl scale deployment nginx-deployment --replicas=8
 ```
 
-![nginx-8](../assets/img/eks/04-networking-lab-2/nginx-8.png)
+![nginx-8](../../assets/img/eks/04-networking-lab-2/nginx-8.png)
 
 ```bash
 kubectl scale deployment nginx-deployment --replicas=15
 ```
 
-![nginx-15](../assets/img/eks/04-networking-lab-2/nginx-15.png)
+![nginx-15](../../assets/img/eks/04-networking-lab-2/nginx-15.png)
 
 The third ENI(`ens7`) and `veth` are also created:
-![veth-added](../assets/img/eks/04-networking-lab-2/veth-added.png)
+![veth-added](../../assets/img/eks/04-networking-lab-2/veth-added.png)
 
 Let's keep scaling up to 30:
 ```bash
 kubectl scale deployment nginx-deployment --replicas=30
 ```
 
-![nginx-30](../assets/img/eks/04-networking-lab-2/nginx-30.png)
+![nginx-30](../../assets/img/eks/04-networking-lab-2/nginx-30.png)
 
 Some pods can't be allocated due to IP address exhaustion:
 ```bash
 kubectl scale deployment nginx-deployment --replicas=50
 ```
 
-![nginx-50](../assets/img/eks/04-networking-lab-2/nginx-50.png)
+![nginx-50](../../assets/img/eks/04-networking-lab-2/nginx-50.png)
 
 ```bash
 kubectl get pods | grep Pending
@@ -402,7 +402,7 @@ aws ec2 describe-instances --filters "Name=tag-key,Values=eks:cluster-name" "Nam
 
 Confirm the change in console:
 EC2 > Network Interfaces
-![prefix](../assets/img/eks/04-networking-lab-2/prefix.png)
+![prefix](../../assets/img/eks/04-networking-lab-2/prefix.png)
 
 Monitor nodes:
 ```bash
@@ -443,13 +443,13 @@ EOF
 ```
 
 Confirm the number of pods has been increased:
-![prefix-nginx-15](../assets/img/eks/04-networking-lab-2/prefix-nginx-15.png)
+![prefix-nginx-15](../../assets/img/eks/04-networking-lab-2/prefix-nginx-15.png)
 
 Increase the number of pods to 30:
 ```bash
 kubectl scale deployment nginx-deployment --replicas=30
 ```
-![prefix-nginx-30](../assets/img/eks/04-networking-lab-2/prefix-nginx-30.png)
+![prefix-nginx-30](../../assets/img/eks/04-networking-lab-2/prefix-nginx-30.png)
 
 Increase the number of pods to 50:
 ```bash
@@ -457,7 +457,7 @@ kubectl scale deployment nginx-deployment --replicas=50
 ```
 
 Pending pods are found unexpectedly:
-![prefix-nginx-50](../assets/img/eks/04-networking-lab-2/prefix-nginx-50.png)
+![prefix-nginx-50](../../assets/img/eks/04-networking-lab-2/prefix-nginx-50.png)
 
 `ipamd` logs indicates more IPs can be allocated, confirming it is not the IP exhasution problem.
 ```bash
@@ -486,7 +486,7 @@ We are going to change `maxPods` variable. Set up monitoring again on each termi
 while true; do kubectl describe node -l tier=primary | grep pods | uniq ; sleep 1; done
 while true; do kubectl get pod | grep Pending | wc -l ; sleep 1; done
 ```
-![prefix-monitoring](../assets/img/eks/04-networking-lab-2/prefix-monitoring.png)
+![prefix-monitoring](../../assets/img/eks/04-networking-lab-2/prefix-monitoring.png)
 
 ssh to each worker node and modify `maxPods` temporarily:
 ```bash
@@ -507,9 +507,9 @@ sudo systemctl restart kubelet
 ```
 
 Confirm the pending pods are all scheduled at the node with `maxPods` of 50:
-![prefix-maxpods-50](../assets/img/eks/04-networking-lab-2/prefix-maxpods-50.png)
+![prefix-maxpods-50](../../assets/img/eks/04-networking-lab-2/prefix-maxpods-50.png)
 
-![prefix-maxpods-50-kube-ops-view](../assets/img/eks/04-networking-lab-2/prefix-maxpods-50-kube-ops-view.png)
+![prefix-maxpods-50-kube-ops-view](../../assets/img/eks/04-networking-lab-2/prefix-maxpods-50-kube-ops-view.png)
 
 Delete `nginx` pods:
 ```bash

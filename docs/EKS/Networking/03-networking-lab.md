@@ -217,7 +217,7 @@ kubectl get daemonset aws-node --show-managed-fields -n kube-system -o yaml
 ```
 
 Five secondary IP addresses per ENI are allocated in a warm pool. This matches the behavior where `WARM_ENI_TARGET=1` ensures that at least one extra "warm" ENI is always available with its full capacity of secondary IPs pre-allocated to the node's pool, reducing the latency when a new Pod needs an IP.
-![secondary-ip](../assets/img/eks/03-networking-lab/secondary-ip.png)
+![secondary-ip](../../assets/img/eks/03-networking-lab/secondary-ip.png)
 
 ## 4. Networking Configuration on a Worker Node
 
@@ -340,7 +340,7 @@ kube-system   kube-proxy-q998k           1/1     Running   0          42h   192.
 - `kube-proxy`: It manages `iptables` or `IPVS` rules directly in the host's Linux kernel to route Service traffic. To modify the host's kernel networking rules, it must run in the host's network namespace.
 CoreDNS is a standard application (a DNS server) that doesn't need to modify the underlying host's networking stack.
 
-![worker-node-network](../assets/img/eks/03-networking-lab/worker-node-network.jpeg)
+![worker-node-network](../../assets/img/eks/03-networking-lab/worker-node-network.jpeg)
 
 Check routes on each node:
 ```bash
@@ -386,7 +386,7 @@ ssh ec2-user@$N3
 watch -d "ip link | egrep 'ens|eni' ;echo;echo "[ROUTE TABLE]"; route -n | grep eni"
 ```
 
-![nodes-1](../assets/img/eks/03-networking-lab/nodes-1.png)
+![nodes-1](../../assets/img/eks/03-networking-lab/nodes-1.png)
 
 Note that `192.168.8.88` is the IP for `coredns` pod in the second node and `192.168.0.112` is the IP for `coredns` pod in the third node.
 The route entry on the second node is a **Host(Node) Route** used by kernel to direct traffic to the `coredns` pod. Here is the breakdown of what each part means:
@@ -434,7 +434,7 @@ spec:
 EOF
 ```
 
-![nodes-2](../assets/img/eks/03-networking-lab/nodes-2.png)
+![nodes-2](../../assets/img/eks/03-networking-lab/nodes-2.png)
 With the three pods deployed, new ENIs and route entries are added across nodes. Here's what has happened on each node:
 
 - Node 1
@@ -546,7 +546,7 @@ kubectl exec -it $PODNAME1 -- ping -c 2 $PODIP2
 
 Terminals for node 1 and 2 would print `icmp` packets:
 
-![icmp](../assets/img/eks/03-networking-lab/icmp.png)
+![icmp](../../assets/img/eks/03-networking-lab/icmp.png)
 
 As you can see above, both source and destination IP addresses do not change when packets go in and out of the ENIs. Only IP addresses we can find are `netshoot-pod` pod IP addresses(`192.168.4.212` and `192.168.8.168`), indicating that packets are not overlayed or NATed.
 
@@ -560,7 +560,7 @@ Send ping again from pod1 to pod2:
 kubectl exec -it $PODNAME1 -- ping -c 2 $PODIP2
 ```
 
-![icmp-2](../assets/img/eks/03-networking-lab/icmp-2.png)
+![icmp-2](../../assets/img/eks/03-networking-lab/icmp-2.png)
 
 Again, only `netshoot-pod` pod IP addresses appear on the terminal. Physical node IP addresses do not appear.
 
@@ -572,7 +572,7 @@ Send ping from pod1 to google.com:
 kubectl exec -it $PODNAME1 -- ping -c 1 www.google.com
 ```
 
-![icmp-3](../assets/img/eks/03-networking-lab/icmp-3.png)
+![icmp-3](../../assets/img/eks/03-networking-lab/icmp-3.png)
 The source IP address(`192.168.4.212`) is changed to the node IP(`192.168.7.237`) by SNAT on the network interface(`ens5`) in the first node.
 
 Confirm `192.168.7.237` is the node IP address:

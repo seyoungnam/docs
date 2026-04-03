@@ -1,4 +1,4 @@
-# Lab 2: ManagedNode Group & Autoscaler
+# Lab 2: Managed Node Group & Autoscaler
 
 
 ## 1. Managed Node Group
@@ -36,7 +36,7 @@ aws eks wait nodegroup-active --cluster-name myeks --nodegroup-name myeks-ng-2
 
 `kube-ops-view` shows a new node is added.
 
-![arm-added](../assets/img/eks/06-scaling/arm-added.png)
+![arm-added](../../assets/img/eks/06-scaling/arm-added.png)
 
 ``` bash title="Confirm the new node group"
 kubectl get nodes --label-columns eks.amazonaws.com/nodegroup,kubernetes.io/arch,eks.amazonaws.com/capacityType
@@ -129,7 +129,7 @@ spec:
 EOF
 ```
 Because of the taints and selector, the pod is not scheduled on any nodes.
-![not-scheduled](../assets/img/eks/06-scaling/not-scheduled.png)
+![not-scheduled](../../assets/img/eks/06-scaling/not-scheduled.png)
 
 ``` bash title="Confirm the pod is not scheduled due to the taints"
 kubectl describe pod -l app=sample-app
@@ -179,7 +179,7 @@ EOF
 ```
 
 Now the pod is scheduled on the `myeks-ng-2` node.
-![scheduled](../assets/img/eks/06-scaling/scheduled.png)
+![scheduled](../../assets/img/eks/06-scaling/scheduled.png)
 
 
 ``` bash title="Confirm the pod is scheduled"
@@ -194,10 +194,10 @@ kubectl delete deploy sample-app
 
 In the following, we will attempt to deploy `mario` app on the arm-based `myeks-ng-2` node, with the `amd64` based image.
 
-![mario-image](../assets/img/eks/06-scaling/mario-image.png)
+![mario-image](../../assets/img/eks/06-scaling/mario-image.png)
 
 
-``` bash title="Deploy mario app"
+``` bash hl_lines="20-24" title="Deploy mario app"
 cat << EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
@@ -218,23 +218,41 @@ spec:
       nodeSelector:
         kubernetes.io/arch: arm64
       tolerations:
-      - key: "cpuarch"
+      - key: "cpuarch"  (1)
         operator: "Equal"
         value: "arm64"
         effect: "NoExecute"
       containers:
       - name: mario
-        image: pengbai/docker-supermario
+        image: pengbai/docker-supermario  (2)
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
 EOF
 kubectl get events -w --sort-by '.lastTimestamp'
 ```
 
-``` bash title="Confirm the deployment"
+1.  :man_raising_hand: This Kubernetes toleration allows a Pod to be scheduled on (or remain running on) [nodes tainted with `cpuarch=arm64:NoExecute`](https://github.com/gasida/aews/blob/main/3w/eks.tf#L195-L201).
+2.  :man_raising_hand: Like mentioned above, `pengbai/docker-supermario` image is baked to run on the `amd64` CPU architecture.
+
+``` bash title="Confirm the app is not deployed"
 kubectl get events -w --sort-by '.lastTimestamp'
 
 kubectl get pod -l app=mario
 kubectl stern -l app=mario 
 ```
+== Due to the mismatch of the cpu architecture between the image and node, the pod is not scheduled on the `myeks-ng-2` node. ==
+
+!!! warning
+
+    Remove the second node group by commenting out [the secondary block](https://github.com/gasida/aews/blob/main/3w/eks.tf#L161-L216) in `eks.tf` and running the following commands:
+
+    ``` bash
+    terraform plan
+    terraform apply -auto-approve
+    ```
+
 
 
 

@@ -26,7 +26,7 @@ Search a public subnet to deploy ALB. `kubernetes.io/role/elb=1` tag is [already
 aws ec2 describe-subnets --filters "Name=tag:kubernetes.io/role/elb,Values=1" --output table
 ```
 
-![public-subnet](../assets/img/eks/05-networking-lab-3/public-subnet.png)
+![public-subnet](../../assets/img/eks/05-networking-lab-3/public-subnet.png)
 
 ### 1.2. IAM Policy Setting
 
@@ -42,7 +42,7 @@ aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
     --policy-document file://aws_lb_controller_policy.json
 ```
-![lbc-iam](../assets/img/eks/05-networking-lab-3/lbc-iam.png)
+![lbc-iam](../../assets/img/eks/05-networking-lab-3/lbc-iam.png)
 
 ### 1.3. IRSA Setting
 
@@ -89,7 +89,7 @@ metadata:
 ```
 
 Confirm the above IAM role is created:
-![iam-role](../assets/img/eks/05-networking-lab-3/iam-role.png)
+![iam-role](../../assets/img/eks/05-networking-lab-3/iam-role.png)
 
 ### 1.4. Install AWS Load Balancer Controller
 
@@ -167,7 +167,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
 Second, modify instance metadata options.
 EC2 > Instances > Choose each instance > Actions > Instance settings > Modify instance metadata options > HTTP PUT response hop limit -> 2
 Make sure the hop limit is changed for every instances.
-![iam-role](../assets/img/eks/05-networking-lab-3/iam-role.png)
+![iam-role](../../assets/img/eks/05-networking-lab-3/iam-role.png)
 
 Restart aws-load-balancer-controller and check pod status again:
 
@@ -309,7 +309,7 @@ svc-nlb-ip-type   LoadBalancer   10.100.251.170   k8s-default-svcnlbip-9aa6a0b40
 ```
 `k8s-default-svcnlbip-9aa6a0b40c-52a2a126c4232b67.elb.us-east-1.amazonaws.com` is the DNS record for `deploy-echo` service. Its port number is 80.
  
-![nlb-resource-map](../assets/img/eks/05-networking-lab-3/nlb-resource-map.png)
+![nlb-resource-map](../../assets/img/eks/05-networking-lab-3/nlb-resource-map.png)
 
 Note that two IP addresses on Targets are pod IP because we are using IP target mode(`service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip`)
 
@@ -322,7 +322,7 @@ k8s-default-svcnlbip-2838699ff8   svc-nlb-ip-type   80             ip           
 `targetgroupbindings` indicates the `svc-nlb-ip-type` NLB sends **traffic directly to the Pod IPs**(TARGET-TYPE is ip).
 
 
-![deregistration-delay](../assets/img/eks/05-networking-lab-3/deregistration-delay.png)
+![deregistration-delay](../../assets/img/eks/05-networking-lab-3/deregistration-delay.png)
 
 In a Network Load Balancer, the **Deregistration Delay** (also known as the draining interval) is the amount of time the balancer waits before it fully removes a target that has been marked as unhealthy or is being terminated. The default 300s is much longer than most Pods need to shut down. This can make your CI/CD pipelines feel "stuck" for 5 minutes during a rolling update as the old Pods wait to be fully removed from the NLB.
 
@@ -467,7 +467,7 @@ pod/deployment-2048-7bf64bccb7-tbpbg   1/1     Running   0          6m52s
 ```
 From `Ingress` object, we learn that `game-2048` service is able to access with `k8s-game2048-ingress2-70d50ce3fd-1193426033.us-east-1.elb.amazonaws.com` hostname and port `80`. 
 
-![game-resource-map](../assets/img/eks/05-networking-lab-3/game-resource-map.png)
+![game-resource-map](../../assets/img/eks/05-networking-lab-3/game-resource-map.png)
 
 A new load balancer has appeared in the Load Balancers page in the AWS console, with `application` type, listening on port 80. The incoming requests are forwarded to one of the `game-2048` pods directly, due to `alb.ingress.kubernetes.io/target-type: ip` annotation dangling in the `Ingress` object.
 
@@ -493,7 +493,7 @@ Events:
 ```
 
 Confirm the access to `game-2048` service with `http://k8s-game2048-ingress2-70d50ce3fd-1193426033.us-east-1.elb.amazonaws.com/` on your web browser.
-![access-game](../assets/img/eks/05-networking-lab-3/access-game.png)
+![access-game](../../assets/img/eks/05-networking-lab-3/access-game.png)
 
 
 Delete resources:
@@ -896,7 +896,7 @@ kubectl describe deploy -n kube-system external-dns | grep Args: -A15
 
 ### 4.2. Deploy a sample service
 
-![gateway-full](../assets/img/eks/05-networking-lab-3/gateway-full.png)
+![gateway-full](../../assets/img/eks/05-networking-lab-3/gateway-full.png)
 
 > Please refer to [How customizations works](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/gateway/customization/) page in the AWS Load Balancer Controller official doc.
 
