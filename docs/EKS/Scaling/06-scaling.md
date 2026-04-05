@@ -1,4 +1,4 @@
-# Lab 1: SSM, ALB, Prometheus, Grafana
+# SSM, ALB, Prometheus, Grafana
 
 ## 1. Cluster Provisioning
 
@@ -270,21 +270,27 @@ kubectl logs -n kube-system deployment/aws-load-balancer-controller -f
 
 ## 5. Install EKS Node Viewer
 
-``` bash title="Macos"
-brew tap aws/tap
-brew install eks-node-viewer
-```
+=== "Macos"
 
-``` bash title=" Windows"
-sudo apt install golang-go
-go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest  # take 2~3 mins
-echo 'export PATH="$PATH:/root/go/bin"' >> /etc/profile
-```
+    ``` bash title="Macos"
+    brew tap aws/tap
+    brew install eks-node-viewer
+    ```
 
-``` bash title="Download binary directly from github"
-wget -O eks-node-viewer https://github.com/awslabs/eks-node-viewer/releases/download/v0.7.4/eks-node-viewer_Linux_x86_64
-chmod +x eks-node-viewer
-sudo mv -v eks-node-viewer /usr/local/bin
+=== "Windows"
+
+    ``` bash title=" Windows"
+    sudo apt install golang-go
+    go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest  # take 2~3 mins
+    echo 'export PATH="$PATH:/root/go/bin"' >> /etc/profile
+    ```
+
+=== "Download binary directly from github"
+
+    ``` bash title="Download binary directly from github"
+    wget -O eks-node-viewer https://github.com/awslabs/eks-node-viewer/releases/download/v0.7.4/eks-node-viewer_Linux_x86_64
+    chmod +x eks-node-viewer
+    sudo mv -v eks-node-viewer /usr/local/bin
 ```
 
 ``` bash title="Useful commands"
@@ -912,7 +918,7 @@ Now `kcm-metrics` and `ksh-metrics` is accessible by prometheus.
 
 ### Add grafana dashboard
 
-``` bash title=""
+``` bash hl_lines="12" title="Steps to add the grafana dashboard"
 # download json dashboard file
 curl -O https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/refs/heads/master/dashboards/k8s-system-api-server.json
 
@@ -924,10 +930,34 @@ kubectl create configmap my-dashboard --from-file=k8s-system-api-server.json -n 
 # add label
 kubectl label configmap my-dashboard grafana_dashboard="1" -n monitoring
 # confirm k8s-system-api-server.json is added in /tmp/dashboards directory
-kubectl exec -it -n monitoring deploy/kube-prometheus-stack-grafana -- ls -l /tmp/dashboards
-total 436
--rw-r--r--    1 grafana  472           5928 Apr  2 01:44 alertmanager-overview.json
-...
--rw-r--r--    1 grafana  472          11773 Apr  2 01:44 namespace-by-pod.json
-...
+kubectl exec -it -n monitoring deploy/kube-prometheus-stack-grafana -- ls -l /tmp/dashboards # (1)
 ```
+
+1.  You will find the below line:
+    ``` bash
+    -rw-r--r--    1 grafana  472          35060 Apr  2 04:01 k8s-system-api-server.json
+    ```
+
+Confirm if the dashboard is able to pull data:
+
+![api-server-dashboard](../../assets/img/eks/06-scaling/api-server-dashboard.png)
+
+??? failure "if the dashboard fails to pull data"
+
+    ![dashboard-no-data](../../assets/img/eks/06-scaling/dashboard-no-data.png)
+
+    If the prometheus is able to scrape metrics but the grafana dashboard fails to pull data, go to **Connections > Data Sources** and confirm if **Prometheus server URL** correctly points to `{prometheus Service Name}:{port}`, by running the following command:
+
+    ``` bash title="The way to check the prometheus Service name and port"
+    k get svc -n monitoring
+    NAME                                             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+    ...
+    prometheus-operated                              ClusterIP   None            <none>        9090/TCP                     2d19h
+    ```
+
+    ![prom-server-url](../../assets/img/eks/06-scaling/prom-server-url.png)
+
+    After correcting the URL, scroll down to the bottom and click **Save & test** button. You will find the dashboard is now working.
+
+
+

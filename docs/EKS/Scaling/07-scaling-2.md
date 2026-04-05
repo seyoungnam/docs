@@ -1,9 +1,6 @@
-# Lab 2: Managed Node Group & Autoscaler
+# Node Types
 
-
-## 1. Managed Node Group
-
-### On-demand node
+## 1. On-demand Node
 ``` bash title="Check myeks-ng-1 (on-demand)"
 kubectl get nodes --label-columns eks.amazonaws.com/nodegroup,kubernetes.io/arch,eks.amazonaws.com/capacityType
 NAME                             STATUS   ROLES    AGE    VERSION               NODEGROUP    ARCH    CAPACITYTYPE
@@ -18,7 +15,7 @@ myeks   myeks-ng-1      ACTIVE  2026-03-31T00:58:14Z    1               4       
 aws eks describe-nodegroup --cluster-name myeks --nodegroup-name myeks-ng-1 | jq
 ```
 
-### Arm-based node
+## 2. Arm-based Node
 
 !!! note "AWS Graviton(ARM) Processor"
 
@@ -256,13 +253,15 @@ kubectl stern -l app=mario
     ```
 
 
-### Spot instances
+## 3. Spot Instances
 
 To briefly introduce spot instances,
 
 - enable you to request unused EC2 instances at steep discounts
 - the spot price of each instance type is adjusted gradually based on the long-term supply of and demand for Spot Instances
 - a good fit for stateless, fault-tolerant, flexible applications, including batch and machine learning training workloads, big data ETLs such as Apache Spark, queue processing applications, and stateless API endpoints
+
+### deploy a spot node group
 
 Let's add the spot instance node group. First, unblock [the terraform code for the third node group](https://github.com/gasida/aews/blob/main/3w/eks.tf#L220-L268). Then run the following commands:
 
@@ -274,16 +273,85 @@ terraform apply -auto-approve
 aws eks wait nodegroup-active --cluster-name myeks --nodegroup-name myeks-ng-3
 ```
 
-``` bash title="Confirm the new node group"
-kubectl get nodes --label-columns eks.amazonaws.com/nodegroup,kubernetes.io/arch,eks.amazonaws.com/capacityType # (1)
+Once the spot node is up, you can confirm it in both **kube-ops-view** and **eks-node-viewer**:
+
+![kube-ops-view-spot](../../assets/img/eks/07-scaling-2/kube-ops-view-spot.png)
+
+You see the price for the spot instance is drastically lower than on-demand instances.
+![eks-node-viewer-spot](../../assets/img/eks/07-scaling-2/eks-node-viewer-spot.png)
+
+``` bash hl_lines="2 4" title="Confirm the new node group"
+kubectl get nodes --label-columns eks.amazonaws.com/nodegroup,\
+kubernetes.io/arch,eks.amazonaws.com/capacityType # (1)
+
 kubectl get nodes -L eks.amazonaws.com/capacityType # (2)
 ```
 
-1.  NAME                             STATUS   ROLES    AGE    VERSION               NODEGROUP    ARCH    CAPACITYTYPE
-    ip-192-168-13-172.ec2.internal   Ready    <none>   3d4h   v1.35.2-eks-f69f56f   myeks-ng-1   amd64   ON_DEMAND
-    ip-192-168-13-202.ec2.internal   Ready    <none>   3m3s   v1.35.2-eks-f69f56f   myeks-ng-3   amd64   SPOT
-    ip-192-168-22-156.ec2.internal   Ready    <none>   3d4h   v1.35.2-eks-f69f56f   myeks-ng-1   amd64   ON_DEMAND
-2.  NAME                             STATUS   ROLES    AGE     VERSION               CAPACITYTYPE
-    ip-192-168-13-172.ec2.internal   Ready    <none>   3d4h    v1.35.2-eks-f69f56f   ON_DEMAND
-    ip-192-168-13-202.ec2.internal   Ready    <none>   3m12s   v1.35.2-eks-f69f56f   SPOT
-    ip-192-168-22-156.ec2.internal   Ready    <none>   3d4h    v1.35.2-eks-f69f56f   ON_DEMAND
+1.  | NAME | NODEGROUP | ARCH | CAPACITYTYPE |
+    | :--- | :--- | :--- | :--- |
+    | ip-192-168-13-172.ec2.internal | myeks-ng-1 | amd64 | ON_DEMAND |
+    | ip-192-168-13-202.ec2.internal | myeks-ng-3 | amd64 | SPOT |
+    | ip-192-168-22-156.ec2.internal | myeks-ng-1 | amd64 | ON_DEMAND |
+2.  | NAME | STATUS | ROLES | AGE | VERSION | CAPACITYTYPE |
+    | :--- | :--- | :--- | :--- | :--- | :--- |
+    | ip-192-168-13-172.ec2.internal | Ready | `<none>` | 3d4h | v1.35.2-eks-f69f56f | ON_DEMAND |
+    | ip-192-168-13-202.ec2.internal | Ready | `<none>` | 3m12s | v1.35.2-eks-f69f56f | SPOT |
+    | ip-192-168-22-156.ec2.internal | Ready | `<none>` | 3d4h | v1.35.2-eks-f69f56f | ON_DEMAND |
+
+``` bash hl_lines="6" title="Check spot prices"
+aws ec2 describe-spot-price-history \
+  --instance-types c6a.large c5a.large \
+  --product-descriptions "Linux/UNIX" \
+  --max-items 100 \
+  --query "SpotPriceHistory[].{Type:InstanceType,Price:SpotPrice,AZ:AvailabilityZone,Time:Timestamp}" \
+  --output table # (1)
+```
+
+1.  | Az | Price | Time | Type |
+    | :--- | :--- | :--- | :--- |
+    |  us-east-1b|  0.026600 |  2026-04-04T14:05:16+00:00  |  c5a.large  |
+    |  us-east-1a|  0.030900 |  2026-04-04T13:18:00+00:00  |  c6a.large  |
+    |  us-east-1d|  0.026100 |  2026-04-04T13:02:47+00:00  |  c5a.large  |
+    |  us-east-1b|  0.022200 |  2026-04-04T12:48:01+00:00  |  c6a.large  |
+
+
+### deploy a sample pod
+
+``` bash hl_lines="15~16" title="Deploy a busybox pod"
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+spec:
+  terminationGracePeriodSeconds: 3
+  containers:
+  - name: busybox
+    image: busybox
+    command:
+    - "/bin/sh"
+    - "-c"
+    - "while true; do date >> /home/pod-out.txt; cd /home; sync; sync; sleep 10; done"
+  nodeSelector:
+    eks.amazonaws.com/capacityType: SPOT # (1)
+
+EOF
+```
+
+1.  :man_raising_hand: SPOT node is selected.
+
+``` bash title="Confirm the deployment and delete"
+kubectl get pod -o wide
+
+kubectl delete pod busybox
+```
+
+!!! warning
+
+    Remove the spot node group by commenting out [the third node block](https://github.com/gasida/aews/blob/main/3w/eks.tf#L220-L268) in `eks.tf` and running the following commands:
+
+    ``` bash
+    terraform plan
+    terraform apply -auto-approve
+    ```
+

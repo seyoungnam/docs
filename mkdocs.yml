@@ -61,6 +61,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
+  - tables
 
 extra:
   social:
@@ -92,5 +93,7 @@ nav:
       - Networking Lab 2: EKS/Networking/04-networking-lab-2.md
       - Networking Lab 3: EKS/Networking/05-networking-lab-3.md
     - Scaling:
-      - Scaling Lab 1: EKS/Scaling/06-scaling.md
-      - Scaling Lab 2: EKS/Scaling/07-scaling-2.md
+      - SSM, ALB, Prometheus, Grafana: EKS/Scaling/06-scaling.md
+      - Node Types: EKS/Scaling/07-scaling-2.md
+      - Auto Scalers: EKS/Scaling/08-scaling-3.md
+
