@@ -96,4 +96,5 @@ nav:
       - SSM, ALB, Prometheus, Grafana: EKS/Scaling/06-scaling.md
       - Node Types: EKS/Scaling/07-scaling-2.md
       - Auto Scalers: EKS/Scaling/08-scaling-3.md
+      - Karpenter: EKS/Scaling/09-scaling-4.md
 
