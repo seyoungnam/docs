@@ -207,10 +207,11 @@ graph LR
 
 The following diagram illustrates how authentication and authorization work in Amazon EKS using the `aws-iam-authenticator`:
 
-<div style="overflow-x: auto;">
+<div style="overflow-x: auto;" markdown="1">
+
 ``` mermaid
 sequenceDiagram
-    %%{init: {'themeVariables': { 'fontSize': '20px' }, 'sequence': {'useMaxWidth': false} }}%%
+    %%{init: {'themeVariables': { 'fontSize': '16px' }, 'sequence': {'useMaxWidth': false} }}%%
     actor User
     participant K as kubectl
     participant C as Auth Client
@@ -233,8 +234,112 @@ sequenceDiagram
     RBAC-->>API: Confirm Permissions
     API->>K: 9. Allow / Deny
 ```
+
 </div>
 
+#### 1. K8s Action & 2. Issue Token (Pre-signed URL)
+
+`aws eks get-token --cluster-name {cluster-name}` is the command to generate a token for authentication with an Amazon EKS cluster. This token is generated **locally** and attached to the `kubectl` request for authentication.
 
 
+``` bash hl_lines="2 15-18" title="Where aws eks get-token command comes from?"
+# get user info
+aws sts get-caller-identity --query Arn # (1)!
 
+# kubeconfig
+cat ~/.kube/config
+...
+users:
+- name: arn:aws:eks:us-east-1:080403789922:cluster/myeks
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - --region
+      - us-east-1
+      - eks
+      - get-token
+      - --cluster-name
+      - myeks # (2)!
+      - --output
+      - json
+      command: aws
+      env: null
+```
+
+1.  :octicons-code-review-16:
+    ``` text
+    arn:aws:iam::{my-account-id}:user/admin
+    ```
+  
+2.  :information_source: `aws eks get-token --cluster-name myeks` gets a token for authentication with an Amazon EKS cluster. Please run `aws eks get-token help` for more info.
+
+Is `aws eks get-token --cluster-name {cluster-name}` executed everytime `kubectl` command is executed? The answer is no. The minted token is cached and used until `expirationTimestamp`. A new token is minted again when the token expires. Keep in mind that **the minting process happens in the local environment**.
+
+
+``` bash hl_lines="1" title="What the token looks like?"
+export CLUSTER_NAME=myeks
+aws eks get-token --cluster-name $CLUSTER_NAME | jq # (1)!
+aws eks get-token --cluster-name $CLUSTER_NAME | jq -r '.status.token'
+aws eks get-token --cluster-name $CLUSTER_NAME --debug | jq
+...
+2026-04-08 00:00:55,430 - MainThread - botocore.regions - DEBUG - Calling endpoint provider with parameters: {'Region': 'us-east-1', 'UseDualStack': False, 'UseFIPS': False, 'UseGlobalEndpoint': False}
+2026-04-08 00:00:55,431 - MainThread - botocore.regions - DEBUG - Endpoint provider result: https://sts.us-east-1.amazonaws.com
+...
+```
+
+1.  :octicons-code-review-16:
+    ``` json
+    {
+      "kind": "ExecCredential",
+      "apiVersion": "client.authentication.k8s.io/v1beta1",
+      "spec": {},
+      "status": {
+        "expirationTimestamp": "2026-04-08T02:48:17Z",
+        "token": "k8s-aws-v1.<REDACTED_TOKEN>"
+      }
+    }    
+    ```
+
+``` bash hl_lines="1" title="JWT payload decoding (Header, Payload, Signature)"
+TOKEN_DATA=$(aws eks get-token --cluster-name myeks | jq -r '.status.token')
+IFS='.' read header payload signature <<< "$TOKEN_DATA" # (1)!
+
+echo "$payload" | fold -w 4 | sed '$ d' | tr -d '\n' | base64 --decode
+https://sts.us-east-1.amazonaws.com/?Action=GetCallerIdentity&
+Version=2011-06-15&X-Amz-Algorithm=AWS4-HMAC-SHA256&
+X-Amz-Credential=AKIARFODQPBRHTK56HEE%2F20260408%2Fus-east-1%2Fsts%2Faws4_request&
+X-Amz-Date=20260408T041921Z&X-Amz-Expires=60&
+X-Amz-SignedHeaders=host%3Bx-k8s-aws-id&
+X-Amz-Signature=<REDACTED> # (2)!
+
+```
+
+1.  :information_source: This command splits a JWT into three variables—`header`, `payload`, and `signature`—using the period (`.`) as the delimiter. By setting `IFS='.'` (Internal Field Separator) just for this command, the read command assigns the text before the first `.` to `$header`, the text between `.` to `$payload`, and the rest to `$signature`.
+2.  :information_source: the signature is the outcome of multiple `SHA256` hashing with a secret key and other additional parameters.
+
+
+In sum, everytime we run a `kubectl` command, `aws eks get-token` command is also triggered to mint a new token or to use the existing token. This token is attached to the `kubectl` request and used for authentication at the `kube-apiserver`. 
+
+#### 3. Action + Token
+
+[`client-go` package](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) is used in the `kubectl` command to transform **Pre-Signed URL** to **Bearer Token**, attach it to the request header, and make the request to `kube-apiserver`.
+
+``` bash title="Call to kube-apiserver without kubectl"
+kubectl get node -v=10
+...
+curl -v -XGET  -H "Accept: application/json;as=Table;v=v1;g=meta.k8s.io,application/json;as=Table;v=v1beta1;g=meta.k8s.io,application/json" -H "User-Agent: kubectl/v1.35.3 (darwin/arm64) kubernetes/6c1cd99" 'https://518F6F31299E0538B4621B38C98FA4BF.gr7.us-east-1.eks.amazonaws.com/api/v1/nodes?limit=500' # (1)!
+...
+
+TOKEN_DATA=$(aws eks get-token --cluster-name myeks | jq -r '.status.token')
+curl -k -v -XGET \
+  -H "Authorization: Bearer $TOKEN_DATA" \
+  -H "Accept: application/json" \
+  'https://518F6F31299E0538B4621B38C98FA4BF.gr7.us-east-1.eks.amazonaws.com/api/v1/nodes?limit=500'
+
+...
+> Authorization: Bearer k8s-aws-v1.aHR0cHM<REDACTED>
+...
+```
+
+1.  :information_source: `kubectl` masks any security-assciated data(e.g., `Authorization` header) in logs, which is the reason we can't see the bearer token in the `curl` command.
