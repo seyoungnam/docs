@@ -97,6 +97,8 @@ nav:
       - Node Types: EKS/Scaling/07-scaling-2.md
       - Auto Scalers: EKS/Scaling/08-scaling-3.md
       - Karpenter: EKS/Scaling/09-scaling-4.md
-    - AuthN/AuthZ:
-      - EKS IAM & K8S Service Account: EKS/Auth/10-auth.md
+    - Identity & Access Management:
+      - AuthN/AuthZ Fundamentals: EKS/Auth/10-auth.md
+      - IAM Roles & Node Identity: EKS/Auth/11-auth-2.md
+      - Access Entries & Custom RBAC: EKS/Auth/12-auth-3.md
 
