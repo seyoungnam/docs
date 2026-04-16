@@ -1,16 +1,16 @@
 # Scaling and maintaining pods with ReplicaSets
 
-## 1. Introducing ReplicaSes
+## 1. Introducing ReplicaSets
 
-A **ReplicaSet** represents a group of pod replicas. The ReplicaSet allows you to manage the pods as a single unit. It is the ReplicaSet's label selector to determine which pods belong to the ReplicaSet.
+A **ReplicaSet** represents a group of pod replicas, enabling you to manage them as a single unit. It uses a label selector to determine which pods belong to the ReplicaSet.
 
-The ReplicaSet guarantees the requested pod(s) is always running. However it is impossible to upgrade the workload to a newer version through ReplicaSet. Deployments provides the upgrade feature for workload on top of what ReplicaSet offers.
+The ReplicaSet guarantees that the requested number of pods is always running. However, it does not support direct workload upgrades to newer versions. **Deployments** provide upgrade functionality on top of what ReplicaSets offer.
 
 ![replicaset-pods](../../assets/img/kubernetes/14-replicaset/replicaset-pods.png)
 
 ## ReplicaSet Spec
 
-Three main fields in the ReplicaSet Spec: **replicas**, **selector**, and **template**.
+The ReplicaSet Spec contains three primary fields: **replicas**, **selector**, and **template**.
 
 ``` bash hl_lines="6 8-10 12-22" title="The Kiada ReplicaSet object manifest"
 apiVersion: apps/v1
@@ -37,9 +37,9 @@ spec:
       - ...
 ```
 
-1.  :information_source: **replicas** specifies the number of pods this ReplicaSet should contain
-2.  :information_source: **selector** to define which pods beling to this ReplicaSet
-3.  :information_source: **template** The ReplicaSet creates pod objects from this template.
+1.  :information_source: **replicas**: Specifies the number of pods this ReplicaSet should maintain.
+2.  :information_source: **selector**: Defines which pods belong to this ReplicaSet.
+3.  :information_source: **template**: The ReplicaSet creates pod objects based on this template.
 
 ### Inspecting a ReplicaSet and its pods
 
@@ -291,7 +291,7 @@ The ReplicaSet controller's reconciliation control loop:
 
 ### Understanding how the ReplicaSet controller reacts to pod changes
 
-What the ReplicaSet stays the same, but the actual number of pods changes? The ReplicaSet controller's job is to make sure that the number of pods always matches the specified number. Thus, a new pod will be appeared.
+What happens if the ReplicaSet configuration remains unchanged, but the actual number of pods changes? The ReplicaSet controller ensures that the number of running pods always aligns with the specified count. Therefore, if a pod is deleted, a new one will automatically appear.
 
 ``` bash hl_lines="8"
 kubectl delete pod kiada-92shm
@@ -304,9 +304,9 @@ kubectl get pods -l app=kiada
 # kiada-zv5d2   2/2     Running   0          27s
 ```
 
-Removing all Kiada pods triggers the controller to deploy three new ones immediately.
+Removing all Kiada pods triggers the controller to deploy three new instances immediately.
 
-If you try to add the pod with labels matching the ReplicaSet's label selector, the ReplicaSet controller deletes the pod as soon as it detects it.
+If you attempt to manually add a pod with labels matching the ReplicaSet's label selector, the ReplicaSet controller will delete the extra pod as soon as it is detected to maintain the desired state.
 
 ``` bash hl_lines="6"
 kubectl get pods -l app=kiada
@@ -317,9 +317,9 @@ kubectl get pods -l app=kiada
 # one-kiada-too-many   0/2     Terminating   0          1s
 ```
 
-The best reason to create pods via a ReplicaSet instead of directly is that the pods are automatically replaced when your cluster nodes fail. To see what happens when a node stops responding, you can disable its network interface.
+A primary advantage of using a ReplicaSet over standalone pods is the automatic replacement of pods in the event of node failure. To simulate a node failure, you can disable its network interface.
 
-Verify which nodes Kiada pods are running on:
+Verify the nodes where the Kiada pods are running:
 
 ``` bash
 kubectl get po -l app=kiada -o wide
@@ -329,7 +329,7 @@ kubectl get po -l app=kiada -o wide
 # kiada-mb2vp   2/2     Running   0          8m10s   10.244.1.8   desktop-worker2   <none>           <none>
 ```
 
-disable the network interface of the `desktop-worker2` node with the following command:
+Disable the network interface of the `desktop-worker2` node with the following command:
 
 ``` bash hl_lines="7"
 docker exec desktop-worker2 ip link set eth0 down
@@ -341,7 +341,7 @@ kubectl get node
 # desktop-worker2         NotReady   <none>          21m   v1.34.3
 ```
 
-Kubernetes realizes that the node is down and marks the pods for deletion. Once the pods are marked for deletion, the ReplicaSet controller creates new pods to replace them:
+Kubernetes detects that the node is unresponsive and marks the associated pods for deletion. Once marked, the ReplicaSet controller provisions new pods to replace them:
 
 ``` bash hl_lines="5 6"
 kubectl get pods -l app=kiada -o wide
@@ -352,11 +352,10 @@ kubectl get pods -l app=kiada -o wide
 # kiada-mb2vp   2/2     Terminating   0          20m     10.244.1.8   desktop-worker2   <none>           <none> # (2)!
 ```
 
-1.  :information_source: A new pod created to replace the ones on the failed node.
-2.  :information_source: The pod on the failed node is marked as `Terminating`, and remains in the `Terminating` state until the node comes back online.
+1.  :information_source: A new pod is created to replace the instances on the failed node.
+2.  :information_source: The pod on the failed node is marked as `Terminating` and remains in this state until the node regains connectivity.
 
-
-In reality, **the containers in those pods are still running because the Kubelet on the node can't communicate with the API server** and therefore doesn't know that they should be terminated. However, when the node's network interface comes back online, the Kubelet terminates the containers, and the pod objects are deleted.
+In practice, **the containers within these pods may still be running because the Kubelet on the node cannot communicate with the API server** and therefore is unaware that they should be terminated. However, once the node's network interface is restored, the Kubelet will terminate the containers, and the pod objects will be deleted.
 
 ``` bash
 docker exec desktop-worker2 ip link set eth0 up
@@ -373,7 +372,7 @@ k get po -l app=kiada -o wide
 
 !!! warning
 
-    If the above commands do not work, run the following commands:
+    If the above commands do not work, use the following sequence:
     ``` bash
     # detach the node
     docker network disconnect kind desktop-worker2
@@ -385,18 +384,17 @@ k get po -l app=kiada -o wide
     docker exec desktop-worker2 systemctl restart kubelet
     ```
 
-Is it possible to get into a state where the number of pods matches the desired replica count, but the pods can't provide the service to their clients?
+Is it possible for the cluster to reach a state where the number of pods matches the desired replica count, but the pods cannot serve traffic to clients?
 
-Be aware that a ReplicaSet doesn't guarantee that you'll always have as many healthy replicas as you specify in the ReplicaSet object, in the case where a container's liveness/readiness probe fails. Let's fail one of the pods' readiness probes with the
-following command:
+Note that a ReplicaSet does not guarantee that you will always have as many healthy replicas as specified, particularly when a container's liveness or readiness probe fails. Let's simulate a readiness probe failure in one of the pods:
 
 ``` bash
 kubectl exec rs/kiada -c kiada -- curl -X POST localhost:9901/healthcheck/fail # (1)!
 ```
 
-1.  :information_source: If you specify the ReplicaSet instead of the Pod name when running the `kubectl exec` command, the specified command is run in one of the pods, not all of them.
+1.  :information_source: If you specify the ReplicaSet instead of a specific Pod name when running `kubectl exec`, the command is executed in only one of the managed pods.
 
-After about 30 seconds, the `kubectl get pods` command indicates that one of the pod's containers is no longer ready:
+After approximately 30 seconds, `kubectl get pods` will indicate that one of the containers is no longer ready:
 
 ``` bash hl_lines="3"
 kubectl get pods -l app=kiada
@@ -412,22 +410,22 @@ kubectl get rs
 
 !!! note
 
-    A ReplicaSet only ensures that the desired number of pods are present. It doesn't ensure that their containers are actually running and ready to handle traffic.
+    A ReplicaSet only ensures that the desired number of pods are present; it does not guarantee that their containers are healthy and ready to handle traffic.
 
 ### Removing a pod from the ReplicaSet's control
 
-If you remove a pod from the set of pods that match the selector, the controller replaces it. To do this, you simply change the labels of the faulty pod. Once the label is changed, the controller no longer pays attention to the faulty pod. You can troubleshoot the problem at your own pace while the new pod takes over the traffic.
+If a pod's labels are modified such that it no longer matches the ReplicaSet's selector, the controller will automatically provision a replacement. This allows you to isolate a faulty pod for troubleshooting while a new instance takes over production traffic.
 
 ![replace-pod](../../assets/img/kubernetes/14-replicaset/replace-pod.png)
 
-For a pod to match the ReplicaSet's label selector, it must have the labels `app=kiada` and `rel=stable`. So, to remove the broken pod from the ReplicaSet, you need to remove or change at least one of these two labels.
+For a pod to match the `kiada` ReplicaSet, it must have the labels `app=kiada` and `rel=stable`. To remove a pod from the ReplicaSet's management, you must change or remove at least one of these labels.
 
 ``` bash
 kubectl label po kiada-472dn rel=debug --overwrite
 # pod/kiada-472dn labeled
 ```
 
-the controller immediately creates another pod, as shown in the following output:
+The controller immediately provisions a new pod, as shown in the following output:
 
 ``` bash hl_lines="6"
 kubectl get pods -l app=kiada -L app,rel
@@ -440,20 +438,19 @@ kubectl get pods -l app=kiada -L app,rel
 
 ## 4. Deleting a ReplicaSet
 
-To delete a ReplicaSet and all pods it controls, run the following command:
+To delete a ReplicaSet and all its associated pods, execute the following command:
 ``` bash
 kubectl delete rs kiada
 # replicaset.apps "kiada" deleted from default namespace
 ```
 
-As expected, this also deletes the pods:
+As expected, this also removes the pods:
 ``` bash
 kubectl get pods -l app=kiada,rel=stable
 # No resources found in default namespace.
 ```
 
-To preserve the pods when you delete the ReplicaSet object, use the following
-command:
+To delete the ReplicaSet while preserving its pods, use the `--cascade=orphan` flag:
 
 ``` bash hl_lines="5"
 # reapply ReplicaSet
@@ -469,4 +466,4 @@ kubectl get pods -l app=kiada,rel=stable
 # kiada-lmsxf   2/2     Running   0          58s
 ```
 
-1.  :information_source: The `--cascade=orphan` options ensures that only the ReplicaSet is deleted, while the pods are preserved.
+1.  :information_source: The `--cascade=orphan` option ensures that only the ReplicaSet object is deleted, leaving the pods intact.

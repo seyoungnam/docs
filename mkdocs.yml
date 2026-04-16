@@ -84,6 +84,7 @@ nav:
     - 02. Containers: kubernetes/02-understanding-containers.md
     - 03. First App: kubernetes/03-deploying-first-app.md
     - 04. API: kubernetes/04-navigating-the-k8s-api.md
+    - 14. ReplicaSet: kubernetes/14-replicaset.md
   - EKS:
     - EKS Provisioning:
       - Provisioning Lab: EKS/EKS Provisioning/01-deploy.md
