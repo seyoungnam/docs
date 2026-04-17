@@ -73,6 +73,8 @@ copyright: Copyright &copy; 2026 Seyoung Nam
 
 nav:
   - Home: index.md
+  - Linux Commands:
+    - 01. Six Commands: linux-commands/01-six-commands.md
   - Network:
     - OSI & TCP/IP: network/01-osi-tcpip.md
     - TCP/IP: network/02-tcpip.md
@@ -85,6 +87,7 @@ nav:
     - 03. First App: kubernetes/03-deploying-first-app.md
     - 04. API: kubernetes/04-navigating-the-k8s-api.md
     - 14. ReplicaSet: kubernetes/14-replicaset.md
+    - 15. Deployment: kubernetes/15-deployment.md
   - EKS:
     - EKS Provisioning:
       - Provisioning Lab: EKS/EKS Provisioning/01-deploy.md
