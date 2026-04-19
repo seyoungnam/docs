@@ -88,6 +88,7 @@ nav:
     - 04. API: kubernetes/04-navigating-the-k8s-api.md
     - 14. ReplicaSet: kubernetes/14-replicaset.md
     - 15. Deployment: kubernetes/15-deployment.md
+    - 16. StatefulSet: kubernetes/16-statefulset.md
   - EKS:
     - EKS Provisioning:
       - Provisioning Lab: EKS/EKS Provisioning/01-deploy.md
