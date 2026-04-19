@@ -60,7 +60,7 @@ kubectl get po -l app=kiada,rel=stable
 # NAME          READY   STATUS    RESTARTS   AGE
 # kiada-001     2/2     Running   0          43h
 # kiada-002     2/2     Running   0          43h
-# kiada-003     2/2     Running   0          43h # (1)!
+# kiada-003     2/2     Running   0          43h # (1)
 # kiada-njsbz   2/2     Running   0          72s
 # kiada-qjxdc   2/2     Running   0          72s
 ```
@@ -348,8 +348,8 @@ kubectl get pods -l app=kiada -o wide
 # NAME          READY   STATUS        RESTARTS   AGE     IP           NODE              NOMINATED NODE   READINESS GATES
 # kiada-472dn   2/2     Running       0          20m     10.244.2.6   desktop-worker    <none>           <none>
 # kiada-6pwb5   2/2     Running       0          20m     10.244.2.7   desktop-worker    <none>           <none>
-# kiada-llf6g   2/2     Running       0          3m50s   10.244.2.9   desktop-worker    <none>           <none> # (1)!
-# kiada-mb2vp   2/2     Terminating   0          20m     10.244.1.8   desktop-worker2   <none>           <none> # (2)!
+# kiada-llf6g   2/2     Running       0          3m50s   10.244.2.9   desktop-worker    <none>           <none> # (1)
+# kiada-mb2vp   2/2     Terminating   0          20m     10.244.1.8   desktop-worker2   <none>           <none> # (2)
 ```
 
 1.  :information_source: A new pod is created to replace the instances on the failed node.

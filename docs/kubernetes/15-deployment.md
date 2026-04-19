@@ -74,9 +74,9 @@ kubectl get pods -l app=kiada,rel=stable
 # NAME                    READY   STATUS    RESTARTS   AGE
 # kiada-b6f6846d8-fwcg6   2/2     Running   0          6m58s
 # kiada-b6f6846d8-h8td6   2/2     Running   0          6m58s
-# kiada-b6f6846d8-pl9tz   2/2     Running   0          6m58s # (1)!
+# kiada-b6f6846d8-pl9tz   2/2     Running   0          6m58s # (1)
 # kiada-g4dxz             2/2     Running   0          21h
-# kiada-lmsxf             2/2     Running   0          21h # (2)!
+# kiada-lmsxf             2/2     Running   0          21h # (2)
 ```
 
 1.  :information_source: The first three pods are created by the Deployment.
