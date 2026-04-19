@@ -744,5 +744,5 @@ Managing stateful applications is difficult. StatefulSets do a good job of autom
 
 ![mongodb-operator](../../assets/img/kubernetes/16-statefulset/mongodb-operator.png)
 
-![mesh-onboarder](../../assets/img/kubernetes/16-statefulset/mesh-onboarder.jpeg)
+![mesh-onboarder](../../assets/img/kubernetes/16-statefulset/mesh-onboarder.jpg)
 
