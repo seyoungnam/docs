@@ -8,7 +8,7 @@ In this chapter, we'll learn key shell features.
 
 The **star or asterisk character(*)** matches **any sequence of zero or more characters**(except for a leading dot) in file or directory path:
 
-``` bash hl_lines="6"
+``` bash hl_lines="5"
 ls
 chapter1   chapter17  chapter25  chapter33  chapter41  chapter5   chapter58  chapter66  chapter74  chapter82  chapter90  chapter99
 ...
