@@ -74,7 +74,9 @@ copyright: Copyright &copy; 2026 Seyoung Nam
 nav:
   - Home: index.md
   - Linux Commands:
-    - 01. Six Commands: linux-commands/01-six-commands.md
+    - Six Commands: linux-commands/01-six-commands.md
+    - Introducing the Shell: linux-commands/02-shell.md
+    - Rerunning Commands: linux-commands/03-rerun-cmd.md
   - Network:
     - OSI & TCP/IP: network/01-osi-tcpip.md
     - TCP/IP: network/02-tcpip.md
