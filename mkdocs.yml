@@ -62,6 +62,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - tables
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra:
   social:
@@ -108,4 +110,12 @@ nav:
       - AuthN/AuthZ Fundamentals: EKS/Auth/10-auth.md
       - IAM Roles & Node Identity: EKS/Auth/11-auth-2.md
       - Access Entries & Custom RBAC: EKS/Auth/12-auth-3.md
+    - Debugging:
+      - Frameworks: EKS/Debugging/overview.md
+      - Control Plane: EKS/Debugging/control-plane.md
+      - Node: EKS/Debugging/node.md
+      - Pod: EKS/Debugging/pod.md
+      - Health Check: EKS/Debugging/health-check.md
+    - CI/CD:
+      - AuthN/AuthZ Fundamentals: EKS/Auth/10-auth.md
 
