@@ -116,6 +116,7 @@ nav:
       - Node: EKS/Debugging/node.md
       - Pod: EKS/Debugging/pod.md
       - Health Check: EKS/Debugging/health-check.md
+      - Networking: EKS/Debugging/networking.md
     - CI/CD:
       - AuthN/AuthZ Fundamentals: EKS/Auth/10-auth.md
 
