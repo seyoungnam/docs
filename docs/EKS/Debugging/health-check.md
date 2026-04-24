@@ -1,5 +1,12 @@
 # Health Check
 
+!!! info "Source Attribution"
+
+    The primary source and original content for this debugging guide originate from the **Engineering Playbook** by DevFloor9.
+
+    *   **Website:** [devfloor9.github.io/engineering-playbook](https://devfloor9.github.io/engineering-playbook/)
+    *   **Repository:** [github.com/devfloor9/engineering-playbook](https://github.com/devfloor9/engineering-playbook)
+
 Independent execution of K8s Probes and Load Balancer (e.g., ALB) Health Checks can lead to mismatches and system failures.
 
 ## Common Failures

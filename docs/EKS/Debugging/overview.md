@@ -1,5 +1,12 @@
 # EKS Debugging Guide
 
+!!! info "Source Attribution"
+
+    The primary source and original content for this debugging guide originate from the **Engineering Playbook** by DevFloor9.
+
+    *   **Website:** [devfloor9.github.io/engineering-playbook](https://devfloor9.github.io/engineering-playbook/)
+    *   **Repository:** [github.com/devfloor9/engineering-playbook](https://github.com/devfloor9/engineering-playbook)
+
 ## Why Systematic Debugging?
 
 A structured framework significantly reduces Mean Time To Recovery (MTTR).
@@ -210,3 +217,69 @@ Immediate action timeline for incident response.
 **Focus on scope assessment and rapid response to minimize MTTR.**
 
 ==}
+
+---
+
+## Top 10 Error Quick Reference
+
+A fast reference guide for identifying common EKS errors and their primary diagnostic commands.
+
+| Error / Symptom | Likely Cause | Core Command |
+| :--- | :--- | :--- |
+| **CrashLoopBackOff** | App crash, Config error, OOM | `kubectl logs <pod> --previous` |
+| **ImagePullBackOff** | Missing image, Auth failure | `kubectl describe pod` → **Events** |
+| **Pending (Nodes)** | Resource shortage, Taints | `kubectl describe pod` → **FailedScheduling** |
+| **OOMKilled** | Memory limit exceeded | `kubectl describe pod` → **Last State** |
+| **Service Endpoints `<none>`** | Selector/Label mismatch | `kubectl get endpoints <svc>` |
+| **DNS Failures** | CoreDNS OOM, `ndots:5` | `kubectl logs -n kube-system -l k8s-app=kube-dns` |
+| **PVC Pending** | AZ mismatch, CSI permissions | `kubectl describe pvc` → **Events** |
+| **EBS Attach Failure** | Volume limits, Detach delay | `kubectl describe pod` → **FailedAttachVolume** |
+| **GPU Not Found** | Driver missing, Device Plugin | `kubectl get clusterpolicy -A` |
+| **NCCL Timeout** | Security Group, EFA missing | `kubectl logs <pod> \| grep NCCL` |
+
+---
+
+## Wrap-up: 5 Core Lessons
+
+To build a resilient and easily debuggable EKS environment, remember these five core takeaways from this guide:
+
+<div class="grid cards" markdown>
+
+-   :material-layers-triple-outline:{ .lg .middle style="color: #4285F4" } **1. Systematic Debugging: Layered Approach**
+
+    ---
+
+    Always diagnose sequentially: `Pod` → `Node` → `Network` → `Storage`.
+    **Golden Rule:** `kubectl describe` and the `Events` log are *always* your starting point.
+
+-   :material-eye-check-outline:{ .lg .middle style="color: #34A853" } **2. Proactive Observability: Detect Before Issues**
+
+    ---
+
+    Implement the observability triad: **Container Insights + Prometheus + ADOT**.
+    **Golden Rule:** Use *Composite Alarms* to eliminate False Positives and trigger alerts only on actual impact.
+
+-   :material-scale-balance:{ .lg .middle style="color: #FBBC05" } **3. Understand Auto Mode Trade-offs**
+
+    ---
+
+    Auto Mode offers immense convenience but limits customization.
+    **Golden Rule:** If your workload requires specialized GPUs, high-performance storage, or custom CNI configurations, a **Hybrid Setup** (Auto Mode + MNG) is essential.
+
+-   :material-brain:{ .lg .middle style="color: #9C27B0" } **4. GPU/AI Workloads Require Separate Skills**
+
+    ---
+
+    AI infrastructure debugging is distinct from standard microservices.
+    **Golden Rule:** You must understand XID error codes, vLLM parameters, and NCCL network requirements. In Auto Mode, `devicePlugin=false` is mandatory.
+
+-   :material-robot-outline:{ .lg .middle style="color: #EA4335" } **5. Operational Automation: Alert → Auto-Remediation**
+
+    ---
+
+    The ultimate goal of debugging is to automate the fix for the next time.
+    **Golden Rule:** Prevent alert fatigue. Use EventBridge and Lambda for automated recovery. Drive your MTTD from **30m → 5m → 1m**.
+
+</div>
+
+

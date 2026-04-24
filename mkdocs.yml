@@ -30,8 +30,6 @@ theme:
         name: Light mode
       primary: white
       accent: indigo
-# extra_css:
-#   - stylesheets/extra.css
 plugins:
   - glightbox
 markdown_extensions:
@@ -117,6 +115,10 @@ nav:
       - Pod: EKS/Debugging/pod.md
       - Health Check: EKS/Debugging/health-check.md
       - Networking: EKS/Debugging/networking.md
+      - Storage: EKS/Debugging/storage.md
+      - GPU: EKS/Debugging/gpu.md
+      - Auto Mode: EKS/Debugging/auto-mode.md
+      - Observability: EKS/Debugging/observability.md
     - CI/CD:
       - AuthN/AuthZ Fundamentals: EKS/Auth/10-auth.md
 
