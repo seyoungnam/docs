@@ -125,6 +125,7 @@ nav:
       - Observability: EKS/Debugging/observability.md
     - CI/CD:
       - Lab Env: EKS/cicd/lab-env.md
-      - App & Infra Blueprint: EKS/cicd/lab1-infra-arch.md
-      - Saas Tier Strategy: EKS/cicd/lab2-saas-tier.md
+      - "Lab 1: App & Infra Blueprint": EKS/cicd/lab1-infra-arch.md
+      - "Lab 2: Saas Tier Strategy": EKS/cicd/lab2-saas-tier.md
+      - "Lab 3: Auto Tenant Onboarding": EKS/cicd/lab3-tenant-auto-onboard.md
 
