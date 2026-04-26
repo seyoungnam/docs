@@ -1,0 +1,4 @@
+/* Custom CSS to style inline code (backticks) as purple */
+:not(pre) > code {
+  color: #9c27b0 !important;
+}

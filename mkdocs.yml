@@ -14,6 +14,7 @@ theme:
     - content.code.copy
     - content.code.select
     - content.code.annotate
+    - content.tooltips
   palette: 
     # Dark Mode
     - scheme: slate
@@ -30,9 +31,12 @@ theme:
         name: Light mode
       primary: white
       accent: indigo
+extra_css:
+  - stylesheets/extra.css
 plugins:
   - glightbox
 markdown_extensions:
+  - abbr
   - attr_list
   - md_in_html
   - pymdownx.blocks.caption
@@ -120,5 +124,7 @@ nav:
       - Auto Mode: EKS/Debugging/auto-mode.md
       - Observability: EKS/Debugging/observability.md
     - CI/CD:
-      - AuthN/AuthZ Fundamentals: EKS/Auth/10-auth.md
+      - Lab Env: EKS/cicd/lab-env.md
+      - App & Infra Blueprint: EKS/cicd/lab1-infra-arch.md
+      - Saas Tier Strategy: EKS/cicd/lab2-saas-tier.md
 
