@@ -1,4 +1,4 @@
-site_name: Engineer's Barn
+site_name: The Engineer's Warehouse
 site_url: https://seyoungnam.github.io/docs/
 theme: 
   name: material
@@ -15,6 +15,8 @@ theme:
     - content.code.select
     - content.code.annotate
     - content.tooltips
+    - search.suggest
+    - search.highlight
   palette: 
     # Dark Mode
     - scheme: slate
@@ -35,6 +37,7 @@ extra_css:
   - stylesheets/extra.css
 plugins:
   - glightbox
+  - search
 markdown_extensions:
   - abbr
   - attr_list
