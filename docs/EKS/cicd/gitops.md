@@ -76,10 +76,10 @@ A successful SaaS architecture must improve agility, innovation, growth, and cos
 
 ### Useful Toolings
 
-- **Terraform**: 애플리케이션 인프라 패키징을 위해 [Terraform ](https://www.terraform.io/) 모듈을 사용 - 데이터베이스 및 큐와 같이 애플리케이션 작동에 필요한 모든 구성 요소를 활용하여 사용.
-- **Helm Chart**:  [Helm ](https://helm.sh/) 차트를 사용하여 Kubernetes 리소스를 애플리케이션 이미지 및 정의와 함께 패키징하며 [Terraform ](https://www.terraform.io/) 버전을 통합하여 페넌트 배포 전반에 걸쳐 패키지의 무결성을 유지하기 위해 애플리케이션 버전을 관리.
-- **Flux Tofu Controller**: [Flux Tofu Controller ](https://github.com/flux-iac/tofu-controller) 를 사용하여 Helm을 사용한 모든 리소스 패키징 및 기존 Terraform 모듈 수정 없이 재사용
-- **Flux v2**: 환경 일관성을 유지하기 위해  [Flux v2 ](https://fluxcd.io/) 를 활용한 [Git ](https://git-scm.com/) 프로세스를 구현. Git를 활용하는 선언적 인프라 및 애플리케이션 구성을 위한 단일 정보 소스로서 자동화된 배포 파이프라인과 안정적인 배포를 지원. [Flux v2 ](https://fluxcd.io/) 를 통해 immutable 방화벽으로 활용하여 모든 테넌트 간 균일성을 보장
+- **Terraform**: Uses [Terraform](https://www.terraform.io/) modules for application infrastructure packaging—leveraging all components necessary for application operation, such as databases and queues.
+- **Helm Chart**: Packages Kubernetes resources along with application images and definitions using [Helm](https://helm.sh/) charts, and integrates [Terraform](https://www.terraform.io/) versions to manage application versions and maintain package integrity across tenant deployments.
+- **Flux Tofu Controller**: Uses [Flux Tofu Controller](https://github.com/flux-iac/tofu-controller) to package all resources with Helm and reuse existing Terraform modules without modification.
+- **Flux v2**: Implements [Git](https://git-scm.com/) processes utilizing [Flux v2](https://fluxcd.io/) to maintain environmental consistency. It serves as a single source of truth for declarative infrastructure and application configuration, supporting automated and stable deployment pipelines. [Flux v2](https://fluxcd.io/) acts as immutable guardrails to ensure uniformity across all tenants.
 
 ![toolings](../../assets/img/eks/cicd/toolings.webp)
 
