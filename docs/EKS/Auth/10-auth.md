@@ -206,7 +206,7 @@ IFS='.' read header payload signature <<< "$TOKEN_DATA"
 echo "$payload" | fold -w 4 | sed '$ d' | tr -d '\n' | base64 --decode
 https://sts.us-east-1.amazonaws.com/?Action=GetCallerIdentity&
 Version=2011-06-15&X-Amz-Algorithm=AWS4-HMAC-SHA256&
-X-Amz-Credential=AKIARFODQPBRHTK56HEE%2F20260408%2Fus-east-1%2Fsts%2Faws4_request&
+X-Amz-Credential=AKIAXXXXXXXXXXXXXXXX%2F20260408%2Fus-east-1%2Fsts%2Faws4_request&
 X-Amz-Date=20260408T041921Z&X-Amz-Expires=60&
 X-Amz-SignedHeaders=host%3Bx-k8s-aws-id&
 X-Amz-Signature=<SIG_HASH>

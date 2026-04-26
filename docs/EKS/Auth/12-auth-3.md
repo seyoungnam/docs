@@ -38,7 +38,7 @@ aws sts get-caller-identity --query Arn # (3)!
     {
         "AccessKey": {
             "UserName": "testuser",
-            "AccessKeyId": "AKIARFODQPBRLIHWKM56",
+            "AccessKeyId": "AKIAXXXXXXXXXXXXXXXX",
             "SecretAccessKey": "****************************************",
             "Status": "Active"
         }
