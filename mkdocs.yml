@@ -69,7 +69,11 @@ markdown_extensions:
   - tables
   - pymdownx.tasklist:
       custom_checkbox: true
-
+  - pymdownx.arithmatex:
+      generic: true
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra:
   social:
     - icon: fontawesome/brands/linkedin
@@ -132,4 +136,8 @@ nav:
       - "Lab 1: App & Infra Blueprint": EKS/cicd/lab1-infra-arch.md
       - "Lab 2: Saas Tier Strategy": EKS/cicd/lab2-saas-tier.md
       - "Lab 3: Auto Tenant Onboarding": EKS/cicd/lab3-tenant-auto-onboard.md
+  - LeetCode:
+    - Backtracking:
+      - 78. Subsets: leetcode/backtracking/78-subsets.md
+
 
