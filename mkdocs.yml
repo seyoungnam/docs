@@ -84,6 +84,8 @@ copyright: Copyright &copy; 2026 Seyoung Nam
 
 nav:
   - Home: index.md
+  - Homelab:
+    - Kubernetes: homelab/kubernetes.md
   - Linux Commands:
     - Six Commands: linux-commands/01-six-commands.md
     - Introducing the Shell: linux-commands/02-shell.md
