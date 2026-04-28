@@ -84,6 +84,8 @@ copyright: Copyright &copy; 2026 Seyoung Nam
 
 nav:
   - Home: index.md
+  - Computer Systems:
+    - Process vs Thread: computer-systems/process-vs-thread.md
   - Homelab:
     - Kubernetes: homelab/kubernetes.md
   - Linux Commands:
