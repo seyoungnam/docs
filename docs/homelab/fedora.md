@@ -52,7 +52,7 @@ The following hardwares were used for this installation:
 
 ### **3. Initial System Boot**
 
-1. Upon completion of the installation, you will reach a command-line interface. Type `reboot` at the prompt to restart the machine.
+1. Following the installation, the system may default to booting from an existing drive or partition rather than the new Fedora installation. If this occurs, initiate a system reboot to access the boot configuration.
 1. Re-enter the BIOS interface (`F2`), navigate to the **Boot Menu**, and select the **UEFI - Fedora** option to ensure the system boots from the internal drive.
 1. Following a successful boot, log in using the administrative credentials established during the installation process.
     ![fedora-login](../assets/img/homelab/fedora/fedora-login.jpg)
