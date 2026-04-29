@@ -1,6 +1,6 @@
 # 40. Combination Sum II
 
-:simple-leetcode:[:paperclip: LeetCode Problem Description](https://leetcode.com/problems/combination-sum-ii/description/)
+[:paperclip: LeetCode Problem Description](https://leetcode.com/problems/combination-sum-ii/description/)
 
 ## Solution: Backtracking
 
