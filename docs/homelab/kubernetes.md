@@ -68,6 +68,7 @@ The current network topology should look like below:
 1. Download the latest [Proxmox VE ISO](https://www.proxmox.com/en/downloads).
 1. Download a flashing tool like [BalenaEtcher](https://www.balena.io/etcher/) or [Rufus](https://rufus.ie/).
 1. Insert your USB drive and flash the ISO using the tool.
+
     - click **Flash from file** and select the downloaded Proxmox VE ISO file.
     - click **Select target** and select your USB
     - click **Flash**
@@ -79,6 +80,7 @@ The current network topology should look like below:
 
 1. Plug the USB into your k8s node, boot into BIOS(`F2` in my case), and set the USB as the primary boot device.
 1. Follow the Proxmox installation wizard to set up the hypervisor on each node.
+
     > In `Management Network Configuration` page, enter the following value for each entry:
     > - Hostname (FQDN): 
     >     - node 1: ``pve-01.local`
@@ -90,6 +92,7 @@ The current network topology should look like below:
     >     - node 3: `192.168.8.13/24`
     > - Gateway: `192.168.8.1`
     > - DNS Server: `192.168.8.1`
+    
 1. After all the install process is done, you will see the following on your screen. You don't need to log in at this point. Move on to the next node and repeat the install process.
 
     ```

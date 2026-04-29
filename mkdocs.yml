@@ -88,6 +88,8 @@ nav:
     - Process vs Thread: computer-systems/process-vs-thread.md
   - Homelab:
     - Kubernetes: homelab/kubernetes.md
+    - Ubuntu: homelab/ubuntu.md
+    - Fedora: homelab/fedora.md
   - Linux Commands:
     - Six Commands: linux-commands/01-six-commands.md
     - Introducing the Shell: linux-commands/02-shell.md
@@ -144,5 +146,6 @@ nav:
     - Backtracking:
       - 78. Subsets: leetcode/backtracking/78-subsets.md
       - 39. Combination Sum: leetcode/backtracking/39-combination-sum.md
+      - 40. Combination Sum II: leetcode/backtracking/40-combination-sum-2.md
 
 

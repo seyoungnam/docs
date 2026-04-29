@@ -1,8 +1,8 @@
 # 39. Combination Sum
 
-[LeetCode Problem Description](https://leetcode.com/problems/combination-sum/description/)
+[:paperclip: LeetCode Problem Description](https://leetcode.com/problems/combination-sum/description/)
 
-## Solution 1: Backtracking
+## Solution: Backtracking
 
 ### Thought Process
 

@@ -1,6 +1,6 @@
 # 78. Subsets
 
-[LeetCode Problem Description](https://leetcode.com/problems/subsets/description/)
+[:paperclip: LeetCode Problem Description](https://leetcode.com/problems/subsets/description/)
 
 ## Solution 1: Backtracking
 
