@@ -2,3 +2,17 @@
 :not(pre) > code {
   color: #7e57c2 !important;
 }
+
+/* Make Mermaid diagrams take full width and center them */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}

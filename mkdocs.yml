@@ -142,6 +142,10 @@ nav:
       - "Lab 1: App & Infra Blueprint": EKS/cicd/lab1-infra-arch.md
       - "Lab 2: Saas Tier Strategy": EKS/cicd/lab2-saas-tier.md
       - "Lab 3: Auto Tenant Onboarding": EKS/cicd/lab3-tenant-auto-onboard.md
+    - Version Upgrades:
+      - Overview: EKS/upgrade/overview.md
+      - Lab Environment: EKS/upgrade/lab-env.md
+      - In-place Cluster Upgrades: EKS/upgrade/in-place-upgrades.md
   - LeetCode:
     - Backtracking:
       - 78. Subsets: leetcode/backtracking/78-subsets.md
