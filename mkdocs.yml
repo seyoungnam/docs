@@ -146,10 +146,15 @@ nav:
       - Overview: EKS/upgrade/overview.md
       - Lab Environment: EKS/upgrade/lab-env.md
       - In-place Cluster Upgrades: EKS/upgrade/in-place-upgrades.md
+  - Golang:
+    - slice-vs-array: golang/slice-vs-array.md
   - LeetCode:
     - Backtracking:
       - 78. Subsets: leetcode/backtracking/78-subsets.md
+      - 90. Subsets II: leetcode/backtracking/90-subsets-2.md
       - 39. Combination Sum: leetcode/backtracking/39-combination-sum.md
       - 40. Combination Sum II: leetcode/backtracking/40-combination-sum-2.md
+      - 46. Permutations: leetcode/backtracking/46-permutations.md
+      - 22. Generate Parentheses: leetcode/backtracking/22-generate-parentheses.md
 
 
