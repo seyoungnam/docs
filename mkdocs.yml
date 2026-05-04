@@ -159,5 +159,9 @@ nav:
       - 40. Combination Sum II: leetcode/backtracking/40-combination-sum-2.md
       - 46. Permutations: leetcode/backtracking/46-permutations.md
       - 22. Generate Parentheses: leetcode/backtracking/22-generate-parentheses.md
+      - 79. Word Search: leetcode/backtracking/79-word-search.md
+      - 131. Palindrome Partitioning: leetcode/backtracking/131-palindrome-partitioning.md
+      - 17. Letter Combinations of a Phone Number: leetcode/backtracking/17-letter-combinations-of-a-phone-number.md
+      - 51. N-Queens: leetcode/backtracking/51-n-queens.md
 
 

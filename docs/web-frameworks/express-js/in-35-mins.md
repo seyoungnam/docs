@@ -2,7 +2,7 @@
 
 !!! Note
 
-    The following content is based on the YouTube video [Learn Express JS In 35 Minutes](https://www.youtube.com/watch?v=SccSCuHhOw0).
+    The following content is based on the YouTube video [Learn Express JS In 35 Minutes](https://www.youtube.com/watch?v=SccSCuHhOw0). Please refer to [the codebase](https://github.com/WebDevSimplified/express-crash-course/tree/main) to follow the instructions below.
 
 ## Project Setup
 
