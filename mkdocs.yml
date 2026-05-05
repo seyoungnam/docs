@@ -101,13 +101,17 @@ nav:
     - TCP/IP App: network/04-tcpip-app.md
     - NAT: network/05-nat.md
   - Kubernetes:
-    - 01. Intro: kubernetes/01-intro-k8s.md
-    - 02. Containers: kubernetes/02-understanding-containers.md
-    - 03. First App: kubernetes/03-deploying-first-app.md
-    - 04. API: kubernetes/04-navigating-the-k8s-api.md
-    - 14. ReplicaSet: kubernetes/14-replicaset.md
-    - 15. Deployment: kubernetes/15-deployment.md
-    - 16. StatefulSet: kubernetes/16-statefulset.md
+    - k8s-in-action:
+      - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
+      - 02. Containers: kubernetes/k8s-in-action/02-understanding-containers.md
+      - 03. First App: kubernetes/k8s-in-action/03-deploying-first-app.md
+      - 04. API: kubernetes/k8s-in-action/04-navigating-the-k8s-api.md
+      - 14. ReplicaSet: kubernetes/k8s-in-action/14-replicaset.md
+      - 15. Deployment: kubernetes/k8s-in-action/15-deployment.md
+      - 16. StatefulSet: kubernetes/k8s-in-action/16-statefulset.md
+    - Networking:
+      - 1. Networking Introduction: kubernetes/networking/01-networking-introduction.md
+      - 2. Linux Networking: kubernetes/networking/02-linux-networking.md
   - EKS:
     - EKS Provisioning:
       - Provisioning Lab: EKS/EKS Provisioning/01-deploy.md
@@ -152,6 +156,20 @@ nav:
     - Express.js:
       - Learn Express JS: web-frameworks/express-js/in-35-mins.md
   - LeetCode:
+    - Arrays & hashing:
+      - 937. Reorder Data in Log Files: leetcode/arrays-hashing/937-reorder-data-in-log-files.md
+      - 49. Group Anagrams: leetcode/arrays-hashing/49-group-anagrams.md
+      - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
+      - 347. Top K Frequent Elements: leetcode/arrays-hashing/347-top-k-frequent-elements.md
+      # - 347. Top K Frequent Elements: leetcode/arrays-hashing/347-top-k-frequent-elements.md
+      # - 1. Two Sum: leetcode/arrays-hashing/1-two-sum.md
+      # - 217. Contains Duplicate: leetcode/arrays-hashing/217-contains-duplicate.md
+      # - 242. Valid Anagram: leetcode/arrays-hashing/242-valid-anagram.md
+      # - 238. Product of Array Except Self: leetcode/arrays-hashing/238-product-of-array-except-self.md
+      # - 424. Longest Repeating Character Replacement: leetcode/arrays-hashing/424-longest-repeating-character-replacement.md
+      # - 567. Permutation in String: leetcode/arrays-hashing/567-permutation-in-string.md
+      # - 76. Minimum Window Substring: leetcode/arrays-hashing/76-minimum-window-substring.md
+      # - 3. Longest Substring Without Repeating Characters: leetcode/arrays-hashing/3-longest-substring-without-repeating-characters.md
     - Backtracking:
       - 78. Subsets: leetcode/backtracking/78-subsets.md
       - 90. Subsets II: leetcode/backtracking/90-subsets-2.md
