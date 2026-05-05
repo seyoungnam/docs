@@ -86,6 +86,7 @@ nav:
   - Home: index.md
   - Computer Systems:
     - Process vs Thread: computer-systems/process-vs-thread.md
+    - Stack vs Heap: computer-systems/stack-vs-heap.md
   - Homelab:
     - Kubernetes: homelab/kubernetes.md
     - Ubuntu: homelab/ubuntu.md
