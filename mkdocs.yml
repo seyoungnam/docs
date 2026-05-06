@@ -91,6 +91,7 @@ nav:
     - Kubernetes: homelab/kubernetes.md
     - Ubuntu: homelab/ubuntu.md
     - Fedora: homelab/fedora.md
+    - Dual Boot: homelab/dual-boot.md
   - Linux Commands:
     - Six Commands: linux-commands/01-six-commands.md
     - Introducing the Shell: linux-commands/02-shell.md
