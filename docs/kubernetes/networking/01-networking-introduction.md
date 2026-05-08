@@ -143,92 +143,153 @@ Hello% # (10)!
 
 ### Transport
 
-The Transport layer protocols are responsible for connection-oriented communication, reliability, flow control, and multiplexing. Our Golang web server is a layer 7 application using HTTP; the Transport layer that HTTP relies on is TCP. 
+The Transport layer protocols are responsible for connection-oriented communication, reliability, flow control, and `multiplexing` (1). Our Golang web server is a layer 7 application using HTTP; the Transport layer that HTTP relies on is TCP. 
+{ .annotate }
+
+1.  The following HTML page retrieval process represents what **multiplexing** means:
+
+    1. In a web browser, type in a web page address.
+    1. The browser opens a connection to transfer the page.
+    1. The browser opens connections for each image on the page.
+    1. The browser opens another connection for the external CSS.
+    1. Each of these connections uses a different set of virtual ports.
+    1. All the page's assets download simultaneously.
+    1. The browser reconstructs the page.
 
 #### TCP
 
-Each port identifies the host process responsible for processing the information from the network communication. Clients requesting a new connection create a source port local in the range of 0-65534.
+Each port identifies the host process responsible for processing the information from the network communication. Clients requesting a new connection create a source port local in the range of `0-65,534` (1). 
+{ .annotate }
 
-The following HTML page retrieval process represents what **multiplexing** means:
+1.  Key port ranges and types:
 
-1. In a web browser, type in a web page address.
-1. The browser opens a connection to transfer the page.
-1. The browser opens connections for each image on the page.
-1. The browser opens another connection for the external CSS.
-1. Each of these connections uses a different set of virtual ports.
-1. All the page's assets download simultaneously.
-1. The browser reconstructs the page.
+    - `0 ~ 1,023` (well-known ports): reserved for system services and authorized protocols(e.g. HTTP:80, HTTPS:443)
+    - `1,024 ~ 49,151` (registered ports): used by vendors for specific applications(e.g. MySQL: 3306, PostgreSQL: 5432)
+    - `49,152 ~ 65,535` (dynamic/private ports): used for ephemeral, temporary connections.
 
-TCP manages multiplexing with the information provided in the TCP segment headers:
 
 ![tcp-segment-header](../../assets/img/kubernetes/networking/01-networking-introduction/tcp-segment-header.png)
 
+**Core Fields of the TCP Header**
 
-- `Sequence number` (32 bits)
-    - Data consists of a continuous stream of bytes. The sequence number identifies the **position of the first data byte** in that specific segment within the overall stream. Because IP packets can take different paths and arrive out of order, the receiver uses sequence numbers to reorder segments correctly before passing the data to the application layer. If the `SYN` flag is set, this is the initial sequence number.
-- `Acknowledgment number` (32 bits)
-    - It indicates **the sequence number of the next byte the receiver expects to receive**. If the `Acknowledgment Number` is $X$, it implies that every byte up to $X-1$ has been successfully received. This field is only valid if the `ACK` control flag is set to 1. In almost all segments sent after the initial `SYN` packet of the 3-way handshake, this flag is always set.
+The header is organized into 32-bit (4-byte) rows. Here is the breakdown of each component:
 
-    !!! Question "How sequence and acknowledgment number work together?"
+1. **Port Address (row 1)**
+    - **`Source Port` (16 bits)**
+    - **`Destination Port` (16 bits)**
+2. **Ordering and Reliability (row 2 & 3)**
+    - **`Sequence number` (32 bits)**
+        - Data consists of a continuous stream of bytes. {==The sequence number identifies the **position of the first data byte** in that specific segment within the overall stream==}. Because IP packets can take different paths and arrive out of order, the receiver uses sequence numbers to reorder segments correctly before passing the data to the application layer. If the `SYN` flag is set, this is the initial sequence number.
+    - **`Acknowledgment number` (32 bits)**
+        - It indicates {==the sequence number of the next byte the receiver expects to receive==}. If the `Acknowledgment Number` is $X$, it implies that every byte up to $X-1$ has been successfully received. {==This field is only valid if the `ACK` control flag is set to 1==}. In almost all segments sent after the initial `SYN` packet of the 3-way handshake, this flag is always set.
 
-        - **Sender** send a segement with `Seq = 100, Length = 50`.
-        - **Receiver** receives it and sends back a segment with `Ack = 150` (100 + 50), signaling: "I got everything up to 149. Please send byte 150 next."
+        !!! Question "How sequence and acknowledgment number work together?"
 
-- `Reserved` (3 bits) - This is for future use and should be set to zero.
-- `Flags` (9 bits) - There are nine 1-bit fields:
-    - `NS (Nonce Sum)`: used for concealment protection. In 2017, RFC 8311 officially moved the ECN-nonce (and the NS bit) to Historic status, meaning it is no longer recommended for use in modern TCP implementations.
-    - `CWR (Congestion Window Reduced)`: When a sender receives a TCP segment with the ECE (ECN-Echo) flag set, it knows that a router in the network path experienced congestion. In response, the sender reduces its Congestion Window (the amount of data it sends before waiting for an ACK) to help clear the bottleneck. After the sender has reduced its window size, it sets the CWR flag in the next packet it sends to the receiver. The CWR flag tells the receiver: "I have received your congestion warning and have slowed down." Upon receiving the CWR flag, the receiver stops setting the ECE flag in its subsequent acknowledgments.
-    - `ECE (ECN Echo)`: used for **Explicit Congestion Notification (ECN)**. A router along the path becomes congested. Instead of dropping a packet, it marks the IP header of a packet with a "Congestion Experienced" (CE) bit. The receiver sees the mark in the IP header. It then sets the `ECE` flag in its next TCP Acknowledgment (ACK) to "echo" this warning back to the sender. The sender receives the `ECE` flag, realizes there is a bottleneck, and reduces its transmission rate (its Congestion Window). The receiver will continue setting the `ECE` flag in every ACK until it receives a `CWR` (Congestion Window Reduced) flag from the sender.
+            - **Sender** send a segement with `Seq = 100, Length = 50`.
+            - **Receiver** receives it and sends back a segment with `Ack = 150` (100 + 50), signaling: "I got everything up to 149. Please send byte 150 next."
 
-        !!! Info
+3. **Control and Management (row 4)**
+    - **`Data Offset` (4 bits)** - specifies the size of the TCP header in 32-bit words. {==This tells the receiver where the actual data starts==}.
+    - **`Reserved` (3 bits)** - set to zero. reserved for future use.
+    - **`Flags` (9 bits)** - nine 1-bit fields that manages the state of the connection:
+        - `NS (Nonce Sum)`: used for concealment protection. No longer recommended for use in modern TCP implementations.
+        - `CWR (Congestion Window Reduced)`: When a sender receives a TCP segment with the `ECE` flag set, it knows that a router in the network path experienced congestion. In response, the sender reduces its Congestion Window (the amount of data it sends before waiting for an `ACK`) to help clear the bottleneck. After the sender has reduced its window size, it sets the `CWR` flag in the next packet it sends to the receiver. {==The `CWR` flag tells the receiver: "I have received your congestion warning and have slowed down."==} Upon receiving the `CWR` flag, the receiver stops setting the `ECE` flag in its subsequent acknowledgments.
+        - `ECE (ECN Echo)`: used for **Explicit Congestion Notification (ECN)**. A router along the path becomes congested. Instead of dropping a packet, it marks the IP header of a packet with a "Congestion Experienced" (CE) bit. The receiver sees the mark in the IP header. {==It then sets the `ECE` flag in its next TCP Acknowledgment (ACK) to echo this warning back to the sender. The sender receives the `ECE` flag, realizes there is a bottleneck, and reduces its transmission rate (its Congestion Window)==}. The receiver will continue setting the `ECE` flag in every `ACK` until it receives a `CWR` (Congestion Window Reduced) flag from the sender.
 
-            - `ECE`: "I received a packet that was marked by a router as **Congested**. Please slow down!"
-            - `CWR`: "I got your ECE message and have reduced my speed."
+            !!! Info
 
-    - `URG (Urgent)`: the Urgent Pointer field is valid, but this is rarely used.
-    - `ACK (Acknowledgment)`: the Acknowledgment Number field is valid and is always on after a connection is established.
-    - `PSH (Push)`: Normally, TCP is designed to be efficient by "batching" data. It collects small amounts of data into a larger buffer until it has enough to form a full-sized segment before sending it. Similarly, on the receiving end, TCP may wait until it has a significant amount of data before notifying the application. When the `PSH` flag is set:
-        - **On the Sender side**: It tells the sending TCP implementation to send all data currently in its buffer immediately, without waiting for more.
-        - **On the Receiver side**: It tells the receiving TCP implementation to pass the data to the application immediately rather than waiting for more segments to arrive or for the receiving buffer to reach a certain threshold.
-    - `RST (Reset)`: Reset the connection or connection abort, usually because of an error.
-    - `SYN (Synchronize)`: used during the initiation of a TCP connection to synchronize the **Sequence Numbers** between the sender and the receiver. The client sends a packet with the SYN flag set and its own Initial Sequence Number (e.g., `Seq=1000`).
-    - `FIN (Finish)`: used to gracefully terminate a TCP connection, signaling that the sender has no
-  more data to transmit.
+                - `ECE`: "I received a packet that was marked by a router as **Congested**. Please slow down!"
+                - `CWR`: "I got your ECE message and have reduced my speed."
 
-    !!! Note "The Graceful Termination (4-Way Handshake)"
+        - `URG (Urgent)`: the Urgent Pointer field is valid, but this is rarely used.
+        - `ACK (Acknowledgment)`: the Acknowledgment Number field is valid and is always on after a connection is established.
+        - `PSH (Push)`: Normally, TCP is designed to be efficient by batching data. It collects small amounts of data into a larger buffer until it has enough to form a full-sized segment before sending it. Similarly, on the receiving end, TCP may wait until it has a significant amount of data before notifying the application. When the `PSH` flag is set:
+            - **On the Sender side**: It tells the sending TCP implementation to {==send all data currently in its buffer immediately, without waiting for more==}.
+            - **On the Receiver side**: It tells the receiving TCP implementation to {==pass the data to the application immediately rather than waiting for more segments to arrive==} or for the receiving buffer to reach a certain threshold.
+        - `RST (Reset)`: Reset the connection or connection abort, usually because of an error.
+        - `SYN (Synchronize)`: {==used during the initiation of a TCP connection to synchronize the **Sequence Numbers** between the sender and the receiver==}. The client sends a packet with the `SYN` flag set and its own Initial Sequence Number (e.g., `Seq=1000`).
+        - `FIN (Finish)`: used to gracefully terminate a TCP connection, signaling that the sender has no
+    more data to transmit.
 
-        Closing a connection usually involves four steps to ensure both sides have finished their work
+        !!! Note "The Graceful Termination (4-Way Handshake)"
+
+            Closing a connection usually involves four steps to ensure both sides have finished their work
+            
+            1. **FIN**: Side A sends a segment with the `FIN` flag set. It says, "I'm done sending data."
+            1. **ACK**: Side B acknowledges the request. Side A is now in `FIN_WAIT` state, but Side B can still send data if it needs to.
+            1. **FIN**: Once Side B is also finished, it sends its own `FIN` flag.
+            1. **ACK**: Side A acknowledges Side B's FIN. The connection is now fully `CLOSED`.
+
+    - **`Window size` (16 bits)** - The total amount of data (potentially many segments) that can be "in-flight" at once without an acknowledgement. used to tell the sender: "I have $X$ bytes of space left in my buffer. You can send this much data before you must stop and wait for me to acknowledge it."
+
+4. **Integrity and Urgency (row 5)**
+    - **`Checksum` (16 bits)** - Used for error-checking the header, the payload, and a "pseudo-header" of IP addresses to ensure the segment arrived intact.
+    - **`Urgent pointer` (16 bits)** - Only valid if the `URG` flag is set. It is an offset from the sequence number that indicates where the "urgent" data ends. It was originally designed to allow users to send interrupt signals (like `Ctrl+C`), but due to inconsistent implementations between operating systems, it is largely ignored in modern networking.
+5. **Flexibility (row 6+)**
+    - **`Options` (0~40 bytes)** - optional fields used for advanced features like Maximum Segment Size (MSS), Window Scaling, or Selective Acknowledgments (SACK).
+    - **`Padding`** - used to ensure the TCP header ends on a 32-bit boundary.
+
         
-        1. **FIN**: Side A sends a segment with the `FIN` flag set. It says, "I'm done sending data."
-        1. **ACK**: Side B acknowledges the request. Side A is now in `FIN_WAIT` state, but Side B can still send data if it needs to.
-        1. **FIN**: Once Side B is also finished, it sends its own `FIN` flag.
-        1. **ACK**: Side A acknowledges Side B's FIN. The connection is now fully `CLOSED`.
-
-- `Window size` (16 bits) - The total amount of data (potentially many segments) that can be "in-flight" at once without an acknowledgement. used to tell the sender: "I have $X$ bytes of space left in my buffer. You can send this much data before you must stop and wait for me to acknowledge it."
-- `Ur
-        
+The below diagram shows how each step of the TCP/IP stack sends data from one application on one host, through a network communicating at layers 1 and 2, to get data to the destination host.
 
 ![tcp-ip-data-flow](../../assets/img/kubernetes/networking/01-networking-introduction/tcp-ip-data-flow.png)
 
 #### TCP handshake
 
-TCP uses a three-way han
-
 ![3-way-handshake](../../assets/img/kubernetes/networking/01-networking-introduction/3-way-handshake.png)
+
+TCP uses a three-way handshake to create a connection:
+
+1. The requesting node sends a connection request via a `SYN` packet.
+1. The receiving node replies with a `SYN-ACK`, acknowledging that it has heard the requesting node.
+1. The requesting node returns an `ACK` packet, letting them know the nodes are good to send each other information.
 
 
 ![TCP state transition diagram](../../assets/img/kubernetes/networking/01-networking-introduction/tcp-state-transition.png)
 
+The TCP connection states are:
 
+- `LISTEN` (server): waiting for a connection request
+- `SYN-SENT` (client): waiting for a matching connection request after sending a connection request
+- `SYN_RECEIVED` (server): waiting for a confirming connection request acknowledgment after having both received and sent a connection request
+- `ESTABLISHED` (both): represents an open connection
+- `FIN-WAIT-1` (both): waiting for a connection termination request from the remote host
+- `FIN-WAIT-2` (both): waiting for a connection termination request from the remote TCP
+- `CLOSE-WAIT` (both): waiting for a local user's connection termination request
+- `CLOSING` (both): waiting for a connection termination request acknowledgment from the remote TCP
+- `LAST-ACK` (both): waiting for an acknowledgment of the connection termination request previously sent to the remote host
+- `TIME-WAIT` (both): waiting for enough time to pass to ensure the remote host received the acknowledgment of its connection termination request
+- `CLOSED` (both): no connection state at all
 
-
-
-
-
-
-
+`netstat -ap TCP` prints out the TCP connection states:
+``` bash
+netstat -ap TCP
+Active Internet connections (including servers)
+Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)
+tcp4       0      0  macbookpro.lan.56647   ec2-52-204-16-18.https ESTABLISHED
+tcp4       0      0  macbookpro.lan.56643   207.164.110.34.b.https ESTABLISHED
+tcp4       0      0  localhost.49419        localhost.56613        ESTABLISHED
+tcp4       0      0  localhost.56613        localhost.49419        ESTABLISHED
+tcp4       0      0  macbookpro.lan.56592   208.103.161.2.https    ESTABLISHED
+tcp4      24      0  macbookpro.lan.56584   170.114.52.83.https    CLOSE_WAIT
+tcp4      24      0  macbookpro.lan.56583   170.114.52.5.https     CLOSE_WAIT
+tcp4      24      0  macbookpro.lan.56582   170.114.52.5.https     CLOSE_WAIT
+tcp4      24      0  macbookpro.lan.56581   170.114.52.5.https     CLOSE_WAIT
+tcp4      24      0  macbookpro.lan.55839   170.114.52.5.https     CLOSE_WAIT
+tcp4       0      0  macbookpro.lan.54748   208.103.161.1.https    ESTABLISHED
+tcp4       0      0  macbookpro.lan.54691   ec2-54-83-207-16.https ESTABLISHED
+tcp4       0      0  macbookpro.lan.54168   104.20.41.79.https     ESTABLISHED
+tcp4       0      0  macbookpro.lan.52428   134.224.4.77.https     ESTABLISHED
+tcp4       0      0  macbookpro.lan.52421   134.224.4.141.https    ESTABLISHED
+tcp6       0      0  *.52418                *.*                    LISTEN
+tcp4       0      0  *.52418                *.*                    LISTEN
+tcp4       0      0  macbookpro.lan.52415   208.103.161.1.https    ESTABLISHED
+...
+```
 
 #### tcpdump
+
+`tcpdump` displays all the packets processed on the system and filter them out based on many TCP segment header details.
 
 ![tcpdump packet capture](../../assets/img/kubernetes/networking/01-networking-introduction/tcpdump-packet-capture.png)
 
