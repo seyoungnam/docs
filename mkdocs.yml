@@ -152,6 +152,8 @@ nav:
       - Overview: EKS/upgrade/overview.md
       - Lab Environment: EKS/upgrade/lab-env.md
       - In-place Cluster Upgrades: EKS/upgrade/in-place-upgrades.md
+    - GPU Operations:
+      - EC2 Quota Increase Request: EKS/gpu-operations/ec2-quota.md 
   - Golang:
     - slice-vs-array: golang/slice-vs-array.md
   - Web Frameworks:
