@@ -84,24 +84,8 @@ copyright: Copyright &copy; 2026 Seyoung Nam
 
 nav:
   - Home: index.md
-  - Computer Systems:
-    - Process vs Thread: computer-systems/process-vs-thread.md
-    - Stack vs Heap: computer-systems/stack-vs-heap.md
-  - Homelab:
-    - Kubernetes: homelab/kubernetes.md
-    - Ubuntu: homelab/ubuntu.md
-    - Fedora: homelab/fedora.md
-    - Dual Boot: homelab/dual-boot.md
-  - Linux Commands:
-    - Six Commands: linux-commands/01-six-commands.md
-    - Introducing the Shell: linux-commands/02-shell.md
-    - Rerunning Commands: linux-commands/03-rerun-cmd.md
-  - Network:
-    - OSI & TCP/IP: network/01-osi-tcpip.md
-    - TCP/IP: network/02-tcpip.md
-    - Routing: network/03-routing.md
-    - TCP/IP App: network/04-tcpip-app.md
-    - NAT: network/05-nat.md
+  - Istio:
+    - Traffic Redirection: istio/envoy-netfilter.md
   - Kubernetes:
     - k8s-in-action:
       - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
@@ -154,6 +138,25 @@ nav:
       - In-place Cluster Upgrades: EKS/upgrade/in-place-upgrades.md
     - GPU Operations:
       - EC2 Quota Increase Request: EKS/gpu-operations/ec2-quota.md 
+  - Computer Systems:
+    - Process vs Thread: computer-systems/process-vs-thread.md
+    - Stack vs Heap: computer-systems/stack-vs-heap.md
+  - Homelab:
+    - Kubernetes: homelab/kubernetes.md
+    - Ubuntu: homelab/ubuntu.md
+    - Fedora: homelab/fedora.md
+    - Dual Boot: homelab/dual-boot.md
+  - Linux Commands:
+    - Six Commands: linux-commands/01-six-commands.md
+    - Introducing the Shell: linux-commands/02-shell.md
+    - Rerunning Commands: linux-commands/03-rerun-cmd.md
+  - Network:
+    - OSI & TCP/IP: network/01-osi-tcpip.md
+    - TCP/IP: network/02-tcpip.md
+    - Routing: network/03-routing.md
+    - TCP/IP App: network/04-tcpip-app.md
+    - NAT: network/05-nat.md
+
   - Golang:
     - slice-vs-array: golang/slice-vs-array.md
   - Web Frameworks:
