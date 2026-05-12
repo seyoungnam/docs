@@ -269,16 +269,92 @@ packet matches. This is how programs like `iptables` integrate with Netfilter.
 Hooks can also return **mutated packets**. This allows programs to do things such as reroute or masquerade packets, adjust packet TTLs, etc.
 
 ### Conntrack
- 
+
+Conntrack is a component of Netfilter used to **track the state of connections** to (and from) the machine. Conntrack identifies connections by a tuple - (`source address`, `source port`, `destination address`, `destination port`, `L4 protocol(TCP||UDP)`), the minimal identifiers needed to identify any given L4 connection. Conntrack refers to these connections as *flows*. A flow contains metadata about the connection and its state.
+
+![The structure of Conntrack flows](../../assets/img/kubernetes/networking/02-linux-networking/conntrack-structure.png)
+
+The above diagram illustrates how the Linux kernel organizes the Conntrack table in memory using a **hash table with chaining**.
+
+1. **Hash Keyspace(The Buckets)**
+    - The vertical column of squares represents the Hash Table.
+    - The number of squares(buckets) is determined by the `hashsize` parameter (normally set in `/sys/module/nf_conntrack/parameters/hashsize`).
+    - When a packet arrives, the kernel takes the tuple and runs it through a hash fuction. This function returns a number that corresponds to one of these buckets.
+2. **Linked List of Flows (The Chaining)**
+    - The horizontal boxes labeled flow represent the actual connection records.
+    - Because the hash keyspace is limited, two completely different connections might occasionally hash to the exact same bucket.
+    - Instead of overwriting the old connection, the kernel simply chains the new connection to the existing one using a **Linked List**.
+
+The total number of concurrent connections is normally set in `/proc/sys/net/nf_conntrack_max`. A system that experiences a huge number of connections will run out of space. If your host runs directly exposed to the internet, overwhelming Conntrack with short-lived or incomplete connections is an easy way to cause a denial of service (DOS).
+
+Conntrack entries contain a connection state, which is one of four states.
+
+| State | Description | Example |
+| :--- | :--- | :--- |
+| NEW | A valid packet is sent or received, with no response seen.  | TCP SYN received. |
+| ESTABLISHED | Packets observed in both directions.   | TCP SYN received, and TCP SYN/ACK sent. |
+| RELATED | An additional connection is opened, where metadata indicates that it is "related" to an original connection. Related connection handling is complex.  | An FTP program, with an ESTABLISHED connection, opens additional data connections. |
+| INVALID | The packet itself is invalid, or does not properly match another Conntrack connection state.  | TCP RST received, with no prior connection. |
+
+Conntrack serves as the foundational source of truth for both **firewalls** and **NAT**. Without it, modern networking would be significantly more complex and less secure.
+
+1. **Conntrack for Firewalls (Stateful Inspection)**
+    - When a packet hits a firewall rule, the kernel checks the Conntrack table to see if this packet belongs to a "Flow" that has already been validated.
+2. **Conntrack for NAT**
+    - When the router changes a Source IP (SNAT) or a Destination IP (DNAT), it must apply that exact same change to every subsequent packet in that flow.
+    - When a response comes back from the internet, the router needs to know which internal machine to send it to.
+        - The router looks at the incoming packet.
+        - It checks the Conntrack table for a matching entry.
+        - It **finds the original mapping and un-does the NAT**, restoring the original IP so your computer can understand the packet.
+
+In the Kubernetes, `kube-proxy` uses `iptables` and Conntrack to handle Service load balancing. When a Pod talks to a Service ClusterIP, Conntrack is used to ensure that all packets for that specific request go to the same backend Pod.
 
 ### Routing
 
+When handling any packet, the kernel must decide where to send that packet. The route table tells you where the packet is passed to as the next hop. 
+
+``` bash
+route -n
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.8.1     0.0.0.0         UG    100    0        0 eno1
+0.0.0.0         192.168.8.1     0.0.0.0         UG    600    0        0 wlp1s0
+192.168.8.0     0.0.0.0         255.255.255.0   U     100    0        0 eno1
+192.168.8.0     0.0.0.0         255.255.255.0   U     600    0        0 wlp1s0
+```
+
+For example, a request to `1.2.3.4` would be sent to `192.168.8.1` on the `eno1` or `wlp1s0` interface.
+
+!!! Question "What does a Gateway of `0.0.0.0` mean?"
+
+    In a routing table, a gateway of `0.0.0.0` (often shown as `*`) indicates that the destination is **directly connected** to the local network segment.
+
+    - **No Next-Hop Router:** The kernel does not need to forward the packet to an intermediate gateway to reach the destination.
+    - **Direct Delivery:** The system will use **ARP** (Address Resolution Protocol) to find the MAC address of the destination IP directly on the local link and deliver the frame straight to it.
 
 ---
 ## High-Level Routing
 
+This section will cover the three tools that are most commonly seen in Kubernetes. All Kubernetes setups will make some use of `iptables`, but there are many ways that services can be managed. We will also cover `IPVS`
+(which has built-in support in `kube-proxy`), and `eBPF`, which is used by Cilium (a `kube-proxy` alternative).
+
 ### iptables
 
+
+You can list the chains that correspond to a table yourself, with `iptables -L -t <table>`:
+``` bash
+sudo iptables -L -t filter
+
+[sudo: authenticate] Password:
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+```
 
 ### IPVS
 

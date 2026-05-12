@@ -45,6 +45,7 @@ iptables -t nat -A ISTIO_OUTPUT -p tcp -j REDIRECT --to-ports 15001
 # Ensure the OUTPUT chain jumps to our ISTIO_OUTPUT chain
 iptables -t nat -A OUTPUT -p tcp -j ISTIO_OUTPUT
 ```
+
 ---
 ## Where to find rules in a cluster
 
@@ -53,6 +54,7 @@ use `kubectl exec` command:
 ``` bash
 kubectl exec [POD_NAME] -c istio-proxy -- sudo iptables -t nat -L -v
 ```
+
 ---
 ## Where is the actual code?
 
@@ -67,4 +69,4 @@ The industry is moving away from `iptables` for sidecar interception for two maj
 1. **Latency**: Every packet has to traverse the entire Netfilter chain, which gets slower as you add more rules.
 2. **Context Switching**: Moving the packet from the Kernel (Netfilter) to User Space (Envoy) and back is computationally expensive.
 
-**The eBPF Alternative:** Modern Service Meshes (like Cilium or newer Istio versions) use **eBPF** to bypass Netfilter entirely. They **hook directly into the socket level**** to move data from the network card to Envoy much faster.
+**The eBPF Alternative:** Modern Service Meshes (like Cilium or newer Istio versions) use **eBPF** to bypass Netfilter entirely. They **hook directly into the socket level** to move data from the network card to Envoy much faster.

@@ -6,6 +6,7 @@ Network Address Translation (NAT) is a technique used by routers to map multiple
 
 ## 1. What is Network Address Translation(NAT)?
 NAT refers to a IP header manipulation in packets conducted by a router. The source private IP of the outgoing packet is switched to the router's public IP address at the router. In the same manner, the router switches the destination IP address of the incoming packet to the destination host's private IP.
+
 - For outgoing packets, switch source IP from private to pubilc.
 - For incoming packets, switch destination IP from public to private.
 
@@ -17,10 +18,11 @@ There are exactly **2^32** or **4,294,967,296** total IPv4 addresses. If the num
 
 ### Private vs public IP address
 The reality is the number of devices that wants to connect to the internet keeps growing, making the IP address scarce. To overcome the limited supply of IP address, people have decided to divide IP addresses into two types:
+
 - **Private IP address**: assigned to hosts in a Local Area Network(LAN), used to communicate between hosts within the same LAN. Any private IP address in the below blocks is considered **private**:
-  - 10.0.0.0/8 (`10.x.x.x`)
-  - 172.16.0.0/12 (`172.16.x.x`)
-  - 192.168.0.0/16 (`192.168.x.x`)
+    - 10.0.0.0/8 (`10.x.x.x`)
+    - 172.16.0.0/12 (`172.16.x.x`)
+    - 192.168.0.0/16 (`192.168.x.x`)
 - **Public IP address**: assigned to hosts in a Wide Area Network(WAN). Hosts with the public IP is able to communicate in the internet. Any IP address outside of the private IP range is considered **public**.
 
 ### Router - represents local network with public IP
