@@ -341,6 +341,53 @@ This section will cover the three tools that are most commonly seen in Kubernete
 
 ### iptables
 
+`iptables` uses **Netfilter**, which allows `iptables` intercept and mutate packets. Understanding `iptables` is important to understand access and routing for pods and nodes in most clusters.
+
+In `iptables`, these three concepts work together like a hierarchy to manage how your Linux kernel handles network traffic.
+
+- **Chains** are a specific path or **checkpoint** in the network stack where packets must stop. Each table contains several built-in chains that correspond to different stages of a packet's journey.
+- **Tables** are used to group rules based on their purpose. The three most commonly applicable tables are: **Filter** (for accepting/dropping packets), **NAT** (for chaning source or destination IPs/ports), and **Mangle** (for specialized packet mutations).
+- **Rules** are the actual instruction that tells the kernel what to look for and what to do.
+
+#### iptables chains
+
+The built-in, "top-level" chains are `PREROUTING`, `INPUT`, `NAT`, `OUTPUT`, and `POSTROUTING`. These are powered by Netfilter hooks.
+
+| iptables chain | Netfilter hook |
+| :--- | :--- |
+| `PREROUTING` | `NF_IP_PRE_ROUTING` |
+| `INPUT` | `NF_IP_LOCAL_IN` |
+| `NAT` | `NF_IP_FORWARD` |
+| `OUTPUT` | `NF_IP_LOCAL_OUT` |
+| `POSTROUTING` | `NF_IP_POST_ROUTING` |
+
+
+Returning to our diagram of Netfilter hook ordering, we can infer the equivalent diagram of `iptables` chain execution and ordering for a given packet.
+
+![The flows of a packet through iptables chains](../../assets/img/kubernetes/networking/02-linux-networking/iptables-chains.png)
+
+Below table shows some routing scenarios from the perspective of machine with IP address `10.0.0.1`:
+
+| Packet description | Source | Destination | Chains processed |
+| :--- | :--- | :--- | :--- |
+| An inbound packet, from another machine. | `10.0.0.2` | `10.0.0.1` | `PREROUTING`, `INPUT` |
+| An inbound packet, not destined for this machine. | `10.0.0.2` | `10.0.0.3` | `PREROUTING`, `NAT`, `POSTROUTING` |
+| An outbound packet, originating locally, destined for another machine.  | `10.0.0.1` | `10.0.0.2` | `OUTPUT`, `POSTROUTING` |
+| A packet from a local program, destined for the same machine.  | `127.0.0.1` | `127.0.0.1` | `OUTPUT`, `POSTROUTING`, `PREROUTING`, `INPUT` |
+
+#### iptables tables
+
+A table in `iptables` maps to a particular capability set, where each table is responsible for a specific type of action.
+
+| Table | Purpose |
+| :--- | :--- |
+| Filter | handles acceptance and rejection of packets. |
+| NAT | used to modify the source or destination IP addresses. |
+| Mangle | can perform editing of packet headers, but it is not intended for NAT. |
+| Raw | allows for packet mutation before connection tracking. The most common use is to disable connection tracking for some packets. |
+| Security | for packet handling. SELinux only. |
+
+{==`iptables` executes tables in a particular order: Raw, Mangle, NAT, Filter.==}
 
 You can list the chains that correspond to a table yourself, with `iptables -L -t <table>`:
 ``` bash
@@ -356,7 +403,160 @@ target     prot opt source               destination
 Chain OUTPUT (policy ACCEPT)
 ```
 
+The flow of a packet through `iptables` looks like below:
+
+![The flow of a packet through iptables tables and chains](../../assets/img/kubernetes/networking/02-linux-networking/iptables-packet-flow.png)
+
+If we trace the flow of a packet originating from the local host, we see the following table/chains pairs evaluated, in order:
+
+1. `Raw/OUTPUT`
+1. `Mangle/OUTPUT`
+1. `NAT/OUTPUT`
+1. `Filter/OUTPUT`
+1. `Mangle/POSTROUTING`
+1. `NAT/POSTROUTING`
+
+#### Subchains
+
+The aforementioned chains are the top-level, or entry-point, chains. Users can define their own subchains and execute them with the JUMP target. `iptables` is, effectively, running tens or hundreds or thousands of *if* statements against every single packet that goes in or out of your system. `iptables`s performance given a service with many pods is still a problem in Kubernetes, which makes other solutions
+with less or no iptables use, such as IPVS or eBPF, more appealing.
+
+Sample `iptables` chain for SSH firewalling:
+``` bash
+# Create incoming-ssh chain.
+$ iptables -N incoming-ssh
+# Allow packets from specific IPs.
+$ iptables -A incoming-ssh -s 10.0.0.1 -j ACCEPT
+$ iptables -A incoming-ssh -s 10.0.0.2 -j ACCEPT
+# Log the packet.
+$ iptables -A incoming-ssh -j LOG --log-level info --log-prefix "ssh-failure"
+# Drop packets from all other IPs.
+$ iptables -A incoming-ssh -j DROP
+# Evaluate the incoming-ssh chain,
+# if the packet is an inbound TCP packet addressed to port 22.
+$ iptables -A INPUT -p tcp --dport 22 -j incoming-ssh
+```
+
+#### iptables rules
+
+Rules have two parts: a **match condition** and an **action** (called a *target*). Below table shows some common match types:
+
+| Match type | Flags | Description |
+| :--- | :--- | :--- |
+| Source | `-s`, `--src`, `--source` | Matches packets the the specified source address. |
+| Destination | `-d`, `--dest`, `--destination` | Matches packets the the destination address. |
+| Protocol | `-p`, `--protocol` | Matches packets with the specified protocol. |
+| In interface | `-i`, `--in-interface` | Matches packets that entered via the specified interface. |
+| Out interface | `-o`, `--out-interface` | Matches packets that are leaving the specified interface. |
+| State | `--state` <states> | Matches packets from connections that are in one of the comma-separated states. This uses the Conntrack states (`NEW`, `ESTABLISHED`, `RELATED`, `INVALID`). |
+
+There are two kinds of target actions: **terminating** and **nonterminating**. 
+
+- A terminating target will stop iptables from checking subsequent targets in the chain, essentially acting as a final decision.
+    - `ACCEPT`, `DROP`, `REJECT`, and `RETURN`
+    - Note that `ACCEPT` and `RETURN` are terminating only *within their chain*.
+-  A nonterminating target will allow iptables to continue checking subsequent targets in the chain.
+
+Common iptables target types and behavior:
+
+| Target type | Applicable tables | Description |
+| :--- | :--- | :--- |
+| AUDIT | All | Records data about accepted, dropped, or rejected packets. |
+| ACCEPT | Filter | Allows the packet to continue unimpeded and without further modification. |
+| DNAT | NAT | Modifies the destination address. |
+| DROPs | Filter | Discards the packet. To an external observer, it will appear as though the packet was never received. |
+| JUMP | All | Executes another chain. Once that chain finishes executing, execution of the parent chain will continue. |
+| LOG | All | Logs the packet contents, via the kernel log. |
+| MARK | All | Sets a special integer for the packet, used as an identifier by Netfilter. The integer can be used in other `iptables` decisions and is not written to the packet itself. |
+| MASQUERADE | NAT | Modifies the source address of the packet, replacing it with the address of a specified network interface. This is similar to SNAT, but does not require the machine's IP address to be known in advance. |
+| REJECT | Filter | Discards the packet and sends a rejection reason. |
+| RETURN | All | Stops processing the current chain (or subchain). Note that this is not a terminating target, and if there is a parent chain, that chain will continue to be processed. |
+| SNAT | NAT | Modifies the source address of the packet, replacing it with a fixed address. |
+
+
+Each target type may have specific options, such as ports or log strings, that apply to the rule. Below table shows some example commands and explanations.
+
+| Command | Explanation |
+| :--- | :--- |
+| iptables -A INPUT -s 10.0.0.1 | Accepts an inbound packet if the source address is `10.0.0.1`. |
+| iptables -A INPUT -p ICMP | Accepts all inbound ICMP packets. |
+| iptables -A INPUT -p tcp --dport 443 | Accepts all inbound TCP packets to port 443. |
+| iptables -A INPUT -p tcp --dport 22 -j DROP | Drops all inbound TCP ports to port 22. |
+
+#### Practical iptables
+
+You can show current `iptables` chains with `iptables -L`:
+``` bash
+sudo iptables -L
+[sudo: authenticate] Password:
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+```
+
+`--line-numbers` shows numbers for each rule in a chain. This can be helpful when inserting or deleting rules. 
+``` bash
+sudo iptables -L --line-numbers
+[sudo: authenticate] Password:
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination
+
+Chain FORWARD (policy ACCEPT)
+num  target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+```
+
+`-I <chain> <line>` inserts a rule at the specified line number, before the previous rule at that line.
+
+The typical format of a command to interact with `iptables` rules is:
+    `iptables [-t table] {-A|-C|-D} chain rule-specification`
+where `-A` for *append*, `-C` for *check*, and `-D` for *delete*.
+
+
+In Kubernetes, masquerading can make pods use their node's IP address, despite the fact that pods have unique IP addresses. This is necessary to communicate outside the cluster in many setups, where pods have internal IP addresses that cannot communicate directly with the internet.
+
+The MASQUERADE target is similar to SNAT; however, it does not require a `--source-address` to be known and specified in advance. Instead, it uses the address of a specified interface.
+
+``` bash
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+```
+
+`iptables` can perform connection-level load balancing or more accurately, connection fan-out. This technique relies on DNAT rules and random selection (to prevent every connection from being routed to the first DNAT target):
+
+``` bash
+iptables -t nat -A OUTPUT -p tcp --dport 80 -d $FRONT_IP -m statistic \
+--mode random --probability 0.5 -j DNAT --to-destination $BACKEND1_IP:80
+
+iptables -t nat -A OUTPUT -p tcp --dport 80 -d $FRONT_IP \
+-j DNAT --to-destination $BACKEND2_IP:80
+```
+
+In the above example, there is a 50% chance of routing to the first backend. Otherwise, the packet proceeds to the next rule, which is guaranteed to route the connection to the second backend.
+
+``` bash
+Chain KUBE-SVC-I7EAKVFJLYM7WH25 (1 references)
+target prot opt source destination
+KUBE-SEP-LXP5RGXOX6SCIC6C all -- anywhere anywhere
+    statistic mode random probability 0.25000000000
+KUBE-SEP-XRJTEP3YTXUYFBMK all -- anywhere anywhere
+    statistic mode random probability 0.33332999982
+KUBE-SEP-OMZR4HWUSCJLN33U all -- anywhere anywhere
+    statistic mode random probability 0.50000000000
+KUBE-SEP-EELL7LVIDZU4CPY6 all -- anywhere anywhere
+```
+
+When Kubernetes uses `iptables` load balancing for a service, it creates a chain as shown above. 
+
+Although `iptables` is widely used in Linux, it can become slow in the presence of a huge number of rules and offers limited load balancing functionality. Next we'll look at IPVS, an alternative that is more purpose-built for load balancing.
+
+
 ### IPVS
+
 
 
 ### eBPF

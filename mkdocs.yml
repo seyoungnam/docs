@@ -164,25 +164,23 @@ nav:
       - Learn Express JS: web-frameworks/express-js/in-35-mins.md
   - LeetCode:
     - Arrays & hashing:
-      - 937. Reorder Data in Log Files: leetcode/arrays-hashing/937-reorder-data-in-log-files.md
+      - 217. Contains Duplicate: leetcode/arrays-hashing/217-contains-duplicate.md
+      - 242. Valid Anagram: leetcode/arrays-hashing/242-valid-anagram.md
+      - 1. Two Sum: leetcode/arrays-hashing/1-two-sum.md
       - 49. Group Anagrams: leetcode/arrays-hashing/49-group-anagrams.md
-      - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
       - 347. Top K Frequent Elements: leetcode/arrays-hashing/347-top-k-frequent-elements.md
-      # - 347. Top K Frequent Elements: leetcode/arrays-hashing/347-top-k-frequent-elements.md
-      # - 1. Two Sum: leetcode/arrays-hashing/1-two-sum.md
-      # - 217. Contains Duplicate: leetcode/arrays-hashing/217-contains-duplicate.md
-      # - 242. Valid Anagram: leetcode/arrays-hashing/242-valid-anagram.md
-      # - 238. Product of Array Except Self: leetcode/arrays-hashing/238-product-of-array-except-self.md
-      # - 424. Longest Repeating Character Replacement: leetcode/arrays-hashing/424-longest-repeating-character-replacement.md
-      # - 567. Permutation in String: leetcode/arrays-hashing/567-permutation-in-string.md
-      # - 76. Minimum Window Substring: leetcode/arrays-hashing/76-minimum-window-substring.md
-      # - 3. Longest Substring Without Repeating Characters: leetcode/arrays-hashing/3-longest-substring-without-repeating-characters.md
+      - 271. Encode and Decode Strings: leetcode/arrays-hashing/271-encode-and-decode-strings.md
+      - 238. Product of Array Except Self: leetcode/arrays-hashing/238-product-of-array-except-self.md
+      - 937. Reorder Data in Log Files: leetcode/arrays-hashing/937-reorder-data-in-log-files.md
+      - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
     - Two Pointers:
       - 3. Longest Substring Without Repeating Characters: leetcode/two-pointers/3-longest-substring-without-repeating-characters.md
       - 11. Container With Most Water: leetcode/two-pointers/11-container-with-most-water.md
       - 42. Trapping Rain Water: leetcode/two-pointers/42-trapping-rain-water.md
     - Heap:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
+      - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
+      - 253. Meeting Rooms II: leetcode/heap/253-meeting-rooms-ii.md
     - Graphs:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 994. Rotting Oranges: leetcode/graphs/994-rotting-oranges.md

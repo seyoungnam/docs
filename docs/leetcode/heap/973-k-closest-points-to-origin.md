@@ -70,42 +70,40 @@ func kClosest(points [][]int, k int) [][]int {
 
 ``` go
 func kClosest(points [][]int, k int) [][]int {
-    dist := func(p []int) int {
-        return p[0]*p[0] + p[1]*p[1]
-    }
+    quickSelect(points, 0, len(points)-1, k)
+    return points[:k]
+}
 
-    partition := func(l, r int) int {
-        pivotDist := dist(points[r])
-        
-        i := l
-        for j := l; j < r; j++ {
-            if dist(points[j]) <= pivotDist {
-                points[i], points[j] = points[j], points[i]
-                i++
-            }
-        }
-        points[i], points[r] = points[r], points[i]
-        return i
-    }
+func dist(p []int) int {
+    return p[0]*p[0] + p[1]*p[1]
+}
 
-    var quickSelect func(l, r int)
-    quickSelect = func(l, r int) {
-        if l >= r {
-            return
-        }
-        pivotIdx := partition(l, r)
-        
-        if pivotIdx == k {
-            return
-        } else if pivotIdx < k {
-            quickSelect(pivotIdx+1, r)
-        } else {
-            quickSelect(l, pivotIdx-1)
+func partition(points [][]int, l int, r int) int {
+    pivotDist := dist(points[r])
+    i := l
+    for j := l; j < r; j++ {
+        if dist(points[j]) <= pivotDist {
+            points[i], points[j] = points[j], points[i]
+            i++
         }
     }
-    quickSelect(0, len(points)-1)
-    
-    return points[:k]    
+    points[i], points[r] = points[r], points[i]
+    return i
+}
+
+func quickSelect(points [][]int, l int, r int, k int) {
+    if l >= r {
+        return
+    }
+    pivotIdx:= partition(points, l, r)
+    if pivotIdx == k {
+        return
+    } else if pivotIdx < k {
+        quickSelect(points, pivotIdx+1, r, k)
+    } else {
+        quickSelect(points, l, pivotIdx-1, k)
+    }
+    return
 }
 ```
 
