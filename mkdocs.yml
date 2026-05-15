@@ -172,8 +172,13 @@ nav:
       - 271. Encode and Decode Strings: leetcode/arrays-hashing/271-encode-and-decode-strings.md
       - 238. Product of Array Except Self: leetcode/arrays-hashing/238-product-of-array-except-self.md
       - 937. Reorder Data in Log Files: leetcode/arrays-hashing/937-reorder-data-in-log-files.md
+      - 36. Valid Sudoku: leetcode/arrays-hashing/36-valid-sudoku.md
+      - 128. Longest Consecutive Sequence: leetcode/arrays-hashing/128-longest-consecutive-sequence.md
       - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
     - Two Pointers:
+      - 125. Valid Palindrome: leetcode/two-pointers/125-valid-palindrome.md
+      - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted.md
+      - 15. 3Sum: leetcode/two-pointers/15-3sum.md
       - 3. Longest Substring Without Repeating Characters: leetcode/two-pointers/3-longest-substring-without-repeating-characters.md
       - 11. Container With Most Water: leetcode/two-pointers/11-container-with-most-water.md
       - 42. Trapping Rain Water: leetcode/two-pointers/42-trapping-rain-water.md

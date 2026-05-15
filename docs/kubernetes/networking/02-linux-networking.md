@@ -557,10 +557,119 @@ Although `iptables` is widely used in Linux, it can become slow in the presence 
 
 ### IPVS
 
+![IPVS](../../assets/img/kubernetes/networking/02-linux-networking/ipvs.png)
+
+IP Virtual Server (IPVS) is a Linux connection (L4) load balancer. `iptables` can do simple L4 load balancing by randomly routing connections, with the randomness shaped by the weights on individual DNAT rules. IPVS supports multiple load balancing modes, outlined in the below table.
+
+| Name | Shortcode | Description |
+| :--- | :--- | :--- |
+| Round-robin | `rr` | Sends subsequent connections to the "next" host in a cycle. |
+| Least connection | `lc` | Sends connections to the host that currently has the least open connections. |
+| Destination hashing | `dh` | Sends connections deterministically to a specific host, based on the connections' destination addresses. |
+| Source hashing | `sh` | Sends connections deterministically to a specific host, based on the connections' source addresses. |
+| Shortest expected delay | `sed` | Sends connections to the host with the lowest connections to weight ratio. |
+| never queue | `nq` | Sends connections to any host with no existing connections, otherwise uses "shortest expected delay" strategy. |
+
+#### IPVS's three packet forwarding mode
+
+1. **NAT(Network Address Translation)**
+    - **How it works**: When a packet arrives for the Virtual IP (VIP), the Load Balancer changes the **Destination IP** to the private IP of a backend server. On the way back, it changes the **Source IP** back to the VIP.
+    - **The Catch**: All traffic (inbound and outbound) must pass through the Load Balancer. This can become a bottleneck because the Load Balancer has to process every single byte of the response.
+1. **DR(Direct Routing)**
+    - **How it works**: The Load Balancer and the backend servers must be in the **same Layer 2 network** (connected to the same switch). The Load Balancer changes the **Destination MAC address** of the frame to the MAC of the chosen backend server but leaves the **IP address untouched**.
+    - **The Secret**: The backend server is configured to have the VIP address on its own `loopback` interface. It "sees" the packet, realizes it's the intended recipient, and processes it.
+    - **The Benefit**: The backend server sends the response **directly back to the client**, bypassing the Load Balancer. This is much faster for heavy-traffic apps.
+1. **IP tunneling(IPIP)**
+    - **How it works**: The Load Balancer takes the original packet (Client $\to$ VIP) and wraps it inside a new packet (Load Balancer $\to$ Backend Server).
+    - **Why use it?** Unlike DR mode, the servers do not need to be on the same physical switch. They can be in different data centers or subnets across the internet.
+    - **The Result**: The backend server "unwraps" the envelope, sees the original request, and—just like in DR mode—sends the response **directly back to the client**.
+
+| Mode | Technique | Requirement | Response path |
+| :--- | :--- | :--- | :--- |
+| **NAT** | Rewrite IP/PORT | None | Through Load Balancer |
+| **DR** | Rewrite MAC | Same L2 Network | **Direct to Client** |
+| **Tunneling** | Encapsulate IP | Support for IPIP | **Direct to Client** |
+
+#### Issues with `iptables` as a load balancer
+
+- Number of nodes in the cluster
+    - `kube-proxy` with `iptables` is a bottleneck to scal the cluster to 5,000 nodes.
+    - With a `NodePort` service in a 5,000-node cluster, if we have 2,000 services and each service has 10 pods, this will cause at least 20,000 `iptables` records on each worker node, which can make the kernel pretty busy.
+- Time
+    - The time spent to add one rule when there are 5,000 services (40,000 rules) is 11 minutes.
+- Latency
+    - each packet must traverse the `iptables` list until a match is made.
+
+IPVS also supports session affinity, which is exposed as an option in services (`Service.spec.sessionAffinity` and `Service.spec.sessionAffinityConfig`). Repeated connections, within the session affinity time window, will route to the same host.
 
 
 ### eBPF
 
+eBPF is a programming system that allows special sandboxed programs to run in the kernel **without passing back and forth between kernel and user space**, like we saw with Netfilter and `iptables`.
+
+??? Question "What is the example of passing back and forth between kernel and user space?"
+
+    The best example of the "back and forth" problem is the **Envoy Sidecar** redirection. In a standard Netfilter-based Mesh, a single request from a client to your app crosses the boundary **four times**:
+
+    1. **Kernel $\to$ User (Inbound)**: The packet arrives at the NIC (Kernel). Netfilter redirects it to the Envoy Sidecar. The data is copied from the Kernel to **Envoy's memory** (User Space) so Envoy can check the HTTP headers.
+    1. **User $\to$ Kernel (Inbound)**: Envoy finishes its check and sends the data back to the **Socket** (Kernel) to be delivered to your actual Go application.
+    1. **Kernel $\to$ User (Inbound)**: Your **Go Application** (User Space) calls `read()` to finally get the data from the socket.
+    1. **User $\to$ Kernel (Outbound)**: Your App sends a response, which goes back into the **Kernel** to be processed by the network stack.
+
+Before eBPF, there was the Berkeley Packet Filter (BPF). BPF is a technology used in the kernel to analyzie and filter packets, which allows a userspace process to supply a filter that specifies which packets it wants to inspect. One of BPF's use case is `tcpdump`, shown below:
+
+``` bash
+sudo tcpdump -n -i any
+[sudo: authenticate] Password:
+tcpdump: WARNING: any: That device doesn't support promiscuous mode
+(Promiscuous mode not supported on the "any" device)
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes
+01:34:25.707701 eno1  Out IP 192.168.8.104.34562 > 162.159.61.4.443: Flags [P.], seq 298521758:298521814, ack 1958927586, win 1010, options [nop,nop,TS val 4059227541 ecr 312081489], length 56
+01:34:25.707728 eno1  Out IP 192.168.8.104.34562 > 162.159.61.4.443: Flags [P.], seq 56:215, ack 1, win 1010, options [nop,nop,TS val 4059227541 ecr 312081489], length 159
+01:34:25.708027 lo    In  IP 127.0.0.1.39027 > 127.0.0.53.53: 48559+ [1au] A? mozilla.cloudflare-dns.com. (55)
+01:34:25.708049 lo    In  IP 127.0.0.1.39027 > 127.0.0.53.53: 1962+ [1au] AAAA? mozilla.cloudflare-dns.com. (55)
+01:34:25.708303 eno1  Out IP 192.168.8.104.34562 > 162.159.61.4.443: Flags [P.], seq 215:271, ack 1, win 1010, options [nop,nop,TS val 4059227542 ecr 312081489], length 56
+01:34:25.708324 eno1  Out IP 192.168.8.104.34562 > 162.159.61.4.443: Flags [P.], seq 271:430, ack 1, win 1010, options [nop,nop,TS val 4059227542 ecr 312081489], length 159
+01:34:25.708417 eno1  Out IP 192.168.8.104.34562 > 162.159.61.4.443: Flags [P.], seq 430:486, ack 1, win 1010, options [nop,nop,TS val 4059227542 ecr 312081489], length 56
+```
+
+eBPF programs can directly watch and block syscalls, without the usual approach of adding kernel hooks to a userspace program. 
+
+#### eBPF attach points comparison
+
+| Attach Point | Location / Level | Stability | Best Use Case |
+| :--- | :--- | :--- | :--- |
+| **Kprobes** | Kernel (Dynamic) | **Low** (Can break on kernel updates) | Deep debugging of internal kernel functions where no tracepoint exists. |
+| **Uprobes** | User-space (Dynamic) | **Low** (Depends on app binary) | Profiling user-space apps (e.g., tracing a Go function or a SSL library call). |
+| **Tracepoints** | Kernel (Static) | **High** (API-like stability) | Stable observability and performance monitoring of common kernel events. |
+| **perf_events** | Kernel (Sampling) | **High** | CPU profiling and hardware counter monitoring (e.g., ""Where is my CPU spending time?""). |
+| **XDP** | Network Driver (NIC) | **Medium**  | High-performance packet filtering, DDoS protection, and load balancing. |
+
+
+The below diagram shows a simplified rendition of `tcpdump`'s interactions with eBPF:
+
+![eBPF example](../../assets/img/kubernetes/networking/02-linux-networking/ebpf-example.png)
+
+Suppose we run `tcpdump -i any`. The string is compiled by `pcap_compile` into a BPF program. The kernel will then use
+this BPF program to filter all packets that go through all the network devices. It will make this data available to `tcpdump` via a map.
+
+#### eBPF with Kubernetes
+
+There are many reasons to use eBPF with Kubernetes:
+
+- Performance
+    - For every service added to Kubernetes, the list of `iptables` rules that have to be traversed grows exponentially. The
+entire list of rules has to be replaced each time a new rule is added.
+- Tracing
+    - Using BPF, we can gather pod and container-level network statistics.
+- Auditing `kubectl exec` with eBPF
+    - With eBPF, you can attach a program that will record any commands executed in the `kubectl exec` session and pass those commands to a userspace program that logs those events.
+- Security 
+    - Seccomp: Secured computing that restricts what syscalls are allowed.
+    - Falco: Open source container-native runtime security that uses eBPF.
+
+The most common use of eBPF in Kubernetes is Cilium, CNI and service implementation. Cilium replaces `kube-proxy`, which writes `iptables` rules to map a service's IP address to its corresponding pods.
 
 ---
 ## Network Troubleshooting Tools
