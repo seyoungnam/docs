@@ -674,31 +674,380 @@ The most common use of eBPF in Kubernetes is Cilium, CNI and service implementat
 ---
 ## Network Troubleshooting Tools
 
+Cheat sheet of common debugging cases and tools:
+| Case | Tools | 
+| :--- | :--- |
+| Checking connectivity | `traceroute`, `ping`, `telnet`, `netcat` |
+| Port scanning | `nmap` |
+| Checking DNS records | `dig` |
+| Checking HTTP/1 | `cURL`, `telnet`, `netcat` |
+| Checking HTTPS | `OpenSSL`, `cURL` |
+| Checking listening programs | `netstat` |
+
 
 ### Security Warning
 
+Linux file permissions include something called the `setuid bit` that is sometimes used by networking tools. If a file has the setuid bit set, executing said file causes the file to be executed *as the user who owns the file*, rather than the current user. You can
+observe this by looking for an `s` rather than an `x` in the permission readout of a file:
+
+``` bash
+ls -la /etc/passwd
+-rwsr-xr-x 1 root root 2778 Apr 28 22:39 /etc/passwd
+```
+
+This allows programs to expose limited, privileged capabilities (for example, `passwd` uses this ability to allow a user to update their password, without allowing arbitrary writes to the password file). A number of networking tools (`ping`, `nmap`, etc.) may use the setuid bit on some systems to send raw packets, sniff packets, etc. {==If an attacker downloads their own copy of a tool and cannot gain root privileges, they will be able to do less with said tool.==}
+
 ### ping
+
+`ping` is a simple program that sends `ICMP ECHO_REQUEST` packets to networked devices. It is a common, simple way to test network connectivity from one host to another.
+
+!!! Warning "Kubernetes services do not support ICMP."
+
+    ICMP is a layer 4 protocol, like TCP and UDP. Kubernetes services support TCP and UDP, but not ICMP. Use `telnet` or a higher-level tool such as `cURL` to check connectivity to a service.
+
+The basic use of ping is simply `ping <address>`. The address can be an IP address or a domain. 
+
+``` bash
+ ping -c 2 k8s.io
+PING k8s.io (34.107.204.206): 56 data bytes
+64 bytes from 34.107.204.206: icmp_seq=0 ttl=118 time=10.514 ms
+64 bytes from 34.107.204.206: icmp_seq=1 ttl=118 time=15.873 ms
+
+--- k8s.io ping statistics ---
+2 packets transmitted, 2 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 10.514/13.194/15.873/2.679 ms
+```
+
+#### Useful `ping` options
+
+| Option | Description | 
+| :--- | :--- |
+| `-c <count>` | Sends the specified number of packets. Exits after the final packet is received or times out. |
+| `-i <seconds>` | Sets the wait interval between sending packets. Defaults to 1 second. |
+| `-o` | Exit after receiving 1 packet. Equivalent to `-c 1`. |
+| `-S <source address>` | Uses the specified source address for the packet. |
+| `-W <milliseconds>` | Sets the wait interval to receive a packet. If ping receives the packet later than the wait time, it will still count toward the final summary. |
+
 
 ### traceroute
 
+`traceroute` shows the network route taken from one host to another.
+
+#### working principles
+
+- A packet travels over multiple hosts to arrive at the destination host. 
+- Each host that decrements the time-to-live (TTL) value on packets by 1.
+- When a host receives a packet and decrements the TTL to 0, it sends a `TIME_EXCEEDED` packet and discards the original packet.
+- The `TIME_EXCEEDED` response packet contains the source address of the machine where the packet timed out.
+- **By starting with a TTL of 1 and raising the TTL by 1 for each packet, traceroute is able to get a response from each host along the route to the destination address.**
+
+``` bash
+traceroute k8s.io
+traceroute to k8s.io (34.107.204.206), 64 hops max, 40 byte packets
+ 1  console.gl-inet.com (192.168.8.1)  3.457 ms  3.186 ms  4.135 ms
+ 2  192.168.1.1 (192.168.1.1)  5.156 ms  5.931 ms  4.315 ms
+ 3  lo0-100.washdc-vfttp-340.verizon-gni.net (71.163.33.1)  6.487 ms  7.786 ms  8.421 ms
+ 4  ae1340-21.artnvafc-mse01-aa-ie1.verizon-gni.net (100.41.23.70)  6.976 ms  6.683 ms  7.686 ms
+ 5  * * *
+ 6  206.204.107.34.bc.googleusercontent.com (34.107.204.206)  15.203 ms  8.296 ms  8.499 ms
+```
+
+If traceroute receives no response from a given hop before timing out, it prints a `*`. Some hosts may refuse to send a `TIME_EXCEEDED` packet, or a firewall along the way may prevent successful delivery.
+
+#### useful traceroute options
+
+| Option | Syntax | Description | 
+| :--- | :--- | :--- |
+| First TTL | `-f <TTL>`, `-M <TTL>` | Set the starting IP TTL (default value: 1). Setting the TTL to n will cause `traceroute` to not report the first n-1 hosts en route to the destination. |
+| Max TTL | `-m <TTL>` | Set the maximum TTL. |
+| Protocol | `-P <protocol>` | Send packets of the specified protocol (TCP, UDP, ICMP, and sometimes other options). UDP is default. |
+| Source address | `-s <address>` | Specify the source IP address of outgoing packets. |
+| Wait | `-w <seconds>` | Set the time to wait for a probe response. |
+
+
 ### dig
+
+dig is a DNS lookup tool. The general form of a dig command is `dig [options] <domain>`. By default, dig will display the CNAME, A, and AAAA records:
+
+``` bash
+dig kubernetes.io
+
+; <<>> DiG 9.10.6 <<>> kubernetes.io
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51539
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;kubernetes.io.			IN	A
+
+;; ANSWER SECTION:
+kubernetes.io.		3600	IN	A	15.197.167.90
+kubernetes.io.		3600	IN	A	3.33.186.135
+
+;; Query time: 35 msec
+;; SERVER: 192.168.8.1#53(192.168.8.1)
+;; WHEN: Fri May 15 12:11:01 EDT 2026
+;; MSG SIZE  rcvd: 74
+```
+
+To display a particular type of DNS record, run `dig <domain> <type>` (or `dig -t <type> <domain>`).
+
+``` bash
+dig kubernetes.io TXT
+
+; <<>> DiG 9.10.6 <<>> kubernetes.io TXT
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 63024
+;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;kubernetes.io.			IN	TXT
+
+;; ANSWER SECTION:
+kubernetes.io.		3600	IN	TXT	"google-site-verification=qmfDqvHjWJBL78F9saApyW0VFRyymuSMpqMn8gtGmd0"
+kubernetes.io.		3600	IN	TXT	"1password-site-verification=SOZCTQ66DFFXVGPOWOHMVDIBVI"
+kubernetes.io.		3600	IN	TXT	"v=spf1 include:_spf.google.com mail.kubernetes.io ~all"
+kubernetes.io.		3600	IN	TXT	"google-site-verification=oPORCoq9XU6CmaR7G_bV00CLmEz-wLGOL7SXpeEuTt8"
+
+;; Query time: 29 msec
+;; SERVER: 192.168.8.1#53(192.168.8.1)
+;; WHEN: Fri May 15 12:12:15 EDT 2026
+;; MSG SIZE  rcvd: 338
+```
+
+#### useful dig options
+
+| Option | Syntax | Description | 
+| :--- | :--- | :--- |
+| IPv4 | `-4` | Use IPv4 only | 
+| IPv6 | `-6` | Use IPv6 only | 
+| Address | `-b <address>[#<port>]` | Specify the address to make a DNS query to. Port can optionally be included, preceded by #. | 
+| Port | `-p <port>` | Specify the port to query, in case DNS is exposed on a nonstandard port. The default is 53, the DNS standard. | 
+| Domain | `-q <domain>` | The domain name to query. The domain name is usually specified as a positional argument. | 
+| Record Type | `-t <type>` | The DNS record type to query. The record type can alternatively be specified as a positional argument. | 
+
 
 ### telnet
 
+`telnet` is both a network protocol and a tool for using said protocol. `telnet` was once used for remote login, in a manner similar to SSH. 
+
+The basic syntax of telnet is `telnet <address> <port>`. This establishes a connection and provides an interactive command-line interface. To make full use of telnet, you will need to understand how the application protocol that you are using works. 
+
 ### nmap
+
+`nmap` is a port scanner, which allows you to explore and examine services on your network. The general syntax of nmap is `nmap [options] <target>`, where target is a domain, IP address, or IP CIDR.
+
+``` bash
+nmap example.com
+Starting Nmap 7.92 ( https://nmap.org ) at 2026-05-15 12:24 EDT
+Nmap scan report for example.com (172.66.147.243)
+Host is up (0.033s latency).
+Other addresses for example.com (not scanned): 104.20.23.154
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+8443/tcp open  https-alt
+```
+
+#### useful nmap options
+
+| Option | Syntax | Description | 
+| :--- | :--- | :--- |
+| Additional detection | `-A` | Enable OS detection, version detection, and more. | 
+| Decrease verbosity | `-d` | Decrease the command verbosity. Using multiple d's (e.g., `-dd`) increases the effect. | 
+| Increase verbosity | `-v` | Increase the command verbosity. Using multiple v's (e.g., `-vv`) increases the effect. | 
 
 
 ### netstat
 
+`netstat` can display a wide range of information about a machine's network stack and connections:
+
+``` bash
+netstat
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 clicknam-HP-Elite:45542 123.208.120.34.bc:https ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:42656 93.243.107.34.bc.:https ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:39956 hz16gb0.beacondb.:https ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:35032 yuiadrs-in-f95.1e:https ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:37074 MacBookPro.lan:4444     ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:41376 172.64.41.4:https       ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:57492 hz16gb0.beacondb.:https TIME_WAIT
+tcp        0      0 clicknam-HP-Elite:40706 151.101.193.91:https    ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:49046 13.89.179.13:https      ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:45004 151.101.129.91:https    ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:45012 151.101.129.91:https    ESTABLISHED
+tcp        0      0 clicknam-HP-Elite:58918 151.101.1.91:https      ESTABLISHED
+udp        0      0 clicknam-HP-Elit:bootpc console.gl-inet.:bootps ESTABLISHED
+udp        0      0 clicknam-HP-Elit:bootpc console.gl-inet.:bootps ESTABLISHED
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  3      [ ]         STREAM     CONNECTED     41799    /run/systemd/journal/stdout
+unix  3      [ ]         SEQPACKET  CONNECTED     30962
+unix  3      [ ]         STREAM     CONNECTED     29939    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     27502    /run/user/1000/pipewire-0
+unix  3      [ ]         STREAM     CONNECTED     25588
+```
+
+Invoking netstat with no additional arguments will display *all connected sockets* on the machine. We can use the `-a` flag to show all connections or `-l` to show only listening connections:
+
+``` bash
+netstat -l
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 _localdnsproxy:domain   0.0.0.0:*               LISTEN
+tcp        0      0 _localdnsstub:domain    0.0.0.0:*               LISTEN
+tcp        0      0 localhost:ipp           0.0.0.0:*               LISTEN
+tcp6       0      0 ip6-localhost:ipp       [::]:*                  LISTEN
+udp        0      0 _localdnsproxy:domain   0.0.0.0:*
+udp        0      0 _localdnsstub:domain    0.0.0.0:*
+```
+
+A common use of netstat is to check which process is listening on a specific port. To do that, we run `sudo netstat -lp` (`-l` for "listening" and `p` for "program.")
+
+
+#### useful netstat commands
+
+| Option | Syntax | Description | 
+| :--- | :--- | :--- |
+| Show all sockets | `netstat -a` | Shows all sockets, not only open connections. | 
+| Show statistics | `netstat -s` | Shows networking statistics. By default, `netstat` shows stats from all protocols. | 
+| Show listening sockets | `netstat -l` | Shows sockets that are listening. This is an easy way to find running services. | 
+| TCP | `netstat -t` | The `-t` flag shows only TCP data. It can be used with other flags, e.g., `-lt` (show sockets listening with TCP). | 
+| UDP | `netstat -u` | The `-u` flag shows only uDP data. It can be used with other flags, e.g., `-lu` (show sockets listening with UDP). | 
+
 
 ### netcat
 
+`netcat` can connect to a server when invoked as `netcat <address> <port>`. 
+
+On the server side, listen the port `4444`
+``` bash
+nc -l 4444
+```
+
+On the client side, try to connect to the server:
+``` bash
+nc 192.168.8.107 4444
+```
+
+Whatever is typed on the client side will be delieved to the server side.
 
 ### Openssl
 
+The OpenSSL technology powers a substantial chunk of the world's HTTPS connections. `openssl` can do things such as creating
+keys and certificates, signing certificates, and, most relevant to us, testing TLS/SSL connections.
+
+Commands usually take the form `openssl [sub-command] [arguments] [options]`. 
+`openssl s_client -connect` will connect to a server and display detailed information about the server's certificate.
+
+``` bash
+openssl s_client -connect k8s.io:443
+Connecting to 34.107.204.206
+CONNECTED(00000005)
+depth=2 C=US, O=Google Trust Services LLC, CN=GTS Root R1
+verify return:1
+depth=1 C=US, O=Google Trust Services, CN=WR3
+verify return:1
+depth=0 CN=k8s.io
+verify return:1
+---
+Certificate chain
+ 0 s:CN=k8s.io
+   i:C=US, O=Google Trust Services, CN=WR3
+   a:PKEY: RSA, 2048 (bit); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Apr 25 17:58:07 2026 GMT; NotAfter: Jul 24 18:35:04 2026 GMT
+ 1 s:C=US, O=Google Trust Services, CN=WR3
+   i:C=US, O=Google Trust Services LLC, CN=GTS Root R1
+   a:PKEY: RSA, 2048 (bit); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Dec 13 09:00:00 2023 GMT; NotAfter: Feb 20 14:00:00 2029 GMT
+ 2 s:C=US, O=Google Trust Services LLC, CN=GTS Root R1
+   i:C=BE, O=GlobalSign nv-sa, OU=Root CA, CN=GlobalSign Root CA
+   a:PKEY: RSA, 4096 (bit); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Jun 19 00:00:42 2020 GMT; NotAfter: Jan 28 00:00:42 2028 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIJTTCCCDWgAw<REDACTED>
+-----END CERTIFICATE-----
+subject=CN=k8s.io
+issuer=C=US, O=Google Trust Services, CN=WR3
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: rsa_pss_rsae_sha256
+Peer Temp Key: X25519, 253 bits
+---
+SSL handshake has read 5566 bytes and written 1617 bytes
+Verification: OK
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Server public key is 2048 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+```
 
 ### cURL
 
+`cURL` is a data transfer tool that supports multiple protocols, notably HTTP and HTTPS.
+`cURL` commands are of the form `curl [options] <URL>`.
+
+``` bash
+curl example.org
+
+<!doctype html>
+<html>
+<head>
+# Truncated
+<title>Ex
+```
+
+By default, cURL does not follow redirects, such as HTTP 301s or protocol upgrades. The `-L` flag (or `--location`) will enable redirect following:
+
+``` bash
+curl kubernetes.io
+Redirecting to https://kubernetes.io/%
+
+curl -L kubernetes.io
+<!doctype html><html lang=en class=no-js dir=ltr><head class=live-site><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+...
+```
+
+Use the `-X` option to perform a specific HTTP verb; e.g., use `curl -X DELETE foo/bar` to make a `DELETE` request.
+
+You can supply data (for a POST, PUT, etc.) in a few ways:
+
+- URL encoded: `-d "key1=value1&key2=value2"`
+- JSON: `-d '{"key1":"value1", "key2":"value2"}'`
+- As a file in either format: `-d @data.txt`
+
+The -H option adds an explicit header, although basic headers such as `Content-Type` are added automatically:
+
+`-H "Content-Type: application/x-www-form-urlencoded"`
+
+Here are some examples:
+
+``` bash
+curl -d "key1=value1" -X PUT localhost:8080
+
+curl -H "X-App-Auth: xyz" -d "key1=value1&key2=value2" -X POST https://localhost:8080/demo
+```
 
 ---
 ## Conclusion
+
+We focused primarily on concepts that are required to understand Kubernetes' implementation, cluster setup constraints, and debugging Kubernetes-related networking problems (in workloads on Kubernetes, or Kubernetes itself). Next, we will start to look at containers in Linux and how containers interact with the network.

@@ -85,7 +85,8 @@ copyright: Copyright &copy; 2026 Seyoung Nam
 nav:
   - Home: index.md
   - Istio:
-    - Traffic Redirection: istio/envoy-netfilter.md
+    - Snippets:
+      - Traffic Redirection: istio/snippets/envoy-netfilter.md
   - Kubernetes:
     - k8s-in-action:
       - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
@@ -146,10 +147,13 @@ nav:
     - Ubuntu: homelab/ubuntu.md
     - Fedora: homelab/fedora.md
     - Dual Boot: homelab/dual-boot.md
-  - Linux Commands:
-    - Six Commands: linux-commands/01-six-commands.md
-    - Introducing the Shell: linux-commands/02-shell.md
-    - Rerunning Commands: linux-commands/03-rerun-cmd.md
+  - Linux:
+    - Snippets:
+      - Permissions: linux/snippets/permissions.md
+    - Linux Commands:
+      - Six Commands: linux/linux-commands/01-six-commands.md
+      - Introducing the Shell: linux/linux-commands/02-shell.md
+      - Rerunning Commands: linux/linux-commands/03-rerun-cmd.md
   - Network:
     - OSI & TCP/IP: network/01-osi-tcpip.md
     - TCP/IP: network/02-tcpip.md
