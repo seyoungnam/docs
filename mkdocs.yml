@@ -186,6 +186,9 @@ nav:
       - 3. Longest Substring Without Repeating Characters: leetcode/two-pointers/3-longest-substring-without-repeating-characters.md
       - 11. Container With Most Water: leetcode/two-pointers/11-container-with-most-water.md
       - 42. Trapping Rain Water: leetcode/two-pointers/42-trapping-rain-water.md
+    - Sliding Window:
+      - 121. Best Time to Buy and Sell Stock: leetcode/sliding-window/121-best-time-to-buy-and-sell-stock.md
+      - 424. Longest Repeating Character Replacement: leetcode/sliding-window/424-longest-repeating-character-replacement.md
     - Heap:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
