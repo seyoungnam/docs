@@ -46,7 +46,29 @@ management of the IETF. RFCs are published by the Internet Society and the IETF.
 
 ### Application
 
-??? Warning "For the Apple Silicon mac users"
+??? Warning "Installation Guide for the Linux users"
+
+    1. Install Vagrant
+        - Go to [the vagrant install page](https://developer.hashicorp.com/vagrant/install) in the offical hashcorp website
+        - Find the Linux section, choose your Linux distribution, and run the given commands. e.g. For `Ubuntu/Debian`, run the folloing:
+            ``` bash
+            wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+            sudo apt update && sudo apt install vagrant
+            ```
+    2. Install VirtualBox
+        - Visit the [Download VirtualBox for Linux Hosts page](https://www.virtualbox.org/wiki/Linux_Downloads).
+        - Choose the appropriate package to download.
+        - Install the downloaded `virtualbox-*.deb` file.
+    3. Set up the VirtualBox by executing `sudo /sbin/vboxconfig`
+        - **WARNING**: Ensure to **disable Secure Boot** in the BIOS before running the command. Watch [this video](https://www.youtube.com/watch?v=u0EDn47ZP7E) for the instructions.
+    4. Run the `ubuntu/xenial64` box with Vagrant
+        - Go to [the `ubuntu/xenial64` box repo](https://portal.cloud.hashicorp.com/vagrant/discover/ubuntu/xenial64) and follow the instructions on your right pane.
+        - The `vagrant up` command will bring up the virtual machine.
+    5.  Running `vagrant ssh` will get you into the `ubuntu/xenial64` VM.
+
+
+??? Warning "Installation Guide for the Apple Silicon mac users"
 
     [The official instruction to start up the Vagrant host](https://github.com/strongjz/Networking-and-Kubernetes/tree/master/chapter-1) is designed for the `x86` architecture. For the Apple Silicon mac users, please follow the below steps:
 
