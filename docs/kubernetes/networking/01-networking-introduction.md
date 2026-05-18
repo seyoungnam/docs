@@ -64,6 +64,14 @@ management of the IETF. RFCs are published by the Internet Society and the IETF.
         - **WARNING**: Ensure to **disable Secure Boot** in the BIOS before running the command. Watch [this video](https://www.youtube.com/watch?v=u0EDn47ZP7E) for the instructions.
     4. Run the `ubuntu/xenial64` box with Vagrant
         - Go to [the `ubuntu/xenial64` box repo](https://portal.cloud.hashicorp.com/vagrant/discover/ubuntu/xenial64) and follow the instructions on your right pane.
+        - {==WARNING==}: Ensure `config.vm.network "private_network", type: "dhcp"` is included. This step is missed in the official instruction.
+            ``` bash
+            Vagrant.configure("2") do |config|
+              config.vm.box = "ubuntu/xenial64"
+              config.vm.box_version = "20211001.0.5"
+              config.vm.network "private_network", type: "dhcp"
+            end
+            ```
         - The `vagrant up` command will bring up the virtual machine.
     5.  Running `vagrant ssh` will get you into the `ubuntu/xenial64` VM.
 
