@@ -85,3 +85,6 @@ Go to the **Quota request history** on the left pane and wait until the EC2 inst
 ![Quota request history](../../assets/img/eks/gpu-operations/request-history.png)
 
 
+In my case, my request is fulfilled in an hour, with the limit of 8 vCPUs instead of the requested 16.
+
+![Quota request fulfilled](../../assets/img/eks/gpu-operations/fulfilled-8.png)

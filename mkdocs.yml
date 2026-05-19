@@ -139,7 +139,15 @@ nav:
       - Lab Environment: EKS/upgrade/lab-env.md
       - In-place Cluster Upgrades: EKS/upgrade/in-place-upgrades.md
     - GPU Operations:
-      - EC2 Quota Increase Request: EKS/gpu-operations/ec2-quota.md 
+      - 1. EC2 Quota Increase Request: EKS/gpu-operations/ec2-quota.md 
+      - 2. Exploring the Environment: EKS/gpu-operations/exploring-the-environment.md
+      - 3. Optimizing GPU Infra: EKS/gpu-operations/optimizing-gpu-infra.md
+      - 4. Deploying the model using vLLM: EKS/gpu-operations/deploying-vllm.md
+      - 5. Interacting with LLM: EKS/gpu-operations/interacting-llm.md
+      - 6. Setting up observability stack: EKS/gpu-operations/setup-o11y-stack.md
+      - 7. Configuring NVIDIA DCGM Dashboard: EKS/gpu-operations/nvidia-dcgm-dashboard.md
+      - 8. vLLM Model Monitoring: EKS/gpu-operations/vllm-model-monitoring.md
+      - 9. Cleanup: EKS/gpu-operations/cleanup.md
   - Computer Systems:
     - Process vs Thread: computer-systems/process-vs-thread.md
     - Stack vs Heap: computer-systems/stack-vs-heap.md
