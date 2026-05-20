@@ -167,6 +167,7 @@ nav:
     - Snippets:
       - Packet delivery within the network: networking/snippets/packet-delivery-same-network.md
       - Packet delivery across the network: networking/snippets/packet-delivery-across-network.md
+      - Packet delivery across multiple networks: networking/snippets/packet-delivery-multi-networks.md
     - OSI & TCP/IP: networking/01-osi-tcpip.md
     - TCP/IP: networking/02-tcpip.md
     - Routing: networking/03-routing.md
