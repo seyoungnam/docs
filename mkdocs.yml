@@ -163,12 +163,15 @@ nav:
       - Six Commands: linux/linux-commands/01-six-commands.md
       - Introducing the Shell: linux/linux-commands/02-shell.md
       - Rerunning Commands: linux/linux-commands/03-rerun-cmd.md
-  - Network:
-    - OSI & TCP/IP: network/01-osi-tcpip.md
-    - TCP/IP: network/02-tcpip.md
-    - Routing: network/03-routing.md
-    - TCP/IP App: network/04-tcpip-app.md
-    - NAT: network/05-nat.md
+  - Networking:
+    - Snippets:
+      - Packet delivery within the network: networking/snippets/packet-delivery-same-network.md
+      - Packet delivery across the network: networking/snippets/packet-delivery-across-network.md
+    - OSI & TCP/IP: networking/01-osi-tcpip.md
+    - TCP/IP: networking/02-tcpip.md
+    - Routing: networking/03-routing.md
+    - TCP/IP App: networking/04-tcpip-app.md
+    - NAT: networking/05-nat.md
 
   - Golang:
     - slice-vs-array: golang/slice-vs-array.md
@@ -200,6 +203,14 @@ nav:
       - 424. Longest Repeating Character Replacement: leetcode/sliding-window/424-longest-repeating-character-replacement.md
       - 567. Permutation in String: leetcode/sliding-window/567-permutation-in-string.md
       - 76. Minimum Window Substring: leetcode/sliding-window/76-minimum-window-substring.md
+      - 239. Sliding Window Maximum: leetcode/sliding-window/239-sliding-window-maximum.md
+    - Stack:
+      - 20. Valid Parentheses: leetcode/stack/20-valid-parentheses.md
+      - 155. Min Stack: leetcode/stack/155-min-stack.md
+      - 150. Evaluate Reverse Polish Notation: leetcode/stack/150-evaluate-reverse-polish-notation.md
+      - 739. Daily Temperatures: leetcode/stack/739-daily-temperatures.md
+      # - 853. Car Fleet: leetcode/stack/853-car-fleet.md
+      # - 84. Largest Rectangle in Histogram: leetcode/stack/84-largest-rectangle-in-histogram.md
     - Heap:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md

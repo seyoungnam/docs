@@ -1,5 +1,9 @@
 # EC2 Quota Increase Request
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 ## EC2 Instance Type and Quota
 
 The following table shows the maximum number of vCPUs that you can provision for On-Demand Instances by default. Amazon EC2 automatically increases your On-Demand Instance quotas based on your usage. 

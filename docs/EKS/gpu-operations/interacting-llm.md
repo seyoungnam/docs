@@ -1,5 +1,9 @@
 # Interacting with LLM
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 This guide demonstrates how to interact with the Mistral LLM model that we deployed using vLLM in the previous section.
 
 ---

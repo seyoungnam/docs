@@ -1,5 +1,9 @@
 # Configuring NVIDIA DCGM Dashboard
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 In this section, we'll set up GPU monitoring using the NVIDIA DCGM Exporter Dashboard in Grafana. This will help us visualize important GPU metrics for our vLLM workloads.
 
 ---

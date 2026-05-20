@@ -1,5 +1,9 @@
 # Deploying the model using vLLM
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 ---
 ## Why vLLM?
 

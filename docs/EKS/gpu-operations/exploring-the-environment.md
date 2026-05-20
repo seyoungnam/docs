@@ -1,5 +1,9 @@
 # Exploring the environment
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 In this section, we'll explore the base workshop environment that has been pre-provisioned for running generative AI workloads.
 
 ---

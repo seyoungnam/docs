@@ -1,5 +1,9 @@
 # Optimizing GPU Infrastructure for LLM Inference
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 This session will guide you through optimizing GPU infrastructure for high-performance LLM inference with EKS Auto Mode. You'll learn to create GPU NodePools, leverage automatic SOCI acceleration, and validate GPU functionality - creating a cost-effective and scalable foundation for production LLM workloads.
 
 ---

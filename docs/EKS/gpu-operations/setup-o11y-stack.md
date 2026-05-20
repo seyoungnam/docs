@@ -1,5 +1,9 @@
 # Observing LLM Inference workloads
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 In this section, we'll explore the core components of our observability stack designed to monitor LLM inference workloads on Amazon EKS.
 
 ---

@@ -1,5 +1,9 @@
 # vLLM Model Monitoring
 
+!!! Note
+
+    The following contents are the abbreviated version of the [Generative AI on Amazon EKS](https://catalog.workshops.aws/genai-on-eks/en-US) workshop.
+
 In this section, we'll implement monitoring dashboards for vLLM inference workloads running on Amazon EKS.
 
 ---
