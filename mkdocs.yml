@@ -192,10 +192,10 @@ nav:
       - 36. Valid Sudoku: leetcode/arrays-hashing/36-valid-sudoku.md
       - 128. Longest Consecutive Sequence: leetcode/arrays-hashing/128-longest-consecutive-sequence.md
       - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
-      # - 56. Merge Intervals: leetcode/arrays-hashing/56-merge-intervals.md
-      # - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
-      # - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
-      # - 2104. Sum of Subarray Ranges: leetcode/arrays-hashing/2104-sum-of-subarray-ranges.md
+      - 56. Merge Intervals: leetcode/arrays-hashing/56-merge-intervals.md
+      - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
+      - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
+      
     - Two Pointers:
       - 125. Valid Palindrome: leetcode/two-pointers/125-valid-palindrome.md
       - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted.md
@@ -218,6 +218,7 @@ nav:
       - 739. Daily Temperatures: leetcode/stack/739-daily-temperatures.md
       - 853. Car Fleet: leetcode/stack/853-car-fleet.md
       - 84. Largest Rectangle in Histogram: leetcode/stack/84-largest-rectangle-in-histogram.md
+      - 2104. Sum of Subarray Ranges: leetcode/stack/2104-sum-of-subarray-ranges.md
     - Heap:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
@@ -240,16 +241,16 @@ nav:
       - 131. Palindrome Partitioning: leetcode/backtracking/131-palindrome-partitioning.md
       - 17. Letter Combinations of a Phone Number: leetcode/backtracking/17-letter-combinations-of-a-phone-number.md
       - 51. N-Queens: leetcode/backtracking/51-n-queens.md
-#     - Linked List:
-#       - 21. Merge Two Sorted Lists: leetcode/linked-list/21-merge-two-sorted-lists.md
-#       - 138. Copy List with Random Pointer: leetcode/linked-list/138-copy-list-with-random-pointer.md
-#     - Trees:
-#       - 102. Binary Tree Level Order Traversal: leetcode/trees/102-binary-tree-level-order-traversal.md
-#       - 236. Lowest Common Ancestor of a Binary Tree: leetcode/trees/236-lowest-common-ancestor.md
-#       - 543. Diameter of Binary Tree: leetcode/trees/543-diameter-of-binary-tree.md
-#     - Dynamic Programming:
-#       - 322. Coin Change: leetcode/dp/322-coin-change.md
-#       - 139. Word Break: leetcode/dp/139-word-break.md
-#       - 1143. Longest Common Subsequence: leetcode/dp/1143-longest-common-subsequence.md
+    - Linked List:
+      - 21. Merge Two Sorted Lists: leetcode/linked-list/21-merge-two-sorted-lists.md
+      - 138. Copy List with Random Pointer: leetcode/linked-list/138-copy-list-with-random-pointer.md
+    - Trees:
+      - 102. Binary Tree Level Order Traversal: leetcode/trees/102-binary-tree-level-order-traversal.md
+      - 236. Lowest Common Ancestor of a Binary Tree: leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree.md
+      - 543. Diameter of Binary Tree: leetcode/trees/543-diameter-of-binary-tree.md
+    - Dynamic Programming:
+      - 322. Coin Change: leetcode/dp/322-coin-change.md
+      - 139. Word Break: leetcode/dp/139-word-break.md
+      - 1143. Longest Common Subsequence: leetcode/dp/1143-longest-common-subsequence.md
 
 
