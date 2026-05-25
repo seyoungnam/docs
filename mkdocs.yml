@@ -195,22 +195,24 @@ nav:
       - 56. Merge Intervals: leetcode/arrays-hashing/56-merge-intervals.md
       - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
       - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
-      
+      - 14. Longest Common Prefix: leetcode/arrays-hashing/14-longest-common-prefix.md
     - Two Pointers:
       - 125. Valid Palindrome: leetcode/two-pointers/125-valid-palindrome.md
       - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted.md
       - 15. 3Sum: leetcode/two-pointers/15-3sum.md
       - 11. Container With Most Water: leetcode/two-pointers/11-container-with-most-water.md
       - 42. Trapping Rain Water: leetcode/two-pointers/42-trapping-rain-water.md
+      - 18. 4Sum: leetcode/two-pointers/18-4sum.md
+      - 26. Remove Duplicates from Sorted Array: leetcode/two-pointers/26-remove-duplicates.md
     - Sliding Window:
       - 121. Best Time to Buy and Sell Stock: leetcode/sliding-window/121-best-time-to-buy-and-sell-stock.md
-      - 3. Longest Substring Without Repeating Characters: leetcode/two-pointers/3-longest-substring-without-repeating-characters.md
+      - 3. Longest Substring Without Repeating Characters: leetcode/sliding-window/3-longest-substring-without-repeating-characters.md
       - 424. Longest Repeating Character Replacement: leetcode/sliding-window/424-longest-repeating-character-replacement.md
       - 567. Permutation in String: leetcode/sliding-window/567-permutation-in-string.md
       - 76. Minimum Window Substring: leetcode/sliding-window/76-minimum-window-substring.md
       - 239. Sliding Window Maximum: leetcode/sliding-window/239-sliding-window-maximum.md
-      # - 2272. Substring With Largest Variance: leetcode/sliding-window/2272-substring-largest-variance.md
-      # - 1151. Minimum Swaps to Group All 1's Together: leetcode/sliding-window/1151-min-swaps-to-group-1s.md
+      - 2272. Substring With Largest Variance: leetcode/sliding-window/2272-substring-largest-variance.md
+      - 1151. Minimum Swaps to Group All 1's Together: leetcode/sliding-window/1151-min-swaps-to-group-1s.md
     - Stack:
       - 20. Valid Parentheses: leetcode/stack/20-valid-parentheses.md
       - 155. Min Stack: leetcode/stack/155-min-stack.md
@@ -223,13 +225,13 @@ nav:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
       - 253. Meeting Rooms II: leetcode/heap/253-meeting-rooms-ii.md
-      # - 295. Find Median from Data Stream: leetcode/heap/295-find-median-data-stream.md
+      - 295. Find Median from Data Stream: leetcode/heap/295-find-median-data-stream.md
     - Graphs:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 994. Rotring Oranges: leetcode/graphs/994-rotting-oranges.md
       - 127. Word Ladder: leetcode/graphs/127-word-ladder.md
-      # - 210. Course Schedule II: leetcode/graphs/210-course-schedule-ii.md
-      # - 1192. Critical Connections in a Network: leetcode/graphs/1192-critical-connections.md
+      - 210. Course Schedule II: leetcode/graphs/210-course-schedule-ii.md
+      - 1192. Critical Connections in a Network: leetcode/graphs/1192-critical-connections.md
     - Backtracking:
       - 78. Subsets: leetcode/backtracking/78-subsets.md
       - 90. Subsets II: leetcode/backtracking/90-subsets-2.md
@@ -241,16 +243,23 @@ nav:
       - 131. Palindrome Partitioning: leetcode/backtracking/131-palindrome-partitioning.md
       - 17. Letter Combinations of a Phone Number: leetcode/backtracking/17-letter-combinations-of-a-phone-number.md
       - 51. N-Queens: leetcode/backtracking/51-n-queens.md
+    - Binary Search:
+      - 4. Median of Two Sorted Arrays: leetcode/binary-search/4-median-two-sorted-arrays.md
     - Linked List:
       - 21. Merge Two Sorted Lists: leetcode/linked-list/21-merge-two-sorted-lists.md
       - 138. Copy List with Random Pointer: leetcode/linked-list/138-copy-list-with-random-pointer.md
+      - 2. Add Two Numbers: leetcode/linked-list/2-add-two-numbers.md
     - Trees:
       - 102. Binary Tree Level Order Traversal: leetcode/trees/102-binary-tree-level-order-traversal.md
       - 236. Lowest Common Ancestor of a Binary Tree: leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree.md
       - 543. Diameter of Binary Tree: leetcode/trees/543-diameter-of-binary-tree.md
-    - Dynamic Programming:
-      - 322. Coin Change: leetcode/dp/322-coin-change.md
-      - 139. Word Break: leetcode/dp/139-word-break.md
-      - 1143. Longest Common Subsequence: leetcode/dp/1143-longest-common-subsequence.md
+    - 1-D Dynamic Programming:
+      - 322. Coin Change: leetcode/dp-1/322-coin-change.md
+      - 139. Word Break: leetcode/dp-1/139-word-break.md
+      - 1143. Longest Common Subsequence: leetcode/dp-1/1143-longest-common-subsequence.md
+      - 5. Longest Palindromic Substring: leetcode/dp-1/5-longest-palindromic-substring.md
+    - Math:
+      - 9. Palindrome Number: leetcode/math/9-palindrome-number.md
+ 
 
 

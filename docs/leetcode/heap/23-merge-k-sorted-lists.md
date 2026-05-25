@@ -130,9 +130,9 @@ func merge(nodeA, nodeB *ListNode) *ListNode {
 
 ### Code Efficiency
 
-- **Time Complexity**: $O(N \log k)$
-    - $k$ is the number of lists, $N$ is the total number of nodes.
-    - There are $\log k$ merge rounds. In each round, every node is processed at most once, leading to $O(N)$ work per round.
+- **Time Complexity**: $O(n \log k)$
+    - $k$ is the number of lists, $n$ is the total number of nodes.
+    - There are $\log k$ merge rounds. In each round, every node is processed at most once, leading to $O(n)$ work per round.
 - **Space Complexity**: $O(1)$
     - Unlike the previous version, this uses the input slice `lists` for storage. No extra data structures proportional to $k$ or $N$ are used. (Note: The recursion depth is not an issue here as the merge is iterative).
 
