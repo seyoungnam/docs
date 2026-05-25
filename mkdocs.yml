@@ -245,6 +245,7 @@ nav:
       - 51. N-Queens: leetcode/backtracking/51-n-queens.md
     - Binary Search:
       - 4. Median of Two Sorted Arrays: leetcode/binary-search/4-median-two-sorted-arrays.md
+      - 33. Search in Rotated Sorted Array: leetcode/binary-search/33-search-in-rotated-sorted-array.md
     - Linked List:
       - 21. Merge Two Sorted Lists: leetcode/linked-list/21-merge-two-sorted-lists.md
       - 138. Copy List with Random Pointer: leetcode/linked-list/138-copy-list-with-random-pointer.md
