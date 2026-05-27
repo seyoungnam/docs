@@ -8,22 +8,7 @@ Let's explore how the data is transferred from Computer A to Computer B in the s
 
 *Data travels **down** the network layers on Computer A to turn abstract information into physical signals.*
 
-```text
-  [ Application ]  --> Generates raw Data
-         │
-         ▼
-  [ Transport ]    --> Adds TCP Header (Ports)          📦 [TCP Segment]
-         │
-         ▼
-  [  Network  ]    --> Adds IP Header (Logical IPs)     📦 [IP Packet]
-         │
-         ▼
-  [ Data Link ]    --> Adds Ethernet Header (MACs)      📦 [Ethernet Frame]
-         │
-         ▼
-  [ Physical  ]    --> Converts Frame to Electrical Bits ⚡ 10101011...
-
-```
+![Encapsulation](../../assets/img/networking/snippets/encapsulation.svg)
 
 ### Step 1: The Transport Layer (Data $\rightarrow$ Segment)
 
@@ -57,13 +42,7 @@ Let's explore how the data is transferred from Computer A to Computer B in the s
 
 ## Part 2: Transmitting (Across the Network)
 
-```text
-  +--------------+               +-----------------+               +--------------+
-  |  Computer A  |==============>| Hardware Switch |==============>|  Computer B  |
-  | (Sends Bits) |  Copper Cable | (Reads Only MAC)|  Copper Cable | (Reads Bits) |
-  +--------------+               +-----------------+               +--------------+
-
-```
+![Encapsulation](../../assets/img/networking/snippets/transmitting.svg)
 
 ### Step 5: The Physical Network Switch
 
@@ -77,22 +56,7 @@ Let's explore how the data is transferred from Computer A to Computer B in the s
 
 *The signal arrives at Computer B's network card, traveling **up** the layers while stripping away headers.*
 
-```text
-  [ Application ]  <-- Raw Data Delivered to App! 🎉
-         ▲
-         │
-  [ Transport ]    <-- Strips TCP Header (Verifies Port 80)
-         ▲
-         │
-  [  Network  ]    <-- Strips IP Header (Verifies Destination IP)
-         ▲
-         │
-  [ Data Link ]    <-- Strips Ethernet Header (Verifies Destination MAC)
-         ▲
-         │
-  [ Physical  ]    <-- Reassembles Electrical Bits into Frame ⚡ 10101011...
-
-```
+![Decapsulation](../../assets/img/networking/snippets/decapsulation.svg)
 
 ### Step 6: Layer 1 & 2 Verification (Bits $\rightarrow$ Frame)
 
