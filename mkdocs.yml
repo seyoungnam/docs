@@ -252,8 +252,12 @@ nav:
       - 153. Find Minimum in Rotated Sorted Array: leetcode/binary-search/153-find-minimum-in-rotated-sorted-array.md
       - 4. Median of Two Sorted Arrays: leetcode/binary-search/4-median-two-sorted-arrays.md
       - 33. Search in Rotated Sorted Array: leetcode/binary-search/33-search-in-rotated-sorted-array.md
+      - 981. Time Based Key-Value Store: leetcode/binary-search/981-time-based-key-value-store.md
     - Linked List:
+      - 206. Reverse Linked Lists: leetcode/linked-list/206-reverse-linked-list.md
       - 21. Merge Two Sorted Lists: leetcode/linked-list/21-merge-two-sorted-lists.md
+      - 141. Linked List Cycle: leetcode/linked-list/141-linked-list-cycle.md
+      - 143. Reorder List: leetcode/linked-list/143-reorder-list.md
       - 138. Copy List with Random Pointer: leetcode/linked-list/138-copy-list-with-random-pointer.md
       - 2. Add Two Numbers: leetcode/linked-list/2-add-two-numbers.md
     - Trees:
