@@ -166,6 +166,7 @@ nav:
   - Networking:
     - Snippets:
       - Networking Stack: networking/snippets/networking-stack.md
+      - Packet delivery within the host: networking/snippets/packet-delivery-same-host.md
       - Packet delivery within the network: networking/snippets/packet-delivery-same-network.md
       - Packet delivery across the network: networking/snippets/packet-delivery-across-network.md
       - Packet delivery across multiple networks: networking/snippets/packet-delivery-multi-networks.md

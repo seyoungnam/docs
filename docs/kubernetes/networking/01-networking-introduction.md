@@ -471,6 +471,7 @@ IP makes no guarantees about packets' proper arrival. Providing service reliabil
     - **Fragmentation**: If a 4,000-byte packet is split into three smaller fragments by a router, all three fragments will carry the **exact same Identification number**.
     - **Reassembly**: The destination host looks at the Identification field, along with the **Source IP**, **Destination IP**, and **Protocol** fields. If all four match, the host knows these pieces are part of the same "puzzle." It then uses the `Fragment Offset` field to put them back in the correct order.
 - `Flags`: used to control and identify fragmentation behavior for the packet. In modern networking, fragmentation is often avoided to improve performance.
+
     | Bit | Name | Description |
     | :--- | :--- | :--- |
     | Bit 0 | Reserved | Must be zero. |
