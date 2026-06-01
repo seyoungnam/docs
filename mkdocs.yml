@@ -86,7 +86,12 @@ nav:
   - Home: index.md
   - Istio:
     - Snippets:
+      - Control to Data Plane: istio/snippets/istiod-to-envoy-communication.md
+      - xDS Concept: istio/snippets/xds-concept.md
+      - Aggregated Discovery Service: istio/snippets/aggregated-discovery-service.md
+      - Delta xDS: istio/snippets/delta-xds.md
       - Traffic Redirection: istio/snippets/envoy-netfilter.md
+      - Layer 4 Load Balancing: istio/snippets/l4-load-balancing.md
   - Kubernetes:
     - k8s-in-action:
       - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
@@ -170,6 +175,7 @@ nav:
       - Packet delivery within the network: networking/snippets/packet-delivery-same-network.md
       - Packet delivery across the network: networking/snippets/packet-delivery-across-network.md
       - Packet delivery across multiple networks: networking/snippets/packet-delivery-multi-networks.md
+      - Container Bridge Interface: networking/snippets/container-bridge-interface.md
     - OSI & TCP/IP: networking/01-osi-tcpip.md
     - TCP/IP: networking/02-tcpip.md
     - Routing: networking/03-routing.md
