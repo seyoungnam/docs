@@ -1,6 +1,6 @@
 # Delta (Incremental) xDS in Envoy & Istio
 
-At large scale—with thousands of microservices or hundreds of thousands of IoT grid endpoints—distributing configuration updates efficiently becomes a major performance bottleneck. 
+At large scale—with thousands of microservices or hundreds of thousands of IoT edge endpoints—distributing configuration updates efficiently becomes a major performance bottleneck. 
 
 **Delta xDS** (also known as Incremental xDS) is an optimization in the Envoy/Istio control-to-data plane protocol. It shifts Envoy's configuration updates from a "State-of-the-World" model to an **incremental difference (delta) model**, drastically reducing control plane CPU load, proxy memory footprint, and network bandwidth.
 

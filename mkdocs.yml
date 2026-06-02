@@ -91,7 +91,8 @@ nav:
       - Aggregated Discovery Service: istio/snippets/aggregated-discovery-service.md
       - Delta xDS: istio/snippets/delta-xds.md
       - Traffic Redirection: istio/snippets/envoy-netfilter.md
-      - Layer 4 Load Balancing: istio/snippets/l4-load-balancing.md
+      - L4 Load Balancing: istio/snippets/l4-load-balancing.md
+      - L7 Load Balancing: istio/snippets/l7-load-balancing.md
   - Kubernetes:
     - k8s-in-action:
       - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
