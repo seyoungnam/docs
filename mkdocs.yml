@@ -93,6 +93,9 @@ nav:
       - Traffic Redirection: istio/snippets/envoy-netfilter.md
       - L4 Load Balancing: istio/snippets/l4-load-balancing.md
       - L7 Load Balancing: istio/snippets/l7-load-balancing.md
+      - Dest IP Discovery Process: istio/snippets/dst-ip-discovery.md
+      - Request to Pod IP Not Working: istio/snippets/pod-ip-not-working.md
+      - Scraping Metrics using mTLS: istio/snippets/scraping-metrics-using-mtls.md
   - Kubernetes:
     - k8s-in-action:
       - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
@@ -106,6 +109,21 @@ nav:
       - 1. Networking Introduction: kubernetes/networking/01-networking-introduction.md
       - 2. Linux Networking: kubernetes/networking/02-linux-networking.md
       - 3. Container Networking Basics: kubernetes/networking/03-container-networking-basics.md
+  - Networking:
+    - Snippets:
+      - Networking Stack: networking/snippets/networking-stack.md
+      - Packet delivery within the host: networking/snippets/packet-delivery-same-host.md
+      - Packet delivery within the network: networking/snippets/packet-delivery-same-network.md
+      - Packet delivery across the network: networking/snippets/packet-delivery-across-network.md
+      - Packet delivery across multiple networks: networking/snippets/packet-delivery-multi-networks.md
+      - Container Bridge Interface: networking/snippets/container-bridge-interface.md
+    - OSI & TCP/IP: networking/01-osi-tcpip.md
+    - TCP/IP: networking/02-tcpip.md
+    - Routing: networking/03-routing.md
+    - TCP/IP App: networking/04-tcpip-app.md
+    - NAT: networking/05-nat.md
+  - DNS:
+    - SRV record: DNS/srv.md
   - EKS:
     - EKS Provisioning:
       - Provisioning Lab: EKS/EKS Provisioning/01-deploy.md
@@ -173,19 +191,7 @@ nav:
       - Six Commands: linux/linux-commands/01-six-commands.md
       - Introducing the Shell: linux/linux-commands/02-shell.md
       - Rerunning Commands: linux/linux-commands/03-rerun-cmd.md
-  - Networking:
-    - Snippets:
-      - Networking Stack: networking/snippets/networking-stack.md
-      - Packet delivery within the host: networking/snippets/packet-delivery-same-host.md
-      - Packet delivery within the network: networking/snippets/packet-delivery-same-network.md
-      - Packet delivery across the network: networking/snippets/packet-delivery-across-network.md
-      - Packet delivery across multiple networks: networking/snippets/packet-delivery-multi-networks.md
-      - Container Bridge Interface: networking/snippets/container-bridge-interface.md
-    - OSI & TCP/IP: networking/01-osi-tcpip.md
-    - TCP/IP: networking/02-tcpip.md
-    - Routing: networking/03-routing.md
-    - TCP/IP App: networking/04-tcpip-app.md
-    - NAT: networking/05-nat.md
+
 
   - Golang:
     - slice-vs-array: golang/slice-vs-array.md
