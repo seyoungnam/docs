@@ -154,9 +154,13 @@ nav:
       - 7. Configuring NVIDIA DCGM Dashboard: EKS/gpu-operations/nvidia-dcgm-dashboard.md
       - 8. vLLM Model Monitoring: EKS/gpu-operations/vllm-model-monitoring.md
       - 9. Cleanup: EKS/gpu-operations/cleanup.md
-  - Computer Systems:
-    - Process vs Thread: computer-systems/process-vs-thread.md
-    - Stack vs Heap: computer-systems/stack-vs-heap.md
+  - OS Concepts:
+    - Thread: 
+      - Basic Concept: os-concepts/thread/basic-concept.md
+      - Amdahl's Law: os-concepts/thread/amdahls-law.md
+      - User vs Kernel-Level Threads: os-concepts/thread/user-vs-kernel-threads.md
+    - Process vs Thread: os-concepts/process-vs-thread.md
+    - Stack vs Heap: os-concepts/stack-vs-heap.md
   - Homelab:
     - Kubernetes: homelab/kubernetes.md
     - Ubuntu: homelab/ubuntu.md
