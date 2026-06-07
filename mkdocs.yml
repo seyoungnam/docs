@@ -191,8 +191,6 @@ nav:
       - Six Commands: linux/linux-commands/01-six-commands.md
       - Introducing the Shell: linux/linux-commands/02-shell.md
       - Rerunning Commands: linux/linux-commands/03-rerun-cmd.md
-
-
   - Golang:
     - slice-vs-array: golang/slice-vs-array.md
   - Web Frameworks:
@@ -289,6 +287,11 @@ nav:
       - 5. Longest Palindromic Substring: leetcode/dp-1/5-longest-palindromic-substring.md
     - Math:
       - 9. Palindrome Number: leetcode/math/9-palindrome-number.md
+  - System Design:
+    - Metrics Monitoring:
+      - Requirements, Entities, Data Flow, API: system-design/metrics-monitoring/part-1.md
+      - High Level Design: system-design/metrics-monitoring/part-2.md
+      - Deep Dives: system-design/metrics-monitoring/part-3.md
  
 
 
