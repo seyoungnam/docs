@@ -19,6 +19,7 @@ A query like "show me CPU usage for all pods in production over the last 30 days
 
     ### Approach
     Store data at multiple aggregated resolutions:
+
     *   **Raw:** 10s intervals, kept for 2 days.
     *   **1-minute:** Kept for 2 weeks.
     *   **1-hour:** Kept for 90 days.
@@ -34,6 +35,7 @@ A query like "show me CPU usage for all pods in production over the last 30 days
 
     ### Approach
     Add an in-memory cache (Redis) in front of the TSDB:
+
     *   **Query Splitting:** Break queries into two parts: query raw DB for recent data (last 2h) for freshness, and query Redis cache for historical data.
     *   **Precomputation:** Periodically precompute popular dashboard queries and store them in the cache.
     *   **Result Caching:** Cache query results with keys based on `query + time_range`.
@@ -88,6 +90,7 @@ We must isolate and secure two distinct paths:
 
     ### Approach
     Introduce redundancy at each stage:
+
     *   **Ingestion:** Multiple service instances behind a load balancer.
     *   **Buffer:** Replicated Kafka partitions.
     *   **Storage:** Multi-node TSDB cluster.
@@ -118,12 +121,14 @@ We must isolate and secure two distinct paths:
 ### 4. How to Handle Cardinality Explosion
 
 Implement **Cardinality Enforcement** in the Ingestion Service:
+
 1.  **Policy Store (Postgres):** Defines allowed label keys and maximum series limits per metric.
 2.  **Cardinality Tracker (Redis):** Fast in-memory counter tracking unique series counts.
 
 ![Handle Cardinality](../../assets/img/system-design/metrics-monitoring/handle-cardinality.svg)
 
 **Enforcement Flow:**
+
 1.  Metric arrives at the ingestion service.
 2.  Strip disallowed label keys based on the Policy Store.
 3.  Hash the remaining labels to generate a unique Series ID.

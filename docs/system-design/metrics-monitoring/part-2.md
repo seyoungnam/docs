@@ -103,12 +103,14 @@ Dashboard queries require scanning, filtering, and aggregating millions of data 
 
     ### Approach
     Use a Time-Series Database (TSDB) (e.g., VictoriaMetrics, InfluxDB, TimescaleDB):
+
     *   **Append-only Writes:** Uses LSM-tree or append-only storage engines optimized for high write throughput (no random updates).
     *   **Time-based Partitioning:** Automatically chunks data into time-based tables (e.g., hourly/daily). Old data is deleted instantly via `DROP TABLE`, bypassing the MVCC `DELETE` bottleneck.
     *   **Columnar Compression:** Stores data by column. Specialized compression algorithms (Delta-of-Delta for timestamps, Gorilla/XOR for floats) reduce storage by up to 90%.
     *   **Built-in Rollups:** Automatically aggregates raw data (10s) into 1-minute, 1-hour, and 1-day tables, drastically reducing scan sizes for long-range queries.
 
     ### Challenges
+    
     *   **High Cardinality:** Unique label combinations (e.g., dynamic pod names, IP addresses) explode the number of distinct series, degrading memory and query performance.
 
 #### Why a separate Query Service?
@@ -133,6 +135,7 @@ For alert latencies < 1 minute, complex stream processing (Flink/Spark) is unnec
 ### 4. Receive Notifications When Alerts Fire
 
 A **Notification Service** handles alert delivery logic between the evaluator and external channels:
+
 *   **Deduplication:** Filters out redundant alerts; notifications are only sent on state transitions (e.g., *Active* $\rightarrow$ *Resolved*).
 *   **Grouping:** Batches multiple firing alerts within a short window (e.g., 30s) by labels (e.g., `service` or `cluster`) to prevent alert fatigue.
 *   **Silencing & Routing:** Manages maintenance windows and routes alerts to specific teams.
