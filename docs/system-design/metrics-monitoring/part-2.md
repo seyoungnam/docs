@@ -43,6 +43,7 @@ Direct pushing from servers to a central ingestion service is simple but fails u
 
     ### Approach
     Run a lightweight **collector/agent** background process on each of the 500k servers:
+    
     *   Collects metrics locally at high frequency (e.g., 1s).
     *   Buffers and batches metrics locally in memory/disk.
     *   Periodically flushes batched metrics to the ingestion service.

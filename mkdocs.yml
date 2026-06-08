@@ -292,6 +292,8 @@ nav:
       - Requirements, Entities, Data Flow, API: system-design/metrics-monitoring/part-1.md
       - High Level Design: system-design/metrics-monitoring/part-2.md
       - Deep Dives: system-design/metrics-monitoring/part-3.md
+    - Key Technologies:
+      - Kafka: system-design/key-technologies/kafka.md
  
 
 
