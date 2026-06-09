@@ -1,6 +1,6 @@
 # System Design - Metrics Monitoring Part 3
 
-## Deep Dives
+## Deep Dives 1
 
 ### 1. How to Serve Low-Latency Dashboard Queries
 
