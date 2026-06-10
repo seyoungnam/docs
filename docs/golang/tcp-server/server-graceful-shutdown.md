@@ -168,6 +168,6 @@ Throughout this step-by-step tutorial series, we built a modern TCP server in Go
 
 1.  **[Single Connection Server](server-single-conn.md):** Built a basic synchronous TCP server, exposing how a single active stream blocks all subsequent clients in a FIFO queue.
 2.  **[Multiple Connections](server-multi-conn.md):** Introduced goroutines (`go processConnection(...)`) to enable non-blocking concurrency, highlighting the risk of out-of-memory (OOM) crashes under heavy load due to unbounded resource consumption.
-3.  **[Restricted Connections](server-multi-conn-restrict.md):** Applied a counting semaphore via a **buffered channel** to throttle concurrency, demonstrating how to limit memory usage and apply backpressure to the OS TCP backlog.
+3.  **[Restricted Connections](server-multi-conn-restricted.md):** Applied a counting semaphore via a **buffered channel** to throttle concurrency, demonstrating how to limit memory usage and apply backpressure to the OS TCP backlog.
 4.  **[Worker Pool Pattern](server-worker-pool.md):** Pre-spawned a set of worker goroutines and a job queue to minimize goroutine allocation churn and absorb short-term connection spikes.
 5.  **[Graceful Shutdown](server-graceful-shutdown.md):** Coupled Go's context cancellation, channel closing, and `sync.WaitGroup` synchronization to cleanly terminate workers and close active client sessions without abruptly dropping them.

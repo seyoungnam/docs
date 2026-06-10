@@ -193,11 +193,14 @@ nav:
       - Rerunning Commands: linux/linux-commands/03-rerun-cmd.md
   - Golang:
     - slice-vs-array: golang/slice-vs-array.md
-    - TCP Server for A Single Connection: golang/server-single-conn.md
-    - TCP Server for Multi Connections: golang/server-multi-conn.md
-    - TCP Server for Restricted Multi Connections: golang/server-multi-conn-restricted.md
-    - TCP Server with Worker Pool: golang/server-worker-pool.md
-    - TCP Server with Graceful Shutdown: golang/server-graceful-shutdown.md
+    - Ring Buffer: golang/ring-buffer.md
+    - TCP Server:
+      - TCP Server for A Single Connection: golang/tcp-server/server-single-conn.md
+      - TCP Server for Multi Connections: golang/tcp-server/server-multi-conn.md
+      - TCP Server for Restricted Multi Connections: golang/tcp-server/server-multi-conn-restricted.md
+      - TCP Server with Worker Pool: golang/tcp-server/server-worker-pool.md
+      - TCP Server with Graceful Shutdown: golang/tcp-server/server-graceful-shutdown.md
+      - TCP Server with Sharded Ingestion: golang/tcp-server/server-sharded-ingestion.md
   - Web Frameworks:
     - Express.js:
       - Learn Express JS: web-frameworks/express-js/in-35-mins.md
@@ -298,6 +301,7 @@ nav:
       - High Level Design: system-design/metrics-monitoring/part-2.md
       - Deep Dives 1: system-design/metrics-monitoring/part-3.md
       - Deep Dives 2: system-design/metrics-monitoring/part-4.md
+      - Deep Dives 3: system-design/metrics-monitoring/part-5.md
     - Key Technologies:
       - Kafka: system-design/key-technologies/kafka.md
  
