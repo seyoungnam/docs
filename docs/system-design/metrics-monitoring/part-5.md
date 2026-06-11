@@ -49,7 +49,7 @@ To fan out commands efficiently to dozens of local hardware interfaces under low
 
 #### 1. Lightweight Broker-Based Pub/Sub (MQTT)
 * **Low Overhead & QoS Guarantees:** MQTT is designed for constrained networks. We utilize **QoS 1 (At least once)** or **QoS 2 (Exactly once)** delivery flags to guarantee command receipt.
-* **Keep-Alives & LWT:** MQTT’s **Last Will and Testament (LWT)** feature allows the controller to immediately detect if a sub-unit broker client goes offline unexpectedly, triggering a safety state change without waiting for timeouts.
+* **Keep-Alives & LWT:** MQTT's **Last Will and Testament (LWT)** feature allows the controller to immediately detect if a sub-unit broker client goes offline unexpectedly, triggering a safety state change without waiting for timeouts.
 
 #### 2. Brokerless or Embedded Pub/Sub (NATS / NATS JetStream)
 * **Ultra-Low Latency:** NATS provides a sub-millisecond, highly optimized communication fabric. Its tiny footprint is ideal for embedding directly into the edge controller.
@@ -58,6 +58,3 @@ To fan out commands efficiently to dozens of local hardware interfaces under low
 #### 3. Bridge to Hard Real-Time Buses
 * **Protocol Translation:** The pub/sub client running at the hardware interface translates the high-level message payload (e.g., JSON/Protobuf via NATS/MQTT) into industrial hardware frame formats (like **Modbus TCP/RTU**, **CANopen**, or **EtherCAT**) for execution on physical device controllers.
 
----
-
-## Designing a Rate Limiter or Governor for Edge Hardware
