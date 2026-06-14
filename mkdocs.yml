@@ -221,6 +221,7 @@ nav:
       - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
       - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
       - 14. Longest Common Prefix: leetcode/arrays-hashing/14-longest-common-prefix.md
+      - 874. Walking Robot Simulation: leetcode/arrays-hashing/874-walking-robot-simulation.md
     - Two Pointers:
       - 125. Valid Palindrome: leetcode/two-pointers/125-valid-palindrome.md
       - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted.md
@@ -293,8 +294,13 @@ nav:
       - 139. Word Break: leetcode/dp-1/139-word-break.md
       - 1143. Longest Common Subsequence: leetcode/dp-1/1143-longest-common-subsequence.md
       - 5. Longest Palindromic Substring: leetcode/dp-1/5-longest-palindromic-substring.md
+    - 2-D Dynamic Programming:
+      - 221. Maximal Square: leetcode/dp-2/221-maximal-square.md
+      - 1277. Count Square Submatrices with All Ones: leetcode/dp-2/1277-count-square-submatrices-with-all-ones.md
+      - 304. Range Sum Query 2D - Immutable: leetcode/dp-2/304-range-sum-query-2d-immutable.md
     - Math:
       - 9. Palindrome Number: leetcode/math/9-palindrome-number.md
+      - 1041. Robot Bounded In Circle: leetcode/dp-2/1041-robot-bounded-in-circle.md
   - System Design:
     - Metrics Monitoring:
       - Requirements, Entities, Data Flow, API: system-design/metrics-monitoring/part-1.md

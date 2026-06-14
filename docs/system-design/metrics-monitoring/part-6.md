@@ -181,3 +181,17 @@ graph TB
     class Ingest,Cache,Dispatcher internal;
     class GovLoop,Allocator,TB,SW,LB logic;
 ```
+
+### Request Lifecycle & Execution Flow
+
+The following describes the end-to-end request lifecycle and control flow corresponding to the architecture diagram above:
+
+1.  **Grid Dispatch Command (Step 1):** The utility operator or central API sends a dynamic power threshold or dispatch target (e.g., "Export 15 MW") to the site controller.
+2.  **Telemetry Ingestion & State-Tracking (Step 2a & 2b):** Each physical power module continuously publishes its output telemetry (actual power draw, thermal metrics, online status) via a local broker (MQTT/NATS). These messages are routed to a sharded, in-memory cache to maintain a lock-free, concurrent view of the site's state.
+3.  **Governor Engine Reconciliation (Step 3 & 4):** Every 250ms, the control loop wakes up, aggregates the actual load from the cache, and computes the delta against the target threshold.
+4.  **Rate-Limit Guarding (Evaluation):** The governor runs the aggregated target through the rate-limiting algorithms:
+    *   **Token Bucket:** Ensures the request does not violate short-term thermal capacity or inrush tolerances.
+    *   **Leaky Bucket:** Limits the rate of change (ramp-rate) of the output to prevent grid voltage fluctuations.
+    *   **Sliding Window:** Ensures the average power over a 15-minute rolling window will not breach utility billing/contract caps.
+5.  **Priority & Load Allocation (Step 5):** The governor determines the safe aggregated setpoint (e.g., throttled to 10 MW if limits are exceeded) and hands it to the Priority-Based Allocator. The allocator divides the safe total setpoint among active sub-units based on tiered classes (Critical vs. Discretionary) and individual state-of-need scores.
+6.  **Command Dispatch & Actuation (Step 6):** The industrial protocol client translates the allocated setpoints into target register values and writes them to the physical hardware modules (via Modbus TCP or CANopen) for execution.
