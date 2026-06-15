@@ -252,12 +252,17 @@ nav:
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
       - 253. Meeting Rooms II: leetcode/heap/253-meeting-rooms-ii.md
       - 295. Find Median from Data Stream: leetcode/heap/295-find-median-data-stream.md
+      - 743. Network Delay Time: leetcode/heap/743-network-delay-time.md
+      - 1514. Path with Maximum Probability: leetcode/heap/1514-path-with-maximum-probability.md
+      - 787. Cheapest Flights Within K Stops: leetcode/heap/787-cheapest-flights-within-k-stops.md
     - Graphs:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 994. Rotring Oranges: leetcode/graphs/994-rotting-oranges.md
       - 127. Word Ladder: leetcode/graphs/127-word-ladder.md
       - 210. Course Schedule II: leetcode/graphs/210-course-schedule-ii.md
       - 1192. Critical Connections in a Network: leetcode/graphs/1192-critical-connections.md
+      - 864. Shortest Path to Get All Keys: leetcode/graphs/864-shortest-path-to-get-all-keys.md
+      - 1293. Shortest Path in a Grid with Obstacles Elimination: leetcode/graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination.md
     - Backtracking:
       - 78. Subsets: leetcode/backtracking/78-subsets.md
       - 90. Subsets II: leetcode/backtracking/90-subsets-2.md
@@ -300,7 +305,8 @@ nav:
       - 304. Range Sum Query 2D - Immutable: leetcode/dp-2/304-range-sum-query-2d-immutable.md
     - Math:
       - 9. Palindrome Number: leetcode/math/9-palindrome-number.md
-      - 1041. Robot Bounded In Circle: leetcode/dp-2/1041-robot-bounded-in-circle.md
+      - 1041. Robot Bounded In Circle: leetcode/math/1041-robot-bounded-in-circle.md
+      - 2069. Walking Robot Simulation II: leetcode/math/2069-walking-robot-simulation-ii.md
   - System Design:
     - Metrics Monitoring:
       - Requirements, Entities, Data Flow, API: system-design/metrics-monitoring/part-1.md

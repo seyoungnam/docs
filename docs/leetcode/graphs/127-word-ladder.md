@@ -22,7 +22,7 @@
 
 ### Go Code
 
-\`\`\` go
+``` go
 func ladderLength(beginWord string, endWord string, wordList []string) int {
     words := map[string]bool{}
     for _, w := range wordList {
@@ -60,7 +60,7 @@ func ladderLength(beginWord string, endWord string, wordList []string) int {
     }
     return 0
 }
-\`\`\`
+```
 
 ### Code Efficiency
 
