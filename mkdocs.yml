@@ -204,6 +204,20 @@ nav:
   - Web Frameworks:
     - Express.js:
       - Learn Express JS: web-frameworks/express-js/in-35-mins.md
+  - Algorithms:
+    - Graph Theory:
+      - Common Graph Theory Problems: algo/graph/common-problems.md
+      - Dijkstra's Algorithm 1: algo/graph/dijkstra.md
+      - Dijkstra's Algorithm 2: algo/graph/dijkstra-shortest-path.md
+    - Sorting: algo/sorting.md
+    - Divide-and-conquer: algo/divide-and-conquer.md
+    - Dynamic programming: algo/dp.md
+    - Greedy: algo/greedy.md
+    - Recursion: algo/recursion.md
+
+    - A* algorithm: algo/a-star.md
+    - Binary Trees: algo/binary-trees.md
+    - Loop: algo/loop.md
   - LeetCode:
     - Arrays & hashing:
       - 217. Contains Duplicate: leetcode/arrays-hashing/217-contains-duplicate.md
@@ -217,6 +231,7 @@ nav:
       - 36. Valid Sudoku: leetcode/arrays-hashing/36-valid-sudoku.md
       - 128. Longest Consecutive Sequence: leetcode/arrays-hashing/128-longest-consecutive-sequence.md
       - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
+      - 460. LFU Cache: leetcode/arrays-hashing/460-lfu-cache.md
       - 56. Merge Intervals: leetcode/arrays-hashing/56-merge-intervals.md
       - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
       - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
@@ -255,6 +270,7 @@ nav:
       - 743. Network Delay Time: leetcode/heap/743-network-delay-time.md
       - 1514. Path with Maximum Probability: leetcode/heap/1514-path-with-maximum-probability.md
       - 787. Cheapest Flights Within K Stops: leetcode/heap/787-cheapest-flights-within-k-stops.md
+      - 1631. Path With Minimum Effort: leetcode/heap/1621-path-with-minimum-effort.md
     - Graphs:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 994. Rotring Oranges: leetcode/graphs/994-rotting-oranges.md
