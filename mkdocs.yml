@@ -271,6 +271,8 @@ nav:
       - 1514. Path with Maximum Probability: leetcode/heap/1514-path-with-maximum-probability.md
       - 787. Cheapest Flights Within K Stops: leetcode/heap/787-cheapest-flights-within-k-stops.md
       - 1631. Path With Minimum Effort: leetcode/heap/1621-path-with-minimum-effort.md
+      - 1167. Minimum Cost to Connect Sticks: leetcode/heap/1167-minimum-cost-to-connect-sticks.md
+      - 480. Sliding Window Median: leetcode/heap/480-sliding-window-median.md
     - Graphs:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 994. Rotring Oranges: leetcode/graphs/994-rotting-oranges.md
