@@ -262,6 +262,8 @@ nav:
       - 853. Car Fleet: leetcode/stack/853-car-fleet.md
       - 84. Largest Rectangle in Histogram: leetcode/stack/84-largest-rectangle-in-histogram.md
       - 2104. Sum of Subarray Ranges: leetcode/stack/2104-sum-of-subarray-ranges.md
+      - 341. Flatten Nested List Iterator: leetcode/stack/341-flatten-nested-list-iterator.md
+      - 227. Basic Calculator II: leetcode/stack/227-basic-calculator-ii.md
     - Heap:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
@@ -273,6 +275,7 @@ nav:
       - 1631. Path With Minimum Effort: leetcode/heap/1621-path-with-minimum-effort.md
       - 1167. Minimum Cost to Connect Sticks: leetcode/heap/1167-minimum-cost-to-connect-sticks.md
       - 480. Sliding Window Median: leetcode/heap/480-sliding-window-median.md
+      - 703. Kth Largest Element in a Stream: leetcode/heap/703-kth-largest-element-in-a-stream.md
     - Graphs:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 994. Rotring Oranges: leetcode/graphs/994-rotting-oranges.md
@@ -325,6 +328,7 @@ nav:
       - 9. Palindrome Number: leetcode/math/9-palindrome-number.md
       - 1041. Robot Bounded In Circle: leetcode/math/1041-robot-bounded-in-circle.md
       - 2069. Walking Robot Simulation II: leetcode/math/2069-walking-robot-simulation-ii.md
+      - 843. Guess the Word: leetcode/math/843-guess-the-word.md
   - System Design:
     - Metrics Monitoring:
       - Requirements, Entities, Data Flow, API: system-design/metrics-monitoring/part-1.md
