@@ -237,6 +237,10 @@ nav:
       - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
       - 14. Longest Common Prefix: leetcode/arrays-hashing/14-longest-common-prefix.md
       - 874. Walking Robot Simulation: leetcode/arrays-hashing/874-walking-robot-simulation.md
+      - 348. Design Tic-Tac-Toe: leetcode/arrays-hashing/348-design-tic-tac-toe.md
+      - 622. Design Circular Queue: leetcode/arrays-hashing/622-design-circular-queue.md
+      - 41. First Missing Positive: leetcode/arrays-hashing/41-first-missing-positive.md
+      - 48. Rotate Image: leetcode/arrays-hashing/48-rotate-image.md
     - Two Pointers:
       - 125. Valid Palindrome: leetcode/two-pointers/125-valid-palindrome.md
       - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted.md
@@ -245,6 +249,8 @@ nav:
       - 42. Trapping Rain Water: leetcode/two-pointers/42-trapping-rain-water.md
       - 18. 4Sum: leetcode/two-pointers/18-4sum.md
       - 26. Remove Duplicates from Sorted Array: leetcode/two-pointers/26-remove-duplicates.md
+      - 202. Happy Number: leetcode/two-pointers/202-happy-number.md
+      - 392. Is Subsequence: leetcode/two-pointers/392-is-subsequence.md
     - Sliding Window:
       - 121. Best Time to Buy and Sell Stock: leetcode/sliding-window/121-best-time-to-buy-and-sell-stock.md
       - 3. Longest Substring Without Repeating Characters: leetcode/sliding-window/3-longest-substring-without-repeating-characters.md
@@ -263,7 +269,7 @@ nav:
       - 84. Largest Rectangle in Histogram: leetcode/stack/84-largest-rectangle-in-histogram.md
       - 2104. Sum of Subarray Ranges: leetcode/stack/2104-sum-of-subarray-ranges.md
       - 341. Flatten Nested List Iterator: leetcode/stack/341-flatten-nested-list-iterator.md
-      - 227. Basic Calculator II: leetcode/stack/227-basic-calculator-ii.md
+      - 227. Basic Calculator II: leetcode/stackloc/227-basic-calculator-ii.md
     - Heap:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
@@ -276,14 +282,22 @@ nav:
       - 1167. Minimum Cost to Connect Sticks: leetcode/heap/1167-minimum-cost-to-connect-sticks.md
       - 480. Sliding Window Median: leetcode/heap/480-sliding-window-median.md
       - 703. Kth Largest Element in a Stream: leetcode/heap/703-kth-largest-element-in-a-stream.md
+    - Greedy:
+      - 767. Reorganize String: leetcode/greedy/767-reorganize-string.md
     - Graphs:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
-      - 994. Rotring Oranges: leetcode/graphs/994-rotting-oranges.md
+      - 994. Rotting Oranges: leetcode/graphs/994-rotting-oranges.md
       - 127. Word Ladder: leetcode/graphs/127-word-ladder.md
+      - 126. Word Ladder II: leetcode/graphs/126-word-ladder-ii.md
+      - 207. Course Schedule: leetcode/graphs/207-course-schedule.md
       - 210. Course Schedule II: leetcode/graphs/210-course-schedule-ii.md
+      - 2115. Find All Possible Recipes from Given Supplies: leetcode/graphs/2115-find-all-possible-recipes-from-given-supplies.md
+      - 909. Snakes and Ladders: leetcode/graphs/909-snakes-and-ladders.md
       - 1192. Critical Connections in a Network: leetcode/graphs/1192-critical-connections.md
       - 864. Shortest Path to Get All Keys: leetcode/graphs/864-shortest-path-to-get-all-keys.md
       - 1293. Shortest Path in a Grid with Obstacles Elimination: leetcode/graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination.md
+      - 934. Shortest Bridge: leetcode/graphs/934-shortest-bridge.md
+      - 399. Evaluate Division: leetcode/graphs/399-evaluate-division.md
     - Backtracking:
       - 78. Subsets: leetcode/backtracking/78-subsets.md
       - 90. Subsets II: leetcode/backtracking/90-subsets-2.md
@@ -311,6 +325,7 @@ nav:
       - 143. Reorder List: leetcode/linked-list/143-reorder-list.md
       - 138. Copy List with Random Pointer: leetcode/linked-list/138-copy-list-with-random-pointer.md
       - 2. Add Two Numbers: leetcode/linked-list/2-add-two-numbers.md
+      - 2502. Design Memory Allocator: leetcode/linked-list/2502-design-memory-allocator.md
     - Trees:
       - 102. Binary Tree Level Order Traversal: leetcode/trees/102-binary-tree-level-order-traversal.md
       - 236. Lowest Common Ancestor of a Binary Tree: leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree.md
@@ -320,6 +335,7 @@ nav:
       - 139. Word Break: leetcode/dp-1/139-word-break.md
       - 1143. Longest Common Subsequence: leetcode/dp-1/1143-longest-common-subsequence.md
       - 5. Longest Palindromic Substring: leetcode/dp-1/5-longest-palindromic-substring.md
+      - 53. Maximum Subarray: leetcode/dp-1/53-maximum-subarray.md
     - 2-D Dynamic Programming:
       - 221. Maximal Square: leetcode/dp-2/221-maximal-square.md
       - 1277. Count Square Submatrices with All Ones: leetcode/dp-2/1277-count-square-submatrices-with-all-ones.md
@@ -329,6 +345,12 @@ nav:
       - 1041. Robot Bounded In Circle: leetcode/math/1041-robot-bounded-in-circle.md
       - 2069. Walking Robot Simulation II: leetcode/math/2069-walking-robot-simulation-ii.md
       - 843. Guess the Word: leetcode/math/843-guess-the-word.md
+      - 1758. Minimum Changes To Make Alternating Binary String: leetcode/math/1758-minimum-changes-to-make-alternating-binary-string.md
+      - 223. Rectangle Area: leetcode/math/223-rectangle-area.md
+    - Concurrency/Design:
+      - 1117. Building H2O: leetcode/concurrency/1117-building-h2o.md
+      - 1603. Design Parking System: leetcode/concurrency/1603-design-parking-system.md
+      - 359. Logger Rate Limiter: leetcode/concurrency/359-logger-rate-limiter.md
   - System Design:
     - Metrics Monitoring:
       - Requirements, Entities, Data Flow, API: system-design/metrics-monitoring/part-1.md

@@ -9,14 +9,9 @@ An anagram is a word or phrase formed by rearranging the letters of a different 
 ### Thought Process
 
 1.  **Length Check**: If the lengths of strings `s` and `t` are different, they cannot be anagrams. Return `false` immediately.
-2.  **Frequency Counting**: We need to count the occurrences of each character in both strings. 
-    - For lowercase English letters, a fixed-size array of 26 integers (`[26]int`) is more performant than a hash map.
-3.  **One-Pass Update**: Iterate through both strings simultaneously:
-    - Increment the count for the character found in `s`.
-    - Decrement the count for the character found in `t`.
-4.  **Verification**: After the loop, check the frequency array.
-    - If all values are `0`, the characters in `s` and `t` canceled each other out perfectly, meaning they are anagrams.
-    - If any value is non-zero, the strings have different character compositions.
+2.  **Frequency Counting**: We need to count the occurrences of each character in both strings. For lowercase English letters, fixed-size arrays of 26 integers (`[26]int`) are used: `sCounts` for string `s` and `tCounts` for string `t`.
+3.  **One-Pass Counting**: Iterate through both strings simultaneously, incrementing the character counts in their respective frequency arrays.
+4.  **Verification**: Return the direct comparison `sCounts == tCounts`. In Go, fixed-size arrays of the same type and size are comparable using the `==` operator, which performs a direct element-by-element equality check.
 
 ### Go Code
 
@@ -25,19 +20,14 @@ func isAnagram(s string, t string) bool {
     if len(s) != len(t) {
         return false
     }
-    // Fixed-size array for 26 lowercase English letters
-    cnt := [26]int{}
-    for i := range s {
-        cnt[s[i]-'a']++
-        cnt[t[i]-'a']--
-    }
 
-    for _, count := range cnt {
-        if count != 0 {
-            return false
-        }
+    var sCounts, tCounts [26]int
+
+    for i := 0; i < len(s); i++ {
+        sCounts[s[i]-'a']++
+        tCounts[t[i]-'a']++
     }
-    return true
+    return sCounts == tCounts
 }
 ```
 
