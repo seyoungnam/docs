@@ -2,49 +2,59 @@
 
 [:paperclip: LeetCode Problem Description](https://leetcode.com/problems/palindrome-partitioning/description/)
 
-## Solution : Backtracking
+## Solution: Backtracking (DFS Closure)
+
+To find all possible palindrome partitioning schemes for a string `s`, we can explore all partition configurations using recursive depth-first backtracking. We only proceed down a search path if the current prefix substring is a valid palindrome.
 
 ### Thought Process
 
-1.  **Goal**: Partition the string `s` such that every substring in the partition is a palindrome.
-2.  **Backtracking Strategy**: Use a Depth-First Search (DFS) approach to explore all possible partition points.
-    -   **Base Case**: When the start index `i` reaches the end of the string, it means we've successfully partitioned the entire string. Add a copy of the current partition `curr` to the results.
-    -   **Recursive Step**: Iterate through the possible end positions `j` (from `i+1` to `len(s)`).
-        -   Check if the substring `s[i:j]` is a palindrome.
-        -   If it is, "choose" it by adding it to `curr` and recursively call DFS starting from index `j`.
-        -   After the recursive call, "un-choose" the last added substring (backtrack) to explore other possibilities.
-3.  **Palindrome Check**: A helper function `isPalindrome` uses two pointers to verify if a substring is the same forwards and backwards.
+- **Partitioning Decisions**: 
+    *   Starting at index `start`, we try placing a partition divider at every index `end` from `start + 1` up to $n$ (the length of the string).
+- **Recursive Branching**:
+    *   Iterate `end` from `start + 1` to $n$:
+        *   Extract the candidate substring `s[start:end]` and check if it is a palindrome using the helper function `isPalindrome(s, start, end)`.
+        *   If it is a palindrome:
+            1. Append `s[start:end]` to the path slice `curr`.
+            2. Recursively explore the remaining suffix of the string starting at index `end` by calling `dfs(end, curr)`.
+            3. Backtrack: Remove the last added substring from `curr` (`curr = curr[:len(curr)-1]`) to restore state before trying other divider positions.
+- **Base Case**:
+    *   When `start == n`, the entire string has been successfully partitioned into palindrome substrings. We make a deep copy of `curr` and append it to our results slice `res`.
 
 ### Go Code
 
 ``` go
 func partition(s string) [][]string {
-    res := [][]string{}
-    dfs(s, 0, []string{}, &res)
+    res := make([][]string, 0)
+    n := len(s)
+
+    var dfs func(int, []string)
+    dfs = func(start int, curr []string) {
+        if start == n {
+            copied := make([]string, len(curr))
+            copy(copied, curr)
+            res = append(res, copied)
+            return
+        }
+
+        for end := start+1; end <= n; end++ {
+            if isPalindrome(s, start, end) {
+                curr = append(curr, s[start:end])
+                dfs(end, curr)
+                curr = curr[:len(curr)-1]
+            }
+        }
+    }
+
+    dfs(0, []string{})
     return res
 }
 
-func dfs(s string, i int, curr []string, res *[][]string) {
-    if i >= len(s) {
-        *res = append(*res, append([]string{}, curr...))
-        return
-    }
-    for j := i+1; j <= len(s); j++ {
-        if isPalindrome(s, i, j) {
-            curr = append(curr, s[i:j])
-            dfs(s, j, curr, res)
-            curr = curr[:len(curr)-1]
-        }
-    }
-    return
-}
-
-func isPalindrome(s string, i int, j int) bool {
-    for l, r := i, j-1; l < r; l, r = l+1, r-1 {
+func isPalindrome(s string, start int, end int) bool {
+    for l, r := start, end-1; l < r; l, r = l+1, r-1 {
         if s[l] != s[r] {
             return false
         }
-    }
+    } 
     return true
 }
 ```
@@ -52,8 +62,7 @@ func isPalindrome(s string, i int, j int) bool {
 ### Code Efficiency
 
 - **Time Complexity**: $O(N \cdot 2^N)$
-    - There are $2^{N-1}$ possible ways to partition a string of length $N$.
-    - For each partition, we perform palindrome checks and string slicing, which can take $O(N)$.
-- **Space Complexity**: $O(N)$
-    - The recursion stack depth is at most $N$.
-    - This excludes the space required to store the output results.
+    - In the worst case (e.g., a string consisting of all identical characters like `"aaaa"`), there are $2^{N-1}$ possible ways to partition the string. For each partitioning configuration, validating palindromes and extracting substrings takes up to $O(N)$ time.
+- **Space Complexity**:
+    - **With Output**: $O(N \cdot 2^N)$ to store all valid partitioning schemes.
+    - **Auxiliary Space**: $O(N)$ for the recursion stack depth (at most $N$) and the temporary `curr` slice of size at most $N$.

@@ -2,56 +2,60 @@
 
 [:paperclip: LeetCode Problem Description](https://leetcode.com/problems/word-search/description/)
 
-## Solution : Backtracking
+## Solution: Backtracking (DFS Closure)
 
 ### Thought Process
 
-1.  **Iterate through the board**: Start a search from every cell $(r, c)$ in the board.
-2.  **Backtracking (DFS)**:
-    -   **Base Cases**:
-        -   If the coordinates are out of bounds, return `false`.
-        -   If the current cell's character doesn't match the word's character at index `i`, return `false`.
-        -   If `i` is the last index of the word and it matches, return `true`.
-    -   **Mark as visited**: To avoid using the same cell twice in one word, temporarily modify the board value (e.g., to a non-character like `'1'`).
-    -   **Explore Neighbors**: Recursively call DFS for top, bottom, left, and right neighbors with `i + 1`. If any direction returns `true`, the word is found.
-    -   **Backtrack**: After exploring all directions, restore the original character in `board[r][c]` so it can be used for other potential paths starting from different cells.
+1.  **Starting Points Search**: Iterate through every cell $(r, c)$ on the board. We start our DFS search path only if the cell's character matches the first character of the word (`board[r][c] == word[0]`).
+2.  **Backtracking DFS**:
+    *   **Base Cases**:
+        *   If the coordinates $(r, c)$ are out of bounds, return `false`.
+        *   If the character at `board[r][c]` does not match `word[i]`, return `false`.
+        *   If index `i` reaches the last character of the word (`i == n - 1`), we have successfully matched the entire word; return `true`.
+    *   **In-Place Visited Marking**: To prevent revisiting the same cell during the current search path, we temporarily mark `board[r][c]` with a non-alphabetic character, such as `'*'`.
+    *   **Four-Directional Search**: Recursively call DFS on all four adjacent cells (down, up, right, left) with index `i + 1`. If any of these paths return `true`, we propagate the success by returning `true`.
+    *   **Backtrack (Restore State)**: Restore the original character to `board[r][c]` before returning `res`, freeing up the cell for subsequent path configurations starting elsewhere.
 
 ### Go Code
 
 ``` go
 func exist(board [][]byte, word string) bool {
-    ROW, COL := len(board), len(board[0])
-    for r := 0; r < ROW; r++ {
-        for c := 0; c < COL; c++ {
-            if dfs(board, r, c, 0, word) {
-               return true 
+    ROWS, COLS := len(board), len(board[0])
+    n := len(word)
+
+    var dfs func(r int, c int, i int) bool
+    dfs = func(r int, c int, i int) bool {
+        if r < 0 || r >= ROWS || c < 0 || c >= COLS {
+            return false
+        }
+        if word[i] != board[r][c] {
+            return false
+        }
+        if i == n-1 {
+            return true
+        }
+
+        char := board[r][c]
+        board[r][c] = '*'
+        
+        res := dfs(r+1, c, i+1) || 
+               dfs(r-1, c, i+1) ||
+               dfs(r, c+1, i+1) ||
+               dfs(r, c-1, i+1)
+        
+        board[r][c] = char
+        return res
+    }
+    for r := 0; r < ROWS; r++ {
+        for c := 0; c < COLS; c++ {
+            if board[r][c] == word[0] {
+                if dfs(r, c, 0) {
+                    return true
+                }
             }
         }
     }
     return false
-}
-
-func dfs(board [][]byte, r int, c int, i int, word string) bool {
-    if r < 0 || r >= len(board) || c < 0 || c >= len(board[0]) {
-        return false
-    }
-    if board[r][c] != word[i] {
-        return false
-    }
-    if i == len(word)-1 {
-        return true
-    }
-
-    original := board[r][c]
-    board[r][c] = '1'
-
-    res := dfs(board, r+1, c, i+1, word) ||
-           dfs(board, r-1, c, i+1, word) ||
-           dfs(board, r, c+1, i+1, word) ||
-           dfs(board, r, c-1, i+1, word)
-
-    board[r][c] = original
-    return res
 }
 ```
 

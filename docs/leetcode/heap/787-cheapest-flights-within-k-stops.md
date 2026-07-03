@@ -69,12 +69,15 @@ Since this file is placed under the `heap` directory, we can also solve this usi
 ### Thought Process
 
 1.  **State Representation**:
-    *   Since the number of stops matters, we track the state as `State{node, cost, stops}`.
+    *   We track states using the `Info` struct: `Info{node, price, stops}`.
+    *   The `Info` struct is reused for both graph edges (where `stops` is unused/0) and priority queue states (where `price` is the accumulated cost and `stops` is the number of flights/edges taken).
 2.  **Pruning Suboptimal Paths**:
-    *   We maintain an array `minStops` where `minStops[u]` stores the minimum number of stops used to reach node `u` so far.
-    *   If we reach a node `u` with a stop count greater than or equal to `minStops[u]`, we discard the path.
-3.  **Greedy Order**:
-    *   Because the min-heap always pops the state with the minimum accumulated cost first, the first time we pop `dst` from the queue, we are guaranteed to have found the cheapest price within the stop limit.
+    *   We maintain a `minStops` array where `minStops[u]` stores the minimum number of flights used to reach node `u` so far.
+    *   If we pop a state with `stops >= minStops[node]`, we discard it, as we have already found a path to the same node with fewer or equal flights at a cheaper or equal price (since the min-heap pops by minimum price first).
+3.  **Early Stop-Limit Pruning**:
+    *   Before pushing a neighbor state to the min-heap, we check if the new flight count satisfies `nextStops <= k+1` (which restricts the path to at most $k$ intermediate stops).
+4.  **Greedy Order**:
+    *   Since the min-heap always pops the state with the minimum accumulated price first, the first time we pop `dst` from the queue, we are guaranteed to have found the cheapest price within the stop limit.
 
 ### Go Code
 
@@ -84,18 +87,18 @@ import (
     "math"
 )
 
-type flightNode struct {
-    num   int
-    cost  int
-    stops int
+type Info struct {
+    node    int
+    price   int
+    stops   int
 }
 
-type minHeap []flightNode
+type minHeap []Info
 
-func (h minHeap) Len() int           { return len(h) }
-func (h minHeap) Less(i, j int) bool { return h[i].cost < h[j].cost }
-func (h minHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-func (h *minHeap) Push(x interface{}) { *h = append(*h, x.(flightNode)) }
+func (h minHeap) Len() int { return len(h) }
+func (h minHeap) Less(i, j int) bool {return h[i].price < h[j].price }
+func (h minHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
+func (h *minHeap) Push(x interface{}) { *h = append(*h, x.(Info)) }
 func (h *minHeap) Pop() interface{} {
     last := (*h)[len(*h)-1]
     *h = (*h)[:len(*h)-1]
@@ -103,45 +106,39 @@ func (h *minHeap) Pop() interface{} {
 }
 
 func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
-    // Build adjacency list
-    adj := make([][][]int, n)
+    graph := make([][]Info, n)
     for _, f := range flights {
-        u, v, p := f[0], f[1], f[2]
-        adj[u] = append(adj[u], []int{v, p})
+        from, to, price := f[0], f[1], f[2]
+        graph[from] = append(graph[from], Info{to, price, 0})
     }
 
-    // Track minimum stops to prune states with more stops and higher costs
     minStops := make([]int, n)
     for i := range minStops {
         minStops[i] = math.MaxInt32
     }
 
-    q := &minHeap{flightNode{src, 0, 0}}
+    q := &minHeap{Info{src, 0, 0}}
     heap.Init(q)
-
+    
     for q.Len() > 0 {
-        curr := heap.Pop(q).(flightNode)
-        u, cost, stops := curr.num, curr.cost, curr.stops
-
-        if u == dst {
-            return cost
+        curr := heap.Pop(q).(Info)
+        node, price, stops := curr.node, curr.price, curr.stops
+        if node == dst {
+            return price
         }
-
-        if stops > k {
+        if stops >= minStops[node] {
             continue
         }
-
-        if stops >= minStops[u] {
-            continue
-        }
-        minStops[u] = stops
-
-        for _, next := range adj[u] {
-            v, p := next[0], next[1]
-            heap.Push(q, flightNode{v, cost + p, stops + 1})
+        minStops[node] = stops
+        for _, next := range graph[node] {
+            nextNode := next.node
+            nextPrice := price + next.price
+            nextStops := stops + 1
+            if nextStops <= k+1 {
+                heap.Push(q, Info{nextNode, nextPrice, nextStops})
+            } 
         }
     }
-
     return -1
 }
 ```

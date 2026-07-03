@@ -2,46 +2,45 @@
 
 [:paperclip: LeetCode Problem Description](https://leetcode.com/problems/subsets-ii/description/)
 
-## Solution 1: Backtracking
+## Solution 1: Backtracking (DFS Closure)
 
 ### Thought Process
 
-- **Sorting for Duplicate Handling**: Sorting is the first critical step. It groups identical elements together, allowing us to easily identify and skip duplicates.
+- **Sorting for Duplicate Handling**: Sorting `nums` is the first critical step. It groups identical elements together, allowing us to skip duplicates by comparing adjacent values.
 - **Decision Tree with Pruning**: At each element, we make a binary choice:
-    - **Include**: Add the current element to the subset and move to the next index.
-    - **Exclude**: To avoid duplicate subsets, we must skip all subsequent occurrences of that same value before moving to the next unique candidate.
-- **Recursive Pattern**:
-    - The "Include" path is explored first.
-    - After returning from the "Include" branch, we "pop" the element (backtrack) and skip all identical elements to ensure the "Exclude" branch starts with a different value.
-- **Result Accumulation**: Subsets are added to the result list as they are built, starting with the empty subset.
+    - **Include**: Append the current element `nums[i]` to `curr` and recursively call `dfs(i+1, curr)`.
+    - **Exclude / Backtrack**: Remove `nums[i]` from `curr` (backtrack). To avoid generating duplicate subsets, skip all subsequent occurrences of that same value (increment `i` while `nums[i] == nums[i+1]`), and then recursively call `dfs(i+1, curr)`.
+- **Base Case**: When index `i` equals `n` (the length of `nums`), we have made decisions for all elements. We create a deep copy of the `curr` slice and append it to our global result slice `res`.
 
 ### Go Code
 
 ``` go
 func subsetsWithDup(nums []int) [][]int {
-    res := [][]int{{}}
     sort.Ints(nums)
-    dfs(nums, 0, []int{}, &res)
+    n := len(nums)
+    res := make([][]int, 0)
+    
+    var dfs func(i int, curr []int)
+    dfs = func(i int, curr []int) {
+        // base case
+        if i == n {
+            copied := make([]int, len(curr))
+            copy(copied, curr)
+            res = append(res, copied)
+            return
+        }
+        // update state and call next item recursively
+        curr = append(curr, nums[i])
+        dfs(i+1, curr)
+        // backtrack state call next item with different value
+        curr = curr[:len(curr)-1]
+        for i+1 < len(nums) && nums[i] == nums[i+1] {
+            i++
+        }
+        dfs(i+1, curr)
+    }
+    dfs(0, []int{})
     return res
-}
-
-func dfs(nums []int, i int, curr []int, res *[][]int) {
-    if i == len(nums) {
-        return
-    }
-    
-    // Include branch
-    curr = append(curr, nums[i])
-    copied := append([]int{}, curr...)
-    *res = append(*res, copied)
-    dfs(nums, i+1, curr, res)
-    
-    // Backtrack and skip duplicates for Exclude branch
-    curr = curr[:len(curr)-1]
-    for i+1 < len(nums) && nums[i] == nums[i+1] {
-        i++
-    }
-    dfs(nums, i+1, curr, res)
 }
 ```
 

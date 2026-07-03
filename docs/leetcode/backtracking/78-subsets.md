@@ -2,32 +2,40 @@
 
 [:paperclip: LeetCode Problem Description](https://leetcode.com/problems/subsets/description/)
 
-## Solution 1: Backtracking
+## Solution 1: Backtracking (DFS Closure)
 
 ### Thought Process
 
-- **Decision Tree**: Each element in `nums` presents a binary choice: either include it in the current subset or exclude it.
+- **Decision Tree**: Each element in `nums` presents a binary decision: either include it in the current subset or exclude it.
 - **Recursive Branching**:
-    - **Exclude**: Recurse to the next index without adding the current element.
-    - **Include**: Add the current element to the path and recurse to the next index.
-- **Base Case**: When the index reaches the length of `nums`, a complete subset has been formed. A deep copy of the current path is then added to the result.
+    - **Include**: Append the current element `nums[i]` to `curr` and recursively call `dfs(i+1, curr)`.
+    - **Exclude / Backtrack**: Backtrack by removing the last element (`curr = curr[:len(curr)-1]`) and recursively call `dfs(i+1, curr)` to explore paths that exclude `nums[i]`.
+- **Base Case**: When index `i` equals `n` (the length of `nums`), we have processed all elements. We create a deep copy of the `curr` slice and append it to our global result slice `res`.
 
 ### Go Code
 
 ``` go
 func subsets(nums []int) [][]int {
-    return backtrack(nums, []int{}, 0)
-}
-
-func backtrack(nums []int, curr []int, i int) [][]int {
-    if i == len(nums) {
-        copied := make([]int, len(curr))
-        copy(copied, curr)
-        return [][]int{copied}
-    }
+    n := len(nums)
     res := make([][]int, 0)
-    res = append(res, backtrack(nums, curr, i+1)...)
-    res = append(res, backtrack(nums, append(curr, nums[i]), i+1)...)
+    var dfs func(i int, curr []int)
+    dfs = func(i int, curr []int) {
+        // base case
+        if i == n {
+            copied := make([]int, len(curr))
+            copy(copied, curr)
+            res = append(res, copied)
+            return
+        }
+        // update state and call next item recursively
+        curr = append(curr, nums[i])
+        dfs(i+1, curr)
+        // backtrack state and call next item recursively
+        curr = curr[:len(curr)-1]
+        dfs(i+1, curr)
+    } 
+    
+    dfs(0, []int{})
     return res
 }
 ```

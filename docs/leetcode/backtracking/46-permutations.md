@@ -2,41 +2,53 @@
 
 [:paperclip: LeetCode Problem Description](https://leetcode.com/problems/permutations/description/)
 
-## Solution 1: Backtracking
+## Solution 1: Backtracking (DFS Closure with Visited Slice)
 
 ### Thought Process
 
-- **Swapping Strategy**: Instead of using extra space for a `used` array, we can generate permutations by swapping elements within the original `nums` array.
-- **Decision Tree**: {==At each level of the recursion (represented by index `i`), we decide which element should occupy the `i`-th position.==}
+- **Decision Tree**: At each recursive step, we decide which element from `nums` to place next into our current path `curr`.
+- **Visited Slice for Tracking**: To prevent choosing elements that are already part of the current path, we maintain a `used` boolean slice (`[]bool`) of size $n$ to keep track of the chosen elements' indices.
 - **Recursive Branching**:
-    - Iterate from index `j = i` to `len(nums) - 1`.
-    - Swap `nums[i]` with `nums[j]` to place the `j`-th element in the current position.
-    - Recurse to the next position (`i + 1`).
-    - **Backtrack**: Swap `nums[i]` and `nums[j]` back to restore the array's original state for the next iteration of the loop.
-- **Base Case**: When index `i` reaches the end of the array, a complete permutation has been formed. Add a deep copy of the current `nums` to the result.
+    - Iterate through all element indices in `nums`:
+        - If `used[i]` is `true`, skip the element.
+        - Otherwise, include the element:
+            1. Append `nums[i]` to `curr` and mark index `i` as used: `used[i] = true`.
+            2. Explore recursively: `dfs(curr)`.
+            3. Backtrack: Remove the last element (`curr = curr[:len(curr)-1]`) and mark index `i` as unused: `used[i] = false`.
+- **Base Case**: When `len(curr)` equals `len(nums)`, we have built a complete permutation. We create a deep copy of `curr` and append it to our results slice `res`.
 
 ### Go Code
 
 ``` go
 func permute(nums []int) [][]int {
+    n := len(nums)
     res := make([][]int, 0)
-    backtrack(nums, 0, &res)
-    return res
-}
+    used := make([]bool, n)
+    
+    var dfs func([]int)
+    dfs = func(curr []int) {
+        if len(curr) == n {
+            copied := make([]int, n)
+            copy(copied, curr)
+            res = append(res, copied)
+            return
+        }
 
-func backtrack(nums []int, i int, res *[][]int) {
-    if i == len(nums) {
-        copied := make([]int, len(nums))
-        copy(copied, nums)
-        *res = append(*res, copied)
-        return
+        for i := 0; i < n; i++ {
+            if used[i] {
+                continue
+            }
+            
+            curr = append(curr, nums[i])
+            used[i] = true
+            dfs(curr)
+            curr = curr[:len(curr)-1]
+            used[i] = false
+        }
     }
-    for j := i; j < len(nums); j++ {
-        nums[i], nums[j] = nums[j], nums[i]
-        backtrack(nums, i+1, res)
-        nums[i], nums[j] = nums[j], nums[i]
-    }
-    return
+
+    dfs([]int{})
+    return res
 }
 ```
 
