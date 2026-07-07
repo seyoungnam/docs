@@ -2,48 +2,55 @@
 
 [:paperclip: LeetCode Problem Description](https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/)
 
-## Solution : Backtracking
+## Solution: Backtracking (DFS Closure with In-Place Overwriting)
 
 ### Thought Process
 
-1.  **Digit Mapping**: Use an array or map to store the letters associated with each digit (2-9), corresponding to a standard phone keypad.
-2.  **Backtracking (DFS)**:
-    -   **Base Case**: When the current index `i` reaches the length of `digits`, we have built a complete combination. Convert the current byte slice to a string and add it to the result list.
-    -   **Recursive Step**:
-        -   Identify the letters corresponding to the digit at `digits[i]`.
-        -   Iterate through each letter:
-            -   Place the letter into the current position of our combination buffer (`curr[i]`).
-            -   Recursively call DFS for the next digit (`i + 1`).
-3.  **Optimization**: By using a pre-allocated byte slice (`curr`) and overwriting values at each index, we avoid the overhead of repeatedly creating and destroying string objects during the recursion.
+1.  **Digit Mapping**: Use a local array `letters` to map each digit character (indices 2–9) to its corresponding string of characters on a phone keypad.
+2.  **In-Place Buffer Overwriting**:
+    *   Pre-allocate a single byte slice `curr` of size `len(digits)` at the beginning.
+    *   At each recursion index `i`, we directly overwrite `curr[i]` with the candidate characters for the current digit.
+    *   Overwriting values directly in place avoids slice resizing, dynamic appending, or backtrack pop operations.
+3.  **Recursive Decisions**:
+    *   Find the characters corresponding to the current digit `digits[i]`.
+    *   Loop through each mapped character:
+        1. Write the character to the buffer: `curr[i] = char`.
+        2. Explore recursively: `dfs(i+1)`.
+4.  **Base Case**:
+    *   When the index `i` reaches `len(digits)`, the combination buffer `curr` is fully populated. We convert `curr` to a string and append it to our results slice `res`.
+5.  **Empty Input Handling**:
+    *   If `digits` is empty, we return an empty slice immediately to avoid generating a list containing a single empty string `[""]`.
 
 ### Go Code
 
 ``` go
-var letters = []string{
-    "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz",
-}
-
 func letterCombinations(digits string) []string {
-    if len(digits) == 0 {
-        return []string{}
+    letters := []string{
+        "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz",
     }
-    res := []string{}
-    curr := make([]byte, len(digits))
-    dfs(digits, 0, curr, &res)
-    return res
-}
 
-func dfs(digits string, i int, curr []byte, res *[]string) {
-    if i == len(digits) {
-        *res = append(*res, string(curr))
-        return
+    res := make([]string, 0)
+    if len(digits) == 0 {
+        return res
     }
-    chars := letters[digits[i]-'0']
     
-    for j := 0; j < len(chars); j++ {
-        curr[i] = chars[j]
-        dfs(digits, i+1, curr, res)
+    curr := make([]byte, len(digits))
+
+    var dfs func(int)
+    dfs = func(i int) {
+        if i == len(digits) {
+            res = append(res, string(curr))
+            return
+        }
+        idx := digits[i]-'0'
+        for j := 0; j < len(letters[idx]); j++ {
+            char := letters[idx][j]
+            curr[i] = char
+            dfs(i+1)
+        }
     }
+    dfs(0)
+    return res
 }
 ```
 

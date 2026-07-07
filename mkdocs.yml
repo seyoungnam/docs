@@ -247,6 +247,8 @@ nav:
       - 3043. Find the Length of the Longest Common Prefix: leetcode/arrays-hashing/3043-find-the-length-of-the-longest-common-prefix.md
       - 560. Subarray Sum Equals K: leetcode/arrays-hashing/560-subarray-sum-equals-k.md
       - 3121. Count the Number of Special Characters II: leetcode/arrays-hashing/3121-count-the-number-of-special-characters-ii.md
+      - 27. Remove Element: leetcode/arrays-hashing/27-remove-element.md
+      - 1299. Replace Elements with Greatest Element on Right Side: leetcode/arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side.md
     - Two Pointers:
       - 125. Valid Palindrome: leetcode/two-pointers/125-valid-palindrome.md
       - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted.md
@@ -285,6 +287,7 @@ nav:
       - 2104. Sum of Subarray Ranges: leetcode/stack/2104-sum-of-subarray-ranges.md
       - 341. Flatten Nested List Iterator: leetcode/stack/341-flatten-nested-list-iterator.md
       - 227. Basic Calculator II: leetcode/stackloc/227-basic-calculator-ii.md
+      - 682. Baseball Game: leetcode/stack/682-baseball-game.md
     - Heap:
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
       - 23. Merge k Sorted Lists: leetcode/heap/23-merge-k-sorted-lists.md
@@ -333,6 +336,25 @@ nav:
       - 17. Letter Combinations of a Phone Number: leetcode/backtracking/17-letter-combinations-of-a-phone-number.md
       - 51. N-Queens: leetcode/backtracking/51-n-queens.md
       - 1718. Construct the Lexicographically Largest Valid Sequence: leetcode/backtracking/1718-construct-largest-sequence.md
+      - 37. Sudoku Solver: leetcode/backtracking/37-sudoku-solver.md
+      - 282. Expression Add Operators: leetcode/backtracking/282-expression-add-operators.md
+      - 2597. The Number of Beautiful Subsets: leetcode/backtracking/2597-the-number-of-beautiful-subsets.md
+      - 1239. Maximum Length of a Concatenated String with Unique Characters: leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters.md
+      - 60. Permutation Sequence: leetcode/backtracking/60-permutation-sequence.md
+      - 526. Beautiful Arrangement: leetcode/backtracking/526-beautiful-arrangement.md
+      - 1220. Count Vowels Permutation: leetcode/backtracking/1220-count-vowels-permutation.md
+      - 494. Target Sum: leetcode/backtracking/494-target-sum.md
+      - 2305. Fair Distribution of Cookies: leetcode/backtracking/2305-fair-distribution-of-cookies.md
+      - 140. Word Break II: leetcode/backtracking/140-word-break-ii.md
+      - 842. Split Array into Fibonacci Sequence: leetcode/backtracking/842-split-array-into-fibonacci-sequence.md
+      - 639. Decode Ways II: leetcode/backtracking/639-decode-ways-ii.md
+      - 212. Word Search II: leetcode/backtracking/212-word-search-ii.md
+      - 980. Unique Paths III: leetcode/backtracking/980-unique-paths-iii.md
+      - 241. Different Ways to Add Parentheses: leetcode/backtracking/241-different-ways-to-add-parentheses.md
+      - 351. Android Unlock Patterns: leetcode/backtracking/351-android-unlock-patterns.md
+      - 320. Generalized Abbreviation: leetcode/backtracking/320-generalized-abbreviation.md
+      - 401. Binary Watch: leetcode/backtracking/401-binary-watch.md
+      - 357. Count Numbers with Unique Digits: leetcode/backtracking/357-count-numbers-with-unique-digits.md
     - Binary Search:
       - 704. Binary Search: leetcode/binary-search/704-binary-search.md
       - 74. Search a 2D Matrix: leetcode/binary-search/74-search-a-2d-matrix.md
@@ -365,6 +387,7 @@ nav:
       - 53. Maximum Subarray: leetcode/dp-1/53-maximum-subarray.md
       - 55. Jump Game: leetcode/dp-1/55-jump-game.md
       - 416. Partition Equal Subset Sum: leetcode/dp-1/416-partition-equal-subset-sum.md
+      - 377. Combination Sum IV: leetcode/dp-1/377-combination-sum-iv.md
     - 2-D Dynamic Programming:
       - 221. Maximal Square: leetcode/dp-2/221-maximal-square.md
       - 1277. Count Square Submatrices with All Ones: leetcode/dp-2/1277-count-square-submatrices-with-all-ones.md
