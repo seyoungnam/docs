@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://seyoungnam.github.io/docs/dsa/backtracking/overview/">
+        <link rel="canonical" href="https://seyoungnam.github.io/docs/dsa/backtracking/">
       
       
-        <link rel="prev" href="../../../web-frameworks/express-js/in-35-mins/">
+        <link rel="prev" href="../../web-frameworks/express-js/in-35-mins/">
       
       
-        <link rel="next" href="../../../algo/graph/common-problems/">
+        <link rel="next" href="../binarysearch/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Overview - The Engineer's Warehouse</title>
+        <title>Backtracking - The Engineer's Warehouse</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -54,15 +54,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -107,7 +107,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="The Engineer's Warehouse" class="md-header__button md-logo" aria-label="The Engineer's Warehouse" data-md-component="logo">
+    <a href="../.." title="The Engineer's Warehouse" class="md-header__button md-logo" aria-label="The Engineer's Warehouse" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.5 8.9v-.052A2.956 2.956 0 0 0 11.542 5.9a.82.82 0 0 1-.751-.501l-.145-.348A3.5 3.5 0 0 0 7.421 2.9h-.206a3.754 3.754 0 0 0-3.736 4.118l.011.121a.82.82 0 0 1-.619.879A1.81 1.81 0 0 0 1.5 9.773v.14c0 1.097.89 1.987 1.987 1.987H4.5a.75.75 0 0 1 0 1.5H3.487A3.487 3.487 0 0 1 0 9.913v-.14C0 8.449.785 7.274 1.963 6.75A5.253 5.253 0 0 1 7.215 1.4h.206a4.99 4.99 0 0 1 4.586 3.024A4.455 4.455 0 0 1 16 8.848V8.9a.75.75 0 0 1-1.5 0"></path><path d="m8.38 7.67 2.25 2.25a.75.75 0 0 1 0 1.061L8.38 13.23a.749.749 0 1 1-1.06-1.06l1.719-1.72L7.32 8.731A.75.75 0 0 1 8.38 7.67M15 13.45h-3a.75.75 0 0 1 0-1.5h3a.75.75 0 0 1 0 1.5"></path></svg>
@@ -127,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Backtracking
             
           </span>
         </div>
@@ -233,7 +233,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="The Engineer's Warehouse" class="md-nav__button md-logo" aria-label="The Engineer's Warehouse" data-md-component="logo">
+    <a href="../.." title="The Engineer's Warehouse" class="md-nav__button md-logo" aria-label="The Engineer's Warehouse" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.5 8.9v-.052A2.956 2.956 0 0 0 11.542 5.9a.82.82 0 0 1-.751-.501l-.145-.348A3.5 3.5 0 0 0 7.421 2.9h-.206a3.754 3.754 0 0 0-3.736 4.118l.011.121a.82.82 0 0 1-.619.879A1.81 1.81 0 0 0 1.5 9.773v.14c0 1.097.89 1.987 1.987 1.987H4.5a.75.75 0 0 1 0 1.5H3.487A3.487 3.487 0 0 1 0 9.913v-.14C0 8.449.785 7.274 1.963 6.75A5.253 5.253 0 0 1 7.215 1.4h.206a4.99 4.99 0 0 1 4.586 3.024A4.455 4.455 0 0 1 16 8.848V8.9a.75.75 0 0 1-1.5 0"></path><path d="m8.38 7.67 2.25 2.25a.75.75 0 0 1 0 1.061L8.38 13.23a.749.749 0 1 1-1.06-1.06l1.719-1.72L7.32 8.731A.75.75 0 0 1 8.38 7.67M15 13.45h-3a.75.75 0 0 1 0-1.5h3a.75.75 0 0 1 0 1.5"></path></svg>
@@ -251,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -372,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/istiod-to-envoy-communication/" class="md-nav__link">
+      <a href="../../istio/snippets/istiod-to-envoy-communication/" class="md-nav__link">
         
   
   
@@ -400,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/xds-concept/" class="md-nav__link">
+      <a href="../../istio/snippets/xds-concept/" class="md-nav__link">
         
   
   
@@ -428,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/aggregated-discovery-service/" class="md-nav__link">
+      <a href="../../istio/snippets/aggregated-discovery-service/" class="md-nav__link">
         
   
   
@@ -456,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/delta-xds/" class="md-nav__link">
+      <a href="../../istio/snippets/delta-xds/" class="md-nav__link">
         
   
   
@@ -484,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/envoy-netfilter/" class="md-nav__link">
+      <a href="../../istio/snippets/envoy-netfilter/" class="md-nav__link">
         
   
   
@@ -512,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/l4-load-balancing/" class="md-nav__link">
+      <a href="../../istio/snippets/l4-load-balancing/" class="md-nav__link">
         
   
   
@@ -540,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/l7-load-balancing/" class="md-nav__link">
+      <a href="../../istio/snippets/l7-load-balancing/" class="md-nav__link">
         
   
   
@@ -568,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/dst-ip-discovery/" class="md-nav__link">
+      <a href="../../istio/snippets/dst-ip-discovery/" class="md-nav__link">
         
   
   
@@ -596,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/pod-ip-not-working/" class="md-nav__link">
+      <a href="../../istio/snippets/pod-ip-not-working/" class="md-nav__link">
         
   
   
@@ -624,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../istio/snippets/scraping-metrics-using-mtls/" class="md-nav__link">
+      <a href="../../istio/snippets/scraping-metrics-using-mtls/" class="md-nav__link">
         
   
   
@@ -761,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-in-action/01-intro-k8s/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-in-action/01-intro-k8s/" class="md-nav__link">
         
   
   
@@ -789,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-in-action/02-understanding-containers/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-in-action/02-understanding-containers/" class="md-nav__link">
         
   
   
@@ -817,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-in-action/03-deploying-first-app/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-in-action/03-deploying-first-app/" class="md-nav__link">
         
   
   
@@ -845,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-in-action/04-navigating-the-k8s-api/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-in-action/04-navigating-the-k8s-api/" class="md-nav__link">
         
   
   
@@ -873,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-in-action/14-replicaset/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-in-action/14-replicaset/" class="md-nav__link">
         
   
   
@@ -901,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-in-action/15-deployment/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-in-action/15-deployment/" class="md-nav__link">
         
   
   
@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-in-action/16-statefulset/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-in-action/16-statefulset/" class="md-nav__link">
         
   
   
@@ -1012,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/networking/01-networking-introduction/" class="md-nav__link">
+      <a href="../../kubernetes/networking/01-networking-introduction/" class="md-nav__link">
         
   
   
@@ -1040,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/networking/02-linux-networking/" class="md-nav__link">
+      <a href="../../kubernetes/networking/02-linux-networking/" class="md-nav__link">
         
   
   
@@ -1068,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/networking/03-container-networking-basics/" class="md-nav__link">
+      <a href="../../kubernetes/networking/03-container-networking-basics/" class="md-nav__link">
         
   
   
@@ -1205,7 +1205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/snippets/networking-stack/" class="md-nav__link">
+      <a href="../../networking/snippets/networking-stack/" class="md-nav__link">
         
   
   
@@ -1233,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/snippets/packet-delivery-same-host/" class="md-nav__link">
+      <a href="../../networking/snippets/packet-delivery-same-host/" class="md-nav__link">
         
   
   
@@ -1261,7 +1261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/snippets/packet-delivery-same-network/" class="md-nav__link">
+      <a href="../../networking/snippets/packet-delivery-same-network/" class="md-nav__link">
         
   
   
@@ -1289,7 +1289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/snippets/packet-delivery-across-network/" class="md-nav__link">
+      <a href="../../networking/snippets/packet-delivery-across-network/" class="md-nav__link">
         
   
   
@@ -1317,7 +1317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/snippets/packet-delivery-multi-networks/" class="md-nav__link">
+      <a href="../../networking/snippets/packet-delivery-multi-networks/" class="md-nav__link">
         
   
   
@@ -1345,7 +1345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/snippets/container-bridge-interface/" class="md-nav__link">
+      <a href="../../networking/snippets/container-bridge-interface/" class="md-nav__link">
         
   
   
@@ -1381,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/01-osi-tcpip/" class="md-nav__link">
+      <a href="../../networking/01-osi-tcpip/" class="md-nav__link">
         
   
   
@@ -1409,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/02-tcpip/" class="md-nav__link">
+      <a href="../../networking/02-tcpip/" class="md-nav__link">
         
   
   
@@ -1437,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/03-routing/" class="md-nav__link">
+      <a href="../../networking/03-routing/" class="md-nav__link">
         
   
   
@@ -1465,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/04-tcpip-app/" class="md-nav__link">
+      <a href="../../networking/04-tcpip-app/" class="md-nav__link">
         
   
   
@@ -1493,7 +1493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/05-nat/" class="md-nav__link">
+      <a href="../../networking/05-nat/" class="md-nav__link">
         
   
   
@@ -1575,7 +1575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../DNS/srv/" class="md-nav__link">
+      <a href="../../DNS/srv/" class="md-nav__link">
         
   
   
@@ -1704,7 +1704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/EKS%20Provisioning/01-deploy/" class="md-nav__link">
+      <a href="../../EKS/EKS%20Provisioning/01-deploy/" class="md-nav__link">
         
   
   
@@ -1787,7 +1787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Networking/02-networking/" class="md-nav__link">
+      <a href="../../EKS/Networking/02-networking/" class="md-nav__link">
         
   
   
@@ -1815,7 +1815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Networking/03-networking-lab/" class="md-nav__link">
+      <a href="../../EKS/Networking/03-networking-lab/" class="md-nav__link">
         
   
   
@@ -1843,7 +1843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Networking/04-networking-lab-2/" class="md-nav__link">
+      <a href="../../EKS/Networking/04-networking-lab-2/" class="md-nav__link">
         
   
   
@@ -1871,7 +1871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Networking/05-networking-lab-3/" class="md-nav__link">
+      <a href="../../EKS/Networking/05-networking-lab-3/" class="md-nav__link">
         
   
   
@@ -1954,7 +1954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Scaling/06-scaling/" class="md-nav__link">
+      <a href="../../EKS/Scaling/06-scaling/" class="md-nav__link">
         
   
   
@@ -1982,7 +1982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Scaling/07-scaling-2/" class="md-nav__link">
+      <a href="../../EKS/Scaling/07-scaling-2/" class="md-nav__link">
         
   
   
@@ -2010,7 +2010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Scaling/08-scaling-3/" class="md-nav__link">
+      <a href="../../EKS/Scaling/08-scaling-3/" class="md-nav__link">
         
   
   
@@ -2038,7 +2038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Scaling/09-scaling-4/" class="md-nav__link">
+      <a href="../../EKS/Scaling/09-scaling-4/" class="md-nav__link">
         
   
   
@@ -2121,7 +2121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Auth/10-auth/" class="md-nav__link">
+      <a href="../../EKS/Auth/10-auth/" class="md-nav__link">
         
   
   
@@ -2149,7 +2149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Auth/11-auth-2/" class="md-nav__link">
+      <a href="../../EKS/Auth/11-auth-2/" class="md-nav__link">
         
   
   
@@ -2177,7 +2177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Auth/12-auth-3/" class="md-nav__link">
+      <a href="../../EKS/Auth/12-auth-3/" class="md-nav__link">
         
   
   
@@ -2260,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/overview/" class="md-nav__link">
+      <a href="../../EKS/Debugging/overview/" class="md-nav__link">
         
   
   
@@ -2288,7 +2288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/control-plane/" class="md-nav__link">
+      <a href="../../EKS/Debugging/control-plane/" class="md-nav__link">
         
   
   
@@ -2316,7 +2316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/node/" class="md-nav__link">
+      <a href="../../EKS/Debugging/node/" class="md-nav__link">
         
   
   
@@ -2344,7 +2344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/pod/" class="md-nav__link">
+      <a href="../../EKS/Debugging/pod/" class="md-nav__link">
         
   
   
@@ -2372,7 +2372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/health-check/" class="md-nav__link">
+      <a href="../../EKS/Debugging/health-check/" class="md-nav__link">
         
   
   
@@ -2400,7 +2400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/networking/" class="md-nav__link">
+      <a href="../../EKS/Debugging/networking/" class="md-nav__link">
         
   
   
@@ -2428,7 +2428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/storage/" class="md-nav__link">
+      <a href="../../EKS/Debugging/storage/" class="md-nav__link">
         
   
   
@@ -2456,7 +2456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/gpu/" class="md-nav__link">
+      <a href="../../EKS/Debugging/gpu/" class="md-nav__link">
         
   
   
@@ -2484,7 +2484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/auto-mode/" class="md-nav__link">
+      <a href="../../EKS/Debugging/auto-mode/" class="md-nav__link">
         
   
   
@@ -2512,7 +2512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/Debugging/observability/" class="md-nav__link">
+      <a href="../../EKS/Debugging/observability/" class="md-nav__link">
         
   
   
@@ -2595,7 +2595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cicd/gitops/" class="md-nav__link">
+      <a href="../../EKS/cicd/gitops/" class="md-nav__link">
         
   
   
@@ -2623,7 +2623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cicd/lab-env/" class="md-nav__link">
+      <a href="../../EKS/cicd/lab-env/" class="md-nav__link">
         
   
   
@@ -2651,7 +2651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cicd/lab1-infra-arch/" class="md-nav__link">
+      <a href="../../EKS/cicd/lab1-infra-arch/" class="md-nav__link">
         
   
   
@@ -2679,7 +2679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cicd/lab2-saas-tier/" class="md-nav__link">
+      <a href="../../EKS/cicd/lab2-saas-tier/" class="md-nav__link">
         
   
   
@@ -2707,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cicd/lab3-tenant-auto-onboard/" class="md-nav__link">
+      <a href="../../EKS/cicd/lab3-tenant-auto-onboard/" class="md-nav__link">
         
   
   
@@ -2790,7 +2790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/upgrade/overview/" class="md-nav__link">
+      <a href="../../EKS/upgrade/overview/" class="md-nav__link">
         
   
   
@@ -2818,7 +2818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/upgrade/lab-env/" class="md-nav__link">
+      <a href="../../EKS/upgrade/lab-env/" class="md-nav__link">
         
   
   
@@ -2846,7 +2846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/upgrade/in-place-upgrades/" class="md-nav__link">
+      <a href="../../EKS/upgrade/in-place-upgrades/" class="md-nav__link">
         
   
   
@@ -2929,7 +2929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/ec2-quota/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/ec2-quota/" class="md-nav__link">
         
   
   
@@ -2957,7 +2957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/exploring-the-environment/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/exploring-the-environment/" class="md-nav__link">
         
   
   
@@ -2985,7 +2985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/optimizing-gpu-infra/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/optimizing-gpu-infra/" class="md-nav__link">
         
   
   
@@ -3013,7 +3013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/deploying-vllm/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/deploying-vllm/" class="md-nav__link">
         
   
   
@@ -3041,7 +3041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/interacting-llm/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/interacting-llm/" class="md-nav__link">
         
   
   
@@ -3069,7 +3069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/setup-o11y-stack/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/setup-o11y-stack/" class="md-nav__link">
         
   
   
@@ -3097,7 +3097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/nvidia-dcgm-dashboard/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/nvidia-dcgm-dashboard/" class="md-nav__link">
         
   
   
@@ -3125,7 +3125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/vllm-model-monitoring/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/vllm-model-monitoring/" class="md-nav__link">
         
   
   
@@ -3153,7 +3153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/gpu-operations/cleanup/" class="md-nav__link">
+      <a href="../../EKS/gpu-operations/cleanup/" class="md-nav__link">
         
   
   
@@ -3290,7 +3290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../os-concepts/thread/basic-concept/" class="md-nav__link">
+      <a href="../../os-concepts/thread/basic-concept/" class="md-nav__link">
         
   
   
@@ -3318,7 +3318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../os-concepts/thread/amdahls-law/" class="md-nav__link">
+      <a href="../../os-concepts/thread/amdahls-law/" class="md-nav__link">
         
   
   
@@ -3346,7 +3346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../os-concepts/thread/user-vs-kernel-threads/" class="md-nav__link">
+      <a href="../../os-concepts/thread/user-vs-kernel-threads/" class="md-nav__link">
         
   
   
@@ -3382,7 +3382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../os-concepts/process-vs-thread.md" class="md-nav__link">
+      <a href="../../os-concepts/process-vs-thread.md" class="md-nav__link">
         
   
   
@@ -3410,7 +3410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../os-concepts/stack-vs-heap/" class="md-nav__link">
+      <a href="../../os-concepts/stack-vs-heap/" class="md-nav__link">
         
   
   
@@ -3492,7 +3492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../homelab/kubernetes/" class="md-nav__link">
+      <a href="../../homelab/kubernetes/" class="md-nav__link">
         
   
   
@@ -3520,7 +3520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../homelab/ubuntu/" class="md-nav__link">
+      <a href="../../homelab/ubuntu/" class="md-nav__link">
         
   
   
@@ -3548,7 +3548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../homelab/fedora/" class="md-nav__link">
+      <a href="../../homelab/fedora/" class="md-nav__link">
         
   
   
@@ -3576,7 +3576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../homelab/dual-boot/" class="md-nav__link">
+      <a href="../../homelab/dual-boot/" class="md-nav__link">
         
   
   
@@ -3705,7 +3705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/snippets/permissions/" class="md-nav__link">
+      <a href="../../linux/snippets/permissions/" class="md-nav__link">
         
   
   
@@ -3788,7 +3788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/linux-commands/01-six-commands/" class="md-nav__link">
+      <a href="../../linux/linux-commands/01-six-commands/" class="md-nav__link">
         
   
   
@@ -3816,7 +3816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/linux-commands/02-shell/" class="md-nav__link">
+      <a href="../../linux/linux-commands/02-shell/" class="md-nav__link">
         
   
   
@@ -3844,7 +3844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/linux-commands/03-rerun-cmd/" class="md-nav__link">
+      <a href="../../linux/linux-commands/03-rerun-cmd/" class="md-nav__link">
         
   
   
@@ -3934,7 +3934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/slice-vs-array/" class="md-nav__link">
+      <a href="../../golang/slice-vs-array/" class="md-nav__link">
         
   
   
@@ -3962,7 +3962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/ring-buffer/" class="md-nav__link">
+      <a href="../../golang/ring-buffer/" class="md-nav__link">
         
   
   
@@ -4037,7 +4037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/tcp-server/server-single-conn/" class="md-nav__link">
+      <a href="../../golang/tcp-server/server-single-conn/" class="md-nav__link">
         
   
   
@@ -4065,7 +4065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/tcp-server/server-multi-conn/" class="md-nav__link">
+      <a href="../../golang/tcp-server/server-multi-conn/" class="md-nav__link">
         
   
   
@@ -4093,7 +4093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/tcp-server/server-multi-conn-restricted/" class="md-nav__link">
+      <a href="../../golang/tcp-server/server-multi-conn-restricted/" class="md-nav__link">
         
   
   
@@ -4121,7 +4121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/tcp-server/server-worker-pool/" class="md-nav__link">
+      <a href="../../golang/tcp-server/server-worker-pool/" class="md-nav__link">
         
   
   
@@ -4149,7 +4149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/tcp-server/server-graceful-shutdown/" class="md-nav__link">
+      <a href="../../golang/tcp-server/server-graceful-shutdown/" class="md-nav__link">
         
   
   
@@ -4177,7 +4177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../golang/tcp-server/server-sharded-ingestion/" class="md-nav__link">
+      <a href="../../golang/tcp-server/server-sharded-ingestion/" class="md-nav__link">
         
   
   
@@ -4314,7 +4314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../web-frameworks/express-js/in-35-mins/" class="md-nav__link">
+      <a href="../../web-frameworks/express-js/in-35-mins/" class="md-nav__link">
         
   
   
@@ -4407,55 +4407,6 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_1" checked="">
-        
-          
-          <label class="md-nav__link" for="__nav_12_1" id="__nav_12_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Backtracking
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Backtracking
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-    
-  
-  
-  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -4471,7 +4422,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Backtracking
   
 
     
@@ -4489,7 +4440,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Backtracking
   
 
     
@@ -4560,10 +4511,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-permutations" class="md-nav__link">
+  <a href="#2-combinations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Permutations
+        2. Combinations
       
     </span>
   </a>
@@ -4571,10 +4522,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-combinations" class="md-nav__link">
+  <a href="#3-permutations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Combinations
+        3. Permutations
       
     </span>
   </a>
@@ -4639,9 +4590,29 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../binarysearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4662,10 +4633,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_3">
         
           
-          <label class="md-nav__link" for="__nav_12_2" id="__nav_12_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12_3" id="__nav_12_3_label" tabindex="0">
             
   
   
@@ -4683,8 +4654,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_12_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4701,7 +4672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/graph/common-problems/" class="md-nav__link">
+      <a href="../../algo/graph/common-problems/" class="md-nav__link">
         
   
   
@@ -4729,7 +4700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/graph/dijkstra/" class="md-nav__link">
+      <a href="../../algo/graph/dijkstra/" class="md-nav__link">
         
   
   
@@ -4757,7 +4728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/graph/dijkstra-shortest-path/" class="md-nav__link">
+      <a href="../../algo/graph/dijkstra-shortest-path/" class="md-nav__link">
         
   
   
@@ -4793,7 +4764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/sorting.md" class="md-nav__link">
+      <a href="../../algo/sorting.md" class="md-nav__link">
         
   
   
@@ -4821,7 +4792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/divide-and-conquer.md" class="md-nav__link">
+      <a href="../../algo/divide-and-conquer.md" class="md-nav__link">
         
   
   
@@ -4849,7 +4820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp.md" class="md-nav__link">
+      <a href="../../algo/dp.md" class="md-nav__link">
         
   
   
@@ -4877,7 +4848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/greedy.md" class="md-nav__link">
+      <a href="../../algo/greedy.md" class="md-nav__link">
         
   
   
@@ -4905,7 +4876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/recursion.md" class="md-nav__link">
+      <a href="../../algo/recursion.md" class="md-nav__link">
         
   
   
@@ -4933,7 +4904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/a-star.md" class="md-nav__link">
+      <a href="../../algo/a-star.md" class="md-nav__link">
         
   
   
@@ -4961,7 +4932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/binary-trees.md" class="md-nav__link">
+      <a href="../../algo/binary-trees.md" class="md-nav__link">
         
   
   
@@ -4989,7 +4960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/loop.md" class="md-nav__link">
+      <a href="../../algo/loop.md" class="md-nav__link">
         
   
   
@@ -5118,63 +5089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/217-contains-duplicate/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    217. Contains Duplicate
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/242-valid-anagram/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    242. Valid Anagram
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/1-two-sum/" class="md-nav__link">
+      <a href="../../leetcode/arrays-hashing/1-two-sum/" class="md-nav__link">
         
   
   
@@ -5202,343 +5117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/49-group-anagrams/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    49. Group Anagrams
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/347-top-k-frequent-elements/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    347. Top K Frequent Elements
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/271-encode-and-decode-strings/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    271. Encode and Decode Strings
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/238-product-of-array-except-self/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    238. Product of Array Except Self
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/937-reorder-data-in-log-files/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    937. Reorder Data in Log Files
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/36-valid-sudoku/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    36. Valid Sudoku
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/128-longest-consecutive-sequence/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    128. Longest Consecutive Sequence
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/146-lru-cache/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    146. LRU Cache
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/460-lfu-cache/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    460. LFU Cache
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/56-merge-intervals/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    56. Merge Intervals
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/1010-pairs-of-songs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1010. Pairs of Songs With Total Durations Divisible by 60
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/2268-minimum-keypresses/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2268. Minimum Number of Keypresses
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/14-longest-common-prefix/" class="md-nav__link">
+      <a href="../../leetcode/arrays-hashing/14-longest-common-prefix/" class="md-nav__link">
         
   
   
@@ -5566,259 +5145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/874-walking-robot-simulation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    874. Walking Robot Simulation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/348-design-tic-tac-toe/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    348. Design Tic-Tac-Toe
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/622-design-circular-queue/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    622. Design Circular Queue
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/41-first-missing-positive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    41. First Missing Positive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/48-rotate-image/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    48. Rotate Image
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/169-majority-element/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    169. Majority Element
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/3043-find-the-length-of-the-longest-common-prefix/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3043. Find the Length of the Longest Common Prefix
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/560-subarray-sum-equals-k/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    560. Subarray Sum Equals K
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/3121-count-the-number-of-special-characters-ii/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3121. Count the Number of Special Characters II
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/27-remove-element/" class="md-nav__link">
+      <a href="../../leetcode/arrays-hashing/27-remove-element/" class="md-nav__link">
         
   
   
@@ -5846,7 +5173,567 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side/" class="md-nav__link">
+      <a href="../../leetcode/arrays-hashing/36-valid-sudoku/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Valid Sudoku
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/41-first-missing-positive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    41. First Missing Positive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/48-rotate-image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    48. Rotate Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/49-group-anagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    49. Group Anagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/56-merge-intervals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    56. Merge Intervals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/128-longest-consecutive-sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    128. Longest Consecutive Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/146-lru-cache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    146. LRU Cache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/169-majority-element/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    169. Majority Element
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/217-contains-duplicate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    217. Contains Duplicate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/238-product-of-array-except-self/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    238. Product of Array Except Self
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/242-valid-anagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    242. Valid Anagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/271-encode-and-decode-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    271. Encode and Decode Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/347-top-k-frequent-elements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    347. Top K Frequent Elements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/348-design-tic-tac-toe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    348. Design Tic-Tac-Toe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/460-lfu-cache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    460. LFU Cache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/560-subarray-sum-equals-k/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    560. Subarray Sum Equals K
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/622-design-circular-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    622. Design Circular Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/874-walking-robot-simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    874. Walking Robot Simulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/937-reorder-data-in-log-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    937. Reorder Data in Log Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/1010-pairs-of-songs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1010. Pairs of Songs With Total Durations Divisible by 60
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side/" class="md-nav__link">
         
   
   
@@ -5854,6 +5741,90 @@
     
   
     1299. Replace Elements with Greatest Element on Right Side
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/2268-minimum-keypresses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2268. Minimum Number of Keypresses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/3043-find-the-length-of-the-longest-common-prefix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3043. Find the Length of the Longest Common Prefix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/arrays-hashing/3121-count-the-number-of-special-characters-ii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3121. Count the Number of Special Characters II
   
 
     
@@ -5929,91 +5900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/125-valid-palindrome/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    125. Valid Palindrome
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    167. Two Sum II - Input Array Is Sorted
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/15-3sum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    15. 3Sum
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/11-container-with-most-water/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/11-container-with-most-water/" class="md-nav__link">
         
   
   
@@ -6041,14 +5928,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/42-trapping-rain-water/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/15-3sum/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    42. Trapping Rain Water
+    15. 3Sum
   
 
     
@@ -6069,7 +5956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/18-4sum/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/18-4sum/" class="md-nav__link">
         
   
   
@@ -6097,7 +5984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/26-remove-duplicates/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/26-remove-duplicates/" class="md-nav__link">
         
   
   
@@ -6125,14 +6012,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/202-happy-number/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/31-next-permutation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    202. Happy Number
+    31. Next Permutation
   
 
     
@@ -6153,14 +6040,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/392-is-subsequence/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/42-trapping-rain-water/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    392. Is Subsequence
+    42. Trapping Rain Water
   
 
     
@@ -6181,91 +6068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/88-merge-sorted-array/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    88. Merge Sorted Array
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/1768-merge-strings-alternately/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1768. Merge Strings Alternately
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/345-reverse-vowels-of-a-string/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    345. Reverse Vowels of a String
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/75-sort-colors/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/75-sort-colors/" class="md-nav__link">
         
   
   
@@ -6293,7 +6096,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/151-reverse-words-in-a-string/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/88-merge-sorted-array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    88. Merge Sorted Array
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/two-pointers/125-valid-palindrome/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    125. Valid Palindrome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/two-pointers/151-reverse-words-in-a-string/" class="md-nav__link">
         
   
   
@@ -6321,7 +6180,147 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/3633-earliest-finish-time-for-land-and-water-rides-i/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    167. Two Sum II - Input Array Is Sorted
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/two-pointers/202-happy-number/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    202. Happy Number
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/two-pointers/345-reverse-vowels-of-a-string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    345. Reverse Vowels of a String
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/two-pointers/392-is-subsequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    392. Is Subsequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/two-pointers/1768-merge-strings-alternately/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1768. Merge Strings Alternately
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/two-pointers/3633-earliest-finish-time-for-land-and-water-rides-i/" class="md-nav__link">
         
   
   
@@ -6349,7 +6348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/3635-earliest-finish-time-for-land-and-water-rides-ii/" class="md-nav__link">
+      <a href="../../leetcode/two-pointers/3635-earliest-finish-time-for-land-and-water-rides-ii/" class="md-nav__link">
         
   
   
@@ -6357,34 +6356,6 @@
     
   
     3635. Earliest Finish Time for Land and Water Rides II
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/31-next-permutation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    31. Next Permutation
   
 
     
@@ -6460,35 +6431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/121-best-time-to-buy-and-sell-stock/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    121. Best Time to Buy and Sell Stock
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/3-longest-substring-without-repeating-characters/" class="md-nav__link">
+      <a href="../../leetcode/sliding-window/3-longest-substring-without-repeating-characters/" class="md-nav__link">
         
   
   
@@ -6516,63 +6459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/424-longest-repeating-character-replacement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    424. Longest Repeating Character Replacement
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/567-permutation-in-string/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    567. Permutation in String
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/76-minimum-window-substring/" class="md-nav__link">
+      <a href="../../leetcode/sliding-window/76-minimum-window-substring/" class="md-nav__link">
         
   
   
@@ -6600,7 +6487,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/239-sliding-window-maximum/" class="md-nav__link">
+      <a href="../../leetcode/sliding-window/121-best-time-to-buy-and-sell-stock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    121. Best Time to Buy and Sell Stock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/sliding-window/239-sliding-window-maximum/" class="md-nav__link">
         
   
   
@@ -6628,14 +6543,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/2272-substring-largest-variance/" class="md-nav__link">
+      <a href="../../leetcode/sliding-window/424-longest-repeating-character-replacement/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2272. Substring With Largest Variance
+    424. Longest Repeating Character Replacement
   
 
     
@@ -6656,7 +6571,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/1151-min-swaps-to-group-1s/" class="md-nav__link">
+      <a href="../../leetcode/sliding-window/567-permutation-in-string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    567. Permutation in String
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/sliding-window/713-subarray-product-less-than-k/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    713. Subarray Product Less Than K
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/sliding-window/1151-min-swaps-to-group-1s/" class="md-nav__link">
         
   
   
@@ -6684,14 +6655,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/713-subarray-product-less-than-k/" class="md-nav__link">
+      <a href="../../leetcode/sliding-window/2272-substring-largest-variance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    713. Subarray Product Less Than K
+    2272. Substring With Largest Variance
   
 
     
@@ -6767,7 +6738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/20-valid-parentheses/" class="md-nav__link">
+      <a href="../../leetcode/stack/20-valid-parentheses/" class="md-nav__link">
         
   
   
@@ -6795,119 +6766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/155-min-stack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    155. Min Stack
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/stack/150-evaluate-reverse-polish-notation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    150. Evaluate Reverse Polish Notation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/stack/739-daily-temperatures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    739. Daily Temperatures
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/stack/853-car-fleet/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    853. Car Fleet
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/stack/84-largest-rectangle-in-histogram/" class="md-nav__link">
+      <a href="../../leetcode/stack/84-largest-rectangle-in-histogram/" class="md-nav__link">
         
   
   
@@ -6935,14 +6794,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/2104-sum-of-subarray-ranges/" class="md-nav__link">
+      <a href="../../leetcode/stack/150-evaluate-reverse-polish-notation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2104. Sum of Subarray Ranges
+    150. Evaluate Reverse Polish Notation
   
 
     
@@ -6963,14 +6822,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/341-flatten-nested-list-iterator/" class="md-nav__link">
+      <a href="../../leetcode/stack/155-min-stack/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    341. Flatten Nested List Iterator
+    155. Min Stack
   
 
     
@@ -6991,7 +6850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stackloc/227-basic-calculator-ii.md" class="md-nav__link">
+      <a href="../../leetcode/stackloc/227-basic-calculator-ii.md" class="md-nav__link">
         
   
   
@@ -7019,7 +6878,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/682-baseball-game/" class="md-nav__link">
+      <a href="../../leetcode/stack/341-flatten-nested-list-iterator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    341. Flatten Nested List Iterator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/stack/682-baseball-game/" class="md-nav__link">
         
   
   
@@ -7027,6 +6914,90 @@
     
   
     682. Baseball Game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/stack/739-daily-temperatures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    739. Daily Temperatures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/stack/853-car-fleet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    853. Car Fleet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/stack/2104-sum-of-subarray-ranges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2104. Sum of Subarray Ranges
   
 
     
@@ -7102,35 +7073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/973-k-closest-points-to-origin/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    973. K Closest Points to Origin
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/heap/23-merge-k-sorted-lists/" class="md-nav__link">
+      <a href="../../leetcode/heap/23-merge-k-sorted-lists/" class="md-nav__link">
         
   
   
@@ -7158,7 +7101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/253-meeting-rooms-ii/" class="md-nav__link">
+      <a href="../../leetcode/heap/253-meeting-rooms-ii/" class="md-nav__link">
         
   
   
@@ -7186,7 +7129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/295-find-median-data-stream/" class="md-nav__link">
+      <a href="../../leetcode/heap/295-find-median-data-stream/" class="md-nav__link">
         
   
   
@@ -7214,147 +7157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/743-network-delay-time/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    743. Network Delay Time
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/heap/1514-path-with-maximum-probability/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1514. Path with Maximum Probability
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/heap/787-cheapest-flights-within-k-stops/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    787. Cheapest Flights Within K Stops
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/heap/1621-path-with-minimum-effort/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1631. Path With Minimum Effort
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/heap/1167-minimum-cost-to-connect-sticks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1167. Minimum Cost to Connect Sticks
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/heap/480-sliding-window-median/" class="md-nav__link">
+      <a href="../../leetcode/heap/480-sliding-window-median/" class="md-nav__link">
         
   
   
@@ -7382,7 +7185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/703-kth-largest-element-in-a-stream/" class="md-nav__link">
+      <a href="../../leetcode/heap/703-kth-largest-element-in-a-stream/" class="md-nav__link">
         
   
   
@@ -7410,7 +7213,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/912-sort-an-array/" class="md-nav__link">
+      <a href="../../leetcode/heap/743-network-delay-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    743. Network Delay Time
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/heap/787-cheapest-flights-within-k-stops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    787. Cheapest Flights Within K Stops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/heap/912-sort-an-array/" class="md-nav__link">
         
   
   
@@ -7418,6 +7277,118 @@
     
   
     912. Sort an Array
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/heap/973-k-closest-points-to-origin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    973. K Closest Points to Origin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/heap/1167-minimum-cost-to-connect-sticks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1167. Minimum Cost to Connect Sticks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/heap/1514-path-with-maximum-probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1514. Path with Maximum Probability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/heap/1621-path-with-minimum-effort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1631. Path With Minimum Effort
   
 
     
@@ -7493,7 +7464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/greedy/767-reorganize-string/" class="md-nav__link">
+      <a href="../../leetcode/greedy/767-reorganize-string/" class="md-nav__link">
         
   
   
@@ -7576,14 +7547,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/200-number-of-islands/" class="md-nav__link">
+      <a href="../../leetcode/graphs/54-spiral-matrix/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    200. Number of Islands
+    54. Spiral Matrix
   
 
     
@@ -7604,63 +7575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/994-rotting-oranges/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    994. Rotting Oranges
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/127-word-ladder/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    127. Word Ladder
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/126-word-ladder-ii/" class="md-nav__link">
+      <a href="../../leetcode/graphs/126-word-ladder-ii/" class="md-nav__link">
         
   
   
@@ -7688,7 +7603,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/207-course-schedule/" class="md-nav__link">
+      <a href="../../leetcode/graphs/127-word-ladder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    127. Word Ladder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/200-number-of-islands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    200. Number of Islands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/207-course-schedule/" class="md-nav__link">
         
   
   
@@ -7716,7 +7687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/210-course-schedule-ii.md" class="md-nav__link">
+      <a href="../../leetcode/graphs/210-course-schedule-ii.md" class="md-nav__link">
         
   
   
@@ -7744,175 +7715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/2115-find-all-possible-recipes-from-given-supplies/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2115. Find All Possible Recipes from Given Supplies
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/909-snakes-and-ladders/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    909. Snakes and Ladders
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/1192-critical-connections/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1192. Critical Connections in a Network
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/864-shortest-path-to-get-all-keys/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    864. Shortest Path to Get All Keys
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1293. Shortest Path in a Grid with Obstacles Elimination
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/934-shortest-bridge/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    934. Shortest Bridge
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/399-evaluate-division/" class="md-nav__link">
+      <a href="../../leetcode/graphs/399-evaluate-division/" class="md-nav__link">
         
   
   
@@ -7940,14 +7743,182 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/54-spiral-matrix/" class="md-nav__link">
+      <a href="../../leetcode/graphs/864-shortest-path-to-get-all-keys/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    54. Spiral Matrix
+    864. Shortest Path to Get All Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/909-snakes-and-ladders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    909. Snakes and Ladders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/934-shortest-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    934. Shortest Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/994-rotting-oranges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    994. Rotting Oranges
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/1192-critical-connections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1192. Critical Connections in a Network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1293. Shortest Path in a Grid with Obstacles Elimination
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/graphs/2115-find-all-possible-recipes-from-given-supplies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2115. Find All Possible Recipes from Given Supplies
   
 
     
@@ -8023,399 +7994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/78-subsets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    78. Subsets
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/90-subsets-2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    90. Subsets II
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/784-letter-case-permutation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    784. Letter Case Permutation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/77-combinations/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    77. Combinations
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/39-combination-sum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    39. Combination Sum
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/40-combination-sum-ii/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    40. Combination Sum II
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/216-combination-sum-iii/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    216. Combination Sum III
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/46-permutations/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    46. Permutations
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/47-permutations-ii/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    47. Permutations II
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/22-generate-parentheses/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    22. Generate Parentheses
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/79-word-search/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    79. Word Search
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/131-palindrome-partitioning/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    131. Palindrome Partitioning
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/698-partition-to-k-equal-sum-subsets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    698. Partition to K Equal Sum Subsets
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/93-restore-ip-addresses/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    93. Restore IP Addresses
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/17-letter-combinations-of-a-phone-number/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/17-letter-combinations-of-a-phone-number/" class="md-nav__link">
         
   
   
@@ -8443,14 +8022,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/51-n-queens/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/22-generate-parentheses/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    51. N-Queens
+    22. Generate Parentheses
   
 
     
@@ -8471,35 +8050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/1718-construct-largest-sequence/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1718. Construct the Lexicographically Largest Valid Sequence
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/37-sudoku-solver/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/37-sudoku-solver/" class="md-nav__link">
         
   
   
@@ -8527,14 +8078,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/282-expression-add-operators/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/39-combination-sum/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    282. Expression Add Operators
+    39. Combination Sum
   
 
     
@@ -8555,14 +8106,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/2597-the-number-of-beautiful-subsets/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/40-combination-sum-ii/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2597. The Number of Beautiful Subsets
+    40. Combination Sum II
   
 
     
@@ -8583,14 +8134,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/46-permutations/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1239. Maximum Length of a Concatenated String with Unique Characters
+    46. Permutations
   
 
     
@@ -8611,7 +8162,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/60-permutation-sequence/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/47-permutations-ii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    47. Permutations II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/51-n-queens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    51. N-Queens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/60-permutation-sequence/" class="md-nav__link">
         
   
   
@@ -8639,14 +8246,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/526-beautiful-arrangement/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/77-combinations/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    526. Beautiful Arrangement
+    77. Combinations
   
 
     
@@ -8667,14 +8274,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/1220-count-vowels-permutation/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/78-subsets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1220. Count Vowels Permutation
+    78. Subsets
   
 
     
@@ -8695,14 +8302,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/494-target-sum/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/79-word-search/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    494. Target Sum
+    79. Word Search
   
 
     
@@ -8723,14 +8330,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/2305-fair-distribution-of-cookies/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/90-subsets-2/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2305. Fair Distribution of Cookies
+    90. Subsets II
   
 
     
@@ -8751,7 +8358,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/140-word-break-ii/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/93-restore-ip-addresses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    93. Restore IP Addresses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/131-palindrome-partitioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    131. Palindrome Partitioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/140-word-break-ii/" class="md-nav__link">
         
   
   
@@ -8779,63 +8442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/842-split-array-into-fibonacci-sequence/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    842. Split Array into Fibonacci Sequence
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/639-decode-ways-ii/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    639. Decode Ways II
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/212-word-search-ii/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/212-word-search-ii/" class="md-nav__link">
         
   
   
@@ -8863,14 +8470,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/980-unique-paths-iii/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/216-combination-sum-iii/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    980. Unique Paths III
+    216. Combination Sum III
   
 
     
@@ -8891,7 +8498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/241-different-ways-to-add-parentheses/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/241-different-ways-to-add-parentheses/" class="md-nav__link">
         
   
   
@@ -8919,14 +8526,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/351-android-unlock-patterns/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/282-expression-add-operators/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    351. Android Unlock Patterns
+    282. Expression Add Operators
   
 
     
@@ -8947,7 +8554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/320-generalized-abbreviation/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/320-generalized-abbreviation/" class="md-nav__link">
         
   
   
@@ -8975,7 +8582,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/401-binary-watch/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/351-android-unlock-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    351. Android Unlock Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/357-count-numbers-with-unique-digits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    357. Count Numbers with Unique Digits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/401-binary-watch/" class="md-nav__link">
         
   
   
@@ -9003,14 +8666,322 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/357-count-numbers-with-unique-digits/" class="md-nav__link">
+      <a href="../../leetcode/backtracking/494-target-sum/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    357. Count Numbers with Unique Digits
+    494. Target Sum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/526-beautiful-arrangement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    526. Beautiful Arrangement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/639-decode-ways-ii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    639. Decode Ways II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/698-partition-to-k-equal-sum-subsets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    698. Partition to K Equal Sum Subsets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/784-letter-case-permutation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    784. Letter Case Permutation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/842-split-array-into-fibonacci-sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    842. Split Array into Fibonacci Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/980-unique-paths-iii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    980. Unique Paths III
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/1220-count-vowels-permutation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1220. Count Vowels Permutation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1239. Maximum Length of a Concatenated String with Unique Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/1718-construct-largest-sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1718. Construct the Lexicographically Largest Valid Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/2305-fair-distribution-of-cookies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2305. Fair Distribution of Cookies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/backtracking/2597-the-number-of-beautiful-subsets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2597. The Number of Beautiful Subsets
   
 
     
@@ -9086,119 +9057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/704-binary-search/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    704. Binary Search
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/74-search-a-2d-matrix/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    74. Search a 2D Matrix
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/875-koko-eating-bananas/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    875. Koko Eating Bananas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/153-find-minimum-in-rotated-sorted-array/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    153. Find Minimum in Rotated Sorted Array
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/4-median-two-sorted-arrays/" class="md-nav__link">
+      <a href="../../leetcode/binary-search/4-median-two-sorted-arrays/" class="md-nav__link">
         
   
   
@@ -9226,7 +9085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/33-search-in-rotated-sorted-array/" class="md-nav__link">
+      <a href="../../leetcode/binary-search/33-search-in-rotated-sorted-array/" class="md-nav__link">
         
   
   
@@ -9254,14 +9113,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/981-time-based-key-value-store/" class="md-nav__link">
+      <a href="../../leetcode/binary-search/34-find-first-and-last-position-of-element-in-sorted-array/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    981. Time Based Key-Value Store
+    34. Find First and Last Position of Element in Sorted Array
   
 
     
@@ -9282,7 +9141,119 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/410-split-array-largest-sum/" class="md-nav__link">
+      <a href="../../leetcode/binary-search/35-search-insert-position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Search Insert Position
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/binary-search/74-search-a-2d-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    74. Search a 2D Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/binary-search/153-find-minimum-in-rotated-sorted-array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    153. Find Minimum in Rotated Sorted Array
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/binary-search/300-longest-increasing-subsequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    300. Longest Increasing Subsequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/binary-search/410-split-array-largest-sum/" class="md-nav__link">
         
   
   
@@ -9310,14 +9281,98 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/300-longest-increasing-subsequence/" class="md-nav__link">
+      <a href="../../leetcode/binary-search/540-single-element-in-a-sorted-array/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    300. Longest Increasing Subsequence
+    540. Single Element in a Sorted Array
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/binary-search/704-binary-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    704. Binary Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/binary-search/875-koko-eating-bananas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    875. Koko Eating Bananas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/binary-search/981-time-based-key-value-store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    981. Time Based Key-Value Store
   
 
     
@@ -9393,147 +9448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/206-reverse-linked-list/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    206. Reverse Linked Lists
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/21-merge-two-sorted-lists/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    21. Merge Two Sorted Lists
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/141-linked-list-cycle/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    141. Linked List Cycle
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/143-reorder-list/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    143. Reorder List
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/138-copy-list-with-random-pointer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    138. Copy List with Random Pointer
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/2-add-two-numbers/" class="md-nav__link">
+      <a href="../../leetcode/linked-list/2-add-two-numbers/" class="md-nav__link">
         
   
   
@@ -9561,7 +9476,147 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/2502-design-memory-allocator/" class="md-nav__link">
+      <a href="../../leetcode/linked-list/21-merge-two-sorted-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Merge Two Sorted Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/linked-list/138-copy-list-with-random-pointer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    138. Copy List with Random Pointer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/linked-list/141-linked-list-cycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    141. Linked List Cycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/linked-list/143-reorder-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    143. Reorder List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/linked-list/206-reverse-linked-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    206. Reverse Linked Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/linked-list/2502-design-memory-allocator/" class="md-nav__link">
         
   
   
@@ -9644,7 +9699,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/102-binary-tree-level-order-traversal/" class="md-nav__link">
+      <a href="../../leetcode/trees/100-same-tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    100. Same Tree
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/trees/102-binary-tree-level-order-traversal/" class="md-nav__link">
         
   
   
@@ -9672,7 +9755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/103-binary-tree-zigzag-level-order-traversal/" class="md-nav__link">
+      <a href="../../leetcode/trees/103-binary-tree-zigzag-level-order-traversal/" class="md-nav__link">
         
   
   
@@ -9700,7 +9783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree/" class="md-nav__link">
+      <a href="../../leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree/" class="md-nav__link">
         
   
   
@@ -9728,7 +9811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/543-diameter-of-binary-tree/" class="md-nav__link">
+      <a href="../../leetcode/trees/543-diameter-of-binary-tree/" class="md-nav__link">
         
   
   
@@ -9736,34 +9819,6 @@
     
   
     543. Diameter of Binary Tree
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/trees/100-same-tree/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    100. Same Tree
   
 
     
@@ -9839,91 +9894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/322-coin-change/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    322. Coin Change
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/139-word-break/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    139. Word Break
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/1143-longest-common-subsequence/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1143. Longest Common Subsequence
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/5-longest-palindromic-substring/" class="md-nav__link">
+      <a href="../../leetcode/dp-1/5-longest-palindromic-substring/" class="md-nav__link">
         
   
   
@@ -9951,7 +9922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/53-maximum-subarray/" class="md-nav__link">
+      <a href="../../leetcode/dp-1/53-maximum-subarray/" class="md-nav__link">
         
   
   
@@ -9979,7 +9950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/55-jump-game/" class="md-nav__link">
+      <a href="../../leetcode/dp-1/55-jump-game/" class="md-nav__link">
         
   
   
@@ -10007,7 +9978,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/416-partition-equal-subset-sum/" class="md-nav__link">
+      <a href="../../leetcode/dp-1/139-word-break/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    139. Word Break
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/dp-1/322-coin-change/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    322. Coin Change
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/dp-1/377-combination-sum-iv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    377. Combination Sum IV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/dp-1/416-partition-equal-subset-sum/" class="md-nav__link">
         
   
   
@@ -10035,14 +10090,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/377-combination-sum-iv/" class="md-nav__link">
+      <a href="../../leetcode/dp-1/1143-longest-common-subsequence/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    377. Combination Sum IV
+    1143. Longest Common Subsequence
   
 
     
@@ -10118,7 +10173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-2/221-maximal-square/" class="md-nav__link">
+      <a href="../../leetcode/dp-2/221-maximal-square/" class="md-nav__link">
         
   
   
@@ -10146,14 +10201,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-2/1277-count-square-submatrices-with-all-ones/" class="md-nav__link">
+      <a href="../../leetcode/dp-2/304-range-sum-query-2d-immutable/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1277. Count Square Submatrices with All Ones
+    304. Range Sum Query 2D - Immutable
   
 
     
@@ -10174,14 +10229,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-2/304-range-sum-query-2d-immutable/" class="md-nav__link">
+      <a href="../../leetcode/dp-2/1277-count-square-submatrices-with-all-ones/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    304. Range Sum Query 2D - Immutable
+    1277. Count Square Submatrices with All Ones
   
 
     
@@ -10257,203 +10312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/9-palindrome-number/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9. Palindrome Number
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/math/1041-robot-bounded-in-circle/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1041. Robot Bounded In Circle
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/math/2069-walking-robot-simulation-ii/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2069. Walking Robot Simulation II
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/math/843-guess-the-word/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    843. Guess the Word
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/math/1758-minimum-changes-to-make-alternating-binary-string/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1758. Minimum Changes To Make Alternating Binary String
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/math/223-rectangle-area/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    223. Rectangle Area
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/math/204-count-primes/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    204. Count Primes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/math/7-reverse-integer/" class="md-nav__link">
+      <a href="../../leetcode/math/7-reverse-integer/" class="md-nav__link">
         
   
   
@@ -10481,7 +10340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/8-string-to-integer-atoi/" class="md-nav__link">
+      <a href="../../leetcode/math/8-string-to-integer-atoi/" class="md-nav__link">
         
   
   
@@ -10509,7 +10368,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/50-powx-n/" class="md-nav__link">
+      <a href="../../leetcode/math/9-palindrome-number/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Palindrome Number
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/math/50-powx-n/" class="md-nav__link">
         
   
   
@@ -10517,6 +10404,174 @@
     
   
     50. Pow(x, n)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/math/204-count-primes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    204. Count Primes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/math/223-rectangle-area/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    223. Rectangle Area
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/math/843-guess-the-word/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    843. Guess the Word
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/math/1041-robot-bounded-in-circle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1041. Robot Bounded In Circle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/math/1758-minimum-changes-to-make-alternating-binary-string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1758. Minimum Changes To Make Alternating Binary String
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/math/2069-walking-robot-simulation-ii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2069. Walking Robot Simulation II
   
 
     
@@ -10592,7 +10647,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/concurrency/1117-building-h2o/" class="md-nav__link">
+      <a href="../../leetcode/concurrency/359-logger-rate-limiter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    359. Logger Rate Limiter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/concurrency/1117-building-h2o/" class="md-nav__link">
         
   
   
@@ -10620,7 +10703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/concurrency/1603-design-parking-system/" class="md-nav__link">
+      <a href="../../leetcode/concurrency/1603-design-parking-system/" class="md-nav__link">
         
   
   
@@ -10628,34 +10711,6 @@
     
   
     1603. Design Parking System
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/concurrency/359-logger-rate-limiter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    359. Logger Rate Limiter
   
 
     
@@ -10785,7 +10840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/metrics-monitoring/part-1/" class="md-nav__link">
+      <a href="../../system-design/metrics-monitoring/part-1/" class="md-nav__link">
         
   
   
@@ -10813,7 +10868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/metrics-monitoring/part-2/" class="md-nav__link">
+      <a href="../../system-design/metrics-monitoring/part-2/" class="md-nav__link">
         
   
   
@@ -10841,7 +10896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/metrics-monitoring/part-3/" class="md-nav__link">
+      <a href="../../system-design/metrics-monitoring/part-3/" class="md-nav__link">
         
   
   
@@ -10869,7 +10924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/metrics-monitoring/part-4/" class="md-nav__link">
+      <a href="../../system-design/metrics-monitoring/part-4/" class="md-nav__link">
         
   
   
@@ -10897,7 +10952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/metrics-monitoring/part-5/" class="md-nav__link">
+      <a href="../../system-design/metrics-monitoring/part-5/" class="md-nav__link">
         
   
   
@@ -10925,7 +10980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/metrics-monitoring/part-6/" class="md-nav__link">
+      <a href="../../system-design/metrics-monitoring/part-6/" class="md-nav__link">
         
   
   
@@ -11008,7 +11063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/key-technologies/kafka/" class="md-nav__link">
+      <a href="../../system-design/key-technologies/kafka/" class="md-nav__link">
         
   
   
@@ -11116,10 +11171,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-permutations" class="md-nav__link">
+  <a href="#2-combinations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Permutations
+        2. Combinations
       
     </span>
   </a>
@@ -11127,10 +11182,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-combinations" class="md-nav__link">
+  <a href="#3-permutations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Combinations
+        3. Permutations
       
     </span>
   </a>
@@ -11246,137 +11301,166 @@
 <p>Generate all possible subsets of a set. At each step, we decide whether to <strong>include</strong> or <strong>exclude</strong> the current element.</p>
 <p><strong>Common LeetCode Problems</strong>:</p>
 <ul>
-<li><a href="../../../leetcode/backtracking/78-subsets/">78. Subsets (no duplicates)</a></li>
-<li><a href="../../../leetcode/backtracking/90-subsets-2/">90. Subsets II (with duplicates)</a></li>
-<li><a href="../../../leetcode/backtracking/784-letter-case-permutation/">784. Letter Case Permutation</a></li>
-<li><a href="../../../leetcode/backtracking/2597-the-number-of-beautiful-subsets/">2597. The Number of Beautiful Subsets</a></li>
-<li><a href="../../../leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters/">1239. Maximum Length of a Concatenated String with Unique Characters</a></li>
+<li><a href="../../leetcode/backtracking/78-subsets/">78. Subsets (no duplicates)</a></li>
+<li><a href="../../leetcode/backtracking/90-subsets-2/">90. Subsets II (with duplicates)</a></li>
+<li><a href="../../leetcode/backtracking/784-letter-case-permutation/">784. Letter Case Permutation</a></li>
+<li><a href="../../leetcode/backtracking/2597-the-number-of-beautiful-subsets/">2597. The Number of Beautiful Subsets</a></li>
+<li><a href="../../leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters/">1239. Maximum Length of a Concatenated String with Unique Characters</a></li>
 </ul>
 <p><strong>Go Template</strong>:</p>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">subsets</span><span class="p">(</span><span class="nx">nums</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">*</span><span class="p">[][]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="c1">// Every subset state is a valid subset, so we record a copy</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">temp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">))</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nb">copy</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">)</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="o">*</span><span class="nx">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="o">*</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">temp</span><span class="p">)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">index</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="c1">// Include nums[i]</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="c1">// Explore</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="nx">subsets</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="c1">// Exclude (backtrack)</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">current</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// TC: O(n*2^n), SC: O(n)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">subsets</span><span class="p">(</span><span class="nx">nums</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">res</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">dfs</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">dfs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="nx">copied</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">curr</span><span class="p">))</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="nb">copy</span><span class="p">(</span><span class="nx">copied</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="nx">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">copied</span><span class="p">)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="k">return</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="c1">// decision to include nums[i]</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">curr</span><span class="p">,</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="nx">dfs</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">curr</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="c1">// // remove duplicated subset</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="c1">// for i+1 &lt; n &amp;&amp; nums[i] == nums[i+1] {</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="c1">//     i++</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="c1">// }</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="c1">// decision to NOT include nums[i]</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="nx">dfs</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="nx">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{})</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="2-permutations">2. Permutations</h3>
-<p>Generate all possible orderings of a collection. In this pattern, every element must be visited exactly once.</p>
-<p><strong>Common LeetCode Problems</strong>:</p>
-<ul>
-<li><a href="../../../leetcode/backtracking/46-permutations/">46. Permutations (no duplicates)</a></li>
-<li><a href="../../../leetcode/backtracking/47-permutations-ii/">47. Permutations II (with duplicates)</a></li>
-<li>
-<ol>
-<li>Next Permutation</li>
-</ol>
-</li>
-<li><a href="../../../leetcode/backtracking/60-permutation-sequence/">60. Permutation Sequence</a></li>
-<li><a href="../../../leetcode/backtracking/526-beautiful-arrangement/">526. Beautiful Arrangement</a></li>
-<li><a href="../../../leetcode/backtracking/1220-count-vowels-permutation/">1220. Count Vowels Permutation(DP)</a></li>
-</ul>
-<p><strong>Go Template</strong>:</p>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">permute</span><span class="p">(</span><span class="nx">nums</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="p">[]</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">*</span><span class="p">[][]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nx">temp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">))</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nb">copy</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">)</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="o">*</span><span class="nx">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="o">*</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">temp</span><span class="p">)</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="k">return</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">used</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">            </span><span class="k">continue</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="c1">// Mark element as used</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="nx">used</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="c1">// Explore</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="nx">permute</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span><span class="w"> </span><span class="nx">used</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="c1">// Unmark and remove (backtrack)</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">current</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="nx">used</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">false</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="3-combinations">3. Combinations</h3>
+<h3 id="2-combinations">2. Combinations</h3>
 <p>Choose <span class="arithmatex">\(k\)</span> elements from a set of <span class="arithmatex">\(n\)</span> elements where order does not matter. The traversal is structurally similar to subsets, but we stop and record the candidate as soon as it reaches size <span class="arithmatex">\(k\)</span>.</p>
 <p><strong>Common LeetCode Problems</strong>:</p>
 <ul>
-<li><a href="../../../leetcode/backtracking/77-combinations/">77. Combinations (<span class="arithmatex">\(n\)</span> choose <span class="arithmatex">\(k\)</span>)</a></li>
-<li><a href="../../../leetcode/backtracking/39-combination-sum/">39. Combination Sum (elements can be reused)</a></li>
-<li><a href="../../../leetcode/backtracking/40-combination-sum-ii/">40. Combination Sum II (no reuse, with duplicates)</a></li>
-<li><a href="../../../leetcode/backtracking/216-combination-sum-iii/">216. Combination Sum III (1-9 range, <span class="arithmatex">\(k\)</span> numbers, sum = <span class="arithmatex">\(n\)</span>)</a></li>
-<li><a href="../../../leetcode/dp-1/377-combination-sum-iv/">377. Combination Sum IV(DP)</a></li>
-<li><a href="../../../leetcode/backtracking/494-target-sum/">494. Target Sum</a></li>
-<li><a href="../../../leetcode/dp-1/416-partition-equal-subset-sum/">416. Partition Equal Subset Sum(Knapsack)</a></li>
+<li><a href="../../leetcode/backtracking/77-combinations/">77. Combinations (<span class="arithmatex">\(n\)</span> choose <span class="arithmatex">\(k\)</span>)</a></li>
+<li><a href="../../leetcode/backtracking/39-combination-sum/">39. Combination Sum (elements can be reused)</a></li>
+<li><a href="../../leetcode/backtracking/40-combination-sum-ii/">40. Combination Sum II (no reuse, with duplicates)</a></li>
+<li><a href="../../leetcode/backtracking/216-combination-sum-iii/">216. Combination Sum III (1-9 range, <span class="arithmatex">\(k\)</span> numbers, sum = <span class="arithmatex">\(n\)</span>)</a></li>
+<li><a href="../../leetcode/dp-1/377-combination-sum-iv/">377. Combination Sum IV(DP)</a></li>
+<li><a href="../../leetcode/backtracking/494-target-sum/">494. Target Sum</a></li>
+<li><a href="../../leetcode/dp-1/416-partition-equal-subset-sum/">416. Partition Equal Subset Sum(Knapsack)</a></li>
 <li>
-<p><a href="../../../leetcode/backtracking/2305-fair-distribution-of-cookies/">2305. Fair Distribution of Cookies</a></p>
+<p><a href="../../leetcode/backtracking/2305-fair-distribution-of-cookies/">2305. Fair Distribution of Cookies</a></p>
 </li>
 <li>
 <p><strong>Go Template</strong>:</p>
 </li>
 </ul>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">combine</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">*</span><span class="p">[][]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">k</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nx">temp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">))</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="nb">copy</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">)</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="o">*</span><span class="nx">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="o">*</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">temp</span><span class="p">)</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">return</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">start</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="c1">// Explore next elements (i+1 prevents reuse and maintains order)</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="nx">combine</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">current</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">current</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// TC: O(k*C(n,k)), SC: O(k)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">combine</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">res</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">dfs</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">start</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">dfs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">start</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">k</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span><span class="nx">copied</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="nb">copy</span><span class="p">(</span><span class="nx">copied</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="nx">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">copied</span><span class="p">)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">            </span><span class="k">return</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="c1">// traverse all available options at the current level</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">start</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">curr</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">            </span><span class="nx">dfs</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">curr</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="nx">dfs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{})</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="3-permutations">3. Permutations</h3>
+<p>Generate all possible orderings of a collection. In this pattern, every element must be visited exactly once.</p>
+<p><strong>Common LeetCode Problems</strong>:</p>
+<ul>
+<li><a href="../../leetcode/backtracking/46-permutations/">46. Permutations (no duplicates)</a></li>
+<li><a href="../../leetcode/backtracking/47-permutations-ii/">47. Permutations II (with duplicates)</a></li>
+<li><a href="../../leetcode/two-pointers/31-next-permutation/">31. Next Permutation</a></li>
+<li><a href="../../leetcode/backtracking/60-permutation-sequence/">60. Permutation Sequence</a></li>
+<li><a href="../../leetcode/backtracking/526-beautiful-arrangement/">526. Beautiful Arrangement</a></li>
+<li><a href="../../leetcode/backtracking/1220-count-vowels-permutation/">1220. Count Vowels Permutation(DP)</a></li>
+</ul>
+<p><strong>Go Template</strong>:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// TC: O(n*n!), SC: O(n)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">permuteUnique</span><span class="p">(</span><span class="nx">nums</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">res</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">sort</span><span class="p">.</span><span class="nx">Ints</span><span class="p">(</span><span class="nx">nums</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">used</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">dfs</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">curr</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">dfs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">curr</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="nx">copied</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">)</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="nb">copy</span><span class="p">(</span><span class="nx">copied</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="nx">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">copied</span><span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="k">return</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="c1">// traverse all options except the already used ones</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">used</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">                </span><span class="k">continue</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">            </span><span class="c1">// avoid already allocated value at the current level</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">!</span><span class="nx">used</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">                </span><span class="k">continue</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">            </span><span class="nx">used</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">curr</span><span class="p">,</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">            </span><span class="nx">dfs</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">curr</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">            </span><span class="nx">used</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="nx">dfs</span><span class="p">([]</span><span class="kt">int</span><span class="p">{})</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="4-partitioning">4. Partitioning</h3>
 <p>Divide the input string or collection into segments that satisfy specific conditions.</p>
 <p><strong>Common LeetCode Problems</strong>:</p>
 <ul>
-<li><a href="../../../leetcode/backtracking/131-palindrome-partitioning/">131. Palindrome Partitioning</a></li>
-<li><a href="../../../leetcode/backtracking/698-partition-to-k-equal-sum-subsets/">698. Partition to K Equal Sum Subsets(super hard)</a></li>
-<li><a href="../../../leetcode/backtracking/93-restore-ip-addresses/">93. Restore IP Addresses</a></li>
-<li><a href="../../../leetcode/backtracking/140-word-break-ii/">140. Word Break II</a></li>
-<li><a href="../../../leetcode/backtracking/842-split-array-into-fibonacci-sequence/">842. Split Array into Fibonacci Sequence</a></li>
-<li><a href="../../../leetcode/backtracking/639-decode-ways-ii/">639. Decode Ways II</a></li>
+<li><a href="../../leetcode/backtracking/131-palindrome-partitioning/">131. Palindrome Partitioning</a></li>
+<li><a href="../../leetcode/backtracking/698-partition-to-k-equal-sum-subsets/">698. Partition to K Equal Sum Subsets(super hard)</a></li>
+<li><a href="../../leetcode/backtracking/93-restore-ip-addresses/">93. Restore IP Addresses</a></li>
+<li><a href="../../leetcode/backtracking/140-word-break-ii/">140. Word Break II</a></li>
+<li><a href="../../leetcode/backtracking/842-split-array-into-fibonacci-sequence/">842. Split Array into Fibonacci Sequence</a></li>
+<li><a href="../../leetcode/backtracking/639-decode-ways-ii/">639. Decode Ways II</a></li>
 </ul>
 <h3 id="5-grid-board-search">5. Grid / Board Search</h3>
 <p>Navigate and explore valid paths or placement configurations on a 2D grid or matrix.</p>
 <p><strong>Common LeetCode Problems</strong>:</p>
 <ul>
-<li><a href="../../../leetcode/backtracking/79-word-search/">79. Word Search</a></li>
-<li><a href="../../../leetcode/backtracking/51-n-queens/">51. N-Queens</a></li>
-<li><a href="../../../leetcode/backtracking/37-sudoku-solver/">37. Sudoku Solver</a></li>
-<li><a href="../../../leetcode/backtracking/212-word-search-ii/">212. Word Search II</a></li>
-<li><a href="../../../leetcode/backtracking/980-unique-paths-iii/">980. Unique Paths III</a></li>
-<li><a href="../../../leetcode/backtracking/351-android-unlock-patterns/">351. Android Unlock Patterns</a></li>
+<li><a href="../../leetcode/backtracking/79-word-search/">79. Word Search</a></li>
+<li><a href="../../leetcode/backtracking/51-n-queens/">51. N-Queens</a></li>
+<li><a href="../../leetcode/backtracking/37-sudoku-solver/">37. Sudoku Solver</a></li>
+<li><a href="../../leetcode/backtracking/212-word-search-ii/">212. Word Search II</a></li>
+<li><a href="../../leetcode/backtracking/980-unique-paths-iii/">980. Unique Paths III</a></li>
+<li><a href="../../leetcode/backtracking/351-android-unlock-patterns/">351. Android Unlock Patterns</a></li>
 </ul>
 <h3 id="6-generate-valid-sequences">6. Generate Valid Sequences</h3>
 <p>Build strings or sequences that satisfy structural constraints.</p>
 <p><strong>Common LeetCode Problems</strong>:</p>
 <ul>
-<li><a href="../../../leetcode/backtracking/22-generate-parentheses/">22. Generate Parentheses</a></li>
-<li><a href="../../../leetcode/backtracking/17-letter-combinations-of-a-phone-number/">17. Letter Combinations of a Phone Number</a></li>
-<li><a href="../../../leetcode/backtracking/282-expression-add-operators/">282. Expression Add Operators</a></li>
-<li><a href="../../../leetcode/backtracking/241-different-ways-to-add-parentheses/">241. Different Ways to Add Parentheses</a></li>
-<li><a href="../../../leetcode/backtracking/320-generalized-abbreviation/">320. Generalized Abbreviation</a></li>
-<li><a href="../../../leetcode/backtracking/401-binary-watch/">401. Binary Watch</a></li>
-<li><a href="../../../leetcode/backtracking/357-count-numbers-with-unique-digits/">357. Count Numbers with Unique Digits</a></li>
+<li><a href="../../leetcode/backtracking/22-generate-parentheses/">22. Generate Parentheses</a></li>
+<li><a href="../../leetcode/backtracking/17-letter-combinations-of-a-phone-number/">17. Letter Combinations of a Phone Number</a></li>
+<li><a href="../../leetcode/backtracking/282-expression-add-operators/">282. Expression Add Operators</a></li>
+<li><a href="../../leetcode/backtracking/241-different-ways-to-add-parentheses/">241. Different Ways to Add Parentheses</a></li>
+<li><a href="../../leetcode/backtracking/320-generalized-abbreviation/">320. Generalized Abbreviation</a></li>
+<li><a href="../../leetcode/backtracking/401-binary-watch/">401. Binary Watch</a></li>
+<li><a href="../../leetcode/backtracking/357-count-numbers-with-unique-digits/">357. Count Numbers with Unique Digits</a></li>
 </ul>
 <hr>
 <h2 id="key-optimization-techniques">Key Optimization Techniques</h2>
@@ -11448,7 +11532,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../../web-frameworks/express-js/in-35-mins/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Learn Express JS">
+          <a href="../../web-frameworks/express-js/in-35-mins/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Learn Express JS">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -11465,13 +11549,13 @@
         
         
           
-          <a href="../../../algo/graph/common-problems/" class="md-footer__link md-footer__link--next" aria-label="Next: Common Graph Theory Problems">
+          <a href="../binarysearch/" class="md-footer__link md-footer__link--next" aria-label="Next: Binary Search">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Common Graph Theory Problems
+                Binary Search
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -11539,12 +11623,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer", "content.tabs.link", "content.code.copy", "content.code.select", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "content.tabs.link", "content.code.copy", "content.code.select", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

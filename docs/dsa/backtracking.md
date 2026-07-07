@@ -52,11 +52,11 @@ Generate all possible subsets of a set. At each step, we decide whether to **inc
 
 **Common LeetCode Problems**:
 
-- [78. Subsets (no duplicates)](../../leetcode/backtracking/78-subsets.md)
-- [90. Subsets II (with duplicates)](../../leetcode/backtracking/90-subsets-2.md)
-- [784. Letter Case Permutation](../../leetcode/backtracking/784-letter-case-permutation.md)
-- [2597. The Number of Beautiful Subsets](../../leetcode/backtracking/2597-the-number-of-beautiful-subsets.md)
-- [1239. Maximum Length of a Concatenated String with Unique Characters](../../leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters.md)
+- [78. Subsets (no duplicates)](../leetcode/backtracking/78-subsets.md)
+- [90. Subsets II (with duplicates)](../leetcode/backtracking/90-subsets-2.md)
+- [784. Letter Case Permutation](../leetcode/backtracking/784-letter-case-permutation.md)
+- [2597. The Number of Beautiful Subsets](../leetcode/backtracking/2597-the-number-of-beautiful-subsets.md)
+- [1239. Maximum Length of a Concatenated String with Unique Characters](../leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters.md)
 
 **Go Template**:
 
@@ -99,14 +99,14 @@ Choose $k$ elements from a set of $n$ elements where order does not matter. The 
 
 **Common LeetCode Problems**:
 
-- [77. Combinations ($n$ choose $k$)](../../leetcode/backtracking/77-combinations.md)
-- [39. Combination Sum (elements can be reused)](../../leetcode/backtracking/39-combination-sum.md)
-- [40. Combination Sum II (no reuse, with duplicates)](../../leetcode/backtracking/40-combination-sum-ii.md)
-- [216. Combination Sum III (1-9 range, $k$ numbers, sum = $n$)](../../leetcode/backtracking/216-combination-sum-iii.md)
-- [377. Combination Sum IV(DP)](../../leetcode/dp-1/377-combination-sum-iv.md)
-- [494. Target Sum](../../leetcode/backtracking/494-target-sum.md)
-- [416. Partition Equal Subset Sum(Knapsack)](../../leetcode/dp-1/416-partition-equal-subset-sum.md)
-- [2305. Fair Distribution of Cookies](../../leetcode/backtracking/2305-fair-distribution-of-cookies.md)
+- [77. Combinations ($n$ choose $k$)](../leetcode/backtracking/77-combinations.md)
+- [39. Combination Sum (elements can be reused)](../leetcode/backtracking/39-combination-sum.md)
+- [40. Combination Sum II (no reuse, with duplicates)](../leetcode/backtracking/40-combination-sum-ii.md)
+- [216. Combination Sum III (1-9 range, $k$ numbers, sum = $n$)](../leetcode/backtracking/216-combination-sum-iii.md)
+- [377. Combination Sum IV(DP)](../leetcode/dp-1/377-combination-sum-iv.md)
+- [494. Target Sum](../leetcode/backtracking/494-target-sum.md)
+- [416. Partition Equal Subset Sum(Knapsack)](../leetcode/dp-1/416-partition-equal-subset-sum.md)
+- [2305. Fair Distribution of Cookies](../leetcode/backtracking/2305-fair-distribution-of-cookies.md)
 
 *   **Go Template**:
 
@@ -142,12 +142,12 @@ Generate all possible orderings of a collection. In this pattern, every element 
 
 **Common LeetCode Problems**:
 
-- [46. Permutations (no duplicates)](../../leetcode/backtracking/46-permutations.md)
-- [47. Permutations II (with duplicates)](../../leetcode/backtracking/47-permutations-ii.md)
-- 31. Next Permutation
-- [60. Permutation Sequence](../../leetcode/backtracking/60-permutation-sequence.md)
-- [526. Beautiful Arrangement](../../leetcode/backtracking/526-beautiful-arrangement.md)
-- [1220. Count Vowels Permutation(DP)](../../leetcode/backtracking/1220-count-vowels-permutation.md)
+- [46. Permutations (no duplicates)](../leetcode/backtracking/46-permutations.md)
+- [47. Permutations II (with duplicates)](../leetcode/backtracking/47-permutations-ii.md)
+- [31. Next Permutation](../leetcode/two-pointers/31-next-permutation.md)
+- [60. Permutation Sequence](../leetcode/backtracking/60-permutation-sequence.md)
+- [526. Beautiful Arrangement](../leetcode/backtracking/526-beautiful-arrangement.md)
+- [1220. Count Vowels Permutation(DP)](../leetcode/backtracking/1220-count-vowels-permutation.md)
 
 **Go Template**:
 
@@ -194,12 +194,12 @@ Divide the input string or collection into segments that satisfy specific condit
 
 **Common LeetCode Problems**:
 
-- [131. Palindrome Partitioning](../../leetcode/backtracking/131-palindrome-partitioning.md)
-- [698. Partition to K Equal Sum Subsets(super hard)](../../leetcode/backtracking/698-partition-to-k-equal-sum-subsets.md)
-- [93. Restore IP Addresses](../../leetcode/backtracking/93-restore-ip-addresses.md)
-- [140. Word Break II](../../leetcode/backtracking/140-word-break-ii.md)
-- [842. Split Array into Fibonacci Sequence](../../leetcode/backtracking/842-split-array-into-fibonacci-sequence.md)
-- [639. Decode Ways II](../../leetcode/backtracking/639-decode-ways-ii.md)
+- [131. Palindrome Partitioning](../leetcode/backtracking/131-palindrome-partitioning.md)
+- [698. Partition to K Equal Sum Subsets(super hard)](../leetcode/backtracking/698-partition-to-k-equal-sum-subsets.md)
+- [93. Restore IP Addresses](../leetcode/backtracking/93-restore-ip-addresses.md)
+- [140. Word Break II](../leetcode/backtracking/140-word-break-ii.md)
+- [842. Split Array into Fibonacci Sequence](../leetcode/backtracking/842-split-array-into-fibonacci-sequence.md)
+- [639. Decode Ways II](../leetcode/backtracking/639-decode-ways-ii.md)
 
 ### 5. Grid / Board Search
 
@@ -207,12 +207,12 @@ Navigate and explore valid paths or placement configurations on a 2D grid or mat
 
 **Common LeetCode Problems**:
 
-- [79. Word Search](../../leetcode/backtracking/79-word-search.md)
-- [51. N-Queens](../../leetcode/backtracking/51-n-queens.md)
-- [37. Sudoku Solver](../../leetcode/backtracking/37-sudoku-solver.md)
-- [212. Word Search II](../../leetcode/backtracking/212-word-search-ii.md)
-- [980. Unique Paths III](../../leetcode/backtracking/980-unique-paths-iii.md)
-- [351. Android Unlock Patterns](../../leetcode/backtracking/351-android-unlock-patterns.md)
+- [79. Word Search](../leetcode/backtracking/79-word-search.md)
+- [51. N-Queens](../leetcode/backtracking/51-n-queens.md)
+- [37. Sudoku Solver](../leetcode/backtracking/37-sudoku-solver.md)
+- [212. Word Search II](../leetcode/backtracking/212-word-search-ii.md)
+- [980. Unique Paths III](../leetcode/backtracking/980-unique-paths-iii.md)
+- [351. Android Unlock Patterns](../leetcode/backtracking/351-android-unlock-patterns.md)
 
 
 ### 6. Generate Valid Sequences
@@ -221,13 +221,13 @@ Build strings or sequences that satisfy structural constraints.
 
 **Common LeetCode Problems**:
 
-- [22. Generate Parentheses](../../leetcode/backtracking/22-generate-parentheses.md)
-- [17. Letter Combinations of a Phone Number](../../leetcode/backtracking/17-letter-combinations-of-a-phone-number.md)
-- [282. Expression Add Operators](../../leetcode/backtracking/282-expression-add-operators.md)
-- [241. Different Ways to Add Parentheses](../../leetcode/backtracking/241-different-ways-to-add-parentheses.md)
-- [320. Generalized Abbreviation](../../leetcode/backtracking/320-generalized-abbreviation.md)
-- [401. Binary Watch](../../leetcode/backtracking/401-binary-watch.md)
-- [357. Count Numbers with Unique Digits](../../leetcode/backtracking/357-count-numbers-with-unique-digits.md)
+- [22. Generate Parentheses](../leetcode/backtracking/22-generate-parentheses.md)
+- [17. Letter Combinations of a Phone Number](../leetcode/backtracking/17-letter-combinations-of-a-phone-number.md)
+- [282. Expression Add Operators](../leetcode/backtracking/282-expression-add-operators.md)
+- [241. Different Ways to Add Parentheses](../leetcode/backtracking/241-different-ways-to-add-parentheses.md)
+- [320. Generalized Abbreviation](../leetcode/backtracking/320-generalized-abbreviation.md)
+- [401. Binary Watch](../leetcode/backtracking/401-binary-watch.md)
+- [357. Count Numbers with Unique Digits](../leetcode/backtracking/357-count-numbers-with-unique-digits.md)
 
 ---
 
