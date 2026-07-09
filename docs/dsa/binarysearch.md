@@ -214,8 +214,9 @@ Most binary search problems fall into one of the following categories:
 **Common Problems**: 
 
 - [33. Search in Rotated Sorted Array](../leetcode/binary-search/33-search-in-rotated-sorted-array.md)
-- 81. Search in Rotated Sorted Array II
-- 153. Find Minimum in Rotated Sorted Array
+- [81. Search in Rotated Sorted Array II](../leetcode/binary-search/81-search-in-rotated-sorted-array-ii.md)
+- [153. Find Minimum in Rotated Sorted Array](../leetcode/binary-search/153-find-minimum-in-rotated-sorted-array.md)
+- [154. Find Minimum in Rotated Sorted Array II](../leetcode/binary-search/154-find-minimum-in-rotated-sorted-array-ii.md)
 
 ### 3. Binary Search on Answer
 
@@ -224,10 +225,13 @@ Most binary search problems fall into one of the following categories:
 
 **Common Problems**: 
 
-- 875. Koko Eating Bananas
-- 1011. Capacity To Ship Packages Within D Days
-- 410. Split Array Largest Sum
-- 1552. Magnetic Force Between Two Balls
+- [875. Koko Eating Bananas](../leetcode/binary-search/875-koko-eating-bananas.md)
+- [1011. Capacity To Ship Packages Within D Days](../leetcode/binary-search/1011-capacity-to-ship-packages-within-d-day.md)
+- [410. Split Array Largest Sum](../leetcode/binary-search/410-split-array-largest-sum.md)
+- [1482. Minimum Number of Days to Make m Bouquets](../leetcode/binary-search/1482-minimum-number-of-days-to-make-m-bouquets.md)
+- [1552. Magnetic Force Between Two Balls](../leetcode/binary-search/1552-magnetic-force-between-two-balls.md)
+- [774. Minimize Max Distance to Gas Station](../leetcode/binary-search/774-minimize-max-distance-to-gas-station.md)
+- [1231. Divide Chocolate](../leetcode/binary-search/1231-divide-chocolate.md)
 
 ### 4. 2D Matrix Search
 
@@ -237,8 +241,10 @@ Most binary search problems fall into one of the following categories:
 **Common Problems**:
 
 - [74. Search a 2D Matrix](../leetcode/binary-search/74-search-a-2d-matrix.md)
-- 240. Search a 2D Matrix II 
+- [240. Search a 2D Matrix II](../leetcode/binary-search/240-search-a-2d-matrix-ii.md) 
 - 378. Kth Smallest Element in a Sorted Matrix
+- 1351. Count Negative Numbers in a Sorted Matrix
+- 1901. Find a Peak Element II
 
 ### 5. Advanced Intervals & Bitonic Searches
 
@@ -250,7 +256,11 @@ Most binary search problems fall into one of the following categories:
 - 162. Find Peak Element
 - 1095. Find in Mountain Array
 - 4. Median of Two Sorted Arrays
+- 69. Sqrt(x)
 - 658. Find K Closest Elements
+- 528. Random Pick with Weight
+- 275. H-Index II
+- 374. Guess Number Higher or Lower
 
 ---
 
