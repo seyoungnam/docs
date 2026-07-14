@@ -9105,6 +9105,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../69-sqrtx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    69. Sqrt(x)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../74-search-a-2d-matrix/" class="md-nav__link">
         
   
@@ -9217,6 +9245,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../162-find-peak-element/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    162. Find Peak Element
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../240-search-a-2d-matrix-ii/" class="md-nav__link">
         
   
@@ -9273,6 +9329,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../378-kth-smallest-element-in-a-sorted-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    378. Kth Smallest Element in a Sorted Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../410-split-array-largest-sum/" class="md-nav__link">
         
   
@@ -9301,6 +9385,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../528-random-pick-with-weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    528. Random Pick with Weight
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../540-single-element-in-a-sorted-array/" class="md-nav__link">
         
   
@@ -9309,6 +9421,34 @@
     
   
     540. Single Element in a Sorted Array
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../658-find-k-closest-elements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    658. Find K Closest Elements
   
 
     
@@ -9469,6 +9609,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../1095-find-in-mountain-array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1095. Find in Mountain Array
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../1231-divide-chocolate/" class="md-nav__link">
         
   
@@ -9477,6 +9645,34 @@
     
   
     1231. Divide Chocolate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1351-count-negative-numbers-in-a-sorted-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1351. Count Negative Numbers in a Sorted Matrix
   
 
     
@@ -9533,6 +9729,34 @@
     
   
     1552. Magnetic Force Between Two Balls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1901-find-a-peak-element-ii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1901. Find a Peak Element II
   
 
     
@@ -11355,33 +11579,43 @@
 <h1 id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</h1>
 <p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/description/"><img alt="📎" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4ce.svg" title=":paperclip:"> LeetCode Problem Description</a></p>
 <h2 id="solution-binary-search-on-partition-index">Solution: Binary Search on Partition Index</h2>
-<p>To find the median in <span class="arithmatex">\(O(\log(\min(m, n)))\)</span> time, we can partition both sorted arrays <code>nums1</code> and <code>nums2</code> into two halves (left and right) such that the left half contains exactly the same number of elements as the right half, and all elements in the left half are less than or equal to all elements in the right half.</p>
+<p>To find the median of two sorted arrays of sizes <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> in <span class="arithmatex">\(O(\log(\min(m, n)))\)</span> time, we partition both arrays into two halves (left and right) such that the left half contains exactly the same number of elements as the right half (or one extra if the total size is odd), and all elements in the left half are less than or equal to all elements in the right half.</p>
 <h3 id="thought-process">Thought Process</h3>
 <ol>
-<li><strong>Binary Search Shorter Array</strong>: To avoid index out-of-bounds, we always run the binary search on the shorter array. Let <code>nums1</code> be the shorter array (length <code>m &lt;= n</code>).</li>
-<li><strong>Partitioning</strong>:<ul>
-<li>Find partition index <code>i</code> in <code>nums1</code> using binary search in the range <code>[0, m]</code>.</li>
-<li>The partition index <code>j</code> in <code>nums2</code> is uniquely determined: <code>j = (m + n + 1) / 2 - i</code>.</li>
+<li><strong>Binary Search on the Shorter Array</strong>:<ul>
+<li>To optimize the search and prevent index out-of-bounds, we always run the binary search on the shorter array. Let <code>A</code> be the shorter array (size <span class="arithmatex">\(m\)</span>) and <code>B</code> be the longer array (size <span class="arithmatex">\(n\)</span>, where <span class="arithmatex">\(m \le n\)</span>).</li>
 </ul>
 </li>
-<li><strong>Boundary Checks</strong>:<ul>
-<li>Let <code>maxLeft1</code> and <code>minRight1</code> be the boundary values in <code>nums1</code> around partition <code>i</code>.</li>
-<li>Let <code>maxLeft2</code> and <code>minRight2</code> be the boundary values in <code>nums2</code> around partition <code>j</code>.</li>
-<li>Use <code>math.MinInt32</code> if a left partition is empty, and <code>math.MaxInt32</code> if a right partition is empty.</li>
+<li><strong>Partitioning Math</strong>:<ul>
+<li>Partition index <span class="arithmatex">\(i\)</span> in <code>A</code> splits it into <code>A[0...i-1]</code> (left) and <code>A[i...m-1]</code> (right).</li>
+<li>Partition index <span class="arithmatex">\(j\)</span> in <code>B</code> splits it into <code>B[0...j-1]</code> (left) and <code>B[j...n-1]</code> (right).</li>
+<li>To ensure the combined left and right halves are equal in size:
+    $<span class="arithmatex">\(\text{half} = \frac{m + n + 1}{2}\)</span>$
+    $<span class="arithmatex">\(j = \text{half} - i\)</span>$</li>
 </ul>
 </li>
-<li><strong>Verification</strong>: The partition is correct if:<ul>
-<li><code>maxLeft1 &lt;= minRight2</code> AND <code>maxLeft2 &lt;= minRight1</code>.</li>
+<li><strong>Boundary Values</strong>:<ul>
+<li>Let <span class="arithmatex">\(A_{\text{left}}\)</span> be the largest element in <code>A</code>'s left partition: <span class="arithmatex">\(A[i-1]\)</span> (or <span class="arithmatex">\(-\infty\)</span> if <span class="arithmatex">\(i = 0\)</span>).</li>
+<li>Let <span class="arithmatex">\(A_{\text{right}}\)</span> be the smallest element in <code>A</code>'s right partition: <span class="arithmatex">\(A[i]\)</span> (or <span class="arithmatex">\(+\infty\)</span> if <span class="arithmatex">\(i = m\)</span>).</li>
+<li>Let <span class="arithmatex">\(B_{\text{left}}\)</span> be the largest element in <code>B</code>'s left partition: <span class="arithmatex">\(B[j-1]\)</span> (or <span class="arithmatex">\(-\infty\)</span> if <span class="arithmatex">\(j = 0\)</span>).</li>
+<li>Let <span class="arithmatex">\(B_{\text{right}}\)</span> be the smallest element in <code>B</code>'s right partition: <span class="arithmatex">\(B[j]\)</span> (or <span class="arithmatex">\(+\infty\)</span> if <span class="arithmatex">\(j = n\)</span>).</li>
 </ul>
 </li>
-<li><strong>Compute Median</strong>:<ul>
-<li>If total size <code>m + n</code> is odd: <code>median = max(maxLeft1, maxLeft2)</code>.</li>
-<li>If total size <code>m + n</code> is even: <code>median = (max(maxLeft1, maxLeft2) + min(minRight1, minRight2)) / 2.0</code>.</li>
+<li><strong>Validity Check</strong>:<ul>
+<li>The partition is correct if:
+    $<span class="arithmatex">\(A_{\text{left}} \le B_{\text{right}} \quad \text{and} \quad B_{\text{left}} \le A_{\text{right}}\)</span>$</li>
 </ul>
 </li>
-<li><strong>Adjust Binary Search</strong>:<ul>
-<li>If <code>maxLeft1 &gt; minRight2</code>: <code>i</code> is too far to the right, decrease partition search: <code>high = i - 1</code>.</li>
-<li>If <code>maxLeft2 &gt; minRight1</code>: <code>i</code> is too far to the left, increase partition search: <code>low = i + 1</code>.</li>
+<li><strong>Calculate Median</strong>:<ul>
+<li>If the total number of elements <span class="arithmatex">\(m + n\)</span> is odd, the median is the maximum of the left partition boundaries:
+    $<span class="arithmatex">\(\text{median} = \max(A_{\text{left}}, B_{\text{left}})\)</span>$</li>
+<li>If <span class="arithmatex">\(m + n\)</span> is even, the median is the average of the boundary elements:
+    $<span class="arithmatex">\(\text{median} = \frac{\max(A_{\text{left}}, B_{\text{left}}) + \min(A_{\text{right}}, B_{\text{right}})}{2.0}\)</span>$</li>
+</ul>
+</li>
+<li><strong>Binary Search Adjustments</strong>:<ul>
+<li>If <span class="arithmatex">\(A_{\text{left}} &gt; B_{\text{right}}\)</span>, our partition index <span class="arithmatex">\(i\)</span> is too far to the right. We must move left: <code>r = i - 1</code>.</li>
+<li>If <span class="arithmatex">\(B_{\text{left}} &gt; A_{\text{right}}\)</span>, our partition index <span class="arithmatex">\(i\)</span> is too far to the left. We must move right: <code>l = i + 1</code>.</li>
 </ul>
 </li>
 </ol>
@@ -11389,70 +11623,58 @@
 <div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">"math"</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">func</span><span class="w"> </span><span class="nx">findMedianSortedArrays</span><span class="p">(</span><span class="nx">nums1</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">nums2</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums1</span><span class="p">),</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums2</span><span class="p">)</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="c1">// Ensure nums1 is the shorter array</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">findMedianSortedArrays</span><span class="p">(</span><span class="nx">nums2</span><span class="p">,</span><span class="w"> </span><span class="nx">nums1</span><span class="p">)</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nx">low</span><span class="p">,</span><span class="w"> </span><span class="nx">high</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nx">m</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nx">halfLen</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">low</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">high</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nx">low</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">high</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="nx">j</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">halfLen</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">i</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">maxLeft1</span><span class="p">,</span><span class="w"> </span><span class="nx">minRight1</span><span class="p">,</span><span class="w"> </span><span class="nx">maxLeft2</span><span class="p">,</span><span class="w"> </span><span class="nx">minRight2</span><span class="w"> </span><span class="kt">int</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="nx">maxLeft1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MinInt32</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">            </span><span class="nx">maxLeft1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nums1</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nx">A</span><span class="p">,</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">nums1</span><span class="p">,</span><span class="w"> </span><span class="nx">nums2</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">A</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">B</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nx">A</span><span class="p">,</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">B</span><span class="p">,</span><span class="w"> </span><span class="nx">A</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nx">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">A</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">B</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nx">half</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nx">l</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">A</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">l</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="o">-</span><span class="nx">l</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="nx">j</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">half</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">i</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="nx">Aleft</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MinInt32</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">            </span><span class="nx">Aleft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">A</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="nx">Aright</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MaxInt32</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">A</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">            </span><span class="nx">Aright</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">A</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="nx">minRight1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MaxInt32</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">            </span><span class="nx">minRight1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nums1</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">            </span><span class="nx">maxLeft2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MinInt32</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">            </span><span class="nx">maxLeft2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nums2</span><span class="p">[</span><span class="nx">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">            </span><span class="nx">minRight2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MaxInt32</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">            </span><span class="nx">minRight2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nums2</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">maxLeft1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">minRight2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">maxLeft2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">minRight1</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">            </span><span class="c1">// Correct partition found</span>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="o">+</span><span class="nx">n</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nx">maxLeft1</span><span class="p">,</span><span class="w"> </span><span class="nx">maxLeft2</span><span class="p">))</span>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">            </span><span class="p">}</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nx">maxLeft1</span><span class="p">,</span><span class="w"> </span><span class="nx">maxLeft2</span><span class="p">)</span><span class="o">+</span><span class="nb">min</span><span class="p">(</span><span class="nx">minRight1</span><span class="p">,</span><span class="w"> </span><span class="nx">minRight2</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">maxLeft1</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">minRight2</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">            </span><span class="c1">// Too far right in nums1, move left</span>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">            </span><span class="nx">high</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">            </span><span class="c1">// Too far left in nums1, move right</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">            </span><span class="nx">low</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="p">}</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="nx">Bleft</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MinInt32</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="nx">Bleft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">B</span><span class="p">[</span><span class="nx">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="nx">Bright</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MaxInt32</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">B</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">            </span><span class="nx">Bright</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">B</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">Aleft</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">Bright</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">Bleft</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">Aright</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">total</span><span class="o">%</span><span class="mi">2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nx">Aleft</span><span class="p">,</span><span class="w"> </span><span class="nx">Bleft</span><span class="p">))</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nx">Aleft</span><span class="p">,</span><span class="w"> </span><span class="nx">Bleft</span><span class="p">)</span><span class="o">+</span><span class="nb">min</span><span class="p">(</span><span class="nx">Aright</span><span class="p">,</span><span class="w"> </span><span class="nx">Bright</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">Aleft</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">Bright</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">            </span><span class="nx">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">            </span><span class="nx">l</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="code-efficiency">Code Efficiency</h3>
 <ul>
 <li><strong>Time Complexity</strong>: <span class="arithmatex">\(O(\log(\min(m, n)))\)</span><ul>
-<li>We perform a binary search on the shorter array of length <span class="arithmatex">\(\min(m, n)\)</span>.</li>
+<li>We perform binary search on the shorter array, which has size <span class="arithmatex">\(\min(m, n)\)</span>.</li>
 </ul>
 </li>
 <li><strong>Space Complexity</strong>: <span class="arithmatex">\(O(1)\)</span><ul>
-<li>We only use a few integer variables, requiring <span class="arithmatex">\(O(1)\)</span> auxiliary space.</li>
+<li>The partitioning checks are performed in-place using index boundaries, requiring no extra auxiliary memory.</li>
 </ul>
 </li>
 </ul>

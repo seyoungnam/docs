@@ -242,9 +242,9 @@ Most binary search problems fall into one of the following categories:
 
 - [74. Search a 2D Matrix](../leetcode/binary-search/74-search-a-2d-matrix.md)
 - [240. Search a 2D Matrix II](../leetcode/binary-search/240-search-a-2d-matrix-ii.md) 
-- 378. Kth Smallest Element in a Sorted Matrix
-- 1351. Count Negative Numbers in a Sorted Matrix
-- 1901. Find a Peak Element II
+- [378. Kth Smallest Element in a Sorted Matrix](../leetcode/binary-search/378-kth-smallest-element-in-a-sorted-matrix.md)
+- [1351. Count Negative Numbers in a Sorted Matrix](../leetcode/binary-search/1351-count-negative-numbers-in-a-sorted-matrix.md)
+- [1901. Find a Peak Element II](../leetcode/binary-search/1901-find-a-peak-element-ii.md)
 
 ### 5. Advanced Intervals & Bitonic Searches
 
@@ -253,12 +253,12 @@ Most binary search problems fall into one of the following categories:
 
 **Common Problems**: 
 
-- 162. Find Peak Element
-- 1095. Find in Mountain Array
-- 4. Median of Two Sorted Arrays
-- 69. Sqrt(x)
-- 658. Find K Closest Elements
-- 528. Random Pick with Weight
+- [162. Find Peak Element](../leetcode/binary-search/162-find-peak-element.md)
+- [1095. Find in Mountain Array](../leetcode/binary-search/1095-find-in-mountain-array.md)
+- [4. Median of Two Sorted Arrays](../leetcode/binary-search/4-median-two-sorted-arrays.md)
+- [69. Sqrt(x)](../leetcode/binary-search/69-sqrtx.md)
+- [658. Find K Closest Elements](../leetcode/binary-search/658-find-k-closest-elements.md)
+- [528. Random Pick with Weight](../leetcode/binary-search/528-random-pick-with-weight.md)
 - 275. H-Index II
 - 374. Guess Number Higher or Lower
 
