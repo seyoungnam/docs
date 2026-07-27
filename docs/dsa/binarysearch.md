@@ -48,6 +48,7 @@ Use this template when finding the first or last index that satisfies a specific
 
 ```go
 // Find first position where element >= target
+// the lowest/earliest index in the array where you can insert the target value
 func lowerBound(nums []int, target int) int {
     left, right := 0, len(nums)  // Note: right = len(nums) (can insert at end)
     
@@ -65,6 +66,7 @@ func lowerBound(nums []int, target int) int {
 
 ```go
 // Find first position where element > target
+// the highest/latest index in the array where you can insert the target value
 func upperBound(nums []int, target int) int {
     left, right := 0, len(nums)
     
@@ -230,7 +232,7 @@ Most binary search problems fall into one of the following categories:
 - [410. Split Array Largest Sum](../leetcode/binary-search/410-split-array-largest-sum.md)
 - [1482. Minimum Number of Days to Make m Bouquets](../leetcode/binary-search/1482-minimum-number-of-days-to-make-m-bouquets.md)
 - [1552. Magnetic Force Between Two Balls](../leetcode/binary-search/1552-magnetic-force-between-two-balls.md)
-- [774. Minimize Max Distance to Gas Station](../leetcode/binary-search/774-minimize-max-distance-to-gas-station.md)
+- [774. Minimize Max Distance to Gas Station(Bad Question)](../leetcode/binary-search/774-minimize-max-distance-to-gas-station.md)
 - [1231. Divide Chocolate](../leetcode/binary-search/1231-divide-chocolate.md)
 
 ### 4. 2D Matrix Search
@@ -259,8 +261,8 @@ Most binary search problems fall into one of the following categories:
 - [69. Sqrt(x)](../leetcode/binary-search/69-sqrtx.md)
 - [658. Find K Closest Elements](../leetcode/binary-search/658-find-k-closest-elements.md)
 - [528. Random Pick with Weight](../leetcode/binary-search/528-random-pick-with-weight.md)
-- 275. H-Index II
-- 374. Guess Number Higher or Lower
+- [275. H-Index II](../leetcode/binary-search/275-h-index-ii.md)
+- [374. Guess Number Higher or Lower](../leetcode/binary-search/374-guess-number-higher-or-lower.md)
 
 ---
 

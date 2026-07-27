@@ -50,6 +50,8 @@ The Many-to-Many model multiplexes a pool of many user-level threads onto an equ
 *   **Behavior:** The developer can create as many user-level threads as necessary. The operating system dynamically adjusts the number of kernel threads to match the available CPU cores and workload requirements.
 *   **Advantage:** Combines the benefits of both models: it avoids the bottleneck of Many-to-One blocking while keeping kernel thread overhead in check.
 *   **Status:** Theoretically optimal, but highly complex to implement in practice because it requires coordination between the user-space scheduler and the OS kernel scheduler.
+*   **Real-World Example (Go Scheduler):** Go's concurrency model (Goroutines) is a highly successful implementation of the Many-to-Many ($M:N$) model. The Go runtime multiplexes $M$ goroutines onto $N$ OS threads using a scheduler known as the **GMP model** (Goroutine(user-level thread), Machine(kernel-level thread), Logical Processor(CPU cores)). This enables lightweight user-space context switches while dynamically handshaking with OS threads to prevent application stalls when a goroutine performs a blocking system call.
+
 
 ### 4. Two-Level Model
 The Two-Level model is a variation of the Many-to-Many model, but it permits a specific user-level thread to be pinned/bound to a dedicated kernel thread.
@@ -57,6 +59,21 @@ The Two-Level model is a variation of the Many-to-Many model, but it permits a s
 ![Two-Level Model](../../assets/img/os-concepts/thread/two-level.svg)
 
 *   **Use Case:** Highly critical background tasks (like real-time UI render threads or event loops) can be pinned to their own dedicated kernel thread to prevent them from being queued behind other user-level threads.
+
+## Thread Blocking Behavior in Multithreading Models
+
+When a User-Level Thread (ULT) blocks, the impact on the underlying Kernel-Level Thread (KLT) depends on **what** caused the blocking:
+
+### 1. Kernel-Space Blocking (e.g., Disk I/O, OS System Calls)
+
+* **Mechanism:** The OS kernel only manages KLTs. If a ULT blocks on a kernel operation (like reading a file from disk or calling a blocking system network socket), the underlying KLT executing that ULT **must also block** and enter a sleep state.
+* **Many-to-Many (M:N) Handling:** The user-space scheduler detects this block and schedules the remaining runnable ULTs onto the other active, unblocked KLTs in the pool. Many runtimes (such as Go) will dynamically spawn new KLTs to maintain concurrency.
+* **Many-to-One Limitation:** Because there is only a single KLT, that KLT blocks, freezing the **entire process** and halting all other ULTs.
+
+### 2. User-Space Blocking (e.g., Language Channels, Virtual Locks)
+
+* **Mechanism:** If a ULT blocks on a user-space synchronization primitive (like waiting on a Go channel, a Java virtual thread lock, or a runtime timer), the underlying KLT **does not block**.
+* **Handling:** The user-space scheduler simply context-switches the blocked ULT out and schedules another runnable ULT onto the **same KLT**. The KLT remains 100% active in CPU execution without requiring a kernel context switch.
 
 ---
 

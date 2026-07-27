@@ -73,23 +73,23 @@ func convert(s string) []byte {
 ### Go Code
 
 ``` go
-import (
-    "unicode"
-)
-
 func isPalindrome(s string) bool {
-    runes := []rune(s)
-    l, r := 0, len(runes)-1
-    
+    l, r := 0, len(s)-1
     for l < r {
-        for l < r && !unicode.IsLetter(runes[l]) && !unicode.IsDigit(runes[l]) {
+        for l < r && !isLowerCase(s[l]) && !isUpperCase(s[l]) && !isNumber(s[l]) {
             l++
-        }
-        for l < r && !unicode.IsLetter(runes[r]) && !unicode.IsDigit(runes[r]) {
+        } 
+        for l < r && !isLowerCase(s[r]) && !isUpperCase(s[r]) && !isNumber(s[r]) {
             r--
+        } 
+        a, b := s[l], s[r]
+        if isUpperCase(a) {
+            a = a - 'A' + 'a'
         }
-        
-        if unicode.ToLower(runes[l]) != unicode.ToLower(runes[r]) {
+        if isUpperCase(b) {
+            b = b - 'A' + 'a'
+        }
+        if a != b {
             return false
         }
         l++
@@ -97,11 +97,23 @@ func isPalindrome(s string) bool {
     }
     return true
 }
+
+func isLowerCase(c byte) bool {
+    return c >= 'a' && c <= 'z'
+}
+
+func isUpperCase(c byte) bool {
+    return c >= 'A' && c <= 'Z'
+}
+
+func isNumber(c byte) bool {
+    return c >= '0' && c <= '9'
+}
 ```
 
 ### Code Efficiency
 
 - **Time Complexity**: $O(n)$
     - Each character in the string is visited at most twice (once by `l` or `r`).
-- **Space Complexity**: $O(1)$ auxiliary space
-    - Note: In Go, strings are immutable, so converting to a slice of runes takes $O(n)$ space. If we use the string directly with byte indexing (assuming ASCII), we can achieve true $O(1)$ auxiliary space.
+- **Space Complexity**: $O(1)$
+    - The algorithm runs in-place by indexing directly into the string `s` without creating a new copy, achieving true constant auxiliary space.

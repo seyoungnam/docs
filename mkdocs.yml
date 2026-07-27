@@ -96,6 +96,9 @@ nav:
       - Dest IP Discovery Process: istio/snippets/dst-ip-discovery.md
       - Request to Pod IP Not Working: istio/snippets/pod-ip-not-working.md
       - Scraping Metrics using mTLS: istio/snippets/scraping-metrics-using-mtls.md
+  - Envoy:
+    - Architecture Overview:
+      - Threading Model: envoy/architecture-overview/threading-model.md
   - Kubernetes:
     - k8s-in-action:
       - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
@@ -177,6 +180,7 @@ nav:
       - Basic Concept: os-concepts/thread/basic-concept.md
       - Amdahl's Law: os-concepts/thread/amdahls-law.md
       - User vs Kernel-Level Threads: os-concepts/thread/user-vs-kernel-threads.md
+      - Scheduling in Go: os-concepts/thread/scheduling-in-go.md
     - Process vs Thread: os-concepts/process-vs-thread.md
     - Stack vs Heap: os-concepts/stack-vs-heap.md
   - Homelab:
@@ -207,6 +211,7 @@ nav:
   - Data Structure & Algorithms:
     - Backtracking: dsa/backtracking.md
     - Binary Search: dsa/binarysearch.md
+    - Bit Manipulation: dsa/bit-manipulation.md
     - Graph Theory:
       - Common Graph Theory Problems: algo/graph/common-problems.md
       - Dijkstra's Algorithm 1: algo/graph/dijkstra.md
@@ -221,6 +226,17 @@ nav:
     - Binary Trees: algo/binary-trees.md
     - Loop: algo/loop.md
   - LeetCode:
+    - Bit Manipulation:
+      - 29. Divide Two Integers: leetcode/bit-manipulation/29-divide-two-integers.md
+      - 190. Reverse Bits: leetcode/bit-manipulation/190-reverse-bits.md
+      - 191. Number of 1 Bits: leetcode/bit-manipulation/191-number-of-1-bits.md
+      - 201. Bitwise AND of Numbers Range: leetcode/bit-manipulation/201-bitwise-and-of-numbers-range.md
+      - 231. Power of Two: leetcode/bit-manipulation/231-power-of-two.md
+      - 342. Power of Four: leetcode/bit-manipulation/342-power-of-four.md
+      - 371. Sum of Two Integers: leetcode/bit-manipulation/371-sum-of-two-integers.md
+      - 693. Binary Number with Alternating Bits: leetcode/bit-manipulation/693-binary-number-with-alternating-bits.md
+      - 868. Binary Gap: leetcode/bit-manipulation/868-binary-gap.md
+      - 1009. Complement of Base 10 Integer: leetcode/bit-manipulation/1009-complement-of-base-10-integer.md
     - Arrays & hashing:
       - 1. Two Sum: leetcode/arrays-hashing/1-two-sum.md
       - 14. Longest Common Prefix: leetcode/arrays-hashing/14-longest-common-prefix.md
@@ -229,6 +245,7 @@ nav:
       - 41. First Missing Positive: leetcode/arrays-hashing/41-first-missing-positive.md
       - 48. Rotate Image: leetcode/arrays-hashing/48-rotate-image.md
       - 49. Group Anagrams: leetcode/arrays-hashing/49-group-anagrams.md
+      - 53. Maximum Subarray: leetcode/arrays-hashing/53-maximum-subarray.md
       - 56. Merge Intervals: leetcode/arrays-hashing/56-merge-intervals.md
       - 128. Longest Consecutive Sequence: leetcode/arrays-hashing/128-longest-consecutive-sequence.md
       - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
@@ -243,6 +260,7 @@ nav:
       - 560. Subarray Sum Equals K: leetcode/arrays-hashing/560-subarray-sum-equals-k.md
       - 622. Design Circular Queue: leetcode/arrays-hashing/622-design-circular-queue.md
       - 874. Walking Robot Simulation: leetcode/arrays-hashing/874-walking-robot-simulation.md
+      - 918. Maximum Sum Circular Subarray: leetcode/arrays-hashing/918-maximum-sum-circular-subarray.md
       - 937. Reorder Data in Log Files: leetcode/arrays-hashing/937-reorder-data-in-log-files.md
       - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
       - 1299. Replace Elements with Greatest Element on Right Side: leetcode/arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side.md
@@ -254,13 +272,14 @@ nav:
       - 15. 3Sum: leetcode/two-pointers/15-3sum.md
       - 18. 4Sum: leetcode/two-pointers/18-4sum.md
       - 26. Remove Duplicates from Sorted Array: leetcode/two-pointers/26-remove-duplicates.md
+      - 80. Remove Duplicates from Sorted Array II: leetcode/two-pointers/80-remove-duplicates-from-sorted-array-ii.md
       - 31. Next Permutation: leetcode/two-pointers/31-next-permutation.md
       - 42. Trapping Rain Water: leetcode/two-pointers/42-trapping-rain-water.md
       - 75. Sort Colors: leetcode/two-pointers/75-sort-colors.md
       - 88. Merge Sorted Array: leetcode/two-pointers/88-merge-sorted-array.md
       - 125. Valid Palindrome: leetcode/two-pointers/125-valid-palindrome.md
       - 151. Reverse Words in a String: leetcode/two-pointers/151-reverse-words-in-a-string.md
-      - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/126-two-sum-ii-input-array-is-sorted.md
+      - 167. Two Sum II - Input Array Is Sorted: leetcode/two-pointers/167-two-sum-ii-input-array-is-sorted.md
       - 202. Happy Number: leetcode/two-pointers/202-happy-number.md
       - 345. Reverse Vowels of a String: leetcode/two-pointers/345-reverse-vowels-of-a-string.md
       - 392. Is Subsequence: leetcode/two-pointers/392-is-subsequence.md
@@ -271,12 +290,19 @@ nav:
       - 3. Longest Substring Without Repeating Characters: leetcode/sliding-window/3-longest-substring-without-repeating-characters.md
       - 76. Minimum Window Substring: leetcode/sliding-window/76-minimum-window-substring.md
       - 121. Best Time to Buy and Sell Stock: leetcode/sliding-window/121-best-time-to-buy-and-sell-stock.md
+      - 209. Minimum Size Subarray Sum: leetcode/sliding-window/209-minimum-size-subarray-sum.md
+      - 219. Contains Duplicate II: leetcode/sliding-window/219-contains-duplicate-ii.md
       - 239. Sliding Window Maximum: leetcode/sliding-window/239-sliding-window-maximum.md
       - 424. Longest Repeating Character Replacement: leetcode/sliding-window/424-longest-repeating-character-replacement.md
       - 567. Permutation in String: leetcode/sliding-window/567-permutation-in-string.md
       - 713. Subarray Product Less Than K: leetcode/sliding-window/713-subarray-product-less-than-k.md
+      - 978. Longest Turbulent Subarray: leetcode/sliding-window/978-longest-turbulent-subarray.md
       - 1151. Minimum Swaps to Group All 1's Together: leetcode/sliding-window/1151-min-swaps-to-group-1s.md
+      - 1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold: leetcode/sliding-window/1343-number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold.md
       - 2272. Substring With Largest Variance: leetcode/sliding-window/2272-substring-largest-variance.md
+    - Prefix Sum:
+      - 303. Range Sum Query - Immutable: leetcode/prefix-sum/303-range-sum-query-immutable.md
+      - 724. Find Pivot Index: leetcode/prefix-sum/724-find-pivot-index.md
     - Stack:
       - 20. Valid Parentheses: leetcode/stack/20-valid-parentheses.md
       - 84. Largest Rectangle in Histogram: leetcode/stack/84-largest-rectangle-in-histogram.md
@@ -367,7 +393,9 @@ nav:
       - 154. Find Minimum in Rotated Sorted Array II: leetcode/binary-search/154-find-minimum-in-rotated-sorted-array-ii.md
       - 162. Find Peak Element: leetcode/binary-search/162-find-peak-element.md
       - 240. Search a 2D Matrix II: leetcode/binary-search/240-search-a-2d-matrix-ii.md
+      - 275. H-Index II: leetcode/binary-search/275-h-index-ii.md
       - 300. Longest Increasing Subsequence: leetcode/binary-search/300-longest-increasing-subsequence.md
+      - 374. Guess Number Higher or Lower: leetcode/binary-search/374-guess-number-higher-or-lower.md
       - 378. Kth Smallest Element in a Sorted Matrix: leetcode/binary-search/378-kth-smallest-element-in-a-sorted-matrix.md
       - 410. Split Array Largest Sum: leetcode/binary-search/410-split-array-largest-sum.md
       - 528. Random Pick with Weight: leetcode/binary-search/528-random-pick-with-weight.md
