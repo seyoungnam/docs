@@ -251,7 +251,6 @@ nav:
       - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
       - 169. Majority Element: leetcode/arrays-hashing/169-majority-element.md
       - 217. Contains Duplicate: leetcode/arrays-hashing/217-contains-duplicate.md
-      - 238. Product of Array Except Self: leetcode/arrays-hashing/238-product-of-array-except-self.md
       - 242. Valid Anagram: leetcode/arrays-hashing/242-valid-anagram.md
       - 271. Encode and Decode Strings: leetcode/arrays-hashing/271-encode-and-decode-strings.md
       - 347. Top K Frequent Elements: leetcode/arrays-hashing/347-top-k-frequent-elements.md
@@ -301,6 +300,7 @@ nav:
       - 1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold: leetcode/sliding-window/1343-number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold.md
       - 2272. Substring With Largest Variance: leetcode/sliding-window/2272-substring-largest-variance.md
     - Prefix Sum:
+      - 238. Product of Array Except Self: leetcode/prefix-sum/238-product-of-array-except-self.md
       - 303. Range Sum Query - Immutable: leetcode/prefix-sum/303-range-sum-query-immutable.md
       - 724. Find Pivot Index: leetcode/prefix-sum/724-find-pivot-index.md
     - Stack:
@@ -319,8 +319,10 @@ nav:
       - 253. Meeting Rooms II: leetcode/heap/253-meeting-rooms-ii.md
       - 295. Find Median from Data Stream: leetcode/heap/295-find-median-data-stream.md
       - 480. Sliding Window Median: leetcode/heap/480-sliding-window-median.md
+      - 502. IPO: leetcode/heap/502-ipo.md
       - 703. Kth Largest Element in a Stream: leetcode/heap/703-kth-largest-element-in-a-stream.md
       - 743. Network Delay Time: leetcode/heap/743-network-delay-time.md
+      - 778. Swim in Rising Water: leetcode/heap/778-swim-in-rising-water.md
       - 787. Cheapest Flights Within K Stops: leetcode/heap/787-cheapest-flights-within-k-stops.md
       - 912. Sort an Array: leetcode/heap/912-sort-an-array.md
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
@@ -336,6 +338,7 @@ nav:
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 207. Course Schedule: leetcode/graphs/207-course-schedule.md
       - 210. Course Schedule II: leetcode/graphs/210-course-schedule-ii.md
+      - 269. Alien Dictionary: leetcode/graphs/269-alien-dictionary.md
       - 399. Evaluate Division: leetcode/graphs/399-evaluate-division.md
       - 864. Shortest Path to Get All Keys: leetcode/graphs/864-shortest-path-to-get-all-keys.md
       - 909. Snakes and Ladders: leetcode/graphs/909-snakes-and-ladders.md
@@ -343,6 +346,8 @@ nav:
       - 994. Rotting Oranges: leetcode/graphs/994-rotting-oranges.md
       - 1192. Critical Connections in a Network: leetcode/graphs/1192-critical-connections.md
       - 1293. Shortest Path in a Grid with Obstacles Elimination: leetcode/graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination.md
+      - 1462. Course Schedule IV: leetcode/graphs/1462-course-schedule-iv.md
+      - 1584. Min Cost to Connect All Points: leetcode/graphs/1584-min-cost-to-connect-all-points.md
       - 2115. Find All Possible Recipes from Given Supplies: leetcode/graphs/2115-find-all-possible-recipes-from-given-supplies.md
     - Backtracking:
       - 17. Letter Combinations of a Phone Number: leetcode/backtracking/17-letter-combinations-of-a-phone-number.md
@@ -419,13 +424,25 @@ nav:
       - 141. Linked List Cycle: leetcode/linked-list/141-linked-list-cycle.md
       - 143. Reorder List: leetcode/linked-list/143-reorder-list.md
       - 206. Reverse Linked Lists: leetcode/linked-list/206-reverse-linked-list.md
+      - 287. Find the Duplicate Number: leetcode/linked-list/287-find-the-duplicate-number.md
+      - 876. Middle of the Linked List: leetcode/linked-list/876-middle-of-the-linked-list.md
+      - 2130. Maximum Twin Sum of a Linked List: leetcode/linked-list/2130-maximum-twin-sum-of-a-linked-list.md
       - 2502. Design Memory Allocator: leetcode/linked-list/2502-design-memory-allocator.md
     - Trees:
       - 100. Same Tree: leetcode/trees/100-same-tree.md
       - 102. Binary Tree Level Order Traversal: leetcode/trees/102-binary-tree-level-order-traversal.md
       - 103. Binary Tree Zigzag Level Order Traversal: leetcode/trees/103-binary-tree-zigzag-level-order-traversal.md
+      - 144. Binary Tree Preorder Traversal: leetcode/trees/144-binary-tree-preorder-traversal.md
+      - 145. Binary Tree Postorder Traversal: leetcode/trees/145-binary-tree-postorder-traversal.md
+      - 173. Binary Search Tree Iterator: leetcode/trees/173-binary-search-tree-iterator.md
+      - 208. Implement Trie (Prefix Tree): leetcode/trees/208-implement-trie-prefix-tree.md
+      - 211. Design Add and Search Words Data Structure: leetcode/trees/211-design-add-and-search-words-data-structure.md
+      - 323. Number of Connected Components in an Undirected Graph: leetcode/trees/323-number-of-connected-components-in-an-undirected-graph.md
       - 236. Lowest Common Ancestor of a Binary Tree: leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree.md
       - 543. Diameter of Binary Tree: leetcode/trees/543-diameter-of-binary-tree.md
+      - 684. Redundant Connection: leetcode/trees/684-redundant-connection.md
+      - 721. Accounts Merge: leetcode/trees/721-accounts-merge.md
+      - 729. My Calendar I: leetcode/trees/729-my-calendar-i.md
     - 1-D Dynamic Programming:
       - 5. Longest Palindromic Substring: leetcode/dp-1/5-longest-palindromic-substring.md
       - 53. Maximum Subarray: leetcode/dp-1/53-maximum-subarray.md
