@@ -97,78 +97,50 @@ func findTargetSumWays(nums []int, target int) int {
 
 ---
 
-## Solution 3: Bottom-Up Dynamic Programming (0/1 Knapsack Reduction)
+## Solution 3: Bottom-Up Dynamic Programming (2D Map-Based DP)
 
-We can mathematically transform this target sum problem into a classic subset sum (0/1 Knapsack) problem, allowing for an iterative bottom-up solution with $O(1)$ recursion overhead.
+We can solve this problem iteratively without recursion overhead by computing the number of ways to form each possible sum at each step.
 
 ### Thought Process
 
-1.  **Mathematical Reduction**:
-
-    *   Let $P$ be the subset of numbers assigned a positive sign, and $N$ be the subset of numbers assigned a negative sign.
-    *   We want to satisfy:
-        $\sum P - \sum N = \text{target}$
-    *   We also know that the total sum of all elements is:
-        $\sum P + \sum N = \text{totalSum}$
-    *   Adding these two equations gives:
-        $2 \cdot \sum P = \text{target} + \text{totalSum}$
-
-        $$\sum P = \frac{\text{target} + \text{totalSum}}{2}$$
-
-    *   Thus, the problem reduces to: **Find the number of subsets $P$ that sum up to exactly $\text{targetSum} = \frac{\text{target} + \text{totalSum}}{2}$**.
-
-2.  **Edge Cases**:
-
-    *   If the absolute value of `target` is greater than `totalSum`, it is impossible to reach the target: return `0`.
-    *   If $\text{target} + \text{totalSum}$ is odd, it cannot be divided cleanly by 2 (since subset sums must be integers): return `0`.
-
-3.  **State Transition (1D DP)**:
-
-    *   Define `dp[sum]` as the number of subsets that sum up to `sum`.
-    *   Base case: `dp[0] = 1` (exactly 1 way to form a sum of 0, using the empty subset).
-    *   For each candidate `num` in `nums`, update `dp[sum]` backwards from `targetSum` down to `num` to prevent using the same element multiple times:
-    
-        $$dp[\text{sum}] = dp[\text{sum}] + dp[\text{sum} - \text{num}]$$
+1.  **State Definition**:
+    *   Define `dp[i][sum]` as the number of ways to reach a running total of `sum` using the first `i` elements from the `nums` array.
+    *   To handle dynamic ranges of sums, we represent this as a slice of maps in Go: `dp := make([]map[int]int, n+1)`.
+2.  **Base Case**:
+    *   `dp[0][0] = 1`: There is exactly one way to form a sum of 0 using zero elements (the empty set).
+3.  **State Transition**:
+    *   For each element `nums[i]` (from `i = 0` to `n-1`):
+        *   For each existing `sum` and its frequency `cnt` that can be formed using the first `i` elements (`dp[i]`):
+            *   **Option 1 (Subtract)**: We can subtract `nums[i]` to get a new sum `sum - nums[i]`. Increment its count:
+                `dp[i+1][sum-nums[i]] += cnt`
+            *   **Option 2 (Add)**: We can add `nums[i]` to get a new sum `sum + nums[i]`. Increment its count:
+                `dp[i+1][sum+nums[i]] += cnt`
+4.  **Result**:
+    *   The final answer is the number of ways to reach the `target` sum using all `n` elements: `dp[n][target]`. If `target` is not reachable, the map lookup returns `0` by default.
 
 ### Go Code
 
 ``` go
 func findTargetSumWays(nums []int, target int) int {
-    totalSum := 0
-    for _, num := range nums {
-        totalSum += num
+    n := len(nums)
+    dp := make([]map[int]int, n+1)
+    for i := 0; i <= n; i++ {
+        dp[i] = make(map[int]int)
     }
-
-    // Edge Cases:
-    // 1. If the target is physically out of bounds of the total sum capacity
-    // 2. If (target + totalSum) is odd, it cannot be divided cleanly by 2
-    if abs(target) > totalSum || (target + totalSum)%2 != 0 {
-        return 0
+    dp[0][0] = 1
+    for i := 0; i < n; i++ {
+        for sum, cnt := range dp[i] {
+            dp[i+1][sum-nums[i]] += cnt
+            dp[i+1][sum+nums[i]] += cnt
+        }
     }
-
-    targetSum := (target + totalSum) / 2
-    dp := make([]int, targetSum+1)
-    dp[0] = 1
-
-    for _, num := range nums {
-        for sum := targetSum; sum >= num; sum-- {
-            dp[sum] += dp[sum-num]
-        } 
-    }
-    return dp[targetSum]
-}
-
-func abs(a int) int {
-    if a < 0 {
-        return -a
-    }
-    return a
+    return dp[n][target]
 }
 ```
 
 ### Code Efficiency
 
-- **Time Complexity**: $O(N \cdot T_{sum})$
-    - Where $N$ is the number of elements in `nums` and $T_{sum}$ is the `targetSum` value. Nested loops: outer loop runs $N$ times, inner loop runs up to $T_{sum}$ times.
-- **Space Complexity**: $O(T_{sum})$
-    - Requires a single `dp` array of size $T_{sum} + 1$. This bottom-up approach avoids recursion stack space overhead.
+- **Time Complexity**: $O(N \cdot S)$
+    - Where $N$ is the number of elements in `nums` and $S$ is the number of unique sums we can form. At each step `i`, we iterate over all unique running sums from the previous step. Since $S \le 2 \cdot \text{totalSum}$, the total time is bounded by $O(N \cdot S)$.
+- **Space Complexity**: $O(N \cdot S)$
+    - We store a slice of maps of length $N+1$, where each map contains up to $S$ unique running sums, requiring $O(N \cdot S)$ auxiliary space. This bottom-up approach avoids recursion stack space overhead.

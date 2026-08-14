@@ -42,10 +42,10 @@ history -c
 
 `HITSIZE` controls the max number of commands to be stored:
 ``` bash
-echo $HITSIZE
-500
+echo $HISTSIZE
+50000
 
-HITSIZE=10000
+HISTSIZE=10000
 ```
 
 Whenever an interactive shell exits, it writes its history to the file `$HOME/.bash_history` or whatever path is stored in `HISTFILE`:

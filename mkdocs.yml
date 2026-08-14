@@ -98,7 +98,9 @@ nav:
       - Scraping Metrics using mTLS: istio/snippets/scraping-metrics-using-mtls.md
   - Envoy:
     - Architecture Overview:
-      - Threading Model: envoy/architecture-overview/threading-model.md
+      - Threading Model: 
+        - Envoy Threading Model: envoy/architecture-overview/threading-model/envoy.md
+        - Nginx Threading Model: envoy/architecture-overview/threading-model/nginx.md
   - Kubernetes:
     - k8s-in-action:
       - 01. Intro: kubernetes/k8s-in-action/01-intro-k8s.md
@@ -125,6 +127,8 @@ nav:
     - Routing: networking/03-routing.md
     - TCP/IP App: networking/04-tcpip-app.md
     - NAT: networking/05-nat.md
+    - AWS:
+      - AWS Networking Basics: networking/aws/networking-basics.md
   - DNS:
     - SRV record: DNS/srv.md
   - EKS:
@@ -176,6 +180,9 @@ nav:
       - 8. vLLM Model Monitoring: EKS/gpu-operations/vllm-model-monitoring.md
       - 9. Cleanup: EKS/gpu-operations/cleanup.md
   - OS Concepts:
+    - Process: 
+      - Program vs Process: os-concepts/process/program-vs-process.md
+      - Process Control Block: os-concepts/process/process-control-block.md
     - Thread: 
       - Basic Concept: os-concepts/thread/basic-concept.md
       - Amdahl's Law: os-concepts/thread/amdahls-law.md
@@ -256,6 +263,7 @@ nav:
       - 347. Top K Frequent Elements: leetcode/arrays-hashing/347-top-k-frequent-elements.md
       - 348. Design Tic-Tac-Toe: leetcode/arrays-hashing/348-design-tic-tac-toe.md
       - 460. LFU Cache: leetcode/arrays-hashing/460-lfu-cache.md
+      - 485. Max Consecutive Ones: leetcode/arrays-hashing/485-max-consecutive-ones.md
       - 560. Subarray Sum Equals K: leetcode/arrays-hashing/560-subarray-sum-equals-k.md
       - 622. Design Circular Queue: leetcode/arrays-hashing/622-design-circular-queue.md
       - 874. Walking Robot Simulation: leetcode/arrays-hashing/874-walking-robot-simulation.md
@@ -444,17 +452,27 @@ nav:
       - 721. Accounts Merge: leetcode/trees/721-accounts-merge.md
       - 729. My Calendar I: leetcode/trees/729-my-calendar-i.md
     - 1-D Dynamic Programming:
-      - 5. Longest Palindromic Substring: leetcode/dp-1/5-longest-palindromic-substring.md
       - 53. Maximum Subarray: leetcode/dp-1/53-maximum-subarray.md
       - 55. Jump Game: leetcode/dp-1/55-jump-game.md
       - 139. Word Break: leetcode/dp-1/139-word-break.md
       - 322. Coin Change: leetcode/dp-1/322-coin-change.md
       - 377. Combination Sum IV: leetcode/dp-1/377-combination-sum-iv.md
       - 416. Partition Equal Subset Sum: leetcode/dp-1/416-partition-equal-subset-sum.md
-      - 1143. Longest Common Subsequence: leetcode/dp-1/1143-longest-common-subsequence.md
+      - 518. Coin Change II: leetcode/dp-1/518-coin-change-ii.md
+      - 983. Minimum Cost For Tickets: leetcode/dp-1/983-minimum-cost-for-tickets.md
+      - 1049. Last Stone Weight II: leetcode/dp-1/1049-last-stone-weight-ii.md
     - 2-D Dynamic Programming:
+      - 5. Longest Palindromic Substring: leetcode/dp-2/5-longest-palindromic-substring.md
+      - 72. Edit Distance: leetcode/dp-2/72-edit-distance.md
+      - 97. Interleaving String: leetcode/dp-2/97-interleaving-string.md
+      - 115. Distinct Subsequences: leetcode/dp-2/115-distinct-subsequences.md
       - 221. Maximal Square: leetcode/dp-2/221-maximal-square.md
       - 304. Range Sum Query 2D - Immutable: leetcode/dp-2/304-range-sum-query-2d-immutable.md
+      - 474. Ones and Zeroes: leetcode/dp-2/474-ones-and-zeroes.md
+      - 516. Longest Palindromic Subsequence: leetcode/dp-2/516-longest-palindromic-subsequence.md
+      - 647. Palindromic Substrings: leetcode/dp-2/647-palindromic-substrings.md
+      - 1092. Shortest Common Supersequence: leetcode/dp-2/1092-shortest-common-supersequence.md
+      - 1143. Longest Common Subsequence: leetcode/dp-2/1143-longest-common-subsequence.md
       - 1277. Count Square Submatrices with All Ones: leetcode/dp-2/1277-count-square-submatrices-with-all-ones.md
     - Math:
       - 7. Reverse Integer: leetcode/math/7-reverse-integer.md
