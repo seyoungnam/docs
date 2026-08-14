@@ -242,7 +242,7 @@ To force the shell to treat spaces as part of a filename, you have three options
       ``` bash
       echo '$HOME'
       $HOME
-```
+      ```
 
 === "double quotes"
 

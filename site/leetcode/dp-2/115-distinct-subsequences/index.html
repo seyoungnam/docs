@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://seyoungnam.github.io/docs/envoy/architecture-overview/threading-model/">
+        <link rel="canonical" href="https://seyoungnam.github.io/docs/leetcode/dp-2/115-distinct-subsequences/">
       
       
-        <link rel="prev" href="../../../istio/snippets/scraping-metrics-using-mtls/">
+        <link rel="prev" href="../97-interleaving-string/">
       
       
-        <link rel="next" href="../../../kubernetes/k8s-in-action/01-intro-k8s/">
+        <link rel="next" href="../221-maximal-square/">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Threading Model - The Engineer's Warehouse</title>
+        <title>115. Distinct Subsequences - The Engineer's Warehouse</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#envoy-threading-model" class="md-skip">
+        <a href="#115-distinct-subsequences" class="md-skip">
           Skip to content
         </a>
       
@@ -127,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Threading Model
+              115. Distinct Subsequences
             
           </span>
         </div>
@@ -664,20 +664,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -698,7 +696,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -713,20 +711,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -747,7 +743,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -762,20 +758,22 @@
                 
   
   
+  
+  
     
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
         
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1">
+        
           
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -789,17 +787,35 @@
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Threading Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../envoy/architecture-overview/threading-model/envoy/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Threading Model
+    Envoy Threading Model
   
 
     
@@ -808,147 +824,41 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../../envoy/architecture-overview/threading-model/nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
   
+    Nginx Threading Model
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#1-the-threading-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. The Threading Architecture
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-    <nav class="md-nav" aria-label="1. The Threading Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-main-thread" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Main Thread
-      
-    </span>
-  </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#worker-threads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Worker Threads
-      
-    </span>
-  </a>
+
+      </a>
+    </li>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#file-flushers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        File Flushers
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-connection-binding-worker-thread-lifecycle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Connection Binding (Worker Thread Lifecycle)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-why-this-model-lock-free-performance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Why This Model? (Lock-Free Performance)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-comparison-of-threading-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Comparison of Threading Models
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-architectural-comparison-event-loop-per-thread-vs-thread-per-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Architectural Comparison: Event-Loop-per-Thread vs. Thread-per-Connection
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Architectural Comparison: Event-Loop-per-Thread vs. Thread-per-Connection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#model-a-thread-per-connection-blocking-io" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model A: Thread-per-Connection (Blocking I/O)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#model-b-event-loop-per-thread-non-blocking-multiplexing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model B: Event-Loop-per-Thread (Non-Blocking Multiplexing)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1819,6 +1729,89 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7">
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../networking/aws/networking-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Networking Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3571,7 +3564,7 @@
   <span class="md-ellipsis">
     
   
-    Thread
+    Process
   
 
     
@@ -3584,6 +3577,117 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Process
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os-concepts/process/program-vs-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Program vs Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os-concepts/process/process-control-block/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process Control Block
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thread
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5193,18 +5297,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" checked="">
         
           
           <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
@@ -5225,7 +5331,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
             
@@ -5290,7 +5396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/29-divide-two-integers/" class="md-nav__link">
+      <a href="../../bit-manipulation/29-divide-two-integers/" class="md-nav__link">
         
   
   
@@ -5318,7 +5424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/190-reverse-bits/" class="md-nav__link">
+      <a href="../../bit-manipulation/190-reverse-bits/" class="md-nav__link">
         
   
   
@@ -5346,7 +5452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/191-number-of-1-bits/" class="md-nav__link">
+      <a href="../../bit-manipulation/191-number-of-1-bits/" class="md-nav__link">
         
   
   
@@ -5374,7 +5480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/201-bitwise-and-of-numbers-range/" class="md-nav__link">
+      <a href="../../bit-manipulation/201-bitwise-and-of-numbers-range/" class="md-nav__link">
         
   
   
@@ -5402,7 +5508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/231-power-of-two/" class="md-nav__link">
+      <a href="../../bit-manipulation/231-power-of-two/" class="md-nav__link">
         
   
   
@@ -5430,7 +5536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/342-power-of-four/" class="md-nav__link">
+      <a href="../../bit-manipulation/342-power-of-four/" class="md-nav__link">
         
   
   
@@ -5458,7 +5564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/371-sum-of-two-integers/" class="md-nav__link">
+      <a href="../../bit-manipulation/371-sum-of-two-integers/" class="md-nav__link">
         
   
   
@@ -5486,7 +5592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/693-binary-number-with-alternating-bits/" class="md-nav__link">
+      <a href="../../bit-manipulation/693-binary-number-with-alternating-bits/" class="md-nav__link">
         
   
   
@@ -5514,7 +5620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/868-binary-gap/" class="md-nav__link">
+      <a href="../../bit-manipulation/868-binary-gap/" class="md-nav__link">
         
   
   
@@ -5542,7 +5648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/bit-manipulation/1009-complement-of-base-10-integer/" class="md-nav__link">
+      <a href="../../bit-manipulation/1009-complement-of-base-10-integer/" class="md-nav__link">
         
   
   
@@ -5625,7 +5731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/1-two-sum/" class="md-nav__link">
+      <a href="../../arrays-hashing/1-two-sum/" class="md-nav__link">
         
   
   
@@ -5653,7 +5759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/14-longest-common-prefix/" class="md-nav__link">
+      <a href="../../arrays-hashing/14-longest-common-prefix/" class="md-nav__link">
         
   
   
@@ -5681,7 +5787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/27-remove-element/" class="md-nav__link">
+      <a href="../../arrays-hashing/27-remove-element/" class="md-nav__link">
         
   
   
@@ -5709,7 +5815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/36-valid-sudoku/" class="md-nav__link">
+      <a href="../../arrays-hashing/36-valid-sudoku/" class="md-nav__link">
         
   
   
@@ -5737,7 +5843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/41-first-missing-positive/" class="md-nav__link">
+      <a href="../../arrays-hashing/41-first-missing-positive/" class="md-nav__link">
         
   
   
@@ -5765,7 +5871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/48-rotate-image/" class="md-nav__link">
+      <a href="../../arrays-hashing/48-rotate-image/" class="md-nav__link">
         
   
   
@@ -5793,7 +5899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/49-group-anagrams/" class="md-nav__link">
+      <a href="../../arrays-hashing/49-group-anagrams/" class="md-nav__link">
         
   
   
@@ -5821,7 +5927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/53-maximum-subarray/" class="md-nav__link">
+      <a href="../../arrays-hashing/53-maximum-subarray/" class="md-nav__link">
         
   
   
@@ -5849,7 +5955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/56-merge-intervals/" class="md-nav__link">
+      <a href="../../arrays-hashing/56-merge-intervals/" class="md-nav__link">
         
   
   
@@ -5877,7 +5983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/128-longest-consecutive-sequence/" class="md-nav__link">
+      <a href="../../arrays-hashing/128-longest-consecutive-sequence/" class="md-nav__link">
         
   
   
@@ -5905,7 +6011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/146-lru-cache/" class="md-nav__link">
+      <a href="../../arrays-hashing/146-lru-cache/" class="md-nav__link">
         
   
   
@@ -5933,7 +6039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/169-majority-element/" class="md-nav__link">
+      <a href="../../arrays-hashing/169-majority-element/" class="md-nav__link">
         
   
   
@@ -5961,7 +6067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/217-contains-duplicate/" class="md-nav__link">
+      <a href="../../arrays-hashing/217-contains-duplicate/" class="md-nav__link">
         
   
   
@@ -5989,7 +6095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/242-valid-anagram/" class="md-nav__link">
+      <a href="../../arrays-hashing/242-valid-anagram/" class="md-nav__link">
         
   
   
@@ -6017,7 +6123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/271-encode-and-decode-strings/" class="md-nav__link">
+      <a href="../../arrays-hashing/271-encode-and-decode-strings/" class="md-nav__link">
         
   
   
@@ -6045,7 +6151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/347-top-k-frequent-elements/" class="md-nav__link">
+      <a href="../../arrays-hashing/347-top-k-frequent-elements/" class="md-nav__link">
         
   
   
@@ -6073,7 +6179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/348-design-tic-tac-toe/" class="md-nav__link">
+      <a href="../../arrays-hashing/348-design-tic-tac-toe/" class="md-nav__link">
         
   
   
@@ -6101,7 +6207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/460-lfu-cache/" class="md-nav__link">
+      <a href="../../arrays-hashing/460-lfu-cache/" class="md-nav__link">
         
   
   
@@ -6129,7 +6235,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/560-subarray-sum-equals-k/" class="md-nav__link">
+      <a href="../../arrays-hashing/485-max-consecutive-ones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    485. Max Consecutive Ones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arrays-hashing/560-subarray-sum-equals-k/" class="md-nav__link">
         
   
   
@@ -6157,7 +6291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/622-design-circular-queue/" class="md-nav__link">
+      <a href="../../arrays-hashing/622-design-circular-queue/" class="md-nav__link">
         
   
   
@@ -6185,7 +6319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/874-walking-robot-simulation/" class="md-nav__link">
+      <a href="../../arrays-hashing/874-walking-robot-simulation/" class="md-nav__link">
         
   
   
@@ -6213,7 +6347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/918-maximum-sum-circular-subarray/" class="md-nav__link">
+      <a href="../../arrays-hashing/918-maximum-sum-circular-subarray/" class="md-nav__link">
         
   
   
@@ -6241,7 +6375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/937-reorder-data-in-log-files/" class="md-nav__link">
+      <a href="../../arrays-hashing/937-reorder-data-in-log-files/" class="md-nav__link">
         
   
   
@@ -6269,7 +6403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/1010-pairs-of-songs/" class="md-nav__link">
+      <a href="../../arrays-hashing/1010-pairs-of-songs/" class="md-nav__link">
         
   
   
@@ -6297,7 +6431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side/" class="md-nav__link">
+      <a href="../../arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side/" class="md-nav__link">
         
   
   
@@ -6325,7 +6459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/2268-minimum-keypresses/" class="md-nav__link">
+      <a href="../../arrays-hashing/2268-minimum-keypresses/" class="md-nav__link">
         
   
   
@@ -6353,7 +6487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/3043-find-the-length-of-the-longest-common-prefix/" class="md-nav__link">
+      <a href="../../arrays-hashing/3043-find-the-length-of-the-longest-common-prefix/" class="md-nav__link">
         
   
   
@@ -6381,7 +6515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/arrays-hashing/3121-count-the-number-of-special-characters-ii/" class="md-nav__link">
+      <a href="../../arrays-hashing/3121-count-the-number-of-special-characters-ii/" class="md-nav__link">
         
   
   
@@ -6464,7 +6598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/11-container-with-most-water/" class="md-nav__link">
+      <a href="../../two-pointers/11-container-with-most-water/" class="md-nav__link">
         
   
   
@@ -6492,7 +6626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/15-3sum/" class="md-nav__link">
+      <a href="../../two-pointers/15-3sum/" class="md-nav__link">
         
   
   
@@ -6520,7 +6654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/18-4sum/" class="md-nav__link">
+      <a href="../../two-pointers/18-4sum/" class="md-nav__link">
         
   
   
@@ -6548,7 +6682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/26-remove-duplicates/" class="md-nav__link">
+      <a href="../../two-pointers/26-remove-duplicates/" class="md-nav__link">
         
   
   
@@ -6576,7 +6710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/80-remove-duplicates-from-sorted-array-ii/" class="md-nav__link">
+      <a href="../../two-pointers/80-remove-duplicates-from-sorted-array-ii/" class="md-nav__link">
         
   
   
@@ -6604,7 +6738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/31-next-permutation/" class="md-nav__link">
+      <a href="../../two-pointers/31-next-permutation/" class="md-nav__link">
         
   
   
@@ -6632,7 +6766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/42-trapping-rain-water/" class="md-nav__link">
+      <a href="../../two-pointers/42-trapping-rain-water/" class="md-nav__link">
         
   
   
@@ -6660,7 +6794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/75-sort-colors/" class="md-nav__link">
+      <a href="../../two-pointers/75-sort-colors/" class="md-nav__link">
         
   
   
@@ -6688,7 +6822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/88-merge-sorted-array/" class="md-nav__link">
+      <a href="../../two-pointers/88-merge-sorted-array/" class="md-nav__link">
         
   
   
@@ -6716,7 +6850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/125-valid-palindrome/" class="md-nav__link">
+      <a href="../../two-pointers/125-valid-palindrome/" class="md-nav__link">
         
   
   
@@ -6744,7 +6878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/151-reverse-words-in-a-string/" class="md-nav__link">
+      <a href="../../two-pointers/151-reverse-words-in-a-string/" class="md-nav__link">
         
   
   
@@ -6772,7 +6906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/167-two-sum-ii-input-array-is-sorted/" class="md-nav__link">
+      <a href="../../two-pointers/167-two-sum-ii-input-array-is-sorted/" class="md-nav__link">
         
   
   
@@ -6800,7 +6934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/202-happy-number/" class="md-nav__link">
+      <a href="../../two-pointers/202-happy-number/" class="md-nav__link">
         
   
   
@@ -6828,7 +6962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/345-reverse-vowels-of-a-string/" class="md-nav__link">
+      <a href="../../two-pointers/345-reverse-vowels-of-a-string/" class="md-nav__link">
         
   
   
@@ -6856,7 +6990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/392-is-subsequence/" class="md-nav__link">
+      <a href="../../two-pointers/392-is-subsequence/" class="md-nav__link">
         
   
   
@@ -6884,7 +7018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/1768-merge-strings-alternately/" class="md-nav__link">
+      <a href="../../two-pointers/1768-merge-strings-alternately/" class="md-nav__link">
         
   
   
@@ -6912,7 +7046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/3633-earliest-finish-time-for-land-and-water-rides-i/" class="md-nav__link">
+      <a href="../../two-pointers/3633-earliest-finish-time-for-land-and-water-rides-i/" class="md-nav__link">
         
   
   
@@ -6940,7 +7074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/two-pointers/3635-earliest-finish-time-for-land-and-water-rides-ii/" class="md-nav__link">
+      <a href="../../two-pointers/3635-earliest-finish-time-for-land-and-water-rides-ii/" class="md-nav__link">
         
   
   
@@ -7023,7 +7157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/3-longest-substring-without-repeating-characters/" class="md-nav__link">
+      <a href="../../sliding-window/3-longest-substring-without-repeating-characters/" class="md-nav__link">
         
   
   
@@ -7051,7 +7185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/76-minimum-window-substring/" class="md-nav__link">
+      <a href="../../sliding-window/76-minimum-window-substring/" class="md-nav__link">
         
   
   
@@ -7079,7 +7213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/121-best-time-to-buy-and-sell-stock/" class="md-nav__link">
+      <a href="../../sliding-window/121-best-time-to-buy-and-sell-stock/" class="md-nav__link">
         
   
   
@@ -7107,7 +7241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/209-minimum-size-subarray-sum/" class="md-nav__link">
+      <a href="../../sliding-window/209-minimum-size-subarray-sum/" class="md-nav__link">
         
   
   
@@ -7135,7 +7269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/219-contains-duplicate-ii/" class="md-nav__link">
+      <a href="../../sliding-window/219-contains-duplicate-ii/" class="md-nav__link">
         
   
   
@@ -7163,7 +7297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/239-sliding-window-maximum/" class="md-nav__link">
+      <a href="../../sliding-window/239-sliding-window-maximum/" class="md-nav__link">
         
   
   
@@ -7191,7 +7325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/424-longest-repeating-character-replacement/" class="md-nav__link">
+      <a href="../../sliding-window/424-longest-repeating-character-replacement/" class="md-nav__link">
         
   
   
@@ -7219,7 +7353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/567-permutation-in-string/" class="md-nav__link">
+      <a href="../../sliding-window/567-permutation-in-string/" class="md-nav__link">
         
   
   
@@ -7247,7 +7381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/713-subarray-product-less-than-k/" class="md-nav__link">
+      <a href="../../sliding-window/713-subarray-product-less-than-k/" class="md-nav__link">
         
   
   
@@ -7275,7 +7409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/978-longest-turbulent-subarray/" class="md-nav__link">
+      <a href="../../sliding-window/978-longest-turbulent-subarray/" class="md-nav__link">
         
   
   
@@ -7303,7 +7437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/1151-min-swaps-to-group-1s/" class="md-nav__link">
+      <a href="../../sliding-window/1151-min-swaps-to-group-1s/" class="md-nav__link">
         
   
   
@@ -7331,7 +7465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/1343-number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/" class="md-nav__link">
+      <a href="../../sliding-window/1343-number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/" class="md-nav__link">
         
   
   
@@ -7359,7 +7493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/sliding-window/2272-substring-largest-variance/" class="md-nav__link">
+      <a href="../../sliding-window/2272-substring-largest-variance/" class="md-nav__link">
         
   
   
@@ -7442,7 +7576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/prefix-sum/238-product-of-array-except-self/" class="md-nav__link">
+      <a href="../../prefix-sum/238-product-of-array-except-self/" class="md-nav__link">
         
   
   
@@ -7470,7 +7604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/prefix-sum/303-range-sum-query-immutable/" class="md-nav__link">
+      <a href="../../prefix-sum/303-range-sum-query-immutable/" class="md-nav__link">
         
   
   
@@ -7498,7 +7632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/prefix-sum/724-find-pivot-index/" class="md-nav__link">
+      <a href="../../prefix-sum/724-find-pivot-index/" class="md-nav__link">
         
   
   
@@ -7581,7 +7715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/20-valid-parentheses/" class="md-nav__link">
+      <a href="../../stack/20-valid-parentheses/" class="md-nav__link">
         
   
   
@@ -7609,7 +7743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/84-largest-rectangle-in-histogram/" class="md-nav__link">
+      <a href="../../stack/84-largest-rectangle-in-histogram/" class="md-nav__link">
         
   
   
@@ -7637,7 +7771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/150-evaluate-reverse-polish-notation/" class="md-nav__link">
+      <a href="../../stack/150-evaluate-reverse-polish-notation/" class="md-nav__link">
         
   
   
@@ -7665,7 +7799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/155-min-stack/" class="md-nav__link">
+      <a href="../../stack/155-min-stack/" class="md-nav__link">
         
   
   
@@ -7693,7 +7827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stackloc/227-basic-calculator-ii.md" class="md-nav__link">
+      <a href="../../stackloc/227-basic-calculator-ii.md" class="md-nav__link">
         
   
   
@@ -7721,7 +7855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/341-flatten-nested-list-iterator/" class="md-nav__link">
+      <a href="../../stack/341-flatten-nested-list-iterator/" class="md-nav__link">
         
   
   
@@ -7749,7 +7883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/682-baseball-game/" class="md-nav__link">
+      <a href="../../stack/682-baseball-game/" class="md-nav__link">
         
   
   
@@ -7777,7 +7911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/739-daily-temperatures/" class="md-nav__link">
+      <a href="../../stack/739-daily-temperatures/" class="md-nav__link">
         
   
   
@@ -7805,7 +7939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/853-car-fleet/" class="md-nav__link">
+      <a href="../../stack/853-car-fleet/" class="md-nav__link">
         
   
   
@@ -7833,7 +7967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/stack/2104-sum-of-subarray-ranges/" class="md-nav__link">
+      <a href="../../stack/2104-sum-of-subarray-ranges/" class="md-nav__link">
         
   
   
@@ -7916,7 +8050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/23-merge-k-sorted-lists/" class="md-nav__link">
+      <a href="../../heap/23-merge-k-sorted-lists/" class="md-nav__link">
         
   
   
@@ -7944,7 +8078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/253-meeting-rooms-ii/" class="md-nav__link">
+      <a href="../../heap/253-meeting-rooms-ii/" class="md-nav__link">
         
   
   
@@ -7972,7 +8106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/295-find-median-data-stream/" class="md-nav__link">
+      <a href="../../heap/295-find-median-data-stream/" class="md-nav__link">
         
   
   
@@ -8000,7 +8134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/480-sliding-window-median/" class="md-nav__link">
+      <a href="../../heap/480-sliding-window-median/" class="md-nav__link">
         
   
   
@@ -8028,7 +8162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/502-ipo/" class="md-nav__link">
+      <a href="../../heap/502-ipo/" class="md-nav__link">
         
   
   
@@ -8056,7 +8190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/703-kth-largest-element-in-a-stream/" class="md-nav__link">
+      <a href="../../heap/703-kth-largest-element-in-a-stream/" class="md-nav__link">
         
   
   
@@ -8084,7 +8218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/743-network-delay-time/" class="md-nav__link">
+      <a href="../../heap/743-network-delay-time/" class="md-nav__link">
         
   
   
@@ -8112,7 +8246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/778-swim-in-rising-water/" class="md-nav__link">
+      <a href="../../heap/778-swim-in-rising-water/" class="md-nav__link">
         
   
   
@@ -8140,7 +8274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/787-cheapest-flights-within-k-stops/" class="md-nav__link">
+      <a href="../../heap/787-cheapest-flights-within-k-stops/" class="md-nav__link">
         
   
   
@@ -8168,7 +8302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/912-sort-an-array/" class="md-nav__link">
+      <a href="../../heap/912-sort-an-array/" class="md-nav__link">
         
   
   
@@ -8196,7 +8330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/973-k-closest-points-to-origin/" class="md-nav__link">
+      <a href="../../heap/973-k-closest-points-to-origin/" class="md-nav__link">
         
   
   
@@ -8224,7 +8358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/1167-minimum-cost-to-connect-sticks/" class="md-nav__link">
+      <a href="../../heap/1167-minimum-cost-to-connect-sticks/" class="md-nav__link">
         
   
   
@@ -8252,7 +8386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/1514-path-with-maximum-probability/" class="md-nav__link">
+      <a href="../../heap/1514-path-with-maximum-probability/" class="md-nav__link">
         
   
   
@@ -8280,7 +8414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/heap/1621-path-with-minimum-effort/" class="md-nav__link">
+      <a href="../../heap/1621-path-with-minimum-effort/" class="md-nav__link">
         
   
   
@@ -8363,7 +8497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/greedy/767-reorganize-string/" class="md-nav__link">
+      <a href="../../greedy/767-reorganize-string/" class="md-nav__link">
         
   
   
@@ -8446,7 +8580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/54-spiral-matrix/" class="md-nav__link">
+      <a href="../../graphs/54-spiral-matrix/" class="md-nav__link">
         
   
   
@@ -8474,7 +8608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/126-word-ladder-ii/" class="md-nav__link">
+      <a href="../../graphs/126-word-ladder-ii/" class="md-nav__link">
         
   
   
@@ -8502,7 +8636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/127-word-ladder/" class="md-nav__link">
+      <a href="../../graphs/127-word-ladder/" class="md-nav__link">
         
   
   
@@ -8530,7 +8664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/200-number-of-islands/" class="md-nav__link">
+      <a href="../../graphs/200-number-of-islands/" class="md-nav__link">
         
   
   
@@ -8558,7 +8692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/207-course-schedule/" class="md-nav__link">
+      <a href="../../graphs/207-course-schedule/" class="md-nav__link">
         
   
   
@@ -8586,7 +8720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/210-course-schedule-ii.md" class="md-nav__link">
+      <a href="../../graphs/210-course-schedule-ii.md" class="md-nav__link">
         
   
   
@@ -8614,7 +8748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/269-alien-dictionary/" class="md-nav__link">
+      <a href="../../graphs/269-alien-dictionary/" class="md-nav__link">
         
   
   
@@ -8642,7 +8776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/399-evaluate-division/" class="md-nav__link">
+      <a href="../../graphs/399-evaluate-division/" class="md-nav__link">
         
   
   
@@ -8670,7 +8804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/864-shortest-path-to-get-all-keys/" class="md-nav__link">
+      <a href="../../graphs/864-shortest-path-to-get-all-keys/" class="md-nav__link">
         
   
   
@@ -8698,7 +8832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/909-snakes-and-ladders/" class="md-nav__link">
+      <a href="../../graphs/909-snakes-and-ladders/" class="md-nav__link">
         
   
   
@@ -8726,7 +8860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/934-shortest-bridge/" class="md-nav__link">
+      <a href="../../graphs/934-shortest-bridge/" class="md-nav__link">
         
   
   
@@ -8754,7 +8888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/994-rotting-oranges/" class="md-nav__link">
+      <a href="../../graphs/994-rotting-oranges/" class="md-nav__link">
         
   
   
@@ -8782,7 +8916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/1192-critical-connections/" class="md-nav__link">
+      <a href="../../graphs/1192-critical-connections/" class="md-nav__link">
         
   
   
@@ -8810,7 +8944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination/" class="md-nav__link">
+      <a href="../../graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination/" class="md-nav__link">
         
   
   
@@ -8838,7 +8972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/1462-course-schedule-iv/" class="md-nav__link">
+      <a href="../../graphs/1462-course-schedule-iv/" class="md-nav__link">
         
   
   
@@ -8866,7 +9000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/1584-min-cost-to-connect-all-points/" class="md-nav__link">
+      <a href="../../graphs/1584-min-cost-to-connect-all-points/" class="md-nav__link">
         
   
   
@@ -8894,7 +9028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/graphs/2115-find-all-possible-recipes-from-given-supplies/" class="md-nav__link">
+      <a href="../../graphs/2115-find-all-possible-recipes-from-given-supplies/" class="md-nav__link">
         
   
   
@@ -8977,7 +9111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/17-letter-combinations-of-a-phone-number/" class="md-nav__link">
+      <a href="../../backtracking/17-letter-combinations-of-a-phone-number/" class="md-nav__link">
         
   
   
@@ -9005,7 +9139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/22-generate-parentheses/" class="md-nav__link">
+      <a href="../../backtracking/22-generate-parentheses/" class="md-nav__link">
         
   
   
@@ -9033,7 +9167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/37-sudoku-solver/" class="md-nav__link">
+      <a href="../../backtracking/37-sudoku-solver/" class="md-nav__link">
         
   
   
@@ -9061,7 +9195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/39-combination-sum/" class="md-nav__link">
+      <a href="../../backtracking/39-combination-sum/" class="md-nav__link">
         
   
   
@@ -9089,7 +9223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/40-combination-sum-ii/" class="md-nav__link">
+      <a href="../../backtracking/40-combination-sum-ii/" class="md-nav__link">
         
   
   
@@ -9117,7 +9251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/46-permutations/" class="md-nav__link">
+      <a href="../../backtracking/46-permutations/" class="md-nav__link">
         
   
   
@@ -9145,7 +9279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/47-permutations-ii/" class="md-nav__link">
+      <a href="../../backtracking/47-permutations-ii/" class="md-nav__link">
         
   
   
@@ -9173,7 +9307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/51-n-queens/" class="md-nav__link">
+      <a href="../../backtracking/51-n-queens/" class="md-nav__link">
         
   
   
@@ -9201,7 +9335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/60-permutation-sequence/" class="md-nav__link">
+      <a href="../../backtracking/60-permutation-sequence/" class="md-nav__link">
         
   
   
@@ -9229,7 +9363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/77-combinations/" class="md-nav__link">
+      <a href="../../backtracking/77-combinations/" class="md-nav__link">
         
   
   
@@ -9257,7 +9391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/78-subsets/" class="md-nav__link">
+      <a href="../../backtracking/78-subsets/" class="md-nav__link">
         
   
   
@@ -9285,7 +9419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/79-word-search/" class="md-nav__link">
+      <a href="../../backtracking/79-word-search/" class="md-nav__link">
         
   
   
@@ -9313,7 +9447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/90-subsets-2/" class="md-nav__link">
+      <a href="../../backtracking/90-subsets-2/" class="md-nav__link">
         
   
   
@@ -9341,7 +9475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/93-restore-ip-addresses/" class="md-nav__link">
+      <a href="../../backtracking/93-restore-ip-addresses/" class="md-nav__link">
         
   
   
@@ -9369,7 +9503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/131-palindrome-partitioning/" class="md-nav__link">
+      <a href="../../backtracking/131-palindrome-partitioning/" class="md-nav__link">
         
   
   
@@ -9397,7 +9531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/140-word-break-ii/" class="md-nav__link">
+      <a href="../../backtracking/140-word-break-ii/" class="md-nav__link">
         
   
   
@@ -9425,7 +9559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/212-word-search-ii/" class="md-nav__link">
+      <a href="../../backtracking/212-word-search-ii/" class="md-nav__link">
         
   
   
@@ -9453,7 +9587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/216-combination-sum-iii/" class="md-nav__link">
+      <a href="../../backtracking/216-combination-sum-iii/" class="md-nav__link">
         
   
   
@@ -9481,7 +9615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/241-different-ways-to-add-parentheses/" class="md-nav__link">
+      <a href="../../backtracking/241-different-ways-to-add-parentheses/" class="md-nav__link">
         
   
   
@@ -9509,7 +9643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/282-expression-add-operators/" class="md-nav__link">
+      <a href="../../backtracking/282-expression-add-operators/" class="md-nav__link">
         
   
   
@@ -9537,7 +9671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/320-generalized-abbreviation/" class="md-nav__link">
+      <a href="../../backtracking/320-generalized-abbreviation/" class="md-nav__link">
         
   
   
@@ -9565,7 +9699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/351-android-unlock-patterns/" class="md-nav__link">
+      <a href="../../backtracking/351-android-unlock-patterns/" class="md-nav__link">
         
   
   
@@ -9593,7 +9727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/357-count-numbers-with-unique-digits/" class="md-nav__link">
+      <a href="../../backtracking/357-count-numbers-with-unique-digits/" class="md-nav__link">
         
   
   
@@ -9621,7 +9755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/401-binary-watch/" class="md-nav__link">
+      <a href="../../backtracking/401-binary-watch/" class="md-nav__link">
         
   
   
@@ -9649,7 +9783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/494-target-sum/" class="md-nav__link">
+      <a href="../../backtracking/494-target-sum/" class="md-nav__link">
         
   
   
@@ -9677,7 +9811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/526-beautiful-arrangement/" class="md-nav__link">
+      <a href="../../backtracking/526-beautiful-arrangement/" class="md-nav__link">
         
   
   
@@ -9705,7 +9839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/639-decode-ways-ii/" class="md-nav__link">
+      <a href="../../backtracking/639-decode-ways-ii/" class="md-nav__link">
         
   
   
@@ -9733,7 +9867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/698-partition-to-k-equal-sum-subsets/" class="md-nav__link">
+      <a href="../../backtracking/698-partition-to-k-equal-sum-subsets/" class="md-nav__link">
         
   
   
@@ -9761,7 +9895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/784-letter-case-permutation/" class="md-nav__link">
+      <a href="../../backtracking/784-letter-case-permutation/" class="md-nav__link">
         
   
   
@@ -9789,7 +9923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/842-split-array-into-fibonacci-sequence/" class="md-nav__link">
+      <a href="../../backtracking/842-split-array-into-fibonacci-sequence/" class="md-nav__link">
         
   
   
@@ -9817,7 +9951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/980-unique-paths-iii/" class="md-nav__link">
+      <a href="../../backtracking/980-unique-paths-iii/" class="md-nav__link">
         
   
   
@@ -9845,7 +9979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/1220-count-vowels-permutation/" class="md-nav__link">
+      <a href="../../backtracking/1220-count-vowels-permutation/" class="md-nav__link">
         
   
   
@@ -9873,7 +10007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters/" class="md-nav__link">
+      <a href="../../backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters/" class="md-nav__link">
         
   
   
@@ -9901,7 +10035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/1718-construct-largest-sequence/" class="md-nav__link">
+      <a href="../../backtracking/1718-construct-largest-sequence/" class="md-nav__link">
         
   
   
@@ -9929,7 +10063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/2305-fair-distribution-of-cookies/" class="md-nav__link">
+      <a href="../../backtracking/2305-fair-distribution-of-cookies/" class="md-nav__link">
         
   
   
@@ -9957,7 +10091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/backtracking/2597-the-number-of-beautiful-subsets/" class="md-nav__link">
+      <a href="../../backtracking/2597-the-number-of-beautiful-subsets/" class="md-nav__link">
         
   
   
@@ -10040,7 +10174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/4-median-two-sorted-arrays/" class="md-nav__link">
+      <a href="../../binary-search/4-median-two-sorted-arrays/" class="md-nav__link">
         
   
   
@@ -10068,7 +10202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/33-search-in-rotated-sorted-array/" class="md-nav__link">
+      <a href="../../binary-search/33-search-in-rotated-sorted-array/" class="md-nav__link">
         
   
   
@@ -10096,7 +10230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/34-find-first-and-last-position-of-element-in-sorted-array/" class="md-nav__link">
+      <a href="../../binary-search/34-find-first-and-last-position-of-element-in-sorted-array/" class="md-nav__link">
         
   
   
@@ -10124,7 +10258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/35-search-insert-position/" class="md-nav__link">
+      <a href="../../binary-search/35-search-insert-position/" class="md-nav__link">
         
   
   
@@ -10152,7 +10286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/69-sqrtx/" class="md-nav__link">
+      <a href="../../binary-search/69-sqrtx/" class="md-nav__link">
         
   
   
@@ -10180,7 +10314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/74-search-a-2d-matrix/" class="md-nav__link">
+      <a href="../../binary-search/74-search-a-2d-matrix/" class="md-nav__link">
         
   
   
@@ -10208,7 +10342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/81-search-in-rotated-sorted-array-ii/" class="md-nav__link">
+      <a href="../../binary-search/81-search-in-rotated-sorted-array-ii/" class="md-nav__link">
         
   
   
@@ -10236,7 +10370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/153-find-minimum-in-rotated-sorted-array/" class="md-nav__link">
+      <a href="../../binary-search/153-find-minimum-in-rotated-sorted-array/" class="md-nav__link">
         
   
   
@@ -10264,7 +10398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/154-find-minimum-in-rotated-sorted-array-ii/" class="md-nav__link">
+      <a href="../../binary-search/154-find-minimum-in-rotated-sorted-array-ii/" class="md-nav__link">
         
   
   
@@ -10292,7 +10426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/162-find-peak-element/" class="md-nav__link">
+      <a href="../../binary-search/162-find-peak-element/" class="md-nav__link">
         
   
   
@@ -10320,7 +10454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/240-search-a-2d-matrix-ii/" class="md-nav__link">
+      <a href="../../binary-search/240-search-a-2d-matrix-ii/" class="md-nav__link">
         
   
   
@@ -10348,7 +10482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/275-h-index-ii/" class="md-nav__link">
+      <a href="../../binary-search/275-h-index-ii/" class="md-nav__link">
         
   
   
@@ -10376,7 +10510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/300-longest-increasing-subsequence/" class="md-nav__link">
+      <a href="../../binary-search/300-longest-increasing-subsequence/" class="md-nav__link">
         
   
   
@@ -10404,7 +10538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/374-guess-number-higher-or-lower/" class="md-nav__link">
+      <a href="../../binary-search/374-guess-number-higher-or-lower/" class="md-nav__link">
         
   
   
@@ -10432,7 +10566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/378-kth-smallest-element-in-a-sorted-matrix/" class="md-nav__link">
+      <a href="../../binary-search/378-kth-smallest-element-in-a-sorted-matrix/" class="md-nav__link">
         
   
   
@@ -10460,7 +10594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/410-split-array-largest-sum/" class="md-nav__link">
+      <a href="../../binary-search/410-split-array-largest-sum/" class="md-nav__link">
         
   
   
@@ -10488,7 +10622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/528-random-pick-with-weight/" class="md-nav__link">
+      <a href="../../binary-search/528-random-pick-with-weight/" class="md-nav__link">
         
   
   
@@ -10516,7 +10650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/540-single-element-in-a-sorted-array/" class="md-nav__link">
+      <a href="../../binary-search/540-single-element-in-a-sorted-array/" class="md-nav__link">
         
   
   
@@ -10544,7 +10678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/658-find-k-closest-elements/" class="md-nav__link">
+      <a href="../../binary-search/658-find-k-closest-elements/" class="md-nav__link">
         
   
   
@@ -10572,7 +10706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/704-binary-search/" class="md-nav__link">
+      <a href="../../binary-search/704-binary-search/" class="md-nav__link">
         
   
   
@@ -10600,7 +10734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/774-minimize-max-distance-to-gas-station/" class="md-nav__link">
+      <a href="../../binary-search/774-minimize-max-distance-to-gas-station/" class="md-nav__link">
         
   
   
@@ -10628,7 +10762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/875-koko-eating-bananas/" class="md-nav__link">
+      <a href="../../binary-search/875-koko-eating-bananas/" class="md-nav__link">
         
   
   
@@ -10656,7 +10790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/981-time-based-key-value-store/" class="md-nav__link">
+      <a href="../../binary-search/981-time-based-key-value-store/" class="md-nav__link">
         
   
   
@@ -10684,7 +10818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/1011-capacity-to-ship-packages-within-d-day/" class="md-nav__link">
+      <a href="../../binary-search/1011-capacity-to-ship-packages-within-d-day/" class="md-nav__link">
         
   
   
@@ -10712,7 +10846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/1095-find-in-mountain-array/" class="md-nav__link">
+      <a href="../../binary-search/1095-find-in-mountain-array/" class="md-nav__link">
         
   
   
@@ -10740,7 +10874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/1231-divide-chocolate/" class="md-nav__link">
+      <a href="../../binary-search/1231-divide-chocolate/" class="md-nav__link">
         
   
   
@@ -10768,7 +10902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/1351-count-negative-numbers-in-a-sorted-matrix/" class="md-nav__link">
+      <a href="../../binary-search/1351-count-negative-numbers-in-a-sorted-matrix/" class="md-nav__link">
         
   
   
@@ -10796,7 +10930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/1482-minimum-number-of-days-to-make-m-bouquets/" class="md-nav__link">
+      <a href="../../binary-search/1482-minimum-number-of-days-to-make-m-bouquets/" class="md-nav__link">
         
   
   
@@ -10824,7 +10958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/1552-magnetic-force-between-two-balls/" class="md-nav__link">
+      <a href="../../binary-search/1552-magnetic-force-between-two-balls/" class="md-nav__link">
         
   
   
@@ -10852,7 +10986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/binary-search/1901-find-a-peak-element-ii/" class="md-nav__link">
+      <a href="../../binary-search/1901-find-a-peak-element-ii/" class="md-nav__link">
         
   
   
@@ -10935,7 +11069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/2-add-two-numbers/" class="md-nav__link">
+      <a href="../../linked-list/2-add-two-numbers/" class="md-nav__link">
         
   
   
@@ -10963,7 +11097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/21-merge-two-sorted-lists/" class="md-nav__link">
+      <a href="../../linked-list/21-merge-two-sorted-lists/" class="md-nav__link">
         
   
   
@@ -10991,7 +11125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/138-copy-list-with-random-pointer/" class="md-nav__link">
+      <a href="../../linked-list/138-copy-list-with-random-pointer/" class="md-nav__link">
         
   
   
@@ -11019,7 +11153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/141-linked-list-cycle/" class="md-nav__link">
+      <a href="../../linked-list/141-linked-list-cycle/" class="md-nav__link">
         
   
   
@@ -11047,7 +11181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/143-reorder-list/" class="md-nav__link">
+      <a href="../../linked-list/143-reorder-list/" class="md-nav__link">
         
   
   
@@ -11075,7 +11209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/206-reverse-linked-list/" class="md-nav__link">
+      <a href="../../linked-list/206-reverse-linked-list/" class="md-nav__link">
         
   
   
@@ -11103,7 +11237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/287-find-the-duplicate-number/" class="md-nav__link">
+      <a href="../../linked-list/287-find-the-duplicate-number/" class="md-nav__link">
         
   
   
@@ -11131,7 +11265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/876-middle-of-the-linked-list/" class="md-nav__link">
+      <a href="../../linked-list/876-middle-of-the-linked-list/" class="md-nav__link">
         
   
   
@@ -11159,7 +11293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/2130-maximum-twin-sum-of-a-linked-list/" class="md-nav__link">
+      <a href="../../linked-list/2130-maximum-twin-sum-of-a-linked-list/" class="md-nav__link">
         
   
   
@@ -11187,7 +11321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/linked-list/2502-design-memory-allocator/" class="md-nav__link">
+      <a href="../../linked-list/2502-design-memory-allocator/" class="md-nav__link">
         
   
   
@@ -11270,7 +11404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/100-same-tree/" class="md-nav__link">
+      <a href="../../trees/100-same-tree/" class="md-nav__link">
         
   
   
@@ -11298,7 +11432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/102-binary-tree-level-order-traversal/" class="md-nav__link">
+      <a href="../../trees/102-binary-tree-level-order-traversal/" class="md-nav__link">
         
   
   
@@ -11326,7 +11460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/103-binary-tree-zigzag-level-order-traversal/" class="md-nav__link">
+      <a href="../../trees/103-binary-tree-zigzag-level-order-traversal/" class="md-nav__link">
         
   
   
@@ -11354,7 +11488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/144-binary-tree-preorder-traversal/" class="md-nav__link">
+      <a href="../../trees/144-binary-tree-preorder-traversal/" class="md-nav__link">
         
   
   
@@ -11382,7 +11516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/145-binary-tree-postorder-traversal/" class="md-nav__link">
+      <a href="../../trees/145-binary-tree-postorder-traversal/" class="md-nav__link">
         
   
   
@@ -11410,7 +11544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/173-binary-search-tree-iterator/" class="md-nav__link">
+      <a href="../../trees/173-binary-search-tree-iterator/" class="md-nav__link">
         
   
   
@@ -11438,7 +11572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/208-implement-trie-prefix-tree/" class="md-nav__link">
+      <a href="../../trees/208-implement-trie-prefix-tree/" class="md-nav__link">
         
   
   
@@ -11466,7 +11600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/211-design-add-and-search-words-data-structure/" class="md-nav__link">
+      <a href="../../trees/211-design-add-and-search-words-data-structure/" class="md-nav__link">
         
   
   
@@ -11494,7 +11628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/323-number-of-connected-components-in-an-undirected-graph/" class="md-nav__link">
+      <a href="../../trees/323-number-of-connected-components-in-an-undirected-graph/" class="md-nav__link">
         
   
   
@@ -11522,7 +11656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree/" class="md-nav__link">
+      <a href="../../trees/236-lowest-common-ancestor-of-a-binary-tree/" class="md-nav__link">
         
   
   
@@ -11550,7 +11684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/543-diameter-of-binary-tree/" class="md-nav__link">
+      <a href="../../trees/543-diameter-of-binary-tree/" class="md-nav__link">
         
   
   
@@ -11578,7 +11712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/684-redundant-connection/" class="md-nav__link">
+      <a href="../../trees/684-redundant-connection/" class="md-nav__link">
         
   
   
@@ -11606,7 +11740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/721-accounts-merge/" class="md-nav__link">
+      <a href="../../trees/721-accounts-merge/" class="md-nav__link">
         
   
   
@@ -11634,7 +11768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/trees/729-my-calendar-i/" class="md-nav__link">
+      <a href="../../trees/729-my-calendar-i/" class="md-nav__link">
         
   
   
@@ -11717,35 +11851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/5-longest-palindromic-substring/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5. Longest Palindromic Substring
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/53-maximum-subarray/" class="md-nav__link">
+      <a href="../../dp-1/53-maximum-subarray/" class="md-nav__link">
         
   
   
@@ -11773,7 +11879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/55-jump-game/" class="md-nav__link">
+      <a href="../../dp-1/55-jump-game/" class="md-nav__link">
         
   
   
@@ -11801,7 +11907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/139-word-break/" class="md-nav__link">
+      <a href="../../dp-1/139-word-break/" class="md-nav__link">
         
   
   
@@ -11829,7 +11935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/322-coin-change/" class="md-nav__link">
+      <a href="../../dp-1/322-coin-change/" class="md-nav__link">
         
   
   
@@ -11857,7 +11963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/377-combination-sum-iv/" class="md-nav__link">
+      <a href="../../dp-1/377-combination-sum-iv/" class="md-nav__link">
         
   
   
@@ -11885,7 +11991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/416-partition-equal-subset-sum/" class="md-nav__link">
+      <a href="../../dp-1/416-partition-equal-subset-sum/" class="md-nav__link">
         
   
   
@@ -11913,14 +12019,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-1/1143-longest-common-subsequence/" class="md-nav__link">
+      <a href="../../dp-1/518-coin-change-ii/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1143. Longest Common Subsequence
+    518. Coin Change II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dp-1/983-minimum-cost-for-tickets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    983. Minimum Cost For Tickets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dp-1/1049-last-stone-weight-ii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1049. Last Stone Weight II
   
 
     
@@ -11946,18 +12108,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_15">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_15" checked="">
         
           
           <label class="md-nav__link" for="__nav_14_15" id="__nav_14_15_label" tabindex="0">
@@ -11978,7 +12142,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_15_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_15_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_14_15">
             <span class="md-nav__icon md-icon"></span>
             
@@ -11996,7 +12160,266 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-2/221-maximal-square/" class="md-nav__link">
+      <a href="../5-longest-palindromic-substring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Longest Palindromic Substring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../72-edit-distance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72. Edit Distance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../97-interleaving-string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    97. Interleaving String
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    115. Distinct Subsequences
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    115. Distinct Subsequences
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#solution-1-top-down-dynamic-programming-dfs-with-memoization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 1: Top-Down Dynamic Programming (DFS with Memoization)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 1: Top-Down Dynamic Programming (DFS with Memoization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thought-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thought Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Go Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-2-bottom-up-dynamic-programming-2d-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 2: Bottom-Up Dynamic Programming (2D DP)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 2: Bottom-Up Dynamic Programming (2D DP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thought-process_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thought Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-code_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Go Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-efficiency_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../221-maximal-square/" class="md-nav__link">
         
   
   
@@ -12024,7 +12447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-2/304-range-sum-query-2d-immutable/" class="md-nav__link">
+      <a href="../304-range-sum-query-2d-immutable/" class="md-nav__link">
         
   
   
@@ -12052,7 +12475,147 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/dp-2/1277-count-square-submatrices-with-all-ones/" class="md-nav__link">
+      <a href="../474-ones-and-zeroes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    474. Ones and Zeroes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../516-longest-palindromic-subsequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    516. Longest Palindromic Subsequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../647-palindromic-substrings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    647. Palindromic Substrings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1092-shortest-common-supersequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1092. Shortest Common Supersequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1143-longest-common-subsequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1143. Longest Common Subsequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1277-count-square-submatrices-with-all-ones/" class="md-nav__link">
         
   
   
@@ -12135,7 +12698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/7-reverse-integer/" class="md-nav__link">
+      <a href="../../math/7-reverse-integer/" class="md-nav__link">
         
   
   
@@ -12163,7 +12726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/8-string-to-integer-atoi/" class="md-nav__link">
+      <a href="../../math/8-string-to-integer-atoi/" class="md-nav__link">
         
   
   
@@ -12191,7 +12754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/9-palindrome-number/" class="md-nav__link">
+      <a href="../../math/9-palindrome-number/" class="md-nav__link">
         
   
   
@@ -12219,7 +12782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/50-powx-n/" class="md-nav__link">
+      <a href="../../math/50-powx-n/" class="md-nav__link">
         
   
   
@@ -12247,7 +12810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/204-count-primes/" class="md-nav__link">
+      <a href="../../math/204-count-primes/" class="md-nav__link">
         
   
   
@@ -12275,7 +12838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/223-rectangle-area/" class="md-nav__link">
+      <a href="../../math/223-rectangle-area/" class="md-nav__link">
         
   
   
@@ -12303,7 +12866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/843-guess-the-word/" class="md-nav__link">
+      <a href="../../math/843-guess-the-word/" class="md-nav__link">
         
   
   
@@ -12331,7 +12894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/1041-robot-bounded-in-circle/" class="md-nav__link">
+      <a href="../../math/1041-robot-bounded-in-circle/" class="md-nav__link">
         
   
   
@@ -12359,7 +12922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/1758-minimum-changes-to-make-alternating-binary-string/" class="md-nav__link">
+      <a href="../../math/1758-minimum-changes-to-make-alternating-binary-string/" class="md-nav__link">
         
   
   
@@ -12387,7 +12950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/math/2069-walking-robot-simulation-ii/" class="md-nav__link">
+      <a href="../../math/2069-walking-robot-simulation-ii/" class="md-nav__link">
         
   
   
@@ -12470,7 +13033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/concurrency/359-logger-rate-limiter/" class="md-nav__link">
+      <a href="../../concurrency/359-logger-rate-limiter/" class="md-nav__link">
         
   
   
@@ -12498,7 +13061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/concurrency/1117-building-h2o/" class="md-nav__link">
+      <a href="../../concurrency/1117-building-h2o/" class="md-nav__link">
         
   
   
@@ -12526,7 +13089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../leetcode/concurrency/1603-design-parking-system/" class="md-nav__link">
+      <a href="../../concurrency/1603-design-parking-system/" class="md-nav__link">
         
   
   
@@ -12949,22 +13512,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-the-threading-architecture" class="md-nav__link">
+  <a href="#solution-1-top-down-dynamic-programming-dfs-with-memoization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. The Threading Architecture
+        Solution 1: Top-Down Dynamic Programming (DFS with Memoization)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. The Threading Architecture">
+    <nav class="md-nav" aria-label="Solution 1: Top-Down Dynamic Programming (DFS with Memoization)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-main-thread" class="md-nav__link">
+  <a href="#thought-process" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Main Thread
+        Thought Process
       
     </span>
   </a>
@@ -12972,10 +13535,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#worker-threads" class="md-nav__link">
+  <a href="#go-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Worker Threads
+        Go Code
       
     </span>
   </a>
@@ -12983,10 +13546,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#file-flushers" class="md-nav__link">
+  <a href="#code-efficiency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File Flushers
+        Code Efficiency
       
     </span>
   </a>
@@ -12999,55 +13562,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-connection-binding-worker-thread-lifecycle" class="md-nav__link">
+  <a href="#solution-2-bottom-up-dynamic-programming-2d-dp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Connection Binding (Worker Thread Lifecycle)
+        Solution 2: Bottom-Up Dynamic Programming (2D DP)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-why-this-model-lock-free-performance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Why This Model? (Lock-Free Performance)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-comparison-of-threading-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Comparison of Threading Models
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-architectural-comparison-event-loop-per-thread-vs-thread-per-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Architectural Comparison: Event-Loop-per-Thread vs. Thread-per-Connection
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Architectural Comparison: Event-Loop-per-Thread vs. Thread-per-Connection">
+    <nav class="md-nav" aria-label="Solution 2: Bottom-Up Dynamic Programming (2D DP)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model-a-thread-per-connection-blocking-io" class="md-nav__link">
+  <a href="#thought-process_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model A: Thread-per-Connection (Blocking I/O)
+        Thought Process
       
     </span>
   </a>
@@ -13055,10 +13585,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#model-b-event-loop-per-thread-non-blocking-multiplexing" class="md-nav__link">
+  <a href="#go-code_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model B: Event-Loop-per-Thread (Non-Blocking Multiplexing)
+        Go Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-efficiency_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Efficiency
       
     </span>
   </a>
@@ -13087,157 +13628,143 @@
 
 
 
-<h1 id="envoy-threading-model">Envoy Threading Model</h1>
-<p>Envoy Proxy uses a highly optimized, non-blocking <strong>Event-Loop-per-Thread</strong> model. Instead of allocating a separate thread for each connection or request, Envoy multiplexes many thousands of concurrent connections across a small, fixed pool of worker threads.</p>
+<h1 id="115-distinct-subsequences">115. Distinct Subsequences</h1>
+<p><a href="https://leetcode.com/problems/distinct-subsequences/description/"><img alt="📎" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4ce.svg" title=":paperclip:"> LeetCode Problem Description</a></p>
+<p>Given two strings <code>s</code> and <code>t</code>, return the number of distinct subsequences of <code>s</code> which equals <code>t</code>.</p>
 <hr>
-<h2 id="1-the-threading-architecture">1. The Threading Architecture</h2>
-<p>Envoy operates with three main types of threads:</p>
-<pre class="mermaid"><code>graph TD
-    subgraph "Main Thread"
-        Admin[Admin &amp; Control Plane]
-        xDS[xDS Config Engine]
-        Listen[Listen Sockets]
-    end
-    subgraph "Worker Threads (Event-Loop-per-Thread)"
-        W1[Worker Thread 1]
-        W2[Worker Thread 2]
-    end
-    subgraph "Helper Threads"
-        Flush[File Flushers]
-    end
-
-    Listen -. allocates connection .-&gt; W1
-    Listen -. allocates connection .-&gt; W2
-    xDS -. updates config via TLS .-&gt; W1
-    xDS -. updates config via TLS .-&gt; W2</code></pre>
-<h3 id="the-main-thread">The Main Thread</h3>
-<ul>
-<li><strong>Role</strong>: Coordinates the proxy's control plane, administration, and runtime updates.</li>
-<li><strong>Tasks</strong>:<ul>
-<li>Handles the Envoy admin console.</li>
-<li>Manages configuration updates received from the Control Plane (xDS APIs).</li>
-<li>Binds incoming listening ports (sockets) and coordinates connection handoffs.</li>
-<li>Processes process-wide statistics and signal handling.</li>
+<h2 id="solution-1-top-down-dynamic-programming-dfs-with-memoization">Solution 1: Top-Down Dynamic Programming (DFS with Memoization)</h2>
+<p>We can solve this recursively by comparing characters from left to right. When two characters match, we have two choices: use the character in <code>s</code> to match <code>t</code>, or skip it to look for another match further along <code>s</code>.</p>
+<h3 id="thought-process">Thought Process</h3>
+<ol>
+<li><strong>State Definition</strong>:<ul>
+<li>Let <code>dfs(i1, i2)</code> represent the number of distinct subsequences of <code>s[i1:]</code> that equal <code>t[i2:]</code>.</li>
+</ul>
+</li>
+<li><strong>Base Cases</strong>:<ul>
+<li>If <code>i2 == len(t)</code>: We have successfully matched all characters in <code>t</code>, so return <code>1</code>.</li>
+<li>If <code>i1 == len(s)</code>: We have run out of characters in <code>s</code> without completing <code>t</code>, so return <code>0</code>.</li>
+</ul>
+</li>
+<li><strong>State Transitions</strong>:<ul>
+<li><strong>Matching Characters (<code>s[i1] == t[i2]</code>)</strong>:<ul>
+<li><strong>Option 1 (Match)</strong>: Use <code>s[i1]</code> to match <code>t[i2]</code> and advance both pointers: <code>dfs(i1+1, i2+1)</code>.</li>
+<li><strong>Option 2 (Skip)</strong>: Skip <code>s[i1]</code> and try to match <code>t[i2]</code> with a later occurrence in <code>s</code>: <code>dfs(i1+1, i2)</code>.</li>
+<li>Total combinations:
+    $<span class="arithmatex">\(dfs(i1, i2) = dfs(i1+1, i2+1) + dfs(i1+1, i2)\)</span>$</li>
+</ul>
+</li>
+<li><strong>Mismatching Characters (<code>s[i1] != t[i2]</code>)</strong>:<ul>
+<li>We cannot match <code>s[i1]</code> with <code>t[i2]</code>, so we must skip it:
+    $<span class="arithmatex">\(dfs(i1, i2) = dfs(i1+1, i2)\)</span>$</li>
 </ul>
 </li>
 </ul>
-<h3 id="worker-threads">Worker Threads</h3>
-<ul>
-<li><strong>Role</strong>: Executes the proxy's data plane, handling all request routing and network traffic.</li>
-<li><strong>Event Loop</strong>: Each worker thread runs an independent, non-blocking event loop using the <code>libevent</code> library.</li>
-<li><strong>Sizing</strong>: Typically, the number of worker threads is configured to match the number of physical CPU cores on the machine.</li>
-</ul>
-<h3 id="file-flushers">File Flushers</h3>
-<ul>
-<li><strong>Role</strong>: Write log buffers to disk asynchronously.</li>
-<li><strong>Tasks</strong>: Worker threads write logs to memory buffers. File flusher threads flush these buffers to disk in the background, preventing worker threads from blocking on disk I/O.</li>
-</ul>
-<hr>
-<h2 id="2-connection-binding-worker-thread-lifecycle">2. Connection Binding (Worker Thread Lifecycle)</h2>
-<p>When a client establishes a connection to Envoy:</p>
-<ol>
-<li><strong>Accept and Handoff</strong>: The socket connection is accepted (either directly by a worker thread via <code>SO_REUSEPORT</code> or accepted on the main thread and dispatched).</li>
-<li><strong>Thread Binding</strong>: Once assigned, the connection is <strong>permanently bound to a single worker thread</strong> for its entire lifetime.</li>
-<li><strong>Local Processing</strong>: The assigned worker thread executes all network and application layer tasks for the connection:<ul>
-<li>TLS handshake, decryption, and encryption.</li>
-<li>Protocol parsing (HTTP/1.1, HTTP/2, gRPC).</li>
-<li>Filter chain execution (RBAC, Rate Limiting, CORS, etc.).</li>
-<li>Routing decisions and upstream request dispatching.</li>
+</li>
+<li><strong>Memoization</strong>:<ul>
+<li>Use a 2D matrix <code>memo</code> of size <code>len(s) x len(t)</code> initialized to <code>-1</code> to cache intermediate results.</li>
 </ul>
 </li>
 </ol>
-<hr>
-<h2 id="3-why-this-model-lock-free-performance">3. Why This Model? (Lock-Free Performance)</h2>
-<p>Envoy's threading model is designed to minimize thread context switching and lock contention, achieving ultra-low latency and maximum throughput:</p>
+<h3 id="go-code">Go Code</h3>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">numDistinct</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nx">memo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nx">memo</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span><span class="w"> </span><span class="nx">j</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="nx">memo</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">dfs</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i1</span><span class="p">,</span><span class="w"> </span><span class="nx">i2</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nx">dfs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i1</span><span class="p">,</span><span class="w"> </span><span class="nx">i2</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">i2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">i1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">memo</span><span class="p">[</span><span class="nx">i1</span><span class="p">][</span><span class="nx">i2</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">memo</span><span class="p">[</span><span class="nx">i1</span><span class="p">][</span><span class="nx">i2</span><span class="p">]</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="nx">i1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">t</span><span class="p">[</span><span class="nx">i2</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">            </span><span class="nx">memo</span><span class="p">[</span><span class="nx">i1</span><span class="p">][</span><span class="nx">i2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">dfs</span><span class="p">(</span><span class="nx">i1</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">i2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">dfs</span><span class="p">(</span><span class="nx">i1</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">i2</span><span class="p">)</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">            </span><span class="nx">memo</span><span class="p">[</span><span class="nx">i1</span><span class="p">][</span><span class="nx">i2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">dfs</span><span class="p">(</span><span class="nx">i1</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">i2</span><span class="p">)</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">memo</span><span class="p">[</span><span class="nx">i1</span><span class="p">][</span><span class="nx">i2</span><span class="p">]</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="code-efficiency">Code Efficiency</h3>
 <ul>
-<li><strong>Lock-Free Execution</strong>: Because all operations for a specific connection occur on a single thread, there is no need for cross-thread synchronization (locks or mutexes) to process bytes on that connection.</li>
-<li><strong>Thread Local Storage (TLS)</strong>: To avoid global locks, Envoy makes extensive use of Thread Local Storage. Configurations, statistics, and upstream connection pools are duplicated across worker threads.</li>
-<li><strong>Cache Locality</strong>: Keeping a connection on the same CPU core preserves CPU cache warmth (L1/L2/L3 caches), preventing performance hits from cache invalidations.</li>
-<li><strong>Non-blocking updates</strong>: When configuration changes (e.g., adding an upstream cluster), the main thread prepares the new configuration and posts it to each worker thread's event loop queue. Each worker thread updates its own local copy without locking the system.</li>
-</ul>
-<hr>
-<h2 id="4-comparison-of-threading-models">4. Comparison of Threading Models</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Model</th>
-<th style="text-align: left;">Mechanics</th>
-<th style="text-align: left;">Pros</th>
-<th style="text-align: left;">Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Thread-per-Connection</strong> <em>(e.g., Apache)</em></td>
-<td style="text-align: left;">Spawns a dedicated OS thread for each network connection.</td>
-<td style="text-align: left;">Simple programming model.</td>
-<td style="text-align: left;">High memory overhead; context-switch thrashing under heavy concurrent traffic.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Single Event Loop</strong> <em>(e.g., Node.js)</em></td>
-<td style="text-align: left;">All connections run on a single, non-blocking event loop thread.</td>
-<td style="text-align: left;">Zero lock contention; extremely lightweight.</td>
-<td style="text-align: left;">Cannot scale to utilize multi-core processor architectures.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Event-Loop-per-Thread</strong> <em>(e.g., Envoy)</em></td>
-<td style="text-align: left;">Multiplexes connections across a fixed pool of event-loop threads (usually 1 per CPU core).</td>
-<td style="text-align: left;">Scalability to all CPU cores; true parallel execution; lock-free traffic handling.</td>
-<td style="text-align: left;">High software complexity (requires asynchronous non-blocking design).</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="5-architectural-comparison-event-loop-per-thread-vs-thread-per-connection">5. Architectural Comparison: Event-Loop-per-Thread vs. Thread-per-Connection</h2>
-<p>To understand Envoy's design, it is helpful to contrast the <strong>Event-Loop-per-Thread (Non-Blocking)</strong> model with the traditional <strong>Thread-per-Connection (Blocking)</strong> model.</p>
-<h3 id="model-a-thread-per-connection-blocking-io">Model A: Thread-per-Connection (Blocking I/O)</h3>
-<p>In a traditional blocking architecture (such as Apache HTTP server or classic Tomcat), <strong>each network connection maps to a dedicated OS thread</strong>. </p>
-<pre class="mermaid"><code>graph TD
-    subgraph "Thread-per-Connection Model (Blocking)"
-        direction LR
-        Conn1[Client Connection 1 - Active] &lt;--&gt; T1[OS Thread 1 - Active]
-        Conn2[Client Connection 2 - Idle/Slow] &lt;--&gt; T2[OS Thread 2 - BLOCKED / Sleeping in Kernel]
-        Conn3[Client Connection 3 - Active] &lt;--&gt; T3[OS Thread 3 - Active]
-    end</code></pre>
-<ul>
-<li><strong>Mechanism</strong>:<ul>
-<li>Thread 2 wants to read data from Client 2, but Client 2 is idle.</li>
-<li>Thread 2 calls <code>read()</code>. Because the socket is blocking, the <strong>OS Kernel suspends Thread 2</strong> and puts it to sleep.</li>
-<li>Thread 2 is frozen and cannot process any other traffic. It remains asleep until Client 2 finally sends bytes.</li>
+<li><strong>Time Complexity</strong>: <span class="arithmatex">\(O(m \cdot n)\)</span><ul>
+<li>Where <span class="arithmatex">\(m = \text{len}(s)\)</span> and <span class="arithmatex">\(n = \text{len}(t)\)</span>. Each <span class="arithmatex">\((i1, i2)\)</span> subproblem is visited and computed once.</li>
 </ul>
 </li>
-<li><strong>Bottleneck</strong>: If you have 10,000 concurrent clients, you need 10,000 physical OS threads. Spawning thousands of threads wastes massive memory (call stacks) and forces the CPU to spend most of its time performing heavy thread context switches (thrashing).</li>
-</ul>
-<hr>
-<h3 id="model-b-event-loop-per-thread-non-blocking-multiplexing">Model B: Event-Loop-per-Thread (Non-Blocking Multiplexing)</h3>
-<p>In Envoy's non-blocking event-loop architecture, <strong>thousands of connections are multiplexed onto a single, highly active OS thread</strong>.</p>
-<pre class="mermaid"><code>graph TD
-    subgraph "Event-Loop-per-Thread Model (Envoy / Non-Blocking)"
-        direction TB
-        Conn1[Connection 1 - Active]
-        Conn2[Connection 2 - Idle]
-        Conn3[Connection 3 - Active]
-
-        Multiplexer[OS Kernel Multiplexer: epoll / kqueue]
-        Conn1 --&gt; Multiplexer
-        Conn2 --&gt; Multiplexer
-        Conn3 --&gt; Multiplexer
-
-        Loop[Worker Thread Event Loop]
-        Multiplexer -- "notifies ready sockets" --&gt; Loop
-
-        Loop -. reads &amp; processes .-&gt; Conn1
-        Loop -. reads &amp; processes .-&gt; Conn3
-    end</code></pre>
-<ul>
-<li><strong>Mechanism</strong>:<ul>
-<li>The single worker thread registers all sockets (Connection 1, 2, and 3) with the operating system's network multiplexer (e.g., <code>epoll</code> on Linux or <code>kqueue</code> on macOS).</li>
-<li>The worker thread runs a continuous loop. Instead of blocking on a single socket, it asks the OS: <em>"Which of these thousands of sockets have data ready to be read?"</em></li>
-<li>The OS immediately returns a list of ready sockets (e.g., Connection 1 and Connection 3). </li>
-<li>The worker thread loops through only the ready sockets, processes their bytes, and then polls the OS again. It <strong>never blocks</strong> waiting for a slow client.</li>
+<li><strong>Space Complexity</strong>: <span class="arithmatex">\(O(m \cdot n)\)</span><ul>
+<li>The <code>memo</code> matrix takes <span class="arithmatex">\(O(m \cdot n)\)</span> space, plus <span class="arithmatex">\(O(m)\)</span> auxiliary space for the recursion call stack.</li>
 </ul>
 </li>
-<li><strong>Advantage</strong>: A single thread can handle tens of thousands of connections concurrently with almost zero context switching overhead and a very low, flat memory footprint.</li>
+</ul>
+<hr>
+<h2 id="solution-2-bottom-up-dynamic-programming-2d-dp">Solution 2: Bottom-Up Dynamic Programming (2D DP)</h2>
+<p>We can convert the top-down recursion into a 2D bottom-up iterative DP table by evaluating states backwards from the end of both strings.</p>
+<h3 id="thought-process_1">Thought Process</h3>
+<ol>
+<li><strong>State Definition</strong>:<ul>
+<li>Define <code>dp[r][c]</code> as the number of distinct subsequences of suffix <code>s[r:]</code> that equal suffix <code>t[c:]</code>.</li>
+</ul>
+</li>
+<li><strong>Base Cases</strong>:<ul>
+<li><code>dp[r][n] = 1</code> for all <span class="arithmatex">\(0 \le r \le m\)</span>: An empty suffix <code>t[n:]</code> can be formed in exactly 1 way from any suffix of <code>s</code> (by deleting all remaining characters).</li>
+<li><code>dp[m][c] = 0</code> for all <span class="arithmatex">\(0 \le c &lt; n\)</span>: An empty string <code>s[m:]</code> cannot form any non-empty suffix <code>t[c:]</code>.</li>
+</ul>
+</li>
+<li><strong>State Transitions</strong>:<ul>
+<li>Iterate backwards with <span class="arithmatex">\(r\)</span> from <span class="arithmatex">\(m-1\)</span> down to <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(c\)</span> from <span class="arithmatex">\(n-1\)</span> down to <span class="arithmatex">\(0\)</span>:<ul>
+<li>Always carry forward the skip branch:
+    $<span class="arithmatex">\(dp[r][c] += dp[r+1][c]\)</span>$</li>
+<li>If <code>s[r] == t[c]</code>, also add the match branch:
+    $<span class="arithmatex">\(dp[r][c] += dp[r+1][c+1]\)</span>$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Result</strong>:<ul>
+<li>The total number of distinct subsequences is stored in <code>dp[0][0]</code>.</li>
+</ul>
+</li>
+</ol>
+<h3 id="go-code_1">Go Code</h3>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">numDistinct</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">dp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">m</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">r</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nx">dp</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nx">dp</span><span class="p">[</span><span class="nx">r</span><span class="p">][</span><span class="nx">n</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">r</span><span class="o">--</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">c</span><span class="o">--</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="nx">dp</span><span class="p">[</span><span class="nx">r</span><span class="p">][</span><span class="nx">c</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">dp</span><span class="p">[</span><span class="nx">r</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="nx">c</span><span class="p">]</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">t</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">                </span><span class="nx">dp</span><span class="p">[</span><span class="nx">r</span><span class="p">][</span><span class="nx">c</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">dp</span><span class="p">[</span><span class="nx">r</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="nx">c</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="code-efficiency_1">Code Efficiency</h3>
+<ul>
+<li><strong>Time Complexity</strong>: <span class="arithmatex">\(O(m \cdot n)\)</span><ul>
+<li>We fill an <span class="arithmatex">\((m+1) \times (n+1)\)</span> table with two nested loops.</li>
+</ul>
+</li>
+<li><strong>Space Complexity</strong>: <span class="arithmatex">\(O(m \cdot n)\)</span><ul>
+<li>The 2D table requires <span class="arithmatex">\(O(m \cdot n)\)</span> auxiliary space.</li>
+</ul>
+</li>
 </ul>
 
 
@@ -13270,7 +13797,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../../istio/snippets/scraping-metrics-using-mtls/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Scraping Metrics using mTLS">
+          <a href="../97-interleaving-string/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 97. Interleaving String">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -13280,20 +13807,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Scraping Metrics using mTLS
+                97. Interleaving String
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../../kubernetes/k8s-in-action/01-intro-k8s/" class="md-footer__link md-footer__link--next" aria-label="Next: 01. Intro">
+          <a href="../221-maximal-square/" class="md-footer__link md-footer__link--next" aria-label="Next: 221. Maximal Square">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                01. Intro
+                221. Maximal Square
               </div>
             </div>
             <div class="md-footer__button md-icon">
