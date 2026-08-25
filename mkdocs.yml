@@ -252,10 +252,8 @@ nav:
       - 41. First Missing Positive: leetcode/arrays-hashing/41-first-missing-positive.md
       - 48. Rotate Image: leetcode/arrays-hashing/48-rotate-image.md
       - 49. Group Anagrams: leetcode/arrays-hashing/49-group-anagrams.md
-      - 53. Maximum Subarray: leetcode/arrays-hashing/53-maximum-subarray.md
-      - 56. Merge Intervals: leetcode/arrays-hashing/56-merge-intervals.md
+      - 68. Text Justification: leetcode/arrays-hashing/68-text-justification.md
       - 128. Longest Consecutive Sequence: leetcode/arrays-hashing/128-longest-consecutive-sequence.md
-      - 146. LRU Cache: leetcode/arrays-hashing/146-lru-cache.md
       - 169. Majority Element: leetcode/arrays-hashing/169-majority-element.md
       - 217. Contains Duplicate: leetcode/arrays-hashing/217-contains-duplicate.md
       - 242. Valid Anagram: leetcode/arrays-hashing/242-valid-anagram.md
@@ -271,6 +269,7 @@ nav:
       - 937. Reorder Data in Log Files: leetcode/arrays-hashing/937-reorder-data-in-log-files.md
       - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
       - 1299. Replace Elements with Greatest Element on Right Side: leetcode/arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side.md
+      - 2021. Brightest Position on Street: leetcode/arrays-hashing/2021-brightest-position-on-street.md
       - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
       - 3043. Find the Length of the Longest Common Prefix: leetcode/arrays-hashing/3043-find-the-length-of-the-longest-common-prefix.md
       - 3121. Count the Number of Special Characters II: leetcode/arrays-hashing/3121-count-the-number-of-special-characters-ii.md
@@ -328,26 +327,40 @@ nav:
       - 295. Find Median from Data Stream: leetcode/heap/295-find-median-data-stream.md
       - 480. Sliding Window Median: leetcode/heap/480-sliding-window-median.md
       - 502. IPO: leetcode/heap/502-ipo.md
+      - 621. Task Scheduler: leetcode/heap/621-task-scheduler.md
       - 703. Kth Largest Element in a Stream: leetcode/heap/703-kth-largest-element-in-a-stream.md
       - 743. Network Delay Time: leetcode/heap/743-network-delay-time.md
       - 778. Swim in Rising Water: leetcode/heap/778-swim-in-rising-water.md
       - 787. Cheapest Flights Within K Stops: leetcode/heap/787-cheapest-flights-within-k-stops.md
       - 912. Sort an Array: leetcode/heap/912-sort-an-array.md
       - 973. K Closest Points to Origin: leetcode/heap/973-k-closest-points-to-origin.md
+      - 1046. Last Stone Weight: leetcode/heap/1046-last-stone-weight.md
       - 1167. Minimum Cost to Connect Sticks: leetcode/heap/1167-minimum-cost-to-connect-sticks.md
       - 1514. Path with Maximum Probability: leetcode/heap/1514-path-with-maximum-probability.md
       - 1631. Path With Minimum Effort: leetcode/heap/1621-path-with-minimum-effort.md
     - Greedy:
+      - 45. Jump Game II: leetcode/greedy/45-jump-game-ii.md
+      - 53. Maximum Subarray: leetcode/greedy/53-maximum-subarray.md
+      - 134. Gas Station: leetcode/greedy/134-gas-station.md
+      - 678. Valid Parenthesis String: leetcode/greedy/678-valid-parenthesis-string.md
+      - 763. Partition Labels: leetcode/greedy/763-partition-labels.md
       - 767. Reorganize String: leetcode/greedy/767-reorganize-string.md
+      - 1899. Merge Triplets to Form Target Triplet: leetcode/greedy/1899-merge-triplets-to-form-target-triplet.md
     - Graphs:
       - 54. Spiral Matrix: leetcode/graphs/54-spiral-matrix.md
       - 126. Word Ladder II: leetcode/graphs/126-word-ladder-ii.md
       - 127. Word Ladder: leetcode/graphs/127-word-ladder.md
+      - 130. Surrounded Regions: leetcode/graphs/130-surrounded-regions.md
+      - 133. Clone Graph: leetcode/graphs/133-clone-graph.md
       - 200. Number of Islands: leetcode/graphs/200-number-of-islands.md
       - 207. Course Schedule: leetcode/graphs/207-course-schedule.md
       - 210. Course Schedule II: leetcode/graphs/210-course-schedule-ii.md
       - 269. Alien Dictionary: leetcode/graphs/269-alien-dictionary.md
+      - 286. Walls and Gates: leetcode/graphs/286-walls-and-gates.md
+      - 332. Reconstruct Itinerary: leetcode/graphs/332-reconstruct-itinerary.md
       - 399. Evaluate Division: leetcode/graphs/399-evaluate-division.md
+      - 417. Pacific Atlantic Water Flow: leetcode/graphs/417-pacific-atlantic-water-flow.md
+      - 695. Max Area of Island: leetcode/graphs/695-max-area-of-island.md
       - 864. Shortest Path to Get All Keys: leetcode/graphs/864-shortest-path-to-get-all-keys.md
       - 909. Snakes and Ladders: leetcode/graphs/909-snakes-and-ladders.md
       - 934. Shortest Bridge: leetcode/graphs/934-shortest-bridge.md
@@ -392,6 +405,7 @@ nav:
       - 1220. Count Vowels Permutation: leetcode/backtracking/1220-count-vowels-permutation.md
       - 1239. Maximum Length of a Concatenated String with Unique Characters: leetcode/backtracking/1239-maximum-length-of-a-concatenated-string-with-unique-characters.md
       - 1718. Construct the Lexicographically Largest Valid Sequence: leetcode/backtracking/1718-construct-largest-sequence.md
+      - 2192. All Ancestors of a Node in a Directed Acyclic Graph: leetcode/backtracking/2192-all-ancestors-of-a-node-in-a-directed-acyclic-graph.md
       - 2305. Fair Distribution of Cookies: leetcode/backtracking/2305-fair-distribution-of-cookies.md
       - 2597. The Number of Beautiful Subsets: leetcode/backtracking/2597-the-number-of-beautiful-subsets.md
     - Binary Search:
@@ -426,48 +440,79 @@ nav:
       - 1552. Magnetic Force Between Two Balls: leetcode/binary-search/1552-magnetic-force-between-two-balls.md
       - 1901. Find a Peak Element II: leetcode/binary-search/1901-find-a-peak-element-ii.md
     - Linked List:
+      - 19. Remove Nth Node From End of List: leetcode/linked-list/19-remove-nth-node-from-end-of-list.md
       - 2. Add Two Numbers: leetcode/linked-list/2-add-two-numbers.md
       - 21. Merge Two Sorted Lists: leetcode/linked-list/21-merge-two-sorted-lists.md
       - 138. Copy List with Random Pointer: leetcode/linked-list/138-copy-list-with-random-pointer.md
       - 141. Linked List Cycle: leetcode/linked-list/141-linked-list-cycle.md
       - 143. Reorder List: leetcode/linked-list/143-reorder-list.md
+      - 146. LRU Cache: leetcode/linked-list/146-lru-cache.md
       - 206. Reverse Linked Lists: leetcode/linked-list/206-reverse-linked-list.md
       - 287. Find the Duplicate Number: leetcode/linked-list/287-find-the-duplicate-number.md
       - 876. Middle of the Linked List: leetcode/linked-list/876-middle-of-the-linked-list.md
       - 2130. Maximum Twin Sum of a Linked List: leetcode/linked-list/2130-maximum-twin-sum-of-a-linked-list.md
       - 2502. Design Memory Allocator: leetcode/linked-list/2502-design-memory-allocator.md
+    - Intervals:
+      - 56. Merge Intervals: leetcode/intervals/56-merge-intervals.md
+      - 57. Insert Interval: leetcode/intervals/57-insert-interval.md
+      - 252. Meeting Rooms: leetcode/intervals/252-meeting-rooms.md
+      - 435. Non-overlapping Intervals: leetcode/intervals/435-non-overlapping-intervals.md
+      - 1851. Minimum Interval to Include Each Query: leetcode/intervals/1851-minimum-interval-to-include-each-query.md
     - Trees:
+      - 98. Validate Binary Search Tree: leetcode/trees/98-validate-binary-search-tree.md
       - 100. Same Tree: leetcode/trees/100-same-tree.md
       - 102. Binary Tree Level Order Traversal: leetcode/trees/102-binary-tree-level-order-traversal.md
       - 103. Binary Tree Zigzag Level Order Traversal: leetcode/trees/103-binary-tree-zigzag-level-order-traversal.md
+      - 104. Maximum Depth of Binary Tree: leetcode/trees/104-maximum-depth-of-binary-tree.md
+      - 105. Construct Binary Tree from Preorder and Inorder Traversal: leetcode/trees/105-construct-binary-tree-from-preorder-and-inorder-traversal.md
+      - 110. Balanced Binary Tree: leetcode/trees/110-balanced-binary-tree.md
+      - 124. Binary Tree Maximum Path Sum: leetcode/trees/124-binary-tree-maximum-path-sum.md
       - 144. Binary Tree Preorder Traversal: leetcode/trees/144-binary-tree-preorder-traversal.md
       - 145. Binary Tree Postorder Traversal: leetcode/trees/145-binary-tree-postorder-traversal.md
       - 173. Binary Search Tree Iterator: leetcode/trees/173-binary-search-tree-iterator.md
+      - 199. Binary Tree Right Side View: leetcode/trees/199-binary-tree-right-side-view.md
       - 208. Implement Trie (Prefix Tree): leetcode/trees/208-implement-trie-prefix-tree.md
       - 211. Design Add and Search Words Data Structure: leetcode/trees/211-design-add-and-search-words-data-structure.md
+      - 226. Invert Binary Tree: leetcode/trees/226-invert-binary-tree.md
+      - 230. Kth Smallest Element in a BST: leetcode/trees/230-kth-smallest-element-in-a-bst.md
+      - 235. Lowest Common Ancestor of a Binary Search Tree: leetcode/trees/235-lowest-common-ancestor-of-a-binary-search-tree.md
       - 323. Number of Connected Components in an Undirected Graph: leetcode/trees/323-number-of-connected-components-in-an-undirected-graph.md
       - 236. Lowest Common Ancestor of a Binary Tree: leetcode/trees/236-lowest-common-ancestor-of-a-binary-tree.md
+      - 297. Serialize and Deserialize Binary Tree: leetcode/trees/297-serialize-and-deserialize-binary-tree.md
       - 543. Diameter of Binary Tree: leetcode/trees/543-diameter-of-binary-tree.md
+      - 572. Subtree of Another Tree: leetcode/trees/572-subtree-of-another-tree.md
       - 684. Redundant Connection: leetcode/trees/684-redundant-connection.md
       - 721. Accounts Merge: leetcode/trees/721-accounts-merge.md
       - 729. My Calendar I: leetcode/trees/729-my-calendar-i.md
+      - 1448. Count Good Nodes in Binary Tree: leetcode/trees/1448-count-good-nodes-in-binary-tree.md
     - 1-D Dynamic Programming:
       - 53. Maximum Subarray: leetcode/dp-1/53-maximum-subarray.md
       - 55. Jump Game: leetcode/dp-1/55-jump-game.md
+      - 70. Climbing Stairs: leetcode/dp-1/70-climbing-stairs.md
+      - 91. Decode Ways: leetcode/dp-1/91-decode-ways.md
       - 139. Word Break: leetcode/dp-1/139-word-break.md
+      - 198. House Robber: leetcode/dp-1/198-house-robber.md
+      - 213. House Robber II: leetcode/dp-1/213-house-robber-ii.md
       - 322. Coin Change: leetcode/dp-1/322-coin-change.md
       - 377. Combination Sum IV: leetcode/dp-1/377-combination-sum-iv.md
       - 416. Partition Equal Subset Sum: leetcode/dp-1/416-partition-equal-subset-sum.md
       - 518. Coin Change II: leetcode/dp-1/518-coin-change-ii.md
+      - 746. Min Cost Climbing Stairs: leetcode/dp-1/746-min-cost-climbing-stairs.md
       - 983. Minimum Cost For Tickets: leetcode/dp-1/983-minimum-cost-for-tickets.md
       - 1049. Last Stone Weight II: leetcode/dp-1/1049-last-stone-weight-ii.md
     - 2-D Dynamic Programming:
       - 5. Longest Palindromic Substring: leetcode/dp-2/5-longest-palindromic-substring.md
+      - 10. Regular Expression Matching: leetcode/dp-2/10-regular-expression-matching.md
+      - 62. Unique Paths: leetcode/dp-2/62-unique-paths.md
       - 72. Edit Distance: leetcode/dp-2/72-edit-distance.md
       - 97. Interleaving String: leetcode/dp-2/97-interleaving-string.md
       - 115. Distinct Subsequences: leetcode/dp-2/115-distinct-subsequences.md
       - 221. Maximal Square: leetcode/dp-2/221-maximal-square.md
+      - 300. Longest Increasing Subsequence: leetcode/dp-2/300-longest-increasing-subsequence.md
       - 304. Range Sum Query 2D - Immutable: leetcode/dp-2/304-range-sum-query-2d-immutable.md
+      - 309. Best Time to Buy and Sell Stock with Cooldown: leetcode/dp-2/309-best-time-to-buy-and-sell-stock-with-cooldown.md
+      - 312. Burst Balloons: leetcode/dp-2/312-burst-balloons.md
+      - 329. Longest Increasing Path in a Matrix: leetcode/dp-2/329-longest-increasing-path-in-a-matrix.md
       - 474. Ones and Zeroes: leetcode/dp-2/474-ones-and-zeroes.md
       - 516. Longest Palindromic Subsequence: leetcode/dp-2/516-longest-palindromic-subsequence.md
       - 647. Palindromic Substrings: leetcode/dp-2/647-palindromic-substrings.md
