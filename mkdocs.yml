@@ -122,6 +122,8 @@ nav:
       - Packet delivery across the network: networking/snippets/packet-delivery-across-network.md
       - Packet delivery across multiple networks: networking/snippets/packet-delivery-multi-networks.md
       - Container Bridge Interface: networking/snippets/container-bridge-interface.md
+      - HTTP/1.1 vs HTTP/2 vs HTTP/3 vs gRPC: networking/snippets/http-vs-grpc.md
+      - Polling vs SSE vs WebSockets vs gRPC: networking/snippets/polling-sse-ws-grpc.md
     - OSI & TCP/IP: networking/01-osi-tcpip.md
     - TCP/IP: networking/02-tcpip.md
     - Routing: networking/03-routing.md
@@ -198,10 +200,15 @@ nav:
   - Linux:
     - Snippets:
       - Permissions: linux/snippets/permissions.md
+      - Systemd Basics: linux/snippets/systemd.md
+      - Common Linux Issues: linux/snippets/common-linux-issues.md
+      - File System: linux/snippets/file-system.md
     - Linux Commands:
       - Six Commands: linux/linux-commands/01-six-commands.md
       - Introducing the Shell: linux/linux-commands/02-shell.md
       - Rerunning Commands: linux/linux-commands/03-rerun-cmd.md
+    - Debugging Process:
+      - WebServer: linux/debugging-process/webserver.md
   - Golang:
     - slice-vs-array: golang/slice-vs-array.md
     - Ring Buffer: golang/ring-buffer.md
@@ -212,9 +219,12 @@ nav:
       - TCP Server with Worker Pool: golang/tcp-server/server-worker-pool.md
       - TCP Server with Graceful Shutdown: golang/tcp-server/server-graceful-shutdown.md
       - TCP Server with Sharded Ingestion: golang/tcp-server/server-sharded-ingestion.md
-  - Web Frameworks:
+  - Web:
     - Express.js:
       - Learn Express JS: web-frameworks/express-js/in-35-mins.md
+    - Flask:
+      - Nginx + WSGI + Flask: web-frameworks/flask/nginx-wsgi-flask.md
+      - Flask App with uWSGI and Nginx: web-frameworks/flask/flask-app.md
   - Data Structure & Algorithms:
     - Backtracking: dsa/backtracking.md
     - Binary Search: dsa/binarysearch.md
@@ -255,6 +265,7 @@ nav:
       - 68. Text Justification: leetcode/arrays-hashing/68-text-justification.md
       - 128. Longest Consecutive Sequence: leetcode/arrays-hashing/128-longest-consecutive-sequence.md
       - 169. Majority Element: leetcode/arrays-hashing/169-majority-element.md
+      - 192. Word Frequency: leetcode/arrays-hashing/192-word-frequency.md
       - 217. Contains Duplicate: leetcode/arrays-hashing/217-contains-duplicate.md
       - 242. Valid Anagram: leetcode/arrays-hashing/242-valid-anagram.md
       - 271. Encode and Decode Strings: leetcode/arrays-hashing/271-encode-and-decode-strings.md
@@ -269,6 +280,7 @@ nav:
       - 937. Reorder Data in Log Files: leetcode/arrays-hashing/937-reorder-data-in-log-files.md
       - 1010. Pairs of Songs With Total Durations Divisible by 60: leetcode/arrays-hashing/1010-pairs-of-songs.md
       - 1299. Replace Elements with Greatest Element on Right Side: leetcode/arrays-hashing/1299-replace-elements-with-greatest-element-on-right-side.md
+      - 1711. Count Good Meals: leetcode/arrays-hashing/1711-count-good-meals.md
       - 2021. Brightest Position on Street: leetcode/arrays-hashing/2021-brightest-position-on-street.md
       - 2268. Minimum Number of Keypresses: leetcode/arrays-hashing/2268-minimum-keypresses.md
       - 3043. Find the Length of the Longest Common Prefix: leetcode/arrays-hashing/3043-find-the-length-of-the-longest-common-prefix.md
@@ -328,6 +340,7 @@ nav:
       - 480. Sliding Window Median: leetcode/heap/480-sliding-window-median.md
       - 502. IPO: leetcode/heap/502-ipo.md
       - 621. Task Scheduler: leetcode/heap/621-task-scheduler.md
+      - 692. Top K Frequent Words: leetcode/heap/692-top-k-frequent-words.md
       - 703. Kth Largest Element in a Stream: leetcode/heap/703-kth-largest-element-in-a-stream.md
       - 743. Network Delay Time: leetcode/heap/743-network-delay-time.md
       - 778. Swim in Rising Water: leetcode/heap/778-swim-in-rising-water.md
@@ -338,6 +351,7 @@ nav:
       - 1167. Minimum Cost to Connect Sticks: leetcode/heap/1167-minimum-cost-to-connect-sticks.md
       - 1514. Path with Maximum Probability: leetcode/heap/1514-path-with-maximum-probability.md
       - 1631. Path With Minimum Effort: leetcode/heap/1621-path-with-minimum-effort.md
+      - 1801. Number of Orders in the Backlog: leetcode/heap/1801-number-of-orders-in-the-backlog.md
     - Greedy:
       - 45. Jump Game II: leetcode/greedy/45-jump-game-ii.md
       - 53. Maximum Subarray: leetcode/greedy/53-maximum-subarray.md
@@ -360,6 +374,7 @@ nav:
       - 332. Reconstruct Itinerary: leetcode/graphs/332-reconstruct-itinerary.md
       - 399. Evaluate Division: leetcode/graphs/399-evaluate-division.md
       - 417. Pacific Atlantic Water Flow: leetcode/graphs/417-pacific-atlantic-water-flow.md
+      - 529. Minesweeper: leetcode/graphs/529-minesweeper.md
       - 695. Max Area of Island: leetcode/graphs/695-max-area-of-island.md
       - 864. Shortest Path to Get All Keys: leetcode/graphs/864-shortest-path-to-get-all-keys.md
       - 909. Snakes and Ladders: leetcode/graphs/909-snakes-and-ladders.md
@@ -367,8 +382,10 @@ nav:
       - 994. Rotting Oranges: leetcode/graphs/994-rotting-oranges.md
       - 1192. Critical Connections in a Network: leetcode/graphs/1192-critical-connections.md
       - 1293. Shortest Path in a Grid with Obstacles Elimination: leetcode/graphs/1293-shortest-path-in-a-grid-with-obstacles-elimination.md
+      - 1391. Check if There is a Valid Path in a Grid: leetcode/graphs/1391-check-if-there-is-a-valid-path-in-a-grid.md
       - 1462. Course Schedule IV: leetcode/graphs/1462-course-schedule-iv.md
       - 1584. Min Cost to Connect All Points: leetcode/graphs/1584-min-cost-to-connect-all-points.md
+      - 1743. Restore the Array From Adjacent Pairs: leetcode/graphs/1743-restore-the-array-from-adjacent-pairs.md
       - 2115. Find All Possible Recipes from Given Supplies: leetcode/graphs/2115-find-all-possible-recipes-from-given-supplies.md
     - Backtracking:
       - 17. Letter Combinations of a Phone Number: leetcode/backtracking/17-letter-combinations-of-a-phone-number.md
@@ -438,6 +455,7 @@ nav:
       - 1351. Count Negative Numbers in a Sorted Matrix: leetcode/binary-search/1351-count-negative-numbers-in-a-sorted-matrix.md
       - 1482. Minimum Number of Days to Make m Bouquets: leetcode/binary-search/1482-minimum-number-of-days-to-make-m-bouquets.md
       - 1552. Magnetic Force Between Two Balls: leetcode/binary-search/1552-magnetic-force-between-two-balls.md
+      - 1712. Ways to Split Array Into Three Subarrays: leetcode/binary-search/1712-ways-to-split-array-into-three-subarrays.md
       - 1901. Find a Peak Element II: leetcode/binary-search/1901-find-a-peak-element-ii.md
     - Linked List:
       - 19. Remove Nth Node From End of List: leetcode/linked-list/19-remove-nth-node-from-end-of-list.md
@@ -484,6 +502,7 @@ nav:
       - 684. Redundant Connection: leetcode/trees/684-redundant-connection.md
       - 721. Accounts Merge: leetcode/trees/721-accounts-merge.md
       - 729. My Calendar I: leetcode/trees/729-my-calendar-i.md
+      - 765. Couples Holding Hands: leetcode/trees/765-couples-holding-hands.md
       - 1448. Count Good Nodes in Binary Tree: leetcode/trees/1448-count-good-nodes-in-binary-tree.md
     - 1-D Dynamic Programming:
       - 53. Maximum Subarray: leetcode/dp-1/53-maximum-subarray.md
@@ -535,6 +554,21 @@ nav:
       - 1117. Building H2O: leetcode/concurrency/1117-building-h2o.md
       - 1603. Design Parking System: leetcode/concurrency/1603-design-parking-system.md
   - System Design:
+    - Rate Limiter:
+      - Requirements, Entities, High Level Design: system-design/rate-limiter/part-1.md
+      - Deep Dives: system-design/rate-limiter/part-2.md
+    - Distributed Cache:
+      - Requirements, Entities, High Level Design: system-design/distributed-cache/part-1.md
+      - Deep Dives: system-design/distributed-cache/part-2.md
+    - WhatsApp:
+      - Requirements, Entities, High Level Design: system-design/whatsapp/part-1.md
+      - Deep Dives: system-design/whatsapp/part-2.md
+    - YouTube Top K:
+      - Requirements, Entities, High Level Design: system-design/top-k/part-1.md
+      - Deep Dives: system-design/top-k/part-2.md
+    - Job Scheduler:
+      - Requirements, Entities, High Level Design: system-design/job-scheduler/part-1.md
+      - Deep Dives: system-design/job-scheduler/part-2.md
     - Metrics Monitoring:
       - Requirements, Entities, Data Flow, API: system-design/metrics-monitoring/part-1.md
       - High Level Design: system-design/metrics-monitoring/part-2.md
@@ -542,8 +576,18 @@ nav:
       - Deep Dives 2: system-design/metrics-monitoring/part-4.md
       - Deep Dives 3: system-design/metrics-monitoring/part-5.md
       - Deep Dives 4: system-design/metrics-monitoring/part-6.md
+    - Feature Flag Service:
+      - Requirements, Entities, High Level Design: system-design/feature-flag/part-1.md
+      - Deep Dives: system-design/feature-flag/part-2.md
+    - Instagram:
+      - Requirements, Entities, High Level Design: system-design/instagram/part-1.md
+      - Deep Dives: system-design/instagram/part-2.md  
+    - Uber:
+      - Requirements, Entities, High Level Design: system-design/uber/part-1.md
+      - Deep Dives: system-design/uber/part-2.md    
     - Key Technologies:
       - Kafka: system-design/key-technologies/kafka.md
+      - ZooKeeper: system-design/key-technologies/zookeeper.md
  
 
 

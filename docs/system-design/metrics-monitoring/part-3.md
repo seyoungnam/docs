@@ -83,6 +83,7 @@ The bottleneck with polling-based Alert Evaluators is that they query the databa
 ### 3. How to Ensure High Availability
 
 We must isolate and secure two distinct paths:
+
 1.  **Ingestion Path:** Maintain metric collection and storage during downstream outages.
 2.  **Alerting Path:** Ensure continuous threat detection and notification delivery.
 

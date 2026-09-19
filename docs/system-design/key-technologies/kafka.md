@@ -47,7 +47,7 @@ Kafka is an open-source distributed event streaming platform used as a **message
 ### Performance Limits
 
 *   **Message Size:** Keep messages **< 1MB** for optimal network and disk performance.
-*   **Capacity:** A single broker typically handles up to **1TB of storage** and **1M messages/second**.
+*   **Capacity:** A single broker typically handles up to **1TB of storage** and **10k messages/second**.
 *   **Horizontal Scaling:** Adding brokers distributes disk storage and increases fault tolerance.
 *   **Under-Partitioning:** A topic's partition count defines its maximum parallel throughput; adding brokers without increasing partition count leaves new brokers idle.
 
