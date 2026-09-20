@@ -584,7 +584,13 @@ nav:
       - Deep Dives: system-design/instagram/part-2.md  
     - Uber:
       - Requirements, Entities, High Level Design: system-design/uber/part-1.md
-      - Deep Dives: system-design/uber/part-2.md    
+      - Deep Dives: system-design/uber/part-2.md  
+    - Local Deliver Service:
+      - Requirements, Entities, High Level Design: system-design/local-delivery-service/part-1.md
+      - Deep Dives: system-design/local-delivery-service/part-2.md
+    - Yelp:
+      - Requirements, Entities, High Level Design: system-design/yelp/part-1.md
+      - Deep Dives: system-design/yelp/part-2.md  
     - Key Technologies:
       - Kafka: system-design/key-technologies/kafka.md
       - ZooKeeper: system-design/key-technologies/zookeeper.md
