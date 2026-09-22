@@ -591,6 +591,8 @@ nav:
     - Yelp:
       - Requirements, Entities, High Level Design: system-design/yelp/part-1.md
       - Deep Dives: system-design/yelp/part-2.md  
+    - Core Concepts:
+      - Database Indexing: system-design/core-concepts/db-indexing.md
     - Key Technologies:
       - Kafka: system-design/key-technologies/kafka.md
       - ZooKeeper: system-design/key-technologies/zookeeper.md

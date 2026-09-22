@@ -28,14 +28,14 @@ It stops competitors from repeatedly leaving negative reviews (such as 1-star ra
 
 ??? success "Great Solution: Database Constraint"
 
-**Approach**
+    **Approach**
 
-This can be done via a unique constraint on the user_id and business_id fields.
-    
-``` sql
-ALTER TABLE reviews
-ADD CONSTRAINT unique_user_business UNIQUE (user_id, business_id);
-```
+    This can be done via a unique constraint on the user_id and business_id fields.
+        
+    ``` sql
+    ALTER TABLE reviews
+    ADD CONSTRAINT unique_user_business UNIQUE (user_id, business_id);
+    ```
 
 ### 3. How to improve search to handle complex queries more efficiently?
 
