@@ -4,6 +4,12 @@
 
 Whatsapp is a messaging service that allows users to send and receive encrypted messages and calls from their phones and computers.
 
+
+**Key Focus Areas**
+
+- **Bi-directional communication**: WebSocket
+- **Message delivered to a different server**: Redis Pub/Sub with userId topic
+
 ---
 
 ## Functional Requirements
@@ -129,6 +135,8 @@ Each of these commands will have parallel commands that are sent to other client
 ---
 
 ## High Level Design
+
+![WhatsApp High Level Design](../../assets/img/system-design/whatsapp/hld.svg)
 
 ### 1. Create group chats with multiple participants (limit 100)
 

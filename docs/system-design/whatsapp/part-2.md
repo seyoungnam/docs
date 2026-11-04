@@ -50,6 +50,8 @@
 
     - The Pub/Sub implementation introduces additional latency but very small.
 
+![Redis Pub/Sub](../../assets/img/system-design/whatsapp/dd-1.svg)
+
 ### 2. How to handle multiple clients for a given user?
 
 **Clients table**
@@ -68,3 +70,63 @@
 - On the pub/sub side, nothing needs to change. Chat servers will continue to subscribe to a topic with the `userId`.
 - probably want to introduce some limits (3 clients per account) to avoid blowing up our storage and throughput.
 
+![Adding clients](../../assets/img/system-design/whatsapp/dd-2.svg)
+
+
+### 3. What happens if the WebSocket connection fails?
+
+How can we dectect the disconnection fast?
+
+??? success "Great Solution: Application-Level Heartbeats"
+
+    **Approach**
+
+    The Chat Server sends periodic ping messages (every 10-30 seconds) over the WebSocket. The client must respond with a pong within a timeout (say, 5 seconds). If the client doesn't respond, the server closes the connection.
+
+    **Challenges**
+
+    - Heartbeats add overhead—with 200M connected users and a 10-second heartbeat interval, that's 20M ping/pong exchanges per second.
+    - The heartbeats give you a guaranteed upper bound on detection time: if your heartbeat interval is 10s and timeout is 5s, you'll detect any dead connection within 15 seconds.
+
+
+### 4. What happens if Redis fails to deliver a message?
+
+How do we ensure re-connected clients quickly receive messages that Pub/Sub dropped?
+
+??? warning "Good Solution: Periodic Polling"
+
+    **Approach**
+
+    Connected clients periodically poll the server for missed messages. Every 30-60 seconds, the client sends a "sync" request. The server checks the `Inbox` table for any undelivered messages and sends them down.
+
+    **Challenges**
+
+    **Adding load**: With 200M connected users polling every 30 seconds, that's ~7M queries/second just for sync checks. You can mitigate with longer intervals, but you're trading latency for load.
+
+??? warning "Good Solution: Sequence Numbers per Chat with Gap Detection"
+
+    **Apporach**
+
+    Each message gets a monotonically increasing sequence number per chat. Clients track the last sequence number they've seen. If they receive message #5 but last saw #3, they know they missed #4 and request a re-sync.
+
+    **Challenges**
+
+    Gap detection only works when you do receive a message. If the chat goes quiet after the missed message, you won't detect the gap until the next message arrives. You still need polling as a backstop.
+
+
+??? success "Great Solution: Piggyback Sequence on Heartbeats"
+
+    **Approach**
+
+    Combine heartbeats (from the previous section) with sequence numbers:
+
+    1. **Global sequence per user**: Maintain a single incrementing counter per user. Every message to that user increments their sequence.
+    1. **Include sequence in heartbeat**: When the server sends a heartbeat ping, include the user's current sequence number.
+    1. **Client detects gaps**: If the client's local sequence is behind the server's, it immediately requests a sync.
+
+    This gives you fast detection of missed messages (within one heartbeat interval) with minimal additional load because you're already sending heartbeats.
+
+
+    **Challenges**
+
+    The global sequence per user requires an atomic counter, which adds coordination. You can use Redis `INCR` commands, but it's another dependency. The benefit is that a single sequence catches all missed messages regardless of which chat they're in.

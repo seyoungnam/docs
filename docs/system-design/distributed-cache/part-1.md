@@ -4,6 +4,13 @@
 
 A distributed cache is a system that stores data as key-value pairs in memory across multiple machines in a network. The cache cluster works together to partition and replicate data, ensuring high availability and fault tolerance when individual nodes fail.
 
+**Key Focus Areas**
+
+- **Auto Eviction**: Least Recently Used (LRU) Cache
+- **Scalability**: consistent hashing
+- **High availability & Fault tolerance**: Master-Replica structure with asynchronous replication / P2P replication using gossip protocols
+- **Hot Keys**: break the key to multiple ones with different suffixes(for read-heavy with minimal writes)
+
 ---
 
 ## Functional Requirements

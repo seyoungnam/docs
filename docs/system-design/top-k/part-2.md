@@ -25,6 +25,7 @@ We make a query to the database for every request that comes in for top K, which
     - adds some operational complexity
     - When our precomputation job is late, the top-k service can serve stale data for a short period of time. But it's better than nothing.
 
+![Cron Top-K](../../assets/img/system-design/top-k/dd-1.svg)
 
 ### 2. How to handle the massive number of writes to the DB?
 
@@ -64,6 +65,7 @@ A great option for doing this is **Flink**.
 
 By batching, we can probably bring the number of shards down in the 5-10 range. Still not great, but manageable.
 
+![Flink Batching](../../assets/img/system-design/top-k/dd-2.svg)
 
 ### 3. How to optimize the Top K queries?
 
@@ -89,6 +91,8 @@ When we don't have a cache, we are still making calls to the DB. To get a top-K 
     A final approach would be to keep the aggregates in Flink, using Flink's native distributed state management instead of reading and writing to the Views DB. The top-k aggregator is keeping, in memory (likely using a heap), the top K videos for a given window.
 
 
+![Flink Batching](../../assets/img/system-design/top-k/dd-3.svg)
+
 ### 4. What if we need to support sliding windows?
 
 To keep track of the last hour of views for a video, when we have a new batch of views for the most recent minute 
@@ -106,6 +110,9 @@ For the video views in the last hour:
 We'll do this for each of our windows (last hour, last day, last month). For the all-time window, the decrement is always 0!
 
 We need to keep minute-grained data around for a whole month so we can decrement it when it expires out of the "last month" window. From a product perspective, this is kind of wasteful! One mature path is to propose an alternative to our interviewer: **how about we support sliding windows for the "last hour" and tumbling windows for the "last day" and "last month"?**
+
+
+![Full Aggregates for Each Window](../../assets/img/system-design/top-k/dd-4.svg)
 
 ### 5. Room for a specialized database?
 

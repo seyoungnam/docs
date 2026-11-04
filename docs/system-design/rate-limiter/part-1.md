@@ -4,6 +4,13 @@
 
 A rate limiter controls how many requests a client can make within a specific timeframe. It returns HTTP 429 "Too Many Requests" response if the request hits the threshold. Rate limiters prevent abuse, protect your servers from being overwhelmed by bursts of traffic.
 
+
+**Key Focus Areas**
+
+- **Counter**: Fixed Window / Sliding Window / Token Bucket
+- **Scale to 1M RPS**: consistent hashing
+- **High availability & Fault tolerance**: Master-Replica structure on Redis
+
 ---
 
 ## Functional Requirements

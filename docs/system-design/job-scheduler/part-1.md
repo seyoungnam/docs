@@ -7,6 +7,13 @@ A job scheduler is a program that automatically schedules and executes jobs at s
 - **Task**: A task is the abstract concept of work to be done. For example, "send an email". Tasks are reusable and can be executed multiple times by different jobs.
 - **Job**: A job is an instance of a task. For example, if the task is "send an email" then a job could be "send an email to john@example.com at 10:00 AM Friday".
 
+
+**Key Focus Areas**
+
+- **Timely Execution**: put executions into 1h time bucket and polls for jobs that should be executed in 5 mins
+- **Scalability**: DB/Message Queue partitioned by key/topic, LB+auto-scaling
+- **At-least-once execution**: retry with exponential backoff, SQS Visibility Timeout
+
 ---
 
 ## Functional Requirements
@@ -83,6 +90,8 @@ GET /jobs?user_id={user_id}&status={status}&start_time={start_time}&end_time={en
 ---
 
 ## High-Level Design
+
+![Job Scheduler High Level Design](../../assets/img/system-design/job-scheduler/hld.svg)
 
 ### 1. Schedule jobs
 
@@ -164,6 +173,7 @@ When a worker node is ready to execute jobs, it simply queries the `Executions` 
 When a job is executed we need to update the status on the Executions table with any of `COMPLETED`, `FAILED`, `IN_PROGRESS`, `RETRYING`, etc.
 
 We query for the status of all jobs for a given user. To efficiently query the `Executions` table by `user_id`, we'll add a **Global Secondary Index(GSI)** on the `Executions` table:
-    - Partition Key: `user_id`
-    - Sort Key: `execution_time` + `job_id`
+
+  - Partition Key: `user_id`
+  - Sort Key: `execution_time` + `job_id`
 
