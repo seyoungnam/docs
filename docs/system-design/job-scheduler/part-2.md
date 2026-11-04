@@ -33,6 +33,8 @@ To recap, our new two-layered scheduler architecture looks like this:
 1. If a new job is created with a scheduled time < 5 minutes from the current time, it's sent directly to SQS with the appropriate delay.
 
 
+![Timely Execution](../../assets/img/system-design/job-scheduler/dd-1.svg)
+
 ### 2. Scalability: scalable to 10k jobs per second
 
 Think about bottlenecks for scalability.
@@ -72,6 +74,9 @@ The two main choices are containers (using ECS or Kubernetes) and Lambda functio
 1. **Lambda functions**: are serverless with minimal operational overhead. They're perfect for short-lived jobs under 15 minutes and can auto-scale instantly to match workload. The main drawbacks are that cold starts could impact our 2-second precision requirement, and they tend to be more expensive for steady, high-volume workloads like ours.
 
 Given our requirements - processing 10k jobs per second with 2-second precision in a steady, predictable workload - I'd use containers with ECS and auto-scaling groups.
+
+
+![Scale](../../assets/img/system-design/job-scheduler/dd-2.svg)
 
 
 ### 3. Ensure at-least-once execution 
@@ -136,3 +141,8 @@ When a worker crashes or becomes unresponsive, we need a reliable way to detect 
 
     Design jobs to be naturally idempotent by using idempotency keys and conditional operations. For example, instead of "increment counter", the job would be "set counter to X". Instead of "send welcome email", we'd first check if the welcome email flag is already set in the user's profile. Each job execution includes a unique identifier that downstream services can use to deduplicate requests.
 
+---
+
+### Final Design
+
+![Final Design](../../assets/img/system-design/job-scheduler/final-design.svg)

@@ -4,6 +4,11 @@
 
 At any given moment we'd like to be able to query, precisely, the top K most viewed videos for the last 1 hour, 1 day, 1 month, and all time.
 
+**Key Focus Areas**
+
+- **Scaling Reads**: Precomputation + Caching
+- **Scaling Writes**: Sharding ingestion + batching operation(Flink)
+
 ---
 
 ## Functional Requirements
@@ -51,6 +56,8 @@ GET /views/top-k?window={WINDOW}&k={K} -> { videoId: string, views: number }[]
 ---
 
 ## High Level Design
+
+![Youtube Top-K High Level Design](../../assets/img/system-design/top-k/hld.svg)
 
 ### 1. Query the top K videos for all-time (up to a 1k)
 
