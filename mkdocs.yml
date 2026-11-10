@@ -131,6 +131,8 @@ nav:
     - NAT: networking/05-nat.md
     - AWS:
       - AWS Networking Basics: networking/aws/networking-basics.md
+    - Connectivity:
+      - L3 Private Connectivity: networking/connectivity/l3-private-connectivity.md
   - DNS:
     - SRV record: DNS/srv.md
   - EKS:

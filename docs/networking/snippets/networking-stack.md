@@ -22,6 +22,15 @@ Responsible for logical communication between processes running on different hos
 - **Data Unit**: **Segment** (TCP) or **Datagram** (UDP)
 - **Key Protocols**: **TCP** (reliable connection-oriented), **UDP** (fast connectionless datagram).
 
+!!! note "How to choose the protocol?"
+
+    The sending host decides before it builds the header. The application chooses the protocol when it opens the socket, and encapsulation follows that choice.
+
+    A call such as `socket(AF_INET, SOCK_STREAM, 0)` creates a TCP socket. `SOCK_DGRAM` creates a UDP socket. From then on, that socket is one protocol. When the application writes a message, the kernel's transport layer looks up the socket and writes the matching header: a TCP header with ports, sequence numbers, and flags, or an 8-byte UDP header with ports, length, and checksum.
+
+    As that segment is handed to the Internet layer, the same choice is written into the IP header's Protocol field. TCP sets it to `6`. UDP sets it to `17`. The receiver reads that field during decapsulation and knows which header follows the IP header.
+
+
 !!! Tip 
 
     Please visit [Kubernetes > Networking > 1. Networking Introduction > TCP section](../../kubernetes/networking/01-networking-introduction.md/#tcp) to better understand the TCP header.
